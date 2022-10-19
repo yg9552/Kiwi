@@ -30,12 +30,3 @@ target/
 .factorypath
 .project
 .springBeans
-
-# custom
-.settings/
-bin/
-target/
-.classpath
-.factorypath
-.project
-.springBeans
