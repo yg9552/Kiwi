@@ -21,102 +21,116 @@
 	   			<td>1</td>
 	   			<td>메인 화면</td>
 	   			<td>/nextrip</td>
-	   			<td></td>
+	   			<td>(조회수 높은 글 3~개로부터 가져온) 사진 슬라이드, SVG 파일을 통한 링크</td>
 	   			<td></td>
 	   		</tr>
 	   		<tr>
 	   			<td>2</td>
 	   			<td>로그인 화면</td>
 	   			<td>/nextrip/login</td>
-	   			<td></td>
+	   			<td>타 사이트 연동 로그인, 비밀번호 재설정, 로그인 프로세스</td>
 	   			<td></td>
 	   		</tr>
 	   		<tr>
 	   			<td>3</td>
 	   			<td>회원가입 화면</td>
 	   			<td>/nextrip/memberRegistration</td>
-	   			<td></td>
+	   			<td>회원가입 프로세스</td>
 	   			<td></td>
 	   		</tr>
 	   		<tr>
 	   			<td>4</td>
 	   			<td>마이페이지 화면</td>
 	   			<td>/nextrip/mypage</td>
-	   			<td></td>
+	   			<td>로그인한 계정에 한해 접속가능</td>
 	   			<td></td>
 	   		</tr>
 	   		<tr>
 	   			<td>5</td>
 	   			<td>채팅 화면</td>
 	   			<td>/nextrip/mypage/chat</td>
-	   			<td></td>
+	   			<td>채팅</td>
 	   			<td></td>
 	   		</tr>
 	   		<tr>
 	   			<td>6</td>
 	   			<td>회원정보 수정 화면</td>
 	   			<td>/nextrip/mypage/memberModification</td>
-	   			<td></td>
+	   			<td>회원정보 Updt, 회원정보 velete</td>
 	   			<td></td>
 	   		</tr>
 	   		<tr>
 	   			<td>7</td>
 	   			<td>예약내역 화면</td>
 	   			<td>/nextrip/mypage/reservationRecord</td>
+	   			<td>조건부list</td>
 	   			<td></td>
+	   		</tr>
+	   		<tr>
+	   			<td>7</td>
+	   			<td>예약내역 상세 화면</td>
+	   			<td>/nextrip/mypage/reservationView</td>
+	   			<td>예약내용 프린트,예약취소(?),위조방지(?)</td>
 	   			<td></td>
 	   		</tr>
 	   		<tr>
 	   			<td>8</td>
 	   			<td>내가 쓴글 확인 화면</td>
 	   			<td>/nextrip/mypage/postRecord</td>
-	   			<td></td>
+	   			<td>조건부list, list목록에서 클릭시 view로 링크</td>
 	   			<td></td>
 	   		</tr>
 	   		<tr>
 	   			<td>9</td>
 	   			<td>지역 화면</td>
 	   			<td>/nextrip/region</td>
-	   			<td></td>
+	   			<td>CCTV API 끌어와 표기, 날씨 API 끌어와 표기하기, (글로부터 추출한) 사진 3장 슬라이드, 글로부터 사진을 추출할시 식별가능한 인물이 들어간 사진을 제외처리(딥러닝)</td>
 	   			<td></td>
 	   		</tr>
 	   		<tr>
 	   			<td>10</td>
 	   			<td>숙박 상품 화면</td>
 	   			<td>/nextrip/region/accommodationList</td>
-	   			<td></td>
+	   			<td>숙소들 위치 지도 위에 마커로 표기, 지도 기능의 경우 굉장히 여러가지가 추가 될 수 있음</td>
 	   			<td></td>
 	   		</tr>
 	   		<tr>
 	   			<td>11</td>
 	   			<td>숙박 상품 상세 화면</td>
 	   			<td>/nextrip/region/accommodationView</td>
-	   			<td></td>
+	   			<td>숙소 위치 지도 위에 표기, 선택한 숙소의 상품(방 종류), 예약조건(체크인, 체크아웃, 인원수)에 따른 가격 산출 및 결제진행페이지로 연결</td>
 	   			<td></td>
 	   		</tr>
 	   		<tr>
 	   			<td>12</td>
 	   			<td>결제페이지 화면</td>
 	   			<td>/nextrip/region/accommodationView/purchase</td>
-	   			<td></td>
+	   			<td>결제수단(외부 연동), 동의여부 validation을 통한 약관 미동의 결제 통제</td>
 	   			<td></td>
 	   		</tr>
 	   		<tr>
 	   			<td>13</td>
 	   			<td>여행지 소개 화면</td>
 	   			<td>/nextrip/region/postList</td>
-	   			<td></td>
+	   			<td>검색기능, pagination</td>
 	   			<td></td>
 	   		</tr>
 	   		<tr>
 	   			<td>14</td>
 	   			<td>여행지 소개 상세 화면</td>
 	   			<td>/nextrip/region/postView</td>
-	   			<td></td>
+	   			<td>해당 위치 지도 표기, 가는경로 탐색(외부링크 with 목적지 기입)</td>
 	   			<td></td>
 	   		</tr>
 	   		<tr>
 	   			<td>15</td>
+	   			<td>여행지 소개 등록 화면</td>
+	   			<td>/nextrip/region/postInst</td>
+	   			<td>사진 첨부파일,API 활용가능한 양식으로 주소 받기</td>
+	   			<td></td>
+	   		</tr>
+	   		<tr>
+	   			<td>16</td>
 	   			<td>여행지 소개 상세 수정 화면</td>
 	   			<td>/nextrip/region/postMdfy</td>
 	   			<td></td>
