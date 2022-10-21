@@ -160,6 +160,15 @@
                            <div class="col d-inline">
                            	<i class="fa-solid fa-person-swimming fa-2x mt-3 mr-3"><p class="mt-2">수영장</p></i>
                            </div>
+                           <div class="col d-inline">
+                           	<i class="fa-solid fa-utensils fa-2x mt-3 mr-3"><p class="mt-2">레스토랑</p></i>
+                           </div>
+                           <div class="col d-inline">
+                           	<i class="fa-solid fa-square-parking fa-2x mt-3 mr-3"><p class="mt-2">주차장</p></i>
+                           </div>
+                           <div class="col d-inline">
+                           	<i class="fa-solid  fa-bell-concierge fa-2x mt-3 mr-3"><p class="mt-2">룸서비스</p></i>
+                           </div>
                         </div>
                      </div>
                   </div>
@@ -208,113 +217,44 @@
                      </div>
                   </div>
                </div>
-               <div class="comment-form">
-                  <h4>Leave a Reply</h4>
-                  <form class="form-contact comment_form" action="#" id="commentForm">
-                     <div class="row">
-                        <div class="col-12">
-                           <div class="form-group">
-                              <textarea class="form-control w-100" name="comment" id="comment" cols="30" rows="9"
-                                 placeholder="Write Comment"></textarea>
-                           </div>
-                        </div>
-                        <div class="col-sm-6">
-                           <div class="form-group">
-                              <input class="form-control" name="name" id="name" type="text" placeholder="Name">
-                           </div>
-                        </div>
-                        <div class="col-sm-6">
-                           <div class="form-group">
-                              <input class="form-control" name="email" id="email" type="email" placeholder="Email">
-                           </div>
-                        </div>
-                        <div class="col-12">
-                           <div class="form-group">
-                              <input class="form-control" name="website" id="website" type="text" placeholder="Website">
-                           </div>
-                        </div>
-                     </div>
-                     <div class="form-group">
-                        <button type="submit" class="button button-contactForm btn_1 boxed-btn">Send Message</button>
-                     </div>
-                  </form>
-               </div>
             </div>
             <div class="col-lg-4">
                <div class="blog_right_sidebar">
-                  <aside class="single_sidebar_widget post_category_widget">
-                     <h4 class="widget_title">Category</h4>
-                     <ul class="list cat-list">
-                        <li>
-                           <a href="#" class="d-flex">
-                              <p>Resaurant food</p>
-                              <p>(37)</p>
-                           </a>
-                        </li>
-                        <li>
-                           <a href="#" class="d-flex">
-                              <p>Travel news</p>
-                              <p>(10)</p>
-                           </a>
-                        </li>
-                        <li>
-                           <a href="#" class="d-flex">
-                              <p>Modern technology</p>
-                              <p>(03)</p>
-                           </a>
-                        </li>
-                        <li>
-                           <a href="#" class="d-flex">
-                              <p>Product</p>
-                              <p>(11)</p>
-                           </a>
-                        </li>
-                        <li>
-                           <a href="#" class="d-flex">
-                              <p>Inspiration</p>
-                              <p>(21)</p>
-                           </a>
-                        </li>
-                        <li>
-                           <a href="#" class="d-flex">
-                              <p>Health Care</p>
-                              <p>(21)</p>
-                           </a>
-                        </li>
-                     </ul>
-                  </aside>
-                  <aside class="single_sidebar_widget tag_cloud_widget">
-                     <h4 class="widget_title">Tag Clouds</h4>
-                     <ul class="list">
-                        <li>
-                           <a href="#">project</a>
-                        </li>
-                        <li>
-                           <a href="#">love</a>
-                        </li>
-                        <li>
-                           <a href="#">technology</a>
-                        </li>
-                        <li>
-                           <a href="#">travel</a>
-                        </li>
-                        <li>
-                           <a href="#">restaurant</a>
-                        </li>
-                        <li>
-                           <a href="#">life style</a>
-                        </li>
-                        <li>
-                           <a href="#">design</a>
-                        </li>
-                        <li>
-                           <a href="#">illustration</a>
-                        </li>
-                     </ul>
-                  </aside>
-                  <aside class="single_sidebar_widget">
-                     <h4 class="widget_title">Instagram Feeds</h4>
-                     
+                   <aside class="single_sidebar_widget">
+                    <h4 class="widget_title">숙소위치</h4>
+                   	<div class="bg-primary p-5">
+                   	</div>
+                   </aside>
+	               <aside class="single_sidebar_widget newsletter_widget">
+                     <h4 class="widget_title">예약</h4>
+                     <form action="#">
+                     	<div class="form-group">
+                     		<label>객실타입</label>
+		                    <select class="form-select">
+							  <option selected>선택</option>
+							  <option value="1">Double</option>
+							  <option value="2">Twin</option>
+							  <option value="3">Suite</option>
+							</select>
+						</div>
+                        <div class="form-group">
+                           <label for="checkInDate">체크인</label>
+                           <input type="text" class="form-control" id="checkInDate">
+                        </div>
+                        <div class="form-group">
+                           <label for="checkOutDate">체크아웃</label>
+                           <input type="text" class="form-control" id="checkOutDate">
+                        </div>
+                        <div class="form-group">
+                           <label>인원</label>
+                           <input type="number" class="form-control" value="2">
+                        </div>
+                        <div class="form-group">
+                           <label>1박</label>
+                           <input type="text" class="form-control border border-white text-danger" value="180000">
+                        </div>
+                        <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn" type="button">예약하기</button>
+                     </form>
                   </aside>
                </div>
             </div>
