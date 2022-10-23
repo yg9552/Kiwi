@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="zxx">
+<html class="no-js" lang="ko">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -23,8 +23,9 @@
             <link rel="stylesheet" href="../../../../gotrip-master/assets/css/style.css">
             <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw==" crossorigin="anonymous" />
             <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
-            
+            <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=2a045a5c1310de71e62958f714a305cf"></script>
             
    </head>
 
@@ -217,7 +218,7 @@
                <div class="blog_right_sidebar">
                    <aside class="single_sidebar_widget">
                     <h4 class="widget_title">숙소위치</h4>
-                   	<div class="bg-primary p-5">
+                    <div id="map" style="width:100%;height:350px;"></div>
                    	</div>
                    </aside>
 	               <aside class="single_sidebar_widget newsletter_widget">
@@ -233,20 +234,22 @@
 						</div>
                         <div class="form-group">
                            <label for="checkInDate">체크인</label>
-                           <input type="text" class="form-control" id="checkInDate">
                         </div>
+                        <div class="input-group date" data-provide="datepicker">
+						    <input type="text" class="form-control" id="datepicker">
+						    <div class="input-group-addon">
+						        <span class="glyphicon glyphicon-th"></span>
+						    </div>
+						</div>
                         <div class="form-group">
                            <label for="checkOutDate">체크아웃</label>
-                           <input type="text" class="form-control" id="checkOutDate">
+                           <input type="text" class="form-control" id="datepicker" name="checkOutDate">
                         </div>
                         <div class="form-group">
                            <label>인원</label>
                            <input type="number" class="form-control" value="2">
                         </div>
-                        <div class="form-group">
-                           <label>1박</label>
-                           <input type="text" class="form-control border border-white text-danger" value="180000">
-                        </div>
+                        <h5 class="text-danger" style="margin: 50px 0 30px">1박 190000원</h5>
                         <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn" type="button">예약하기</button>
                      </form>
                   </aside>
@@ -342,6 +345,48 @@
         </div>
         <!-- Footer End-->
     </footer>
+    <script type="text/javascript">
+    var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+        mapOption = { 
+            center: new kakao.maps.LatLng(37.51145760372662, 127.10033712292199), // 지도의 중심좌표
+            level: 3 // 지도의 확대 레벨
+        };
+    var map = new kakao.maps.Map(mapContainer, mapOption); 
+ // 마커가 표시될 위치입니다 
+    var markerPosition  = new kakao.maps.LatLng(37.51145760372662, 127.10033712292199);
+ // 마커를 생성합니다
+    var marker = new kakao.maps.Marker({
+        position: markerPosition
+    });
+ // 마커가 지도 위에 표시되도록 설정합니다
+    marker.setMap(map);
+
+
+    // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
+    
+    
+ // datepicker
+	   $(".datepicker").datepicker({
+			dateFormat: 'yy-mm-dd' //달력 날짜 형태
+			,language : 'ko'
+			,autoclose : true
+			,todayHighlight : true
+	        ,showOtherMonths: true //빈 공간에 현재월의 앞뒤월의 날짜를 표시
+	        ,showMonthAfterYear:true // 월- 년 순서가아닌 년도 - 월 순서
+	        ,changeYear: true //option값 년 선택 가능
+	        ,changeMonth: true //option값  월 선택 가능                
+	        ,buttonText: "선택" //버튼 호버 텍스트              
+	        ,yearSuffix: "년" //달력의 년도 부분 뒤 텍스트
+	        ,monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] //달력의 월 부분 텍스트
+	        ,monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] //달력의 월 부분 Tooltip
+	        ,dayNamesMin: ['일','월','화','수','목','금','토'] //달력의 요일 텍스트
+	        ,dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'] //달력의 요일 Tooltip
+	        ,minDate: "-100y" //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
+	        ,maxDate: "+5y" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)
+	    	,yearRange: 'c-120:c+1'
+	});
+ 
+    </script>
   
 	<!-- JS here -->
 	
@@ -349,6 +394,8 @@
         <script src="../../../../gotrip-master/assets/js/vendor/modernizr-3.5.0.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js" integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ==" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.ko.min.js" integrity="sha512-L4qpL1ZotXZLLe8Oo0ZyHrj/SweV7CieswUODAAPN/tnqN3PA1P+4qPu5vIryNor6HQ5o22NujIcAZIfyVXwbQ==" crossorigin="anonymous"></script>
 		
 		<!-- Jquery, Popper, Bootstrap -->
 		<script src="../../../../gotrip-master/assets/js/vendor/jquery-1.12.4.min.js"></script>
@@ -414,6 +461,9 @@
 
             });
         })
+		
+           
 		</script>
+		
     </body>
 </html>
