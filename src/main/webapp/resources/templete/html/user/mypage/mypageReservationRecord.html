@@ -1,12 +1,224 @@
 <!DOCTYPE HTML>
+<html  class="no-js" lang="zxx">
 <html>
 <head>
 	<meta charset="uTF-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="viewport" content = "width=device-width, initial-scale=1.0">
-	<title>reservation record</title>
-</head>
-<body>
-<h1>reservation record</h1>
+	<title>ReservationRecord</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="manifest" href="site.webmanifest">
+	<link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 
+	<!-- CSS here -->
+    <link rel="stylesheet" href="./../../../gotrip-master/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./../../../gotrip-master/assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="./../../../gotrip-master/assets/css/flaticon.css">
+    <link rel="stylesheet" href="./../../../gotrip-master/assets/css/slicknav.css">
+    <link rel="stylesheet" href="./../../../gotrip-master/assets/css/animate.min.css">
+    <link rel="stylesheet" href="./../../../gotrip-master/assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="./../../../gotrip-master/assets/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="./../../../gotrip-master/assets/css/themify-icons.css">
+    <link rel="stylesheet" href="./../../../gotrip-master/assets/css/slick.css">
+    <link rel="stylesheet" href="./../../../gotrip-master/assets/css/nice-select.css">
+    <link rel="stylesheet" href="./../../../gotrip-master/assets/css/style.css">
+</head>
+<style type="text/css">
+	td{
+		text-align:center;
+		border:1px solid #0F52BA20;
+	}
+	th {
+		background-color:#F7F8F9;
+		height: 45px;
+		text-align: center;
+	}
+	.single_sidebar_widget {
+		width: 290px;
+	}
+	.table th {
+		background-color: #f0f0f0;
+		vertical-align: middle;
+	}
+	.caution > li {
+		list-style-type:square ;
+	}
+</style>
+<body>
+	<header>
+        <!-- Header Start -->
+       <div class="header-area">
+            <div class="main-header ">
+               <div class="header-bottom  header-sticky">
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <!-- Logo -->
+                            <div class="col-xl-2 col-lg-2 col-md-1">
+                                <div class="logo">
+                                  <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>
+                                </div>
+                            </div>
+                            <div class="col-xl-10 col-lg-10 col-md-10">
+                                <!-- Main-menu -->
+                                <div class="main-menu f-right d-none d-lg-block">
+                                    <nav>               
+                                        <ul id="navigation">                                                                                                                                     
+                                            <li><a href="index.html">Home</a></li>
+                                            <li><a href="about.html">About US</a></li>
+                                            <li><a href="packages.html">Package</a></li>
+                                            <li><a href="blog.html">Blog</a>
+                                                <ul class="submenu">
+                                                    <li><a href="blog.html">Blog</a></li>
+                                                    <li><a href="single-blog.html">Blog Details</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="#">Pages</a>
+                                                <ul class="submenu">
+                                                    <li><a href="elements.html">Element</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="contact.html">Contact Us</a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                            <!-- Mobile Menu -->
+                            <div class="col-12">
+                                <div class="mobile_menu d-block d-lg-none"></div>
+                            </div>
+                        </div>
+                    </div>
+               </div>
+            </div>
+       	</div>
+        <!-- Header End -->
+    </header>
+    <div class="container">
+    	<div class="row">
+    		<div class="col-3">
+				<div class="blog_left_sidebar">
+					<aside class="single_sidebar_widget post_category_widget" style="background: #fbf9ff;">
+		                <h4 class="widget_title">Category</h4>
+		                <ul class="list cat-list">
+		                    <li>
+		                        <a href="#" class="d-flex">
+		                            <p>개인정보수정</p>
+		                        </a>
+		                    </li>
+		                    <li>
+		                        <a href="#" class="d-flex">
+		                            <p>예약내역</p>
+		                        </a>
+		                    </li>
+		                    <li>
+		                        <a href="#" class="d-flex">
+		                            <p>내가 쓴 글</p>
+		                        </a>
+		                    </li>
+		                    <li>
+		                        <a href="#" class="d-flex">
+		                            <p>채팅</p>
+		                        </a>
+		                    </li>
+		                </ul>
+		            </aside>
+				</div>
+	       	</div>
+	       	<div class="col-9">
+	       		<p>예매내역</p>
+	       		<div style="border:solid; border-width: 1px; border-color:#EEEEEE;">
+	       			<h5>잠깐 읽어보세요</h5>
+	       			<ul class="caution p-4">
+	       				<li>예약상세보기를 클릭하면 자세한 정보를 확인 할 수 있습니다.</li>
+	       				<li>환불은 일정 시작 7일전 100% 환불, 3일전 50%환불, 1일전 환불 불가이며, 자세한 절차는 몰루?</li>
+	       				<li></li>
+	       			</ul>
+	       		</div>
+	       		<div class="my-3">
+	       			<div style="border: solid; border-width: 1px; border-color:#EEEEEE;">
+	       				<div class="row">
+		       				<div class="col-9">
+		       					<h6>예약일: 2022-10-24</h6>
+	       						<img class="img-thumbnail" alt="" id="preview" style="width:160px; height:145px; float: left;">
+	       						<p style="font-size: 13px;">숙박 > 경기도</p><span style="float: right; font-size: 12px;">숙박 상세보기 > </span><span style="clear: both;"></span>
+	       						<p>&nbsp;라한 셀렉트 경주 2박3일</p>
+	       						<p style="font-size: 13px;">일정: 2022-11-19 ~ 2022-11-21</p>
+		       				</div>
+		       				<div class="col-3" style="display:flex; align-items: center;">
+		       					<button type="button" class="genric-btn info radius">예약 상세보기</button>
+		       				</div>
+	       				</div>
+	       			</div>
+	       			<div style="border: solid; border-width: 1px; border-color:#EEEEEE;">
+	       				<div class="row">
+		       				<div class="col-9">
+		       					<h6>예약일: 2022-10-24</h6>
+	       						<img class="img-thumbnail" alt="" id="preview" style="width:160px; height:145px; float: left;">
+	       						<p style="font-size: 13px;">숙박 > 경기도</p><span style="float: right; font-size: 12px;">숙박 상세보기 > </span><span style="clear: both;"></span>
+	       						<p>&nbsp;라한 셀렉트 경주 / 2박3일</p>
+	       						<p style="font-size: 13px;">일정: 2022-11-19 ~ 2022-11-21</p>
+		       				</div>
+		       				<div class="col-3" style="display:flex; align-items: center;">
+		       					<button type="button" class="genric-btn info radius">예약 상세보기</button>
+		       				</div>
+	       				</div>
+	       			</div>
+	       			<div style="border: solid; border-width: 1px; border-color:#EEEEEE;">
+	       				<div class="row">
+		       				<div class="col-9">
+		       					<h6>예약일: 2022-10-24</h6>
+	       						<img class="img-thumbnail" alt="" id="preview" style="width:160px; height:145px; float: left;">
+	       						<p style="font-size: 13px;">숙박 > 경기도</p><span style="float: right; font-size: 12px;">숙박 상세보기 > </span><span style="clear: both;"></span>
+	       						<p>&nbsp;라한 셀렉트 경주 2박3일</p>
+	       						<p style="font-size: 13px;">일정: 2022-11-19 ~ 2022-11-21</p>
+		       				</div>
+		       				<div class="col-3" style="display:flex; align-items: center;">
+		       					<button type="button" class="genric-btn info radius">예약 상세보기</button>
+		       				</div>
+	       				</div>
+	       			</div>
+				</div>
+	       	</div>
+		</div>
+	</div>
+    
+    
+    <!-- All JS Custom Plugins Link Here here -->
+        <script src="./assets/js/vendor/modernizr-3.5.0.min.js"></script>
+		
+		<!-- Jquery, Popper, Bootstrap -->
+		<script src="./assets/js/vendor/jquery-1.12.4.min.js"></script>
+        <script src="./assets/js/popper.min.js"></script>
+        <script src="./assets/js/bootstrap.min.js"></script>
+	    <!-- Jquery Mobile Menu -->
+        <script src="./assets/js/jquery.slicknav.min.js"></script>
+
+		<!-- Jquery Slick , Owl-Carousel Plugins -->
+        <script src="./assets/js/owl.carousel.min.js"></script>
+        <script src="./assets/js/slick.min.js"></script>
+		<!-- One Page, Animated-HeadLin -->
+        <script src="./assets/js/wow.min.js"></script>
+		<script src="./assets/js/animated.headline.js"></script>
+        <script src="./assets/js/jquery.magnific-popup.js"></script>
+
+		<!-- Scrollup, nice-select, sticky -->
+        <script src="./assets/js/jquery.scrollUp.min.js"></script>
+        <script src="./assets/js/jquery.nice-select.min.js"></script>
+		<script src="./assets/js/jquery.sticky.js"></script>
+        
+        <!-- contact js -->
+        <script src="./assets/js/contact.js"></script>
+        <script src="./assets/js/jquery.form.js"></script>
+        <script src="./assets/js/jquery.validate.min.js"></script>
+        <script src="./assets/js/mail-script.js"></script>
+        <script src="./assets/js/jquery.ajaxchimp.min.js"></script>
+        
+		<!-- Jquery Plugins, main Jquery -->	
+        <script src="./assets/js/plugins.js"></script>
+        <script src="./assets/js/main.js"></script>
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 </body>
 </html>
