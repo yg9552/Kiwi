@@ -47,6 +47,31 @@
         <!-- Header Start -->
        <div class="header-area">
             <div class="main-header ">
+            	<div class="header-top top-bg d-none d-lg-block">
+                   <div class="container">
+                    <div class="row justify-content-between align-items-center">
+                        <div class="col-lg-8">
+                            <div class="header-info-left">
+                                <!-- <ul>                          
+                                    <li>needhelp@gotrip.com</li>
+                                    <li>666 569 025077</li>
+                                    <li>broklyn street new york</li>
+                                </ul> -->
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="header-info-right f-right">
+                                <ul class="header-social">    
+                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                   <li> <a href="#"><i class="fab fa-pinterest-p"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                       </div>
+                   </div>
+                </div>
                <div class="header-bottom  header-sticky">
                     <div class="container">
                         <div class="row align-items-center">
@@ -117,7 +142,7 @@
     <section class="blog_area section-padding">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 mb-5 mb-lg-0">
+                <div class="col-lg-3 mb-5 mb-lg-0 d-none d-lg-block">
                 	<div class="blog_right_sidebar">
                         <aside class="single_sidebar_widget post_category_widget">
                             <h4 class="widget_title">여행지역</h4>
@@ -232,7 +257,7 @@
                 </div>
                 <div class="col-lg-9">
                 	<div class="row">
-                		<div class="col-5">
+                		<div class="col-lg-5">
                 			<div class="blog_right_sidebar">
 		                        <aside class="single_sidebar_widget post_category_widget">
 		                            <h4 class="widget_title">날씨</h4>
@@ -242,7 +267,7 @@
 		                        </aside>
 		                    </div>
                 		</div>
-                		<div class="col" style="width: 200px; height: 300px;">
+                		<div class="col-12 col-lg" style="width: 200px; height: 300px;">
                 			<div class="slider-wrap">
 							  <div><img src="../../../gotrip-master/assets/img/hero/scenery-g6805d4812_1920.jpg" alt=""></div>
 							  <div><img src="../../../gotrip-master/assets/img/hero/scenery-g6805d4812_1920.jpg" alt=""></div>
@@ -527,7 +552,27 @@
 		  arrows : false,
 		  pauseOnHover : true,
 		  autoplaySpeed: 2000,
-		  draggable : true
+		  draggable : true,
+		  responsive: [ // 반응형 웹 구현 옵션
+              {  
+                breakpoint: 960, //화면 사이즈 960px
+                settings: {
+                  slidesToShow: 4
+                } 
+              },
+              { 
+                breakpoint: 768, //화면 사이즈 768px
+                settings: {    
+                  slidesToShow: 2
+                } 
+              },
+              { 
+                breakpoint: 360, //화면 사이즈 360px
+                settings: {    
+                  slidesToShow: 1
+                } 
+              }
+            ]
 		});
         
 		</script>
