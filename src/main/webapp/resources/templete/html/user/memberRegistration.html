@@ -24,6 +24,21 @@
     <link rel="stylesheet" href="./../../gotrip-master/assets/css/nice-select.css">
     <link rel="stylesheet" href="./../../gotrip-master/assets/css/style.css">
 </head>
+<style type="text/css">
+	td{
+		text-align: center;
+		border:1px solid #0F52BA20;
+	}
+	th {
+		background-color:#F7F8F9;
+		height: 45px;
+		text-align: center;
+	}
+	.table th {
+		background-color: #f0f0f0;
+		vertical-align: middle;
+	}
+</style>
 
 <body>
 	<header>
@@ -36,7 +51,7 @@
                             <!-- Logo -->
                             <div class="col-xl-2 col-lg-2 col-md-1">
                                 <div class="logo">
-                                  <a href="index.html"><img src="./../../gotrip-master/assets/img/logo/NTlogo.png" alt=""></a>
+                                  <a href="index.html"><img src="../../gotrip-master/assets/img/logo/NTLogo.png" alt=""></a>
                                 </div>
                             </div>
                             <div class="col-xl-10 col-lg-10 col-md-10">
@@ -48,14 +63,12 @@
                                             <li><a href="#">회원가입</a></li>
                                             <li><a href="#">지역</a>
                                             	<ul class="submenu">
-                                                    <li><a href="#">서울</a></li>
-                                                    <li><a href="#">제주</a></li>
-                                                    <li><a href="#">부산</a></li>
-                                                    <li><a href="#">경기도</a></li>
+                                                    <li><a href="#">수도권</a></li>
                                                     <li><a href="#">강원도</a></li>
                                                     <li><a href="#">경상도</a></li>
                                                     <li><a href="#">전라도</a></li>
                                                     <li><a href="#">충청도</a></li>
+                                                    <li><a href="#">제주도</a></li>
                                                 </ul>
                                             </li>
                                             <li><a href="#">여행지소개</a>
@@ -81,6 +94,57 @@
     </header>
 	<div class="container col-6" style="text-align: center; position:relative; top:120px;">
 		<div class="row justify-content-center mb-2">
+			<h4>회원가입</h4>
+		</div>
+		<div>
+		    <table class="table">
+		        <colgroup>
+		            <col style="width:160px;">
+		            <col style="width:auto;">
+		            <col style="width:150px;">
+		            <col style="width:auto;">
+		    	</colgroup>
+	            <tbody>
+		            <tr>
+		                <th>아이디</th>
+		                <td><input type="text" class="form-control" value="" style="border: none;"></td>
+		                <th>닉네임</th>
+		                <td><input type="text" class="form-control" value="" style="border: none;"></td>
+		            </tr>
+		            <tr>
+		                <th>비밀번호</th>
+		                <td><input type="password" class="form-control" value="" style="border: none;"></td>
+		                <th>비밀번호 확인</th>
+		                <td><input type="password" class="form-control" value="" style="border: none;"></td>
+		            </tr>
+	                <tr>
+	                	<th>한글이름</th>
+	                	<td colspan="3">
+							<input type="text" class="form-control" value="" style="border: none;">
+						</td>
+                    </tr>
+                    <tr>
+                    	<th>생년월일</th>
+                    	<td colspan="3">
+                        	<input type="text" class="form-control" value="" style="border: none;">
+	                	</td>
+			      	</tr>
+		            <tr>
+		                <th>휴대전화</th>
+		                <td colspan="3">
+		                    <input class="form-control" placeholder="휴대폰 번호를 입력해주세요." style="width:300px; margin:0 10px 0 0; border: none;" type="text" value="">
+		                </td>
+		            </tr>
+		            <tr>
+		                <th>이메일</th>
+		                <td colspan="3">
+		                    <input class="form-control" data-val="true" data-val-regex="이메일 주소를 올바르게 입력해주세요" data-val-regex-pattern="^[a-zA-Z\-\w][\w\.-]*[a-zA-Z0-9\-\w]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$" id="EMail" maxlength="50" name="EMail" placeholder="이메일을 입력해주세요." style="border:none; width:450px;" title="이메일아이디" type="text" value="" autocomplete="off">
+		                </td>
+		            </tr>
+		        </tbody>
+		    </table>
+		</div>
+		<!-- <div class="row justify-content-center mb-2">
 			<h4>회원가입</h4>
 		</div>
 		<div class="row justify-content-center pt-3">
@@ -128,9 +192,9 @@
 			  <input type="text" class="form-control" id="memberEmail" placeholder="id">
 			  <label for="memberEmail" style="text-align:left;">&nbsp;이메일</label>
 			</div>
-		</div>
+		</div> -->
 		<div class="row mb-3">
-			<span><a href=""><input type="button" class="btn" value="가입하기" style="background-color:#EC1A47; color:white; width:320px;"></a></span>
+			<span><a href=""><input type="button" class="btn" value="가입하기" style="background-color:#014B85; color:white; width:320px;"></a></span>
 		</div>
 	</div>
 
