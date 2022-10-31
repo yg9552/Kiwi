@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="./../../../gotrip-master/assets/css/slick.css">
     <link rel="stylesheet" href="./../../../gotrip-master/assets/css/nice-select.css">
     <link rel="stylesheet" href="./../../../gotrip-master/assets/css/style.css">
+    <script src="https://kit.fontawesome.com/dca973ab96.js" crossorigin="anonymous"></script>
 </head>
 <style type="text/css">
 	td{
@@ -124,9 +125,7 @@
 				</div>
 	       	</div>
 	       	<div class="col-9">
-	       		<p>예매내역</p>
-	       		<button type="button" class="genric-btn success circle small float-end" onclick="location.href='./mypageReservationRecord.html'">뒤로가기</button>
-	       		<p style="font-size: 14px;">예약 상세보기</p>
+	       		<p>내가 쓴 글</p>
 	       		<!-- <div style="border:solid; border-width: 1px; border-color:#EEEEEE;">
 	       			<h5>잠깐 읽어보세요</h5>
 	       			<ul class="caution p-4">
@@ -136,106 +135,100 @@
 	       			</ul>
 	       		</div> -->
 	       		<div>
-	       			<h4 style="border-bottom: solid; border-width: 3px;">결제정보</h4>
-					<table class="table">
-						<tr>
-							<th>결제일시</th>
-							<th>결제방법</th>
-							<th>결제금액</th>
-						</tr>
-						<tr>
-							<td>2022-10-25 14:18:53</td>
-							<td>카드</td>
-							<td>230,000</td>
-						</tr>
-					</table>
+	       			<table class="table" style="text-align: center;">
+				          <caption class="caption-top">
+					          <div class="row">
+					          	<div class="col-lg-2">
+					          		<select class="form-select">
+					          			<option>전체 보기</option>
+                                		<option>패키지</option>
+                                		<option>여행지</option>
+                                		<option>음식점</option>
+                                	</select>
+					          	</div>
+					          	<div class="col-lg-2">
+						          	<select class="form-select">
+				          				<option>전체 지역</option>
+                                		<option>서울</option>
+                                		<option>대전</option>
+                                		<option>대구</option>
+                                	</select>
+					          	</div>
+					          	<div class="col-lg-2 offset-3">
+                                	<select class="form-select">
+                                		<option>제목</option>
+                                		<option>내용</option>
+                                		<option>구분</option>
+                                	</select> 
+                                </div>
+					          	<div class="input-group col-lg-3">
+	                                <div class="input-group mb-3">
+									  <input type="text" class="form-control" placeholder="">
+									  <button class="btn-primary" type="button" id="button-addon2"><i class="fa-solid fa-magnifying-glass"></i></button>
+									</div>
+                                </div>
+                            </div>
+				          </caption>
+						  <thead>
+						    <tr>
+						      <th scope="col col-lg-1">번호</th>
+						      <th scope="col col-lg-1">구분</th>
+						      <th scope="col col-lg-1">지역</th>
+						      <th scope="col" style="width: 400px;">제목</th>
+						      <th scope="col col-lg-1">작성자</th>
+						      <th scope="col col-lg-1">작성일</th>
+						    </tr>
+						  </thead>
+						  <tbody>
+						    <tr>
+						      <td scope="row">3</th>
+						      <td><span class="state">패키지</span></td>
+						      <td>서울</td>
+						      <td>테스트 패키지</td>
+						      <td>김**</td>
+						      <td>2022-10-21</td>
+						    </tr>
+						    <tr>
+						      <td scope="row">2</th>
+						      <td><span class="state">음식점</span></td>
+						      <td>서울</td>
+						      <td>테스트 패키지</td>
+						      <td>김**</td>
+						      <td>2022-10-21</td>
+						    </tr>
+						    <tr>
+						      <td scope="row">1</th>
+						      <td><span class="state">여행지</span></td>
+						      <td>서울</td>
+						      <td>테스트 패키지</td>
+						      <td>김**</td>
+						      <td>2022-10-21</td>
+						    </tr>
+						  </tbody>
+						</table>
+                    <div class="blog_left_sidebar">
+                        <nav class="blog-pagination justify-content-center d-flex">
+                            <ul class="pagination">
+                                <li class="page-item">
+                                    <a href="#" class="page-link" aria-label="Previous">
+                                        <i class="ti-angle-left"></i>
+                                    </a>
+                                </li>
+                                <li class="page-item">
+                                    <a href="#" class="page-link">1</a>
+                                </li>
+                                <li class="page-item active">
+                                    <a href="#" class="page-link">2</a>
+                                </li>
+                                <li class="page-item">
+                                    <a href="#" class="page-link" aria-label="Next">
+                                        <i class="ti-angle-right"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
 	       		</div>
-	       		<div>
-	       			<h4 style="border-bottom: solid; border-width: 3px;">숙박정보</h4>
-					<table class="table">
-						<tr>
-							<th>숙소이름</th>
-							<td colspan="3">라한 셀렉트 경주</td>
-						</tr>
-						<tr>
-							<th>주소</th>
-							<td colspan="3">경북 경주시 보문로 338 라한셀렉트 경주</td>
-						</tr>
-						<tr>
-							<th>객실타입</th>
-							<td>스위트룸</td>
-							<th>숙박인원</th>
-							<td>3</td>
-						</tr>
-						<tr>
-							<th>숙박기간</th>
-							<td colspan="3">2022-11-19 ~ 2022-11-21  /  2박3일</td>
-						</tr>
-						<tr>
-							<th>예약자명</th>
-							<td>아무개</td>
-							<th>체크인</th>
-							<td>15:00</td>
-						</tr>
-						<tr>
-							<th>예약자 휴대폰 번호</th>
-							<td>010-1235-9875</td>
-							<th>체크아웃</th>
-							<td>11:00</td>
-						</tr>
-					</table>
-	       		</div>
-	       		<div>
-	       			<h4 style="border-bottom: solid; border-width: 3px;">문의정보</h4>
-					<table class="table">
-						<tr>
-							<th>문의 번호</th>
-							<td>054-748-2233</td>
-							<th>공식 홈페이지</th>
-							<td onClick="window.open('https://www.lahanhotels.com/gyeongju/index.do');" style="cursor:pointer;">라한 셀렉트 경주</td>
-						</tr>
-					</table>
-	       		</div>
-	       		<div class="row mt-5" style="position: relative;">
-					<div class="col-12">
-						<button type="button" class="genric-btn danger-border" data-bs-toggle="modal" data-bs-target="#reservationCancel_modal">예약취소</button>
-						<button type="button" class="genric-btn success radius float-end" style="width: 120px;">인쇄하기</button>
-						<div style="clear: both;"></div>
-					</div>
-				</div>
-				<div class="modal fade" tabindex="-1" id="reservationCancel_modal">
-					<div class="modal-dialog">
-						<div class="modal-content">
-						  <div class="modal-header">
-						    <h5 class="modal-title">예약 취소</h5>
-						    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-						  </div>
-						  <div class="modal-body">
-						    <p>예약이 취소됩니다<br> 정말 취소하시겠습니까?</p>
-						  </div>
-						  <div class="modal-footer">
-						    <button type="button" class="genric-btn default" data-bs-dismiss="modal">뒤로가기</button>
-						    <button type="button" class="genric-btn danger radius" data-bs-toggle="modal" data-bs-target="#Cancel_modal_leave">예매취소</button>
-						  </div>
-						</div>
-					</div>
-				</div>
-				<div class="modal fade" tabindex="-1" id="Cancel_modal_leave">
-					<div class="modal-dialog">
-						<div class="modal-content">
-						  <div class="modal-header">
-						    <h5 class="modal-title">예약 취소</h5>
-						    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-						  </div>
-						  <div class="modal-body">
-						    <p>취소되었습니다.</p>
-						  </div>
-						  <div class="modal-footer">
-						    <button type="button" class="genric-btn default" data-bs-dismiss="modal">확인</button>
-						  </div>
-						</div>
-					</div>
-				</div>
 	       	</div>
 		</div>
 	</div>
