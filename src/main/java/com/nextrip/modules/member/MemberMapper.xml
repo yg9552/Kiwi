@@ -8,4 +8,76 @@
 
     <resultMap id="resultMapObj" type="com.nextrip.modules.member.Member"></resultMap>
 	
+	<sql id="selectCommon">
+		FROM member
+		WHERE 1=1
+			<!-- <if test="shdelNy != 9">AND a.delNy = #{shdelNy}</if>
+			<choose>
+				<when test="shgender ==1">AND gender = 101</when>
+				<when test="shgender ==2">AND gender = 102</when>
+			</choose>
+			<choose>
+				<when test="shOption ==1">AND nickname LIKE CONCAT('%',#{shValue},'%')</when>
+				<when test="shOption ==2">AND email LIKE CONCAT('%',#{shValue},'%')</when>
+				<when test="shOption ==3">AND id LIKE CONCAT('%',#{shValue},'%')</when>
+			</choose> -->
+	</sql>
+	
+	<select id="selectMemberListCount" resultType="Integer">
+		SELECT COUNT(*)
+		<include refid="selectCommon" />
+	</select>
+	
+	<select id="selectMemberList" resultMap="resultMapObj">
+		<include refid="Base.selectListUpperForMysql" />
+			SELECT
+				memberSeq
+				,id
+				,nickname
+				,name
+				,dob
+				,phoneNum
+				,email
+				,adminNy
+				,delNy
+				,regDateTime
+				,modDatetime
+			<include refid="selectCommon"></include>
+			order by memberSeq DESC
+			<include refid="Base.orderByLimitForMysql" />
+		<include refid="Base.selectListLowerForMysql" />
+	</select>
+	
+	<select id="getIdList" resultMap="resultMapObj">
+		SELECT
+			memberSeq
+			,nickname
+			,id
+			,delNy
+		FROM member
+		WHERE 1=1
+	</select>
+	
+	<select id="selectOneId" resultMap="resultMapObj">
+		SELECT
+			memberSeq
+			,id
+		FROM member
+		WHERE 1=1
+			AND id=#{id}
+			AND delNy=0
+	</select>
+	
+	<select id="login" resultMap="resultMapObj">
+		SELECT
+			memberSeq
+			,id
+			,nickname
+		FROM member
+		WHERE 1=1
+			AND id=#{id}
+			AND password = #{password}
+			AND delNy = 0
+	</select>
+	
 </mapper>	
