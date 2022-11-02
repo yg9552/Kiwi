@@ -70,4 +70,56 @@
 		SELECT COUNT(*)
 		<include refid="selectCommon" />
 	</select>
+	
+	<insert id="insert">
+		INSERT INTO nxAccommodation(
+			region
+			,hotelType
+			,hotelName
+			,hotelIntroduce
+			,addressZip
+			,address
+			,adressDetail
+			,lng
+			,lat
+			,checkin
+			,checkout
+			,delNy
+			)
+		VALUES(
+			#{region }
+			,#{hotelType }
+			,#{hotelName }
+			,#{hotelIntroduce }
+			,#{addressZip }
+			,#{address }
+			,#{adressDetail }
+			,#{lng }
+			,#{lat }
+			,#{checkin }
+			,#{checkout }
+			,0
+			)
+		<selectKey resultType="String" keyProperty="nxAccommodationSeq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
+	
+	<select id="selectListUploaded" resultMap="resultMapObj">
+		SELECT 
+			seq
+			,type
+			,defaultNy
+			,sort
+			,path
+			,originalName
+			,uuidName
+			,pseq
+		FROM busan.nxAccommodationUploaded
+		WHERE 1=1
+			AND delNy = 0
+			<if test="nxAccommodationSeq != null and !nxAccommodationSeq.equals('')">AND pseq = #{nxAccommodationSeq}</if>
+		ORDER BY
+			type, sort
+	</select>
 </mapper>	

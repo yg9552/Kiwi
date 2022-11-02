@@ -14,20 +14,20 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="manifest" href="site.webmanifest">
-		<link rel="shortcut icon" type="image/x-icon" href="../../../../resources/template/gotrip-master/assets/img/favicon.ico">
+		<link rel="shortcut icon" type="image/x-icon" href="/resources/template/gotrip-master/assets/img/favicon.ico">
 
 		<!-- CSS here -->
-        <link rel="stylesheet" href="../../../../resources/template/gotrip-master/assets/css/bootstrap.min.css">
-        <link rel="stylesheet" href="../../../../resources/template/gotrip-master/assets/css/owl.carousel.min.css">
-        <link rel="stylesheet" href="../../../../resources/template/gotrip-master/assets/css/flaticon.css">
-        <link rel="stylesheet" href="../../../../resources/template/gotrip-master/assets/css/slicknav.css">
-        <link rel="stylesheet" href="../../../../resources/template/gotrip-master/assets/css/animate.min.css">
-        <link rel="stylesheet" href="../../../../resources/template/gotrip-master/assets/css/magnific-popup.css">
-        <link rel="stylesheet" href="../../../../resources/template/gotrip-master/assets/css/fontawesome-all.min.css">
-        <link rel="stylesheet" href="../../../../resources/template/gotrip-master/assets/css/themify-icons.css">
-        <link rel="stylesheet" href="../../../../resources/template/gotrip-master/assets/css/slick.css">
-        <link rel="stylesheet" href="../../../../resources/template/gotrip-master/assets/css/nice-select.css">
-        <link rel="stylesheet" href="../../../../resources/template/gotrip-master/assets/css/style.css">
+        <link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/owl.carousel.min.css">
+        <link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/flaticon.css">
+        <link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/slicknav.css">
+        <link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/animate.min.css">
+        <link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/magnific-popup.css">
+        <link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/themify-icons.css">
+        <link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/slick.css">
+        <link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/nice-select.css">
+        <link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=fff4722d1b0684553d2d53d2ea3f7fe9"></script>
    </head>
@@ -39,7 +39,7 @@
             <div class="preloader-inner position-relative">
                 <div class="preloader-circle"></div>
                 <div class="preloader-img pere-text">
-                    <img src="../../../../resources/template/gotrip-master/assets/img/logo/NTLogo.png" alt="">
+                    <img src="/resources/template/gotrip-master/assets/img/logo/NTLogo.png" alt="">
                 </div>
             </div>
         </div>
@@ -75,7 +75,7 @@
                             <!-- Logo -->
                             <div class="col-xl-2 col-lg-2 col-md-1">
                                 <div class="logo">
-                                  <a href="../../../../gotrip-master/index.html"><img src="../../../../resources/template/gotrip-master/assets/img/logo/NTLogo.png" alt=""></a>
+                                  <a href="/gotrip-master/index.html"><img src="/resources/template/gotrip-master/assets/img/logo/NTLogo.png" alt=""></a>
                                 </div>
                             </div>
                             <div class="col-xl-10 col-lg-10 col-md-10">
@@ -127,7 +127,7 @@
         <!-- slider Area Start-->
         <div class="slider-area ">
             <!-- Mobile Menu -->
-            <div class="single-slider slider-height2 d-flex align-items-center" data-background="../../../../resources/template/gotrip-master/assets/img/hero/090ffdbd-5b9c-4913-8bae-fe473cc7d4c9.jpg">
+            <div class="single-slider slider-height2 d-flex align-items-center" data-background="/resources/template/gotrip-master/assets/img/hero/090ffdbd-5b9c-4913-8bae-fe473cc7d4c9.jpg">
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-12">
@@ -163,7 +163,7 @@
                     <div class="col-lg-3">
                         <article class="blog_item">
                             <div class="blog_item_img">
-                                <img class="card-img rounded-0" src="../../../../resources/template/gotrip-master/assets/img/blog/world-hotel.jpg" alt="">
+                                <img class="card-img rounded-0" src="/resources/template/gotrip-master/assets/img/blog/world-hotel.jpg" alt="">
                             </div>
                             <div class="blog_details p-3">
                                 <a class="d-inline-block" href="single-blog.html">
@@ -179,7 +179,7 @@
                         <c:forEach items="${list }" var="list" varStatus="status">
                         <article class="blog_item">
                             <div class="blog_item_img">
-                                <img class="card-img rounded-0" src="../../../../gotrip-master/assets/img/blog/world-hotel.jpg" alt="">
+                                <img class="card-img rounded-0" src="/gotrip-master/assets/img/blog/world-hotel.jpg" alt="">
                             </div>
                             <div class="blog_details p-3">
                                 <a class="d-inline-block" href="single-blog.html">
@@ -195,7 +195,7 @@
                         </c:forEach>
                         <article class="blog_item">
                             <div class="blog_item_img">
-                                <img class="card-img rounded-0" src="../../../../gotrip-master/assets/img/blog/world-hotel.jpg" alt="">
+                                <img class="card-img rounded-0" src="/gotrip-master/assets/img/blog/world-hotel.jpg" alt="">
                             </div>
                             <div class="blog_details p-3">
                                 <a class="d-inline-block" href="single-blog.html">
@@ -222,7 +222,7 @@
     </main>
     <footer>
         <!-- Footer Start-->
-        <div class="footer-area footer-padding footer-bg" data-background="../../../../resources/template/gotrip-master/assets/img/service/footer_bg.jpg">
+        <div class="footer-area footer-padding footer-bg" data-background="/resources/template/gotrip-master/assets/img/service/footer_bg.jpg">
             <div class="container">
                 <div class="row d-flex justify-content-between">
                     <div class="col-xl-3 col-lg-3 col-md-5 col-sm-6">
@@ -230,7 +230,7 @@
                          <div class="single-footer-caption mb-30">
                               <!-- logo -->
                              <div class="footer-logo">
-                                 <a href="index.html"><img src="../../../../resources/template/gotrip-master/assets/img/logo/NTlogo.png" alt=""></a>
+                                 <a href="index.html"><img src="/resources/template/gotrip-master/assets/img/logo/NTlogo.png" alt=""></a>
                              </div>
                              <div class="footer-tittle">
                                  <div class="footer-pera">
@@ -303,38 +303,38 @@
 	<!-- JS here -->
 	
 		<!-- All JS Custom Plugins Link Here here -->
-        <script src="../../../../resources/template/gotrip-master/assets/js/vendor/modernizr-3.5.0.min.js"></script>
+        <script src="/resources/template/gotrip-master/assets/js/vendor/modernizr-3.5.0.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 		<!-- Jquery, Popper, Bootstrap -->
-		<script src="../../../../resources/template/gotrip-master/assets/js/vendor/jquery-1.12.4.min.js"></script>
-        <script src="../../../../resources/template/gotrip-master/assets/js/popper.min.js"></script>
-        <script src="../../../../resources/template/gotrip-master/assets/js/bootstrap.min.js"></script>
+		<script src="/resources/template/gotrip-master/assets/js/vendor/jquery-1.12.4.min.js"></script>
+        <script src="/resources/template/gotrip-master/assets/js/popper.min.js"></script>
+        <script src="/resources/template/gotrip-master/assets/js/bootstrap.min.js"></script>
 	    <!-- Jquery Mobile Menu -->
-        <script src="../../../../resources/template/gotrip-master/assets/js/jquery.slicknav.min.js"></script>
+        <script src="/resources/template/gotrip-master/assets/js/jquery.slicknav.min.js"></script>
 
 		<!-- Jquery Slick , Owl-Carousel Plugins -->
-        <script src="../../../../resources/template/gotrip-master/assets/js/owl.carousel.min.js"></script>
-        <script src="../../../../resources/template/gotrip-master/assets/js/slick.min.js"></script>
+        <script src="/resources/template/gotrip-master/assets/js/owl.carousel.min.js"></script>
+        <script src="/resources/template/gotrip-master/assets/js/slick.min.js"></script>
 		<!-- One Page, Animated-HeadLin -->
-        <script src="../../../../resources/template/gotrip-master/assets/js/wow.min.js"></script>
-		<script src="../../../../resources/template/gotrip-master/assets/js/animated.headline.js"></script>
-        <script src="../../../../resources/template/gotrip-master/assets/js/jquery.magnific-popup.js"></script>
+        <script src="/resources/template/gotrip-master/assets/js/wow.min.js"></script>
+		<script src="/resources/template/gotrip-master/assets/js/animated.headline.js"></script>
+        <script src="/resources/template/gotrip-master/assets/js/jquery.magnific-popup.js"></script>
 
 		<!-- Scrollup, nice-select, sticky -->
-        <script src="../../../../resources/template/gotrip-master/assets/js/jquery.scrollUp.min.js"></script>
-        <script src="../../../../resources/template/gotrip-master/assets/js/jquery.nice-select.min.js"></script>
-		<script src="../../../../resources/template/gotrip-master/assets/js/jquery.sticky.js"></script>
+        <script src="/resources/template/gotrip-master/assets/js/jquery.scrollUp.min.js"></script>
+        <script src="/resources/template/gotrip-master/assets/js/jquery.nice-select.min.js"></script>
+		<script src="/resources/template/gotrip-master/assets/js/jquery.sticky.js"></script>
         
         <!-- contact js -->
-        <script src="../../../../resources/template/gotrip-master/assets/js/contact.js"></script>
-        <script src="../../../../resources/template/gotrip-master/assets/js/jquery.form.js"></script>
-        <script src="../../../../resources/template/gotrip-master/assets/js/jquery.validate.min.js"></script>
-        <script src="../../../../resources/template/gotrip-master/assets/js/mail-script.js"></script>
-        <script src="../../../../resources/template/gotrip-master/assets/js/jquery.ajaxchimp.min.js"></script>
+        <script src="/resources/template/gotrip-master/assets/js/contact.js"></script>
+        <script src="/resources/template/gotrip-master/assets/js/jquery.form.js"></script>
+        <script src="/resources/template/gotrip-master/assets/js/jquery.validate.min.js"></script>
+        <script src="/resources/template/gotrip-master/assets/js/mail-script.js"></script>
+        <script src="/resources/template/gotrip-master/assets/js/jquery.ajaxchimp.min.js"></script>
         
 		<!-- Jquery Plugins, main Jquery -->	
-        <script src="../../../../resources/template/gotrip-master/assets/js/plugins.js"></script>
-        <script src="../../../../resources/template/gotrip-master/assets/js/main.js"></script>
+        <script src="/resources/template/gotrip-master/assets/js/plugins.js"></script>
+        <script src="/resources/template/gotrip-master/assets/js/main.js"></script>
         <script type="text/javascript">
 
 		    var mapContainer = document.getElementById('map2'), // 지도를 표시할 div  
