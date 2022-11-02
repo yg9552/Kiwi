@@ -31,7 +31,6 @@
 	<link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/nice-select.css">
 	<link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/style.css">
 	<script src="https://kit.fontawesome.com/dca973ab96.js" crossorigin="anonymous"></script>
-	<script type="text/javascript" src="/resources/ckeditor5/build/ckeditor.js"></script>
 	<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 	
 	<style>
