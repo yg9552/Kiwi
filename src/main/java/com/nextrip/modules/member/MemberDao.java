@@ -19,6 +19,9 @@ public class MemberDao {
 	
 	public List<Member> selectMemberList(MemberVo vo) {return sqlSession.selectList(namespace+".selectMemberList", vo);}
 	
+	public Member checkId(Member dto) {return sqlSession.selectOne(namespace+".checkId", dto);}
+	
+	public Member login(Member dto) {return sqlSession.selectOne(namespace+".login", dto);}
 	
 	
 }

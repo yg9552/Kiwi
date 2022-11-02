@@ -14,6 +14,8 @@ public class Member {
 	private Integer emailEnd;
 	private Integer adminNy;
 	private Integer delNy;
+	private Integer lgResultNy;
+	
 	public String getMemberSeq() {
 		return memberSeq;
 	}
@@ -85,6 +87,12 @@ public class Member {
 	}
 	public void setDelNy(Integer delNy) {
 		this.delNy = delNy;
+	}
+	public Integer getLgResultNy() {
+		return lgResultNy;
+	}
+	public void setLgResultNy(Integer lgResultNy) {
+		this.lgResultNy = lgResultNy;
 	}
 	
 	
