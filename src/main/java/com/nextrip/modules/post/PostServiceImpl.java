@@ -1,5 +1,8 @@
 package com.nextrip.modules.post;
 
-public class PostServiceImpl {
+import org.springframework.stereotype.Service;
+
+@Service
+public class PostServiceImpl implements PostService{
 
 }
