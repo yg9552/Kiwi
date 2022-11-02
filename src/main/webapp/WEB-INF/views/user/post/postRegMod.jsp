@@ -305,7 +305,11 @@
                 					내용
                 				</th>
                 				<td colspan="5" >
-                					<div id="ckEditor"></div>
+                					<div class="editor-container">
+										<div class="ckeditor">
+										
+										</div>
+									</div>
                 				</td>
                 			</tr>
                 		</table>
@@ -414,19 +418,22 @@
         </div>
         <!-- Footer End-->
     </footer>
-
-<!-- JS here -->
-	
-	<script>
-    ClassicEditor
-        .create( document.querySelector( '#ckEditor' ) )
-        .catch( error => {
-            console.error( error );
-        } );
-	</script>
+		<!-- ckeditor -->
+		<script src="/resources/ckeditor5/build/ckeditor.js"></script>
+		
+		<script>
+		    ClassicEditor
+		        .create( document.querySelector( '.ckeditor' ) )
+		        .catch( error => {
+		            console.error( error );
+		        } );
+		</script>
+		
+		<!-- JS here -->
 	
 		<!-- All JS Custom Plugins Link Here here -->
         <script src="/resources/template/gotrip-master/assets/js/vendor/modernizr-3.5.0.min.js"></script>
+		
 		
 		<!-- Jquery, Popper, Bootstrap -->
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
