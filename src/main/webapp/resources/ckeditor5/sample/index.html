@@ -2,8 +2,6 @@
 	Copyright (c) 2014-2022, CKSource Holding sp. z o.o. All rights reserved.
 	This file is licensed under the terms of the MIT License (see LICENSE.md).
 -->
-// Using ES6 imports:
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 <html lang="en" dir="ltr">
 	<head>
@@ -12,8 +10,6 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="icon" type="image/png" href="https://c.cksource.com/a/1/logos/ckeditor5.png">
 		<link rel="stylesheet" type="text/css" href="styles.css">
-		<script src="https://cdn.ckeditor.com/ckeditor5/35.2.1/classic/ckeditor.js"></script>
-		
 	</head>
 	<body data-editor="ClassicEditor" data-collaboration="false" data-revision-history="false">
 		<header>
@@ -37,7 +33,36 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 				<div class="row row-editor">
 					<div class="editor-container">
 						<div class="editor">
-							
+							<h2>Bilingual Personality Disorder</h2>
+							<figure class="image image-style-side"><img src="https://c.cksource.com/a/1/img/docs/sample-image-bilingual-personality-disorder.jpg">
+								<figcaption>One language, one person.</figcaption>
+							</figure>
+							<p>
+								This may be the first time you hear about this made-up disorder but
+								it actually isn’t so far from the truth. Even the studies that were conducted almost half a century show that
+								<strong>the language you speak has more effects on you than you realise</strong>.
+							</p>
+							<p>
+								One of the very first experiments conducted on this topic dates back to 1964.
+								<a href="https://www.researchgate.net/publication/9440038_Language_and_TAT_content_in_bilinguals">In the experiment</a>
+								designed by linguist Ervin-Tripp who is an authority expert in psycholinguistic and sociolinguistic studies,
+								adults who are bilingual in English in French were showed series of pictures and were asked to create 3-minute stories.
+								In the end participants emphasized drastically different dynamics for stories in English and French.
+							</p>
+							<p>
+								Another ground-breaking experiment which included bilingual Japanese women married to American men in San Francisco were
+								asked to complete sentences. The goal of the experiment was to investigate whether or not human feelings and thoughts
+								are expressed differently in <strong>different language mindsets</strong>.
+								Here is a sample from the the experiment:
+							</p>
+							<p>
+								More recent <a href="https://books.google.pl/books?id=1LMhWGHGkRUC">studies</a> show, the language a person speaks affects
+								their cognition, behaviour, emotions and hence <strong>their personality</strong>.
+								This shouldn’t come as a surprise
+								<a href="https://en.wikipedia.org/wiki/Lateralization_of_brain_function">since we already know</a> that different regions
+								of the brain become more active depending on the person’s activity at hand. Since structure, information and especially
+								<strong>the culture</strong> of languages varies substantially and the language a person speaks is an essential element of daily life.
+							</p>
 						</div>
 					</div>
 				</div></div>
@@ -71,143 +96,9 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 				.catch( error => {
 					console.error( 'Oops, something went wrong!' );
 					console.error( 'Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:' );
-					console.warn( 'Build id: ixldq3ruwlq5-735fjlurm1f2' );
+					console.warn( 'Build id: s6pc2gdgek6-hln3e2cqt76d' );
 					console.error( error );
 				} );
-		</script>
-		<script>
-		class StudioUploadAdapter {
-			  constructor(loader) {
-			    // CKEditor5's FileLoader instance.
-			    this.loader = loader;
-			    // URL where to send files.
-			    this.url = `${API_ROOT_URL}/data/images/0/upload`;
-			  }
-			  // Starts the upload process.
-			  upload() {
-			    return new Promise((resolve, reject) => {
-			      this._initRequest();
-			      this._initListeners(resolve, reject);
-			      this._sendRequest();
-			    });
-			  }
-			  // Aborts the upload process.
-			  abort() {
-			    if (this.xhr) {
-			      this.xhr.abort();
-			    }
-			  }
-			  // Example implementation using XMLHttpRequest.
-			  _initRequest() {
-			    const xhr = (this.xhr = new XMLHttpRequest());
-			    xhr.open("POST", this.url, true);
-			    xhr.responseType = "json";
-			  }
-			  // Initializes XMLHttpRequest listeners.
-			  _initListeners(resolve, reject) {
-			    const xhr = this.xhr;
-			    const loader = this.loader;
-			    const genericErrorText = "Couldn't upload file:" + ` ${loader.file.name}.`;
-			    xhr.addEventListener("error", () => reject(genericErrorText));
-			    xhr.addEventListener("abort", () => reject());
-			    xhr.addEventListener("load", () => {
-			      const response = xhr.response;
-			      console.log(response);
-			      if (!response || response.error) {
-			        return reject(
-			          response && response.error ? response.error.message : genericErrorText
-			        );
-			      }
-			      // If the upload is successful, resolve the upload promise with an object containing
-			      // at least the "default" URL, pointing to the image on the server.
-			      resolve({
-			        default: getDownloadUrl(response[0]),
-			      });
-			    });
-			    if (xhr.upload) {
-			      xhr.upload.addEventListener("progress", (evt) => {
-			        if (evt.lengthComputable) {
-			          loader.uploadTotal = evt.total;
-			          loader.uploaded = evt.loaded;
-			        }
-			      });
-			    }
-			  }
-			  // Prepares the data and sends the request.
-			  _sendRequest() {
-			    const data = new FormData();
-			    let that = this;
-			    let file = that.loader.file;
-			     
-			    // set jwt token if required.
-			    that.xhr.setRequestHeader("Authorization", authHeader().Authorization);
-			    file.then(function (result) {
-			      //wait for the promise to finish then continue
-			      data.append("upload", result);
-			      that.xhr.send(data);
-			    });
-			  }
-			}
-			 
-			/**
-			 * return full image url with responsed JSON object
-			 * 
-			 * @param {*} item 
-			 */
-			function getDownloadUrl(item) {
-			  return encodeURI(`${API_ROOT_URL}/download/images/${item.linkId}`);
-			}
-			 
-			 function StudioUploadAdapterPlugin(editor) {
-				  editor.plugins.get("FileRepository").createUploadAdapter = (loader) => {
-				    return new StudioUploadAdapter(loader);
-				  };
-				}
-			 
-			 function createCKEditor5(renderTo, options, callback) {
-				  renderTo = renderTo || $("#ckeditor");
-				  var $headers = headerWithAuth({});
-				  return ClassicEditor.create(renderTo.get(0), {
-				    extraPlugins: [StudioUploadAdapterPlugin],
-				    mediaEmbed: {
-				      previewsInData: true,
-				      extraProviders: [
-				        {
-				          name: "me",
-				          url: /^.*\/download/,
-				          html: match => {
-				            const id = match[ 1 ];
-				            return 'hello';
-				          }
-				        },
-				      ],
-				    },
-				    image: {
-				      // Configure the available styles.
-				      styles: ["alignLeft", "alignCenter", "alignRight"],      
-				      // You need to configure the image toolbar, too, so it shows the new style
-				      // buttons as well as the resize buttons.
-				      toolbar: [
-				        "imageStyle:alignLeft",
-				        "imageStyle:alignCenter",
-				        "imageStyle:alignRight",
-				        "|",
-				        "imageTextAlternative",
-				      ],
-				    },
-				  })
-				    .then((editor) => {
-				      window.ckeditor = editor;
-				      if (isFunction(callback)) {
-				        callback(editor);
-				      }
-				    })
-				    .catch((error) => {
-				      console.error("There was a problem initializing the editor.", error);
-				    });
-				}
-	
-		
 		</script>
 	</body>
 </html>
