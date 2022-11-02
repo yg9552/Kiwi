@@ -306,7 +306,7 @@
                 				</th>
                 				<td colspan="5" >
                 					<div class="editor-container">
-										<div class="ckeditor">
+										<div class="ckeditor" id="postEditor" name="postEditor">
 										
 										</div>
 									</div>
@@ -420,14 +420,32 @@
     </footer>
 		<!-- ckeditor -->
 		<script src="/resources/ckeditor5/build/ckeditor.js"></script>
+		<script src="https://ckeditor.com/apps/ckfinder/3.5.0/ckfinder.js"></script>
 		
 		<script>
+
 		    ClassicEditor
-		        .create( document.querySelector( '.ckeditor' ) )
+		        .create( document.querySelector( '.ckeditor' ),{
+
+	        		image: {
+        	            toolbar: [ 'toggleImageCaption', 'imageTextAlternative' ]
+        	        },
+		        	
+			        ckfinder: {
+			            // Upload the images to the server using the CKFinder QuickUpload command.
+			            uploadUrl: '/post/upload',
+			            
+	            		options: {
+	                        resourceType: 'Images'
+	                    }
+			        }
+        	        
+		        })
 		        .catch( error => {
 		            console.error( error );
 		        } );
 		</script>
+		
 		
 		<!-- JS here -->
 	
