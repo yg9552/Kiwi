@@ -34,20 +34,9 @@
 		<!-- session interceptor s 2022.03.13 for logincheck -->
 	<!-- <interceptors>
 		<interceptor>
-			<mapping path="/member/memberMyRoom/"/>
-			<mapping path="/member/memberRoomModCheck" />
-			<mapping path="/member/memberRoomModForm" />
-			<mapping path="/member/memberRoomModPassword" />
-			<mapping path="/transport/transportForm" />
-			
 			<mapping path="/**"/>
 			<exclude-mapping path="/resources/**" />
-			<exclude-mapping path="/" />
-			<exclude-mapping path="/member/loginForm" />
-			<exclude-mapping path="/member/loginProc" />
-			<exclude-mapping path="/member/memberRegForm" />
-			<exclude-mapping path="/book/bookIndex" />
-			<exclude-mapping path="/book/bookDetail" />
+			<exclude-mapping path="/nextrip/**" />
 			<beans:bean id="checkLoginSessionInterception" class="com.nextrip.common.interceptor.CheckLoginSessionInterception"/>
 		</interceptor>
 	</interceptors>	 -->
