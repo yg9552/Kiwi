@@ -5,6 +5,7 @@ public class Member {
 	private String memberSeq;
 	private String id;
 	private String password;
+	private String passwordCheck;
 	private String nickname;
 	private String name;
 	private String dob;
@@ -16,6 +17,12 @@ public class Member {
 	private Integer delNy;
 	private Integer lgResultNy;
 	
+	public String getPasswordCheck() {
+		return passwordCheck;
+	}
+	public void setPasswordCheck(String passwordCheck) {
+		this.passwordCheck = passwordCheck;
+	}
 	public String getMemberSeq() {
 		return memberSeq;
 	}

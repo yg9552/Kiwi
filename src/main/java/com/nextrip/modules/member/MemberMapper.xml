@@ -80,4 +80,43 @@
 			AND delNy = 0
 	</select>
 	<!-- 로그인 E -->
+	<!-- 회원가입 S -->
+	<select id="idOverlapCheck" resultType="Integer">
+		SELECT
+			COUNT(*)
+		FROM member
+		WHERE 1=1
+			AND id=#{id}
+	</select>
+	
+	<insert id="userReg">
+		INSERT INTO member(
+			id
+			,password
+			,nickname
+			,name
+			,dob
+			,phoneNum
+			,email
+			,adminNy
+			,delNy
+		)
+		VALUES(
+			#{id}
+			,#{password}
+			,#{nickname}
+			,#{name}
+			,#{dob}
+			,#{phoneNum}
+			,#{email}
+			,0
+			,0
+		)
+		<selectKey resultType="String" keyProperty="memberSeq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
+	
+	<!-- 회원가입 E -->
+	
 </mapper>	

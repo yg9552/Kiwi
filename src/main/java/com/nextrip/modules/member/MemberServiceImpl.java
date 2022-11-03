@@ -5,6 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.nextrip.common.util.UtilSecurity;
+
+
 @Service
 public class MemberServiceImpl implements MemberService {
 	
@@ -21,6 +24,15 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public Member login(Member dto) throws Exception {return dao.login(dto);
+	}
+
+	@Override
+	public int idOverlapCheck(Member dto) throws Exception {return dao.idOverlapCheck(dto);}
+
+	@Override
+	public int userReg(Member dto) throws Exception {
+		dto.setPassword(UtilSecurity.encryptSha256(dto.getPassword()));
+		return dao.userReg(dto);
 	}
 
 }

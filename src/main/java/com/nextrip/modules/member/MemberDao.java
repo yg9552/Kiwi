@@ -23,5 +23,8 @@ public class MemberDao {
 	
 	public Member login(Member dto) {return sqlSession.selectOne(namespace+".login", dto);}
 	
+	public int idOverlapCheck(Member dto) {return sqlSession.selectOne(namespace+".idOverlapCheck", dto);}
+	public int userReg(Member dto) {return sqlSession.insert(namespace+".userReg", dto);}
+	
 	
 }

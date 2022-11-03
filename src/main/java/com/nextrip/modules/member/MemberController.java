@@ -38,52 +38,68 @@ public class MemberController {
 	
 	@ResponseBody
 	@RequestMapping(value="/nextrip/loginproc")
-	public Map<String, Object> loginProc(Member dto, HttpSession httpSession) throws Exception{
+	public Map<String, Object> loginproc(Member dto, HttpSession httpSession) throws Exception{
 		Map<String, Object> returnMap = new HashMap<String, Object>();
-		
+
 		Member rtMember = service.checkId(dto);
-		
-		if(rtMember !=null) {
-			
+
+		if (rtMember != null) {
 			Member rtMember2 = service.login(dto);
-			
+
 			if (rtMember2 != null) {
 				
-//				if(dto.getAutoLogin() == true) {
-//					UtilCookie.createCookie(Constants.COOKIE_NAME_SEQ, rtMember2.getIfmmSeq(), Constants.COOKIE_DOMAIN, Constants.COOKIE_PATH, Constants.COOKIE_MAXAGE);
-//				} else {
-//					// by pass
-//				}
-				
+				System.out.println("memberSeq값: "+rtMember2.getMemberSeq());
 				httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE); // 60second * 30 = 30minute
 				httpSession.setAttribute("sessSeq", rtMember2.getMemberSeq());
 				httpSession.setAttribute("sessId", rtMember2.getId());
-
-				rtMember2.setLgResultNy(1);
-//				service.insertLogLogin(rtMember2);
-
-//				Date date = rtMember2.getIfmmPwdModDate();
-//				LocalDateTime ifmmPwdModDateLocalDateTime = LocalDateTime.ofInstant(date.toInstant(), ZoneId.systemDefault());
-//
-//				if (ChronoUnit.DAYS.between(ifmmPwdModDateLocalDateTime, UtilDateTime.nowLocalDateTime()) > Constants.PASSWOPRD_CHANGE_INTERVAL) {
-//					returnMap.put("changePwd", "true");
-//				}
+				httpSession.setAttribute("sessNickname", rtMember2.getNickname());
 
 				returnMap.put("rt", "success");
 			} else {
-				dto.setMemberSeq(rtMember.getMemberSeq());
-				dto.setLgResultNy(0);
-//				service.insertLogLogin(dto);
-
 				returnMap.put("rt", "fail");
 			}
-		}	else {
-			dto.setLgResultNy(0);
-//			service.insertLogLogin(dto);
-
+		} else {
 			returnMap.put("rt", "fail");
 		}
 		return returnMap;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/nextrip/logoutProc")
+	public Map<String, Object> logoutProc(HttpSession httpSession) throws Exception {
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+//		UtilCookie.deleteCookie();
+		httpSession.invalidate();
+		returnMap.put("rt", "success");
+		return returnMap;
+	}
+	
+	@RequestMapping(value="/nextrip/memberRegistration")
+	public String memberRegistration() throws Exception {
+		
+		return "user/memberRegistration";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/nextrip/idOverlapCheck")
+	public Map<String, Object> idOverlapCheck(Member dto) throws Exception {
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		int result = service.idOverlapCheck(dto);
+		
+		if (result > 0) {
+			returnMap.put("rt", "fail");
+		} else {
+			returnMap.put("rt", "success");
+		}
+		
+		return returnMap;
+	}
+	
+	@RequestMapping(value="/nextrip/userReg")
+	public String userReg(Member dto) throws Exception{
+		System.out.println("controller 입성");
+		service.userReg(dto);
+		return "redirect:/nextrip/login";
 	}
 
 }
