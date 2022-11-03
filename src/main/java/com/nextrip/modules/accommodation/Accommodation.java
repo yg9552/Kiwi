@@ -2,7 +2,11 @@ package com.nextrip.modules.accommodation;
 
 import java.sql.Timestamp;
 
-public class Accommodation {
+import org.springframework.web.multipart.MultipartFile;
+
+import com.nextrip.common.base.Base;
+
+public class Accommodation extends Base{
 	
 	private String nxAccommodationSeq;
 	private Integer region;
@@ -16,9 +20,23 @@ public class Accommodation {
 	private String lat;
 	private String checkin;
 	private String checkout;
-	private String delNy;
 	private Timestamp regDateTime;
 	private Timestamp modDateTime;
+	
+	private MultipartFile[] uploadImg;
+	private Integer[] uploadImgSort;
+	private String[] uploadImgDeleteSeq;
+	private String[] uploadImgDeletePathFile;	
+	private Integer uploadImgMaxNumber;
+	private MultipartFile[] uploadImg2;
+	private Integer[] uploadImg2Sort;
+	private String[] uploadImg2DeleteSeq;
+	private String[] uploadImg2DeletePathFile;	
+	private Integer uploadImg2MaxNumber;
+	private MultipartFile[] uploadFile;
+	private Integer[] uploadFileSort;
+	private String[] uploadFileDeleteSeq;
+	private String[] uploadFileDeletePathFile;
 	
 	public String getNxAccommodationSeq() {
 		return nxAccommodationSeq;
@@ -92,12 +110,6 @@ public class Accommodation {
 	public void setCheckout(String checkout) {
 		this.checkout = checkout;
 	}
-	public String getDelNy() {
-		return delNy;
-	}
-	public void setDelNy(String delNy) {
-		this.delNy = delNy;
-	}
 	public Timestamp getRegDateTime() {
 		return regDateTime;
 	}
@@ -110,8 +122,90 @@ public class Accommodation {
 	public void setModDateTime(Timestamp modDateTime) {
 		this.modDateTime = modDateTime;
 	}
+	public MultipartFile[] getUploadImg() {
+		return uploadImg;
+	}
+	public void setUploadImg(MultipartFile[] uploadImg) {
+		this.uploadImg = uploadImg;
+	}
+	public Integer[] getUploadImgSort() {
+		return uploadImgSort;
+	}
+	public void setUploadImgSort(Integer[] uploadImgSort) {
+		this.uploadImgSort = uploadImgSort;
+	}
+	public String[] getUploadImgDeleteSeq() {
+		return uploadImgDeleteSeq;
+	}
+	public void setUploadImgDeleteSeq(String[] uploadImgDeleteSeq) {
+		this.uploadImgDeleteSeq = uploadImgDeleteSeq;
+	}
+	public String[] getUploadImgDeletePathFile() {
+		return uploadImgDeletePathFile;
+	}
+	public void setUploadImgDeletePathFile(String[] uploadImgDeletePathFile) {
+		this.uploadImgDeletePathFile = uploadImgDeletePathFile;
+	}
+	public Integer getUploadImgMaxNumber() {
+		return uploadImgMaxNumber;
+	}
+	public void setUploadImgMaxNumber(Integer uploadImgMaxNumber) {
+		this.uploadImgMaxNumber = uploadImgMaxNumber;
+	}
+	public MultipartFile[] getUploadImg2() {
+		return uploadImg2;
+	}
+	public void setUploadImg2(MultipartFile[] uploadImg2) {
+		this.uploadImg2 = uploadImg2;
+	}
+	public Integer[] getUploadImg2Sort() {
+		return uploadImg2Sort;
+	}
+	public void setUploadImg2Sort(Integer[] uploadImg2Sort) {
+		this.uploadImg2Sort = uploadImg2Sort;
+	}
+	public String[] getUploadImg2DeleteSeq() {
+		return uploadImg2DeleteSeq;
+	}
+	public void setUploadImg2DeleteSeq(String[] uploadImg2DeleteSeq) {
+		this.uploadImg2DeleteSeq = uploadImg2DeleteSeq;
+	}
+	public String[] getUploadImg2DeletePathFile() {
+		return uploadImg2DeletePathFile;
+	}
+	public void setUploadImg2DeletePathFile(String[] uploadImg2DeletePathFile) {
+		this.uploadImg2DeletePathFile = uploadImg2DeletePathFile;
+	}
+	public Integer getUploadImg2MaxNumber() {
+		return uploadImg2MaxNumber;
+	}
+	public void setUploadImg2MaxNumber(Integer uploadImg2MaxNumber) {
+		this.uploadImg2MaxNumber = uploadImg2MaxNumber;
+	}
+	public MultipartFile[] getUploadFile() {
+		return uploadFile;
+	}
+	public void setUploadFile(MultipartFile[] uploadFile) {
+		this.uploadFile = uploadFile;
+	}
+	public Integer[] getUploadFileSort() {
+		return uploadFileSort;
+	}
+	public void setUploadFileSort(Integer[] uploadFileSort) {
+		this.uploadFileSort = uploadFileSort;
+	}
+	public String[] getUploadFileDeleteSeq() {
+		return uploadFileDeleteSeq;
+	}
+	public void setUploadFileDeleteSeq(String[] uploadFileDeleteSeq) {
+		this.uploadFileDeleteSeq = uploadFileDeleteSeq;
+	}
+	public String[] getUploadFileDeletePathFile() {
+		return uploadFileDeletePathFile;
+	}
+	public void setUploadFileDeletePathFile(String[] uploadFileDeletePathFile) {
+		this.uploadFileDeletePathFile = uploadFileDeletePathFile;
+	}
 
-
-	
 
 }

@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+
 @Repository
 public class AccommodationDao {
 
@@ -25,5 +26,14 @@ public class AccommodationDao {
 	}
 	public int selectOneCount(AccommodationVo vo) {
 		return sqlSession.selectOne(namespace + ".selectOneCount", vo);
+	}
+	public int insert(Accommodation dto) {
+		return sqlSession.insert(namespace + ".insert", dto);
+	}
+	
+	//	uploaded
+	public int insertUploaded(Accommodation dto) { return sqlSession.insert("Base" + ".insertUploaded", dto); }
+	public List<Accommodation> selectListUploaded(AccommodationVo vo) {
+		return sqlSession.selectList(namespace + ".selectListUploaded", vo);
 	}
 }
