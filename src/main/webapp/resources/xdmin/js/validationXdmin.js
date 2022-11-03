@@ -224,7 +224,7 @@ function checkLogicExpression (obj, objFeedback, pattern, message) {
 		//obj.addClass("is-invalid");
 		obj.classList.add('is-invalid');
 		objFeedback.innerText = message;
-		obj.focus();
+//		obj.focus();
 		break;
 	case 3:
 	// bootstrap modal
