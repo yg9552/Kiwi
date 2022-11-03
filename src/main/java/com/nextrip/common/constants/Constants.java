@@ -10,7 +10,7 @@ public final class Constants {
 	
 	public static final int SESSION_MINUTE = 30;
 	
-	public static final String URL_LOGINFORM = "/member/loginForm";
+	public static final String URL_LOGINFORM = "/nextrip/login";
 	
 	public static final String DATETIME_FORMAT_BASIC = "yyyy-MM-dd HH:mm:ss";
 	
@@ -22,7 +22,7 @@ public final class Constants {
 	
 	
 	public static final String UPLOAD_PATH_PREFIX_EXTERNAL = "D://factory/ws_sts_4151/KB/src/main/webapp";
-	public static final String UPLOAD_PATH_PREFIX = "D://factory/ws_sts_4151/KB/src/main/webapp/resources/uploaded";
+	public static final String UPLOAD_PATH_PREFIX = "D://factory/ws_sts_4151/Kiwi/src/main/webapp/resources/uploaded";
 	public static final String UPLOAD_PATH_PREFIX_FOR_VIEW = "/resources/uploaded";
 	
 	public static final int COOKIE_MAXAGE = 60 * 60 * 24 * 30; //초 * 분 * 시간 * 일 : 30day;
