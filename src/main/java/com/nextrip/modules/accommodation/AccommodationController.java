@@ -28,17 +28,16 @@ public class AccommodationController {
 	}
 	
 	@RequestMapping(value = "accommodationForm")
-	public String accommodationForm(@ModelAttribute("vo") AccommodationVo vo, Model model) throws Exception {
+	public String accommodationForm(@ModelAttribute("vo") AccommodationVo vo, Model model, Accommodation dto) throws Exception {
 		
-		if (vo.getNxAccommodationSeq().equals("0") || vo.getNxAccommodationSeq().equals("")) {
+//		if (vo.getNxAccommodationSeq().equals("0") || vo.getNxAccommodationSeq().equals("")) {
 //			insert
-		} else {
+//		} else {
 //			update
 			Accommodation item = service.selectOne(vo);
 			model.addAttribute("item", item);
-			
 			model.addAttribute("listUploaded", service.selectListUploaded(vo));
-		}
+//		}
 		
 		return "user/region/accommodation/accommodationForm";
 	}

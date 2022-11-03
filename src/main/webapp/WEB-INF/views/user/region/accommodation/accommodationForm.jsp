@@ -20,7 +20,7 @@
  -->
 <!-- beautify ignore:start -->
 <html
-  lang="en"
+  lang="ko"
   class="light-style layout-menu-fixed"
   dir="ltr"
   data-theme="theme-default"
@@ -29,10 +29,7 @@
 >
   <head>
     <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
 
     <title>Account settings - Account | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
 
@@ -40,7 +37,7 @@
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/resources/template/sneat/assets/img/favicon/favicon.ico" />
-
+    
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -68,6 +65,44 @@
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="/resources/template/sneat/assets/js/config.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=fff4722d1b0684553d2d53d2ea3f7fe9&libraries=services"></script>
+    <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=fff4722d1b0684553d2d53d2ea3f7fe9&libraries=services,clusterer,drawing"></script>
+	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script src="/resources/xdmin/js/commonXdmin.js"></script>
+    <style type="text/css">
+	#multipleContainer {
+	    display: grid;
+	    grid-template-columns: 1fr 1fr 1fr;
+	}
+	.image {
+	    display: block;
+	    width: 100%;
+	}
+	.image-label {
+	    position: relative;
+	    bottom: 22px;
+	    left: 5px;
+	    color: white;
+	    text-shadow: 2px 2px 2px black;
+	}
+	
+	.addScroll{
+		overflow-y:auto;
+		height: 200px;
+		background-color:#2A3038;
+		padding-top:5px; 
+		padding-left:5px;
+	}
+ 	
+	.input-file-button{
+		padding: 4px 25px;
+		background-color:#FF6600;
+		border-radius: 4px;
+		color: white;
+		cursor: pointer;
+	}
+	</style>
   </head>
 
   <body>
@@ -79,62 +114,7 @@
         <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
           <div class="app-brand demo">
             <a href="index.html" class="app-brand-link">
-              <span class="app-brand-logo demo">
-                <svg
-                  width="25"
-                  viewBox="0 0 25 42"
-                  version="1.1"
-                  xmlns="http://www.w3.org/2000/svg"
-                  xmlns:xlink="http://www.w3.org/1999/xlink"
-                >
-                  <defs>
-                    <path
-                      d="M13.7918663,0.358365126 L3.39788168,7.44174259 C0.566865006,9.69408886 -0.379795268,12.4788597 0.557900856,15.7960551 C0.68998853,16.2305145 1.09562888,17.7872135 3.12357076,19.2293357 C3.8146334,19.7207684 5.32369333,20.3834223 7.65075054,21.2172976 L7.59773219,21.2525164 L2.63468769,24.5493413 C0.445452254,26.3002124 0.0884951797,28.5083815 1.56381646,31.1738486 C2.83770406,32.8170431 5.20850219,33.2640127 7.09180128,32.5391577 C8.347334,32.0559211 11.4559176,30.0011079 16.4175519,26.3747182 C18.0338572,24.4997857 18.6973423,22.4544883 18.4080071,20.2388261 C17.963753,17.5346866 16.1776345,15.5799961 13.0496516,14.3747546 L10.9194936,13.4715819 L18.6192054,7.984237 L13.7918663,0.358365126 Z"
-                      id="path-1"
-                    ></path>
-                    <path
-                      d="M5.47320593,6.00457225 C4.05321814,8.216144 4.36334763,10.0722806 6.40359441,11.5729822 C8.61520715,12.571656 10.0999176,13.2171421 10.8577257,13.5094407 L15.5088241,14.433041 L18.6192054,7.984237 C15.5364148,3.11535317 13.9273018,0.573395879 13.7918663,0.358365126 C13.5790555,0.511491653 10.8061687,2.3935607 5.47320593,6.00457225 Z"
-                      id="path-3"
-                    ></path>
-                    <path
-                      d="M7.50063644,21.2294429 L12.3234468,23.3159332 C14.1688022,24.7579751 14.397098,26.4880487 13.008334,28.506154 C11.6195701,30.5242593 10.3099883,31.790241 9.07958868,32.3040991 C5.78142938,33.4346997 4.13234973,34 4.13234973,34 C4.13234973,34 2.75489982,33.0538207 2.37032616e-14,31.1614621 C-0.55822714,27.8186216 -0.55822714,26.0572515 -4.05231404e-15,25.8773518 C0.83734071,25.6075023 2.77988457,22.8248993 3.3049379,22.52991 C3.65497346,22.3332504 5.05353963,21.8997614 7.50063644,21.2294429 Z"
-                      id="path-4"
-                    ></path>
-                    <path
-                      d="M20.6,7.13333333 L25.6,13.8 C26.2627417,14.6836556 26.0836556,15.9372583 25.2,16.6 C24.8538077,16.8596443 24.4327404,17 24,17 L14,17 C12.8954305,17 12,16.1045695 12,15 C12,14.5672596 12.1403557,14.1461923 12.4,13.8 L17.4,7.13333333 C18.0627417,6.24967773 19.3163444,6.07059163 20.2,6.73333333 C20.3516113,6.84704183 20.4862915,6.981722 20.6,7.13333333 Z"
-                      id="path-5"
-                    ></path>
-                  </defs>
-                  <g id="g-app-brand" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                    <g id="Brand-Logo" transform="translate(-27.000000, -15.000000)">
-                      <g id="Icon" transform="translate(27.000000, 15.000000)">
-                        <g id="Mask" transform="translate(0.000000, 8.000000)">
-                          <mask id="mask-2" fill="white">
-                            <use xlink:href="#path-1"></use>
-                          </mask>
-                          <use fill="#696cff" xlink:href="#path-1"></use>
-                          <g id="Path-3" mask="url(#mask-2)">
-                            <use fill="#696cff" xlink:href="#path-3"></use>
-                            <use fill-opacity="0.2" fill="#FFFFFF" xlink:href="#path-3"></use>
-                          </g>
-                          <g id="Path-4" mask="url(#mask-2)">
-                            <use fill="#696cff" xlink:href="#path-4"></use>
-                            <use fill-opacity="0.2" fill="#FFFFFF" xlink:href="#path-4"></use>
-                          </g>
-                        </g>
-                        <g
-                          id="Triangle"
-                          transform="translate(19.000000, 11.000000) rotate(-300.000000) translate(-19.000000, -11.000000) "
-                        >
-                          <use fill="#696cff" xlink:href="#path-5"></use>
-                          <use fill-opacity="0.2" fill="#FFFFFF" xlink:href="#path-5"></use>
-                        </g>
-                      </g>
-                    </g>
-                  </g>
-                </svg>
-              </span>
-              <span class="app-brand-text demo menu-text fw-bolder ms-2">Sneat</span>
+              <img alt="" src="/resources/template/gotrip-master/assets/img/logo/NTLogo.png">
             </a>
 
             <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
@@ -582,241 +562,142 @@
             <!-- Content -->
 
             <div class="container-xxl flex-grow-1 container-p-y">
-              <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Account Settings /</span> Account</h4>
-
+              <h4 class="fw-bold py-3 mb-4">숙박상품 등록</h4>
+              
+              <form id="form" name="form" method="post" autocomplete="off" enctype="multipart/form-data">
               <div class="row">
                 <div class="col-md-12">
-                  <ul class="nav nav-pills flex-column flex-md-row mb-3">
-                    <li class="nav-item">
-                      <a class="nav-link active" href="javascript:void(0);"><i class="bx bx-user me-1"></i> Account</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="pages-account-settings-notifications.html"
-                        ><i class="bx bx-bell me-1"></i> Notifications</a
-                      >
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="pages-account-settings-connections.html"
-                        ><i class="bx bx-link-alt me-1"></i> Connections</a
-                      >
-                    </li>
-                  </ul>
                   <div class="card mb-4">
-                    <h5 class="card-header">Profile Details</h5>
                     <!-- Account -->
-                    <div class="card-body">
-                      <div class="d-flex align-items-start align-items-sm-center gap-4">
-                        <img
-                          src="/resources/template/sneat/assets/img/avatars/1.png"
-                          alt="user-avatar"
-                          class="d-block rounded"
-                          height="100"
-                          width="100"
-                          id="uploadedAvatar"
-                        />
-                        <div class="button-wrapper">
-                          <label for="upload" class="btn btn-primary me-2 mb-4" tabindex="0">
-                            <span class="d-none d-sm-block">Upload new photo</span>
-                            <i class="bx bx-upload d-block d-sm-none"></i>
-                            <input
-                              type="file"
-                              id="upload"
-                              class="account-file-input"
-                              hidden
-                              accept="image/png, image/jpeg"
-                            />
-                          </label>
-                          <button type="button" class="btn btn-outline-secondary account-image-reset mb-4">
-                            <i class="bx bx-reset d-block d-sm-none"></i>
-                            <span class="d-none d-sm-block">Reset</span>
-                          </button>
-
-                          <p class="text-muted mb-0">Allowed JPG, GIF or PNG. Max size of 800K</p>
-                        </div>
-                      </div>
-                    </div>
-                    <hr class="my-0" />
                     <div class="card-body">
                       <form id="formAccountSettings" method="POST" onsubmit="return false">
                         <div class="row">
                           <div class="mb-3 col-md-6">
-                            <label for="firstName" class="form-label">First Name</label>
+                            <label class="form-label" for="region">지역</label>
+                            <select id="region" class="select2 form-select" name="region">
+                              <option value="201">수도권</option>
+                              <option value="202">강원도</option>
+                              <option value="203">Bangladesh</option>
+                              <option value="204">Belarus</option>
+                              <option value="205">Brazil</option>
+                              <option value="206">Canada</option>
+                            </select>
+                          </div>
+                          <div class="mb-3 col-md-6">
+                            <label class="form-label" for="hotelType">호텔타입</label>
+                            <select id="region" class="select2 form-select" name="hotelType">
+                              <option value="1">호텔</option>
+                              <option value="2">모텔</option>
+                              <option value="3">기타</option>
+                            </select>
+                          </div>
+                          <div class="mb-3 col-md-6">
+                            <label for="firstName" class="form-label">호텔이름</label>
                             <input
                               class="form-control"
                               type="text"
-                              id="firstName"
-                              name="firstName"
-                              value="John"
+                              id="hotelname"
+                              name="hotelname"
+                              value="${item.hotelname }"
                               autofocus
                             />
                           </div>
                           <div class="mb-3 col-md-6">
-                            <label for="lastName" class="form-label">Last Name</label>
-                            <input class="form-control" type="text" name="lastName" id="lastName" value="Doe" />
+                            <label for="lastName" class="form-label">호텔소개</label>
+                            <textarea class="form-control" rows="" cols="4" name="hotelintroduce" id="hotelintroduce" value="${item.hotelintroduce }"></textarea>
                           </div>
                           <div class="mb-3 col-md-6">
-                            <label for="email" class="form-label">E-mail</label>
+                            <label for="text" class="form-label">체크인</label>
                             <input
                               class="form-control"
                               type="text"
-                              id="email"
-                              name="email"
-                              value="john.doe@example.com"
-                              placeholder="john.doe@example.com"
+                              id="checkin"
+                              name="checkin"
+                              value="${item.checkin }"
                             />
                           </div>
                           <div class="mb-3 col-md-6">
-                            <label for="organization" class="form-label">Organization</label>
+                            <label for="text" class="form-label">체크아웃</label>
                             <input
-                              type="text"
                               class="form-control"
-                              id="organization"
-                              name="organization"
-                              value="ThemeSelection"
+                              type="text"
+                              id="checkout"
+                              name="checkout"
+                              value="${item.checkout }"
                             />
                           </div>
                           <div class="mb-3 col-md-6">
-                            <label class="form-label" for="phoneNumber">Phone Number</label>
-                            <div class="input-group input-group-merge">
-                              <span class="input-group-text">US (+1)</span>
-                              <input
-                                type="text"
-                                id="phoneNumber"
-                                name="phoneNumber"
-                                class="form-control"
-                                placeholder="202 555 0111"
-                              />
-                            </div>
+                            <label for="addressZip" class="form-label">우편번호</label>
+                            <input type="text" class="form-control" id="addressZip" name="addressZip" />
+                          </div>
+                          <div class="mb-3 col-md-6 align-self-end">
+                            <button type="submit" class="btn btn-primary" onclick="sample4_execDaumPostcode()">주소찾기</button>
                           </div>
                           <div class="mb-3 col-md-6">
-                            <label for="address" class="form-label">Address</label>
-                            <input type="text" class="form-control" id="address" name="address" placeholder="Address" />
+                            <label for="address" class="form-label">주소</label>
+                            <input type="text" class="form-control" id="address" name="address" />
                           </div>
                           <div class="mb-3 col-md-6">
-                            <label for="state" class="form-label">State</label>
-                            <input class="form-control" type="text" id="state" name="state" placeholder="California" />
+                            <label for="sample4_jibunAddress" class="form-label">지번주소</label>
+                            <input type="text" class="form-control" id="sample4_jibunAddress" name="sample4_jibunAddress" />
+                            <input type="hidden" class="form-control" id="guide" name="guide">
                           </div>
                           <div class="mb-3 col-md-6">
-                            <label for="zipCode" class="form-label">Zip Code</label>
-                            <input
-                              type="text"
-                              class="form-control"
-                              id="zipCode"
-                              name="zipCode"
-                              placeholder="231465"
-                              maxlength="6"
-                            />
+                            <label for="sample4_extraAddress" class="form-label">참고항목</label>
+                            <input type="text" class="form-control" id="sample4_extraAddress" name="sample4_extraAddress" />
                           </div>
                           <div class="mb-3 col-md-6">
-                            <label class="form-label" for="country">Country</label>
-                            <select id="country" class="select2 form-select">
-                              <option value="">Select</option>
-                              <option value="Australia">Australia</option>
-                              <option value="Bangladesh">Bangladesh</option>
-                              <option value="Belarus">Belarus</option>
-                              <option value="Brazil">Brazil</option>
-                              <option value="Canada">Canada</option>
-                              <option value="China">China</option>
-                              <option value="France">France</option>
-                              <option value="Germany">Germany</option>
-                              <option value="India">India</option>
-                              <option value="Indonesia">Indonesia</option>
-                              <option value="Israel">Israel</option>
-                              <option value="Italy">Italy</option>
-                              <option value="Japan">Japan</option>
-                              <option value="Korea">Korea, Republic of</option>
-                              <option value="Mexico">Mexico</option>
-                              <option value="Philippines">Philippines</option>
-                              <option value="Russia">Russian Federation</option>
-                              <option value="South Africa">South Africa</option>
-                              <option value="Thailand">Thailand</option>
-                              <option value="Turkey">Turkey</option>
-                              <option value="Ukraine">Ukraine</option>
-                              <option value="United Arab Emirates">United Arab Emirates</option>
-                              <option value="United Kingdom">United Kingdom</option>
-                              <option value="United States">United States</option>
-                            </select>
+                            <label for="adressDetail" class="form-label">상세주소</label>
+                            <input class="form-control" type="text" id="adressDetail" name="adressDetail" />
                           </div>
                           <div class="mb-3 col-md-6">
-                            <label for="language" class="form-label">Language</label>
-                            <select id="language" class="select2 form-select">
-                              <option value="">Select Language</option>
-                              <option value="en">English</option>
-                              <option value="fr">French</option>
-                              <option value="de">German</option>
-                              <option value="pt">Portuguese</option>
-                            </select>
+                            <label for="lat" class="form-label">위도</label>
+                            <input type="text" class="form-control" id="lat" name="lat" />
                           </div>
                           <div class="mb-3 col-md-6">
-                            <label for="timeZones" class="form-label">Timezone</label>
-                            <select id="timeZones" class="select2 form-select">
-                              <option value="">Select Timezone</option>
-                              <option value="-12">(GMT-12:00) International Date Line West</option>
-                              <option value="-11">(GMT-11:00) Midway Island, Samoa</option>
-                              <option value="-10">(GMT-10:00) Hawaii</option>
-                              <option value="-9">(GMT-09:00) Alaska</option>
-                              <option value="-8">(GMT-08:00) Pacific Time (US & Canada)</option>
-                              <option value="-8">(GMT-08:00) Tijuana, Baja California</option>
-                              <option value="-7">(GMT-07:00) Arizona</option>
-                              <option value="-7">(GMT-07:00) Chihuahua, La Paz, Mazatlan</option>
-                              <option value="-7">(GMT-07:00) Mountain Time (US & Canada)</option>
-                              <option value="-6">(GMT-06:00) Central America</option>
-                              <option value="-6">(GMT-06:00) Central Time (US & Canada)</option>
-                              <option value="-6">(GMT-06:00) Guadalajara, Mexico City, Monterrey</option>
-                              <option value="-6">(GMT-06:00) Saskatchewan</option>
-                              <option value="-5">(GMT-05:00) Bogota, Lima, Quito, Rio Branco</option>
-                              <option value="-5">(GMT-05:00) Eastern Time (US & Canada)</option>
-                              <option value="-5">(GMT-05:00) Indiana (East)</option>
-                              <option value="-4">(GMT-04:00) Atlantic Time (Canada)</option>
-                              <option value="-4">(GMT-04:00) Caracas, La Paz</option>
-                            </select>
+                            <label for="lng" class="form-label">경도</label>
+                            <input type="text" class="form-control" id="lng" name="lng" />
                           </div>
-                          <div class="mb-3 col-md-6">
-                            <label for="currency" class="form-label">Currency</label>
-                            <select id="currency" class="select2 form-select">
-                              <option value="">Select Currency</option>
-                              <option value="usd">USD</option>
-                              <option value="euro">Euro</option>
-                              <option value="pound">Pound</option>
-                              <option value="bitcoin">Bitcoin</option>
-                            </select>
+                          <div class="mb-3 col-md-12">
+                            <div id="map" style="width:100%; height:350px;"></div>
+                            <div id="clickLatlng"></div>
                           </div>
+                          <div class="mb-3 col-md-12">
+					        	<c:set var="type" value="2"/>		<!-- #-> -->
+					        	<c:set var="name" value="uploadImg"/>		<!-- #-> -->
+					        	<input type="hidden" id="<c:out value="${name }"/>MaxNumber" name="<c:out value="${name }"/>MaxNumber" value="0"/>
+					        	<input type="hidden" id="<c:out value="${name }"/>DeleteSeq" name="<c:out value="${name }"/>DeleteSeq"/>
+					        	<input type="hidden" id="<c:out value="${name }"/>DeletePathFile" name="<c:out value="${name }"/>DeletePathFile"/>
+					            <label for="uploadImg" class="form-label input-file-button">이미지첨부</label>
+					 			<input class="form-control form-control-sm" id="<c:out value="${name }"/>" name="<c:out value="${name }"/>" type="file" multiple="multiple" style="display: none;" onChange="upload('<c:out value="${name }"/>', <c:out value="${type }"/>, 0, 1, 0, 0, 1);">
+								<div id="<c:out value="${name }"/>Preview" class="addScroll">
+									<c:forEach items="${listUploaded}" var="listUploaded" varStatus="statusUploaded">
+										<c:if test="${listUploaded.type eq type }">
+											<div id="imgDiv_<c:out value="${type }"/>_<c:out value="${listUploaded.sort }"/>" style="display: inline-block; height: 95px;">
+												<img src="<c:out value="${listUploaded.path }"/><c:out value="${listUploaded.uuidName }"/>" class="rounded" width= "85px" height="85px" style="cursor:pointer;" onClick="openViewer(<c:out value="${listUploaded.type }"/>, <c:out value="${listUploaded. sort }"/>);">
+												<div style="position: relative; top:-85px; left:5px"><span style="color: red; cursor:pointer;" onClick="delImgDiv('<c:out value="${name }"/>', <c:out value="${type }"/>,<c:out value="${listUploaded.sort }"/>, <c:out value="${listUploaded.seq }"/>, '<c:out value="${listUploaded.path }"/><c:out value="${listUploaded.uuidName }"/>')">X</span></div>
+											</div>
+										</c:if>
+									</c:forEach>
+								</div>
+					        </div>
                         </div>
-                        <div class="mt-2">
-                          <button type="submit" class="btn btn-primary me-2">Save changes</button>
-                          <button type="reset" class="btn btn-outline-secondary">Cancel</button>
+                        <div class="mt-2 row">
+                          <div class="col">
+                          	<button type="button" class="btn btn-primary me-2" id="btnSave">등록하기</button>
+                          	<button type="button" class="btn btn-outline-secondary">뒤로가기</button>
+                          </div>
+                          <div class="col-auto">
+                          	<button type="button" class="btn btn-danger deactivate-account">삭제하기</button>
+                          </div>
                         </div>
                       </form>
                     </div>
                     <!-- /Account -->
                   </div>
-                  <div class="card">
-                    <h5 class="card-header">Delete Account</h5>
-                    <div class="card-body">
-                      <div class="mb-3 col-12 mb-0">
-                        <div class="alert alert-warning">
-                          <h6 class="alert-heading fw-bold mb-1">Are you sure you want to delete your account?</h6>
-                          <p class="mb-0">Once you delete your account, there is no going back. Please be certain.</p>
-                        </div>
-                      </div>
-                      <form id="formAccountDeactivation" onsubmit="return false">
-                        <div class="form-check mb-3">
-                          <input
-                            class="form-check-input"
-                            type="checkbox"
-                            name="accountActivation"
-                            id="accountActivation"
-                          />
-                          <label class="form-check-label" for="accountActivation"
-                            >I confirm my account deactivation</label
-                          >
-                        </div>
-                        <button type="submit" class="btn btn-danger deactivate-account">Deactivate Account</button>
-                      </form>
-                    </div>
-                  </div>
                 </div>
               </div>
+              </form>
             </div>
             <!-- / Content -->
 
@@ -839,8 +720,7 @@
                     href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
                     target="_blank"
                     class="footer-link me-4"
-                    >Documentation</a
-                  >
+                    >Documentation</a>
 
                   <a
                     href="https://github.com/themeselection/sneat-html-admin-template-free/issues"
@@ -863,17 +743,293 @@
       <!-- Overlay -->
       <div class="layout-overlay layout-menu-toggle"></div>
     </div>
+    <!-- 카카오주소 API -->
+	<script>
+	//본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
+	function sample4_execDaumPostcode() {
+	    new daum.Postcode({
+	        oncomplete: function(data) {
+	        	
+	            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+	
+	            // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
+	            // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+	            var roadAddr = data.roadAddress; // 도로명 주소 변수
+	            var extraRoadAddr = ''; // 참고 항목 변수
+	            
+	            // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+	            // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+	            if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+	                extraRoadAddr += data.bname;
+	            }
+	            // 건물명이 있고, 공동주택일 경우 추가한다.
+	            if(data.buildingName !== '' && data.apartment === 'Y'){
+	               extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+	            }
+	            // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+	            if(extraRoadAddr !== ''){
+	                extraRoadAddr = ' (' + extraRoadAddr + ')';
+	            }
+	
+	            // 우편번호와 주소 정보를 해당 필드에 넣는다.
+	            document.getElementById('addressZip').value = data.zonecode;
+	            document.getElementById("address").value = roadAddr;
+	            document.getElementById("sample4_jibunAddress").value = data.jibunAddress;
+	            
+	            // 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
+	            if(roadAddr !== ''){
+	                document.getElementById("sample4_extraAddress").value = extraRoadAddr;
+	            } else {
+	                document.getElementById("sample4_extraAddress").value = '';
+	            }
+	
+	            var guideTextBox = document.getElementById("guide");
+	            // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
+	            if(data.autoRoadAddress) {
+	                var expRoadAddr = data.autoRoadAddress + extraRoadAddr;
+	                guideTextBox.innerHTML = '(예상 도로명 주소 : ' + expRoadAddr + ')';
+	                guideTextBox.style.display = 'block';
+	
+	            } else if(data.autoJibunAddress) {
+	                var expJibunAddr = data.autoJibunAddress;
+	                guideTextBox.innerHTML = '(예상 지번 주소 : ' + expJibunAddr + ')';
+	                guideTextBox.style.display = 'block';
+	            } else {
+	                guideTextBox.innerHTML = '';
+	                guideTextBox.style.display = 'none';
+	            }
+	            
+	            
+	            var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+	            mapOption = {
+	                center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+	                level: 3 // 지도의 확대 레벨
+	            };  
+
+		        // 지도를 생성합니다    
+		        var map = new kakao.maps.Map(mapContainer, mapOption); 
+	
+		        // 주소-좌표 변환 객체를 생성합니다
+		        var geocoder = new kakao.maps.services.Geocoder();
+	
+		        // 주소로 좌표를 검색합니다
+		        geocoder.addressSearch(roadAddr, function(result, status) {
+
+	            	// 정상적으로 검색이 완료됐으면 
+		             if (status === kakao.maps.services.Status.OK) {
+	
+		                var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+		                
+		                document.getElementById("lat").value = result[0].y;
+	                    document.getElementById("lng").value = result[0].x;
+	
+		                // 결과값으로 받은 위치를 마커로 표시합니다
+		                var marker = new kakao.maps.Marker({
+		                    map: map,
+		                    position: coords
+		                });
+	
+	
+		                // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+		                map.setCenter(coords);
+		            } 
+	        	});
+	         }
+	    }).open();
+	}
+	
     <!-- / Layout wrapper -->
+		upload = function(objName, seq, allowedMaxTotalFileNumber, allowedExtdiv, allowedEachFileSize, allowedTotalFileSize, uiType) {
+		            		
+//		objName 과 seq 는 jsp 내에서 유일 하여야 함.
+//		memberProfileImage: 1
+//		memberImage: 2
+//		memberFile : 3
 
-    <div class="buy-now">
-      <a
-        href="https://themeselection.com/products/sneat-bootstrap-html-admin-template/"
-        target="_blank"
-        class="btn btn-danger btn-buy-now"
-        >Upgrade to Pro</a
-      >
-    </div>
+//		uiType: 1 => 이미지형
+//		uiType: 2 => 파일형
+//		uiType: 3 => 프로필형
 
+   		var files = $("#" + objName +"")[0].files;
+   		var filePreview = $("#" + objName +"Preview");
+   		var numbering = [];
+   		var maxNumber = 0;
+   		
+   		if(uiType == 1) {
+   			var uploadedFilesCount = document.querySelectorAll("#" + objName + "Preview > div > img").length;
+   			var tagIds = document.querySelectorAll("#" + objName + "Preview > div");
+   			
+   			for(var i=0; i<tagIds.length; i++){
+   				var tagId = tagIds[i].getAttribute("id").split("_");
+   				numbering.push(tagId[2]);
+   			}
+   			
+   			if(uploadedFilesCount > 0){
+   				numbering.sort();
+   				maxNumber = parseInt(numbering[numbering.length-1]) + parseInt(1);
+   			}
+   		} else if(uiType == 2){
+   			var uploadedFilesCount = document.querySelectorAll("#" + objName + "Preview > li").length;
+   			var tagIds = document.querySelectorAll("#" + objName + "Preview > li");
+
+   			for(var i=0; i<tagIds.length; i++){
+   				var tagId = tagIds[i].getAttribute("id").split("_");
+   				numbering.push(tagId[2]);
+   			}
+   			
+   			if(uploadedFilesCount > 0){
+   				numbering.sort();
+   				maxNumber = parseInt(numbering[numbering.length-1]) + parseInt(1);
+   			}
+   		} else {
+   			// by pass
+   		}
+   		
+   		$("#" + objName + "MaxNumber").val(maxNumber);
+
+   		var totalFileSize = 0;
+   		var filesCount = files.length;
+   		var filesArray = [];
+   		
+   		allowedMaxTotalFileNumber = allowedMaxTotalFileNumber == 0 ? MAX_TOTAL_FILE_NUMBER : allowedMaxTotalFileNumber;
+   		allowedEachFileSize = allowedEachFileSize == 0 ? MAX_EACH_FILE_SIZE : allowedEachFileSize;
+   		allowedTotalFileSize = allowedTotalFileSize == 0 ? MAX_TOTAL_FILE_SIZE : allowedTotalFileSize;
+   		
+   		if(checkUploadedTotalFileNumber(files, allowedMaxTotalFileNumber, filesCount, uploadedFilesCount) == false) { return false; }
+   		
+   		for (var i=0; i<filesCount; i++) {
+   			if(checkUploadedExt(files[i].name, seq, allowedExtdiv) == false) { return false; }
+   			if(checkUploadedEachFileSize(files[i], seq, allowedEachFileSize) == false) { return false; }
+
+   			totalFileSize += files[i].size;
+   			
+   			filesArray.push(files[i]);
+   		}
+
+   		if(checkUploadedTotalFileSize(seq, totalFileSize, allowedTotalFileSize) == false) { return false; }
+   		
+   		if (uiType == 1) {
+   			for (var i=0; i<filesArray.length; i++) {
+   				var file = filesArray[i];
+
+   				var picReader = new FileReader();
+   			    picReader.addEventListener("load", addEventListenerCustom (objName, seq, i, file, filePreview, maxNumber));
+   			    picReader.readAsDataURL(file);
+   			}			
+   		} else if(uiType == 2) {
+   			for (var i = 0 ; i < filesCount ; i++) {
+   				addUploadLi(objName, seq, i, $("#" + objName +"")[0].files[i].name, filePreview, maxNumber);
+   			}
+   		} else if (uiType == 3) {
+   			var fileReader = new FileReader();
+   			 fileReader.onload = function () {
+   				 $("#uploadImgProfilePreview").attr("src", fileReader.result);		/* #-> */
+   			 }	
+   			 fileReader.readAsDataURL($("#" + objName +"")[0].files[0]);
+   		} else {
+   			return false;
+   		}
+   		return false;
+   	}														
+
+         var extArray1 = new Array();
+         extArray1 = ["jpg","gif","png","jpeg","bmp","tif"];              
+         
+         addEventListenerCustom = function (objName, type, i, file, filePreview, maxNumber) { 
+       		return function(event) {
+       			var imageFile = event.target;
+       			var sort = parseInt(maxNumber) + i;
+
+       			var divImage = "";
+       			divImage += '<div id="imgDiv_'+type+'_'+ sort +'" style="display: inline-block; height: 95px;">';
+       			divImage += '	<img src="'+ imageFile.result +'" class="rounded" width= "85px" height="85px">';
+       			divImage += '	<div style="position: relative; top:-85px; left:5px"><span style="color: red; cursor:pointer;" onClick="delImgDiv(0,' + type +','+ sort +')">X</span></div>';
+       			divImage += '</div> ';
+       			
+       			filePreview.append(divImage);
+       	    };
+       	}
+         addEventListenerCustom2 = function (objName, type, i, file, filePreview, maxNumber) { 
+       		return function(event) {
+       			var imageFile = event.target;
+       			var sort = parseInt(maxNumber) + i;
+
+       			var divImage2 = "";
+       			divImage2 += '<div id="imgDiv2_'+type+'_'+ sort +'" style="display: inline-block; height: 95px;">';
+       			divImage2 += '	<img src="'+ imageFile.result +'" class="rounded" width= "85px" height="85px">';
+       			divImage2 += '	<div style="position: relative; top:-85px; left:5px"><span style="color: red; cursor:pointer;" onClick="delImgDiv(0,' + type +','+ sort +')">X</span></div>';
+       			divImage2 += '</div> ';
+       			
+       			filePreview.append(divImage2);
+       	    };
+       	}
+         
+         delImgDiv = function(objName, type, sort, deleteSeq, pathFile) {
+     		
+      		$("#imgDiv_"+type+"_"+sort).remove();
+      		
+      		var objDeleteSeq = $('input[name='+ objName +'DeleteSeq]');
+      		var objDeletePathFile = $('input[name='+ objName +'DeletePathFile]');
+      		
+      		if(objDeleteSeq.val() == "") {
+      			objDeleteSeq.val(deleteSeq);
+      		} else {
+      			objDeleteSeq.val(objDeleteSeq.val() + "," + deleteSeq);
+      		}
+      		
+      		if(objDeletePathFile.val() == "") {
+      			objDeletePathFile.val(pathFile);
+      		} else {
+      			objDeletePathFile.val(objDeletePathFile.val() + "," + pathFile);
+      		}
+     		}
+       	
+       	
+       	addUploadLi = function (objName, type, i, name, filePreview, maxNumber){
+
+      		var sort = parseInt(maxNumber) + i;
+      		
+      		var li ="";
+      		li += '<input type="hidden" id="'+ objName +'Process_'+type+'_'+ sort +'" name="'+ objName +'Process" value="1">';
+      		li += '<input type="hidden" id="'+ objName +'Sort_'+type+'_'+ sort +'" name="'+ objName +'Sort" value="'+ sort +'">';
+      		li += '<li id="li_'+type+'_'+sort+'" class="list-group-item d-flex justify-content-between align-items-center">';
+      		li += name;
+      		li +='<span class="badge bg-danger rounded-pill" onClick="delLi(0,'+ type +','+ sort +')"><i class="fa-solid fa-x" style="cursor: pointer;"></i></span>';
+      		li +='</li>';
+      		
+      		filePreview.append(li);
+      	}
+     	
+       	
+     	delLi = function(objName, type, sort, deleteSeq, pathFile) {
+     		
+     		$("#li_"+type+"_"+sort).remove();
+
+     		var objDeleteSeq = $('input[name='+ objName +'DeleteSeq]');
+     		var objDeletePathFile = $('input[name='+ objName +'DeletePathFile]');
+
+     		if(objDeleteSeq.val() == "") {
+     			objDeleteSeq.val(deleteSeq);
+     		} else {
+     			objDeleteSeq.val(objDeleteSeq.val() + "," + deleteSeq);
+     		}
+     		
+     		if(objDeletePathFile.val() == "") {
+     			objDeletePathFile.val(pathFile);
+     		} else {
+     			objDeletePathFile.val(objDeletePathFile.val() + "," + pathFile);
+     		} 
+     	}
+     	
+       	openViewer = function (type, sort) {
+     		var str = '<c:set var="tmp" value="'+ type +'"/>';
+     		$("#modalImgViewer").append(str);
+     		$("#modalImgViewer").modal("show");
+     	}
+	</script>
+	
+    
+	
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
     <script src="/resources/template/sneat/assets/vendor/libs/jquery/jquery.js"></script>
@@ -894,5 +1050,6 @@
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+    
   </body>
 </html>

@@ -6,7 +6,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.nextrip.common.base.Base;
 
-public class Accommodation extends Base{
+public class Accommodation extends Base {
 	
 	private String nxAccommodationSeq;
 	private Integer region;
