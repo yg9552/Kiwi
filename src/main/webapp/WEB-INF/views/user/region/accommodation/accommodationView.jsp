@@ -1,3 +1,11 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
+<jsp:useBean id="CodeServiceImpl" class="com.nextrip.modules.code.CodeServiceImpl"/>
+
 <!doctype html>
 <html class="no-js" lang="ko">
     <head>
@@ -7,43 +15,35 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="manifest" href="site.webmanifest">
-		<link rel="shortcut icon" type="image/x-icon" href="../../../../gotrip-master/assets/img/favicon.ico">
-
-		<!-- CSS here -->
-            <link rel="stylesheet" href="../../../../gotrip-master/assets/css/bootstrap.min.css">
-            <link rel="stylesheet" href="../../../../gotrip-master/assets/css/owl.carousel.min.css">
-            <link rel="stylesheet" href="../../../../gotrip-master/assets/css/flaticon.css">
-            <link rel="stylesheet" href="../../../../gotrip-master/assets/css/slicknav.css">
-            <link rel="stylesheet" href="../../../../gotrip-master/assets/css/animate.min.css">
-            <link rel="stylesheet" href="../../../../gotrip-master/assets/css/magnific-popup.css">
-            <link rel="stylesheet" href="../../../../gotrip-master/assets/css/fontawesome-all.min.css">
-            <link rel="stylesheet" href="../../../../gotrip-master/assets/css/themify-icons.css">
-            <link rel="stylesheet" href="../../../../gotrip-master/assets/css/slick.css">
-            <link rel="stylesheet" href="../../../../gotrip-master/assets/css/nice-select.css">
-            <link rel="stylesheet" href="../../../../gotrip-master/assets/css/style.css">
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-            <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
-          	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
-            <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
-            <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=2a045a5c1310de71e62958f714a305cf"></script>
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.ko.min.js" integrity="sha512-L4qpL1ZotXZLLe8Oo0ZyHrj/SweV7CieswUODAAPN/tnqN3PA1P+4qPu5vIryNor6HQ5o22NujIcAZIfyVXwbQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<link rel="shortcut icon" type="image/x-icon" href="/resources/template/gotrip-master/assets/img/favicon.ico">
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+       	<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+       	<script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=fff4722d1b0684553d2d53d2ea3f7fe9"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.ko.min.js" integrity="sha512-L4qpL1ZotXZLLe8Oo0ZyHrj/SweV7CieswUODAAPN/tnqN3PA1P+4qPu5vIryNor6HQ5o22NujIcAZIfyVXwbQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+		
 		<!-- userHeader s -->
 			<%@include file="../../../common/userHeader.jsp"%>
 	  	<!-- userHeader e -->
+	<c:set var="listregion" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
     <main>
+    
+    	<!-- *Vo.jsp s -->
+			<%@include file="accommodationVo.jsp"%>		<!-- #-> -->
+	    <!-- *Vo.jsp e -->
         <!-- slider Area Start-->
         <div class="slider-area">
             <div class="slider-wrap">
-			  <div><img src="../../../../gotrip-master/assets/img/blog/world-hotel.jpg" alt="" style="width: 480px; height: 432px;"></div>
-			  <div><img src="../../../../gotrip-master/assets/img/blog/gwanghwamun-g62f7ac45f_1920.jpg" alt="" style="width: 480px; height: 432px;"></div>
-			  <div><img src="../../../../gotrip-master/assets/img/blog/tower.jpg" alt="" style="width: 480px; height: 432px;"></div>
-			  <div><img src="../../../../gotrip-master/assets/img/blog/world-hotel.jpg" alt="" style="width: 480px; height: 432px;"></div>
-			  <div><img src="../../../../gotrip-master/assets/img/blog/world-hotel.jpg" alt="" style="width: 480px; height: 432px;"></div>
-			  <div><img src="../../../../gotrip-master/assets/img/blog/unnamed.jpg" alt="" style="width: 480px; height: 432px;"></div>
-			  <div><img src="../../../../gotrip-master/assets/img/blog/world-hotel.jpg" alt="" style="width: 480px; height: 432px;"></div>
-			  <div><img src="../../../../gotrip-master/assets/img/blog/world-hotel.jpg" alt="" style="width: 480px; height: 432px;"></div>
+			  <div><img src="/resources/template/gotrip-master/assets/img/blog/world-hotel.jpg" alt="" style="width: 480px; height: 432px;"></div>
+			  <div><img src="/resources/template/gotrip-master/assets/img/blog/gwanghwamun-g62f7ac45f_1920.jpg" alt="" style="width: 480px; height: 432px;"></div>
+			  <div><img src="/resources/template/gotrip-master/assets/img/blog/tower.jpg" alt="" style="width: 480px; height: 432px;"></div>
+			  <div><img src="/resources/template/gotrip-master/assets/img/blog/world-hotel.jpg" alt="" style="width: 480px; height: 432px;"></div>
+			  <div><img src="/resources/template/gotrip-master/assets/img/blog/world-hotel.jpg" alt="" style="width: 480px; height: 432px;"></div>
+			  <div><img src="/resources/template/gotrip-master/assets/img/blog/unnamed.jpg" alt="" style="width: 480px; height: 432px;"></div>
+			  <div><img src="/resources/template/gotrip-master/assets/img/blog/world-hotel.jpg" alt="" style="width: 480px; height: 432px;"></div>
+			  <div><img src="/resources/template/gotrip-master/assets/img/blog/world-hotel.jpg" alt="" style="width: 480px; height: 432px;"></div>
 			</div>
         </div>
         <!-- slider Area End-->
@@ -54,21 +54,25 @@
             <div class="col-lg-8 posts-list">
                <div class="single-post">
                   <div class="feature-img">
-                     <img class="img-fluid" src="../../../../gotrip-master/assets/img/blog/world-hotel.jpg" alt="">
+                     <img class="img-fluid" src="/resources/template/gotrip-master/assets/img/blog/world-hotel.jpg" alt="">
                   </div>
                   <div class="blog_details">
-                     <h2>롯데 호텔 월드</h2>
+                     <h2><c:out value="${item.hotelName }" /></h2>
                      <ul class="blog-info-link mt-3 mb-4 p-0">
-                        <li><a href="#"><i class="fa-solid fa-location-dot"></i> 서울</a></li>
+                     <c:forEach items="${listregion}" var="listregion" varStatus="statusDeliinfo">
+                     	<c:if test="${item.region eq listregion.replaceCode}">
+                        	<li><a href="#"><i class="fa-solid fa-location-dot"></i> <c:out value="${listregion.name }"/></a></li>
+                        </c:if>
+                     </c:forEach>
                         <li><a href="#"><i class="fa fa-comments"></i> 후기 3건 </a></li>
                      </ul>
                      <p class="excert">
-                        리조트 형 비즈니스 호텔인 롯데호텔 월드는 서울 강남의 요지, 잠실에 위치해 뛰어난 접근성을 자랑합니다. 리뉴얼된 객실과 한층 업그레이드된 클럽라운지를 이용하실수 있으며 국제회의와 특별한 행사를 위한 다양한 연회장과 회의실을 구비하고 있습니다. 세계 최대 실내 놀이공원인 롯데월드 어드벤쳐, 전세계 5대양 13개 테마로 꾸며진 아쿠아리움, 국내 최고 높이 전망대인 서울스카이와 아시아 최대 규모의 멀티플렉스 롯데월드몰과 바로 연결되어 있습니다. 또한 아름답고 자연친화적인 석촌호수가 인접해 뛰어난 경관을 자랑합니다. 이처럼 롯데호텔 월드는 비지니스와 여가, 체험과 휴식을 한 곳에서 모두 경험할 수 있는 최고의 호텔입니다.
+                        <c:out value="${item.hotelIntroduce }" />
                      </p>
                      <div class="quote-wrapper">
                      	<h4 class="d-inline">시설 정보</h4>
-                     	<span class="text-primary"><i class="fa-regular fa-clock"></i>체크인 : 15:00</span>
-                     	<span class="text-primary"> · 체크아웃 : 11:00</span>
+                     	<span class="text-primary"><i class="fa-regular fa-clock"></i>체크인 : <c:out value="${item.checkin }"/> </span>
+                     	<span class="text-primary"> · 체크아웃 : <c:out value="${item.checkout }"/></span>
                         <div class="quotes text-center">
                            <div class="col d-inline">
                            	<i class="fa-solid fa-person-swimming fa-2x mt-3 mr-3"><p class="mt-2">수영장</p></i>
@@ -174,7 +178,7 @@
     </main>
     <footer>
         <!-- Footer Start-->
-        <div class="footer-area footer-padding footer-bg" data-background="../../../../gotrip-master/assets/img/service/footer_bg.jpg">
+        <div class="footer-area footer-padding footer-bg" data-background="/resources/template/gotrip-master/assets/img/service/footer_bg.jpg">
             <div class="container">
                 <div class="row d-flex justify-content-between">
                     <div class="col-xl-3 col-lg-3 col-md-5 col-sm-6">
@@ -182,7 +186,7 @@
                          <div class="single-footer-caption mb-30">
                               <!-- logo -->
                              <div class="footer-logo">
-                                 <a href="index.html"><img src="../../../../gotrip-master/assets/img/logo/NTlogo.png" alt=""></a>
+                                 <a href="index.html"><img src="/resources/template/gotrip-master/assets/img/logo/NTlogo.png" alt=""></a>
                              </div>
                              <div class="footer-tittle">
                                  <div class="footer-pera">
@@ -334,49 +338,49 @@
 	<!-- JS here -->
 	
 		<!-- All JS Custom Plugins Link Here here -->
-        <script src="../../../../gotrip-master/assets/js/vendor/modernizr-3.5.0.min.js"></script>
+        <script src="/resources/template/gotrip-master/assets/js/vendor/modernizr-3.5.0.min.js"></script>
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
         
 		
 		<!-- Jquery, Popper, Bootstrap -->
-		<script src="../../../../gotrip-master/assets/js/vendor/jquery-1.12.4.min.js"></script>
-        <script src="../../../../gotrip-master/assets/js/popper.min.js"></script>
-        <script src="../../../../gotrip-master/assets/js/bootstrap.min.js"></script>
+		<script src="/resources/template/gotrip-master/assets/js/vendor/jquery-1.12.4.min.js"></script>
+        <script src="/resources/template/gotrip-master/assets/js/popper.min.js"></script>
+        <script src="/resources/template/gotrip-master/assets/js/bootstrap.min.js"></script>
 	    <!-- Jquery Mobile Menu -->
-        <script src="../../../../gotrip-master/assets/js/jquery.slicknav.min.js"></script>
+        <script src="/resources/template/gotrip-master/assets/js/jquery.slicknav.min.js"></script>
 
 		<!-- Jquery Slick , Owl-Carousel Plugins -->
-        <script src="../../../../gotrip-master/assets/js/owl.carousel.min.js"></script>
-        <script src="../../../../gotrip-master/assets/js/slick.min.js"></script>
+        <script src="/resources/template/gotrip-master/assets/js/owl.carousel.min.js"></script>
+        <script src="/resources/template/gotrip-master/assets/js/slick.min.js"></script>
 		<!-- One Page, Animated-HeadLin -->
-        <script src="../../../../gotrip-master/assets/js/wow.min.js"></script>
-		<script src="../../../../gotrip-master/assets/js/animated.headline.js"></script>
-        <script src="../../../../gotrip-master/assets/js/jquery.magnific-popup.js"></script>
+        <script src="/resources/template/gotrip-master/assets/js/wow.min.js"></script>
+		<script src="/resources/template/gotrip-master/assets/js/animated.headline.js"></script>
+        <script src="/resources/template/gotrip-master/assets/js/jquery.magnific-popup.js"></script>
 
 		<!-- Scrollup, nice-select, sticky -->
-        <script src="../../../../gotrip-master/assets/js/jquery.scrollUp.min.js"></script>
-        <script src="../../../../gotrip-master/assets/js/jquery.nice-select.min.js"></script>
-		<script src="../../../../gotrip-master/assets/js/jquery.sticky.js"></script>
+        <script src="/resources/template/gotrip-master/assets/js/jquery.scrollUp.min.js"></script>
+        <script src="/resources/template/gotrip-master/assets/js/jquery.nice-select.min.js"></script>
+		<script src="/resources/template/gotrip-master/assets/js/jquery.sticky.js"></script>
         
         <!-- contact js -->
-        <script src="../../../../gotrip-master/assets/js/contact.js"></script>
-        <script src="../../../../gotrip-master/assets/js/jquery.form.js"></script>
-        <script src="../../../../gotrip-master/assets/js/jquery.validate.min.js"></script>
-        <script src="../../../../gotrip-master/assets/js/mail-script.js"></script>
-        <script src="../../../../gotrip-master/assets/js/jquery.ajaxchimp.min.js"></script>
+        <script src="/resources/template/gotrip-master/assets/js/contact.js"></script>
+        <script src="/resources/template/gotrip-master/assets/js/jquery.form.js"></script>
+        <script src="/resources/template/gotrip-master/assets/js/jquery.validate.min.js"></script>
+        <script src="/resources/template/gotrip-master/assets/js/mail-script.js"></script>
+        <script src="/resources/template/gotrip-master/assets/js/jquery.ajaxchimp.min.js"></script>
         
 		<!-- Jquery Plugins, main Jquery -->	
-        <script src="../../../../gotrip-master/assets/js/plugins.js"></script>
-        <script src="../../../../gotrip-master/assets/js/main.js"></script>
+        <script src="/resources/template/gotrip-master/assets/js/plugins.js"></script>
+        <script src="/resources/template/gotrip-master/assets/js/main.js"></script>
         <script type="text/javascript">
 		    var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 		        mapOption = { 
-		            center: new kakao.maps.LatLng(37.51145760372662, 127.10033712292199), // 지도의 중심좌표
+		            center: new kakao.maps.LatLng(<c:out value="${item.lat }"/>, <c:out value="${item.lng }"/>), // 지도의 중심좌표
 		            level: 3 // 지도의 확대 레벨
 		        };
 		    var map = new kakao.maps.Map(mapContainer, mapOption); 
 		 // 마커가 표시될 위치입니다 
-		    var markerPosition  = new kakao.maps.LatLng(37.51145760372662, 127.10033712292199);
+		    var markerPosition  = new kakao.maps.LatLng(<c:out value="${item.lat }"/>, <c:out value="${item.lng }"/>);
 		 // 마커를 생성합니다
 		    var marker = new kakao.maps.Marker({
 		        position: markerPosition

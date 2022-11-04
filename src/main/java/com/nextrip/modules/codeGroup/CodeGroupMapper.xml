@@ -30,7 +30,7 @@
 			,a.modDateTime
 			,a.delNy
 			<include refid="selectCommon" />
-			ORDER BY a.seq DESC
+			ORDER BY a.codeGroupSeq DESC
 			<include refid="Base.orderByLimitForMysql" />
 		<include refid="Base.selectListLowerForMysql" />
 	</select>

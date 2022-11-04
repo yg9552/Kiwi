@@ -56,4 +56,11 @@ public class AccommodationController {
 			return "redirect:/region/accommodation/accommodationList";
 		}
 	}
+	
+	@RequestMapping(value = "accommodationView")
+	public String accommodationView(@ModelAttribute("vo") AccommodationVo vo, Model model) throws Exception {
+		Accommodation item = service.selectOne(vo);
+		model.addAttribute("item", item);
+		return "user/region/accommodation/accommodationView";
+	}
 }

@@ -38,6 +38,10 @@
         <!-- slider Area End-->
 
         <!-- list Start -->
+        <form name="formList" method="post" autocomplete="off" enctype="multipart/form-data">
+        <!-- *Vo.jsp s -->
+			<%@include file="accommodationVo.jsp"%>		<!-- #-> -->
+	    <!-- *Vo.jsp e -->
         <div class="support-company-area support-padding fix">
             <div class="container-fluid">
             	<button class="button rounded primary-bg text-white btn_1 w-100 boxed-btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
@@ -78,7 +82,7 @@
 	                                <img class="card-img rounded-0" src="/gotrip-master/assets/img/blog/world-hotel.jpg" alt="">
 	                            </div>
 	                            <div class="blog_details p-3">
-	                                <a class="d-inline-block" href="single-blog.html">
+	                                <a class="d-inline-block" href="javascript:goView(<c:out value="${list.nxAccommodationSeq }"/>)">
 	                                	<h2><c:out value="${list.hotelName }" /></h2>
 	                                </a>
 	                                <ul class="blog-info-link">
@@ -98,6 +102,7 @@
                 </div>
             </div>
         </div>
+        </form>
         <!-- list End -->
 		
     </main>
@@ -217,6 +222,17 @@
         <script src="/resources/template/gotrip-master/assets/js/plugins.js"></script>
         <script src="/resources/template/gotrip-master/assets/js/main.js"></script>
         <script type="text/javascript">
+        
+        var goUrlView = "/region/accommodation/accommodationView";			/* #-> */
+        var goUrlList = "/region/accommodation/accommodationList";			/* #-> */
+        
+        var seq = $("input:hidden[name=nxAccommodationSeq]");
+		var form = $("form[name=formList]");
+		
+		goView = function(keyValue) {
+			seq.val(keyValue);
+			form.attr("action", goUrlView).submit();
+		}
 
 		    var mapContainer = document.getElementById('map2'), // 지도를 표시할 div  
 		    mapOption = { 
