@@ -3,13 +3,14 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
+
 <!doctype html>
 <html class="no-js" lang="zxx">
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>PostInst</title>
+    <title>PostList</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -33,14 +34,6 @@
 	<script src="https://kit.fontawesome.com/dca973ab96.js" crossorigin="anonymous"></script>
 	<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 	
-	
-	 <!-- 서머노트를 위해 추가해야할 부분 -->
-	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>	
-	 <script src="/resources/summernote/summernote-lite.js"></script>
-	 <script src="/resources/summernote/lang/summernote-ko-KR.js"></script>
-	 <link rel="stylesheet" href="/resources/summernote/summernote-lite.css">
-	 <!--  -->
-	
 	<style>
 		.state{
 			    display: block;
@@ -55,31 +48,6 @@
 			    margin: 0 auto;
 		
 		}
-		.table th {
-			background-color: #f0f0f0;
-			vertical-align: middle;
-		}
-		
-		#container {
-                width: 1000px;
-                margin: 20px auto;
-            }
-            .ck-editor__editable[role="textbox"] {
-                /* editing area */
-                min-height: 500px;
-            }
-            .ck-content .image {
-                /* block images */
-                max-width: 80%;
-                margin: 20px auto;
-            }
-       .bottomBtn {
-       		width: 200px;
-       		height: 50px;
-       }
-       .note-icon-caret::before{
-       	display: none;
-       }
 	</style>
 </head>
 
@@ -261,98 +229,156 @@
 				     <!-- slider Area End-->
 				     <div style="height: 50px;"></div>
                 	<!-- Blog Area Start -->
-                	<form method="post" id="postForm" name="postForm" autocomplete="off">
-                		<input type="hidden" id="nxPostSeq" name="nxPostSeq" value="<c:out value="${item.nxPostSeq }" />">
-                		<input type="hidden" id="memberSeq" name="memberSeq" value="<c:out value="${item.memberSeq }" />">
-                		<input type="hidden" id="addressZip" name="addressZip" value="<c:out value="${item.addressZip }" />">
-                		<input type="hidden" id="address" name="address" value="<c:out value="${item.address }" />">
-                		<input type="hidden" id="addressExtra" name="addressExtra" value="<c:out value="${item.addressExtra }" />">
-                		<input type="hidden" id="addressDetail" name="addressDetail" value="<c:out value="${item.addressDetail }" />">
-                		<input type="hidden" id="lng" name="lng" value="<c:out value="${item.lng }" />">
-                		<input type="hidden" id="lat" name="lat" value="<c:out value="${item.lat }" />">
-	                	<div>
-	                		<table class="table table-bordered text-center" style="vertical-align: middle">
-	                			<tr>
-	                				<th class="col-xl-2">구분</th>
-	                				<td class="col-xl-2">
-	                					<select class="form-select" id="postType" name="postType">
-	                						<option value="" <c:if test="${item.postType eq null }">selected</c:if>>구분</option>
-	                						<option value="1" <c:if test="${item.postType eq 1 }">selected</c:if>>여행지</option>
-	                						<option value="2" <c:if test="${item.postType eq 2 }">selected</c:if>>숙박</option>
-	                						<option value="3" <c:if test="${item.postType eq 3 }">selected</c:if>>음식점</option>
-	                					</select>
-	                				</td>
-	                				<th class="col-xl-2">지역</th>
-	                				<td class="col-xl-2">
-	                					<select class="form-select" id="region" name="region">
-	                						<option value="" <c:if test="${item.region eq null }">selected</c:if>>지역</option>
-	                						<option value="1" <c:if test="${item.region eq 1 }">selected</c:if>>수도권</option>
-	                						<option value="2" <c:if test="${item.region eq 2 }">selected</c:if>>경상</option>
-	                						<option value="3" <c:if test="${item.region eq 3 }">selected</c:if>>전라</option>
-	                						<option value="4" <c:if test="${item.region eq 4 }">selected</c:if>>강원</option>
-	                						<option value="5" <c:if test="${item.region eq 5 }">selected</c:if>>충청</option>
-	                						<option value="6" <c:if test="${item.region eq 6 }">selected</c:if>>제주</option>
-	                					</select>
-	                				</td>
-	                				<th class="col-xl-2">
-	                					<p id="" name="">작성자</p>
-	                				</th>
-	                				<td class="col-xl-2" style="vertical-align: middle">
-	                					작성자
-	                				</td>
-	                			</tr>
-	                			<tr>
-	                				<th class="col-xl-2">
-	                					여행지 이름
-	                				</th>
-	                				<td colspan="4">
-	                					<input type="text" class="form-control" id="addressTitle" name="addressTitle">
-	                				</td>
-	                				<td class="col-xl-2">
-	                					<button type="button" class="genric-btn info" id="" name="" style="height: 40px;">위치 설정</button>
-	                				</td>
-	                			</tr>
-	                			<tr>
-	                				
-	                			</tr>
-	                			<tr>
-	                				<th class="col-xl-2">
-	                					제목
-	                				</th>
-	                				<td colspan="5">
-	                					<input type="text" class="form-control" id="title" name="title">
-	                				</td>
-	                			</tr>
-	                			<tr style="height: 500px;">
-	                				<th>
-	                					내용
-	                				</th>
-	                				<td colspan="5" >
-	                					<div class="editor-container">
-											<div class="summerNote" id="content" name="content">
-											
-											</div>
-										</div>
-	                				</td>
-	                			</tr>
-	                		</table>
-	                	</div>
-	                </form>
-                	<div style="text-align: center; margin-top: 50px;">
-                		<button class="genric-btn default bottomBtn" id="cancelBtn" name="cancelBtn" >취소</button>
-	                	<button class="genric-btn info bottomBtn" id="regModBtn" name="regModBtn" >등록</button>
-                	</div>
-                	
-				    <div class="border border-gray" style="padding:20px; margin-top: 50px;">
-                        <p class="border-bottom"><b>꼭 읽어주세요!</b></p>
-                        <ul style="list-style-type: square;">
-                            <li>글 작성 시 정보 유출에 의핸 비해방지를 위해 개인정보 기재는 삼가주시기 바랍니다.<br/>예) 주민등록번호, 전화번호, 여권번호, 신용카드번호, 계좌번호, 주소 등</li>
-                            <li>해당 게시판과 글의 성격이 맞지 않을 경우, 관리자에 의해 게시글이 이동될 수 있습니다.</li>
-                            <li>상업적인 광고 및 욕설, 음해성 글의 경우 서비스 관리자에 의해 임의 삭제될 수 있음을 알려드립니다.</li>
-                            <li>저작권 등 다른 사람의 권리를 침해하거나 명예를 훼손하는 게시글은 이용약관 및 관련법률에 의해 제재를 받을 수 있습니다.</li>
-                        </ul>
+				        <div class="home-blog-area section-padding2" style="padding: 0px;">
+				            <div class="container">
+				                <!-- Section Tittle -->
+				                <div class="row">
+				                    <div class="col-lg-12">
+				                        <div class=" text-center">
+				                            <h4 style="float: left;font-weight: bolder;">이달의 베스트 여행후기</h2>
+				                        </div>
+				                    </div>
+				                </div>
+				                <div class="row">
+				                    <div class="col-xl-4 col-lg-4 col-md-4">
+				                        <div class="home-blog-single mb-30">
+				                            <div class="blog-img-cap">
+				                                <div class="blog-img">
+				                                    <img src="/resources/template/gotrip-master/assets/img/blog/home-blog1.jpg" alt="">
+				                                </div>
+				                                <div class="">
+				                                    <p> |   Traveling</p>
+				                                    <h3><a href="single-blog.html">서울</a></h3>
+				                                    <a href="#" class="more-btn">지역 가기 »</a>
+				                                </div>
+				                            </div>
+				                        </div>
+				                    </div>
+				                    <div class="col-xl-4 col-lg-4 col-md-4">
+				                        <div class="home-blog-single mb-30">
+				                            <div class="blog-img-cap">
+				                                <div class="blog-img">
+				                                    <img src="/resources/template/gotrip-master/assets/img/blog/home-blog1.jpg" alt="">
+				                                </div>
+				                                <div class="">
+				                                    <p> |   Traveling</p>
+				                                    <h3><a href="single-blog.html">제주</a></h3>
+				                                    <a href="#" class="more-btn">지역 가기 »</a>
+				                                </div>
+				                            </div>
+				                        </div>
+				                    </div>
+				                    <div class="col-xl-4 col-lg-4 col-md-4">
+				                        <div class="home-blog-single mb-30">
+				                            <div class="blog-img-cap">
+				                                <div class="blog-img">
+				                                    <img src="/resources/template/gotrip-master/assets/img/blog/home-blog2.jpg" alt="">
+				                                </div>
+				                                <div class="">
+				                                    <p> |   Traveling</p>
+				                                    <h3><a href="single-blog.html">부산</a></h3>
+				                                    <a href="#" class="more-btn">지역 가기 »</a>
+				                                </div>
+				                            </div>
+				                        </div>
+				                    </div>
+				                </div>
+				            </div>
+				        </div>
+				        <!-- Blog Area End -->
+				        <table class="table" style="text-align: center;">
+				          <caption class="caption-top">
+					          <div class="row">
+					          	<div class="col-lg-2">
+					          		<select class="form-select">
+					          			<option>전체 보기</option>
+                                		<option>패키지</option>
+                                		<option>여행지</option>
+                                		<option>음식점</option>
+                                	</select>
+					          	</div>
+					          	<div class="col-lg-2">
+						          	<select class="form-select">
+				          				<option>전체 지역</option>
+                                		<option>서울</option>
+                                		<option>대전</option>
+                                		<option>대구</option>
+                                	</select>
+					          	</div>
+					          	<div class="col-lg-2 offset-3">
+                                	<select class="form-select">
+                                		<option>제목</option>
+                                		<option>내용</option>
+                                		<option>구분</option>
+                                	</select> 
+                                </div>
+					          	<div class="input-group col-lg-3">
+	                                <div class="input-group mb-3">
+									  <input type="text" class="form-control" placeholder="">
+									  <button class="btn-primary" type="button" id="button-addon2"><i class="fa-solid fa-magnifying-glass"></i></button>
+									</div>
+                                </div>
+                            </div>
+				          </caption>
+						  <thead>
+						    <tr>
+						      <th scope="col col-lg-1">번호</th>
+						      <th scope="col col-lg-1">구분</th>
+						      <th scope="col col-lg-1">지역</th>
+						      <th scope="col" style="width: 400px;">제목</th>
+						      <th scope="col col-lg-1">작성자</th>
+						      <th scope="col col-lg-1">작성일</th>
+						    </tr>
+						  </thead>
+						  <tbody>
+						    <tr>
+						      <td scope="row">3</th>
+						      <td><span class="state">패키지</span></td>
+						      <td>서울</td>
+						      <td>테스트 패키지</td>
+						      <td>김**</td>
+						      <td>2022-10-21</td>
+						    </tr>
+						    <tr>
+						      <td scope="row">2</th>
+						      <td><span class="state">음식점</span></td>
+						      <td>서울</td>
+						      <td>테스트 패키지</td>
+						      <td>김**</td>
+						      <td>2022-10-21</td>
+						    </tr>
+						    <tr>
+						      <td scope="row">1</th>
+						      <td><span class="state">여행지</span></td>
+						      <td>서울</td>
+						      <td>테스트 패키지</td>
+						      <td>김**</td>
+						      <td>2022-10-21</td>
+						    </tr>
+						  </tbody>
+						</table>
+                    <div class="blog_left_sidebar">
+                        <nav class="blog-pagination justify-content-center d-flex">
+                            <ul class="pagination">
+                                <li class="page-item">
+                                    <a href="#" class="page-link" aria-label="Previous">
+                                        <i class="ti-angle-left"></i>
+                                    </a>
+                                </li>
+                                <li class="page-item">
+                                    <a href="#" class="page-link">1</a>
+                                </li>
+                                <li class="page-item active">
+                                    <a href="#" class="page-link">2</a>
+                                </li>
+                                <li class="page-item">
+                                    <a href="#" class="page-link" aria-label="Next">
+                                        <i class="ti-angle-right"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
                     </div>
-				        
                 </div>
             </div>
         </div>
@@ -442,82 +468,16 @@
         </div>
         <!-- Footer End-->
     </footer>
-		
-		<!-- <script>
-		$('.summerNote').summernote({
-			  height: 600,
-			  lang: "ko-KR",
-				  focus : true,
-				  toolbar: [
-					    // 글꼴 설정
-					    ['fontname', ['fontname']],
-					    // 글자 크기 설정
-					    ['fontsize', ['fontsize']],
-					    // 굵기, 기울임꼴, 밑줄,취소 선, 서식지우기
-					    ['style', ['bold', 'italic', 'underline','strikethrough', 'clear']],
-					    // 글자색
-					    ['color', ['forecolor','color']],	
-					    // 글머리 기호, 번호매기기, 문단정렬
-					    ['para', ['paragraph']],
-					    // 줄간격
-					    ['height', ['height']],
-					    // 그림첨부, 링크만들기, 동영상첨부
-					    ['insert',['picture','link']],
-					  ],
-					  // 추가한 글꼴
-					fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋음체','바탕체'],
-					 // 추가한 폰트사이즈
-					fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72']
-					
-			});
-		</script> -->
-		
-		<script>
-			// 툴바생략
-			 var toolbar = [
-				    // 글꼴 설정
-				    ['fontname', ['fontname']],
-				    // 글자 크기 설정
-				    ['fontsize', ['fontsize']],
-				    // 굵기, 기울임꼴, 밑줄,취소 선, 서식지우기
-				    ['style', ['bold', 'italic', 'underline','strikethrough', 'clear']],
-				    // 글자색
-				    ['color', ['forecolor','color']],	
-				    // 글머리 기호, 번호매기기, 문단정렬
-				    ['para', ['paragraph']],
-				    // 줄간격
-				    ['height', ['height']],
-				    // 그림첨부, 링크만들기, 동영상첨부
-				    ['insert',['picture','link']],
-				  ],
-				  // 추가한 글꼴
-				fontNames = ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋음체','바탕체'],
-				 // 추가한 폰트사이즈
-				fontSizes = ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72']
 
-			var setting = {
-		            height : 600,
-		            minHeight : null,
-		            maxHeight : null,
-		            focus : true,
-		            lang : 'ko-KR',
-		            toolbar : toolbar
-		            //콜백 함수
-		           
-		         };
-		        $('.summerNote').summernote(setting);
-		</script>
-		
-		
-		<!-- JS here -->
-		
+<!-- JS here -->
+	
 		<!-- All JS Custom Plugins Link Here here -->
         <script src="/resources/template/gotrip-master/assets/js/vendor/modernizr-3.5.0.min.js"></script>
-		
 		
 		<!-- Jquery, Popper, Bootstrap -->
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 		<script src="/resources/template/gotrip-master/assets/js/vendor/jquery-1.12.4.min.js"></script>
         <script src="/resources/template/gotrip-master/assets/js/popper.min.js"></script>
         <script src="/resources/template/gotrip-master/assets/js/bootstrap.min.js"></script>

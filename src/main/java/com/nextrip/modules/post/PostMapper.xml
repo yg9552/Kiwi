@@ -8,4 +8,82 @@
 
     <resultMap id="resultMapObj" type="com.nextrip.modules.post.Post"></resultMap>
 	
+<select id="postSelectList" resultMap="resultMapObj">
+	select
+		a.*
+	from nxPost a
+</select>
+
+<select id="postSelectOne" resultMap="resultMapObj">	
+	select
+		a.*
+	from nxPost a
+	where 1=1
+	and nxPostSeq = #{nxPostSeq}
+</select>
+
+<insert id="postInsert">
+	INSERT INTO nxPost (
+			memberSeq
+			,region
+			,postType
+			,title
+			,content
+			,addressZip
+			,address
+			,addressDetail
+			,lng
+			,lat
+			,delNy
+		)
+		VALUES (
+			#{memberSeq}
+			,#{region}
+			,#{postType}
+			,#{#{title}
+			,#{content}
+			,#{addressZip}
+			,#{address}
+			,#{addressDetail}
+			,#{lng}
+			,#{lat}
+			,0
+		)
+		<selectKey resultType="String" keyProperty="nxPostSeq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+</insert>
+
+<update id="postUpdate">
+	UPDATE member
+		SET
+		region = #{region}
+		,postType = #{postType}
+		,title = #{title}
+		,content = #{content}
+		,addressZip = #{addressZip}
+		,address = #{address}
+		,addressDetail = #{addressDetail}
+		,lng = #{lng}
+		,lat = #{lat}
+	WHERE 1=1
+		AND	nxPostSeq = #{nxPostSeq}
+</update>
+
+<update id="postUelete">
+	UPDATE nxPost
+	SET
+		delNy = 1
+	WHERE 1=1
+		AND	nxPostSeq = #{nxPostSeq}
+</update>
+
+<delete id="postDelete">
+	DELETE 
+	FROM nxPost 
+	WHERE 1=1 
+		AND	nxPostSeq = #{nxPostSeq}
+
+</delete>
+	
 </mapper>	

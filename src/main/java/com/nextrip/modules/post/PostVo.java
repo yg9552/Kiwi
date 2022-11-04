@@ -1,41 +1,27 @@
 package com.nextrip.modules.post;
 
-import org.springframework.web.multipart.MultipartFile;
 
 public class PostVo {
 	
-	private String attachPath; //이미지가 저장될 경로
-    private String Filename; //파일이름
-    private MultipartFile upload;
-    private String CKEditorFuncNum;//CKEditor가 이미지 첨부할때 보내는 데이터
-                                    //꼭 대소문자 저렇게 구분해서 줘야 modelAttribute가 인식해서 받아줌 
-	public String getAttachPath() {
-		return attachPath;
+	private String nxPostSeq;
+	private String memberSeq;
+	
+	
+	public String getNxPostSeq() {
+		return nxPostSeq;
 	}
-	public void setAttachPath(String attachPath) {
-		this.attachPath = attachPath;
+	public void setNxPostSeq(String nxPostSeq) {
+		this.nxPostSeq = nxPostSeq;
 	}
-	public String getFilename() {
-		return Filename;
+	public String getMemberSeq() {
+		return memberSeq;
 	}
-	public void setFilename(String filename) {
-		Filename = filename;
+	public void setMemberSeq(String memberSeq) {
+		this.memberSeq = memberSeq;
 	}
-	public MultipartFile getUpload() {
-		return upload;
-	}
-	public void setUpload(MultipartFile upload) {
-		this.upload = upload;
-	}
-	public String getCKEditorFuncNum() {
-		return CKEditorFuncNum;
-	}
-	public void setCKEditorFuncNum(String cKEditorFuncNum) {
-		CKEditorFuncNum = cKEditorFuncNum;
-	}
-
 	
     
+	
     
     
 }
