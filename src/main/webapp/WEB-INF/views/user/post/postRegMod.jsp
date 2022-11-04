@@ -33,6 +33,14 @@
 	<script src="https://kit.fontawesome.com/dca973ab96.js" crossorigin="anonymous"></script>
 	<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 	
+	
+	 <!-- 서머노트를 위해 추가해야할 부분 -->
+	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>	
+	 <script src="/resources/summernote/summernote-lite.js"></script>
+	 <script src="/resources/summernote/lang/summernote-ko-KR.js"></script>
+	 <link rel="stylesheet" href="/resources/summernote/summernote-lite.css">
+	 <!--  -->
+	
 	<style>
 		.state{
 			    display: block;
@@ -68,6 +76,9 @@
        .bottomBtn {
        		width: 200px;
        		height: 50px;
+       }
+       .note-icon-caret::before{
+       	display: none;
        }
 	</style>
 </head>
@@ -306,7 +317,7 @@
                 				</th>
                 				<td colspan="5" >
                 					<div class="editor-container">
-										<div class="ckeditor" id="postEditor" name="postEditor">
+										<div class="summerNote" id="postEditor" name="postEditor">
 										
 										</div>
 									</div>
@@ -418,37 +429,101 @@
         </div>
         <!-- Footer End-->
     </footer>
-		<!-- ckeditor -->
-		<script src="/resources/ckeditor5/build/ckeditor.js"></script>
-		<script src="https://ckeditor.com/apps/ckfinder/3.5.0/ckfinder.js"></script>
+		
+		<!-- <script>
+		$('.summerNote').summernote({
+			  height: 600,
+			  lang: "ko-KR",
+				  focus : true,
+				  toolbar: [
+					    // 글꼴 설정
+					    ['fontname', ['fontname']],
+					    // 글자 크기 설정
+					    ['fontsize', ['fontsize']],
+					    // 굵기, 기울임꼴, 밑줄,취소 선, 서식지우기
+					    ['style', ['bold', 'italic', 'underline','strikethrough', 'clear']],
+					    // 글자색
+					    ['color', ['forecolor','color']],	
+					    // 글머리 기호, 번호매기기, 문단정렬
+					    ['para', ['paragraph']],
+					    // 줄간격
+					    ['height', ['height']],
+					    // 그림첨부, 링크만들기, 동영상첨부
+					    ['insert',['picture','link']],
+					  ],
+					  // 추가한 글꼴
+					fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋음체','바탕체'],
+					 // 추가한 폰트사이즈
+					fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72']
+					
+			});
+		</script> -->
 		
 		<script>
+			// 툴바생략
+			 var toolbar = [
+				    // 글꼴 설정
+				    ['fontname', ['fontname']],
+				    // 글자 크기 설정
+				    ['fontsize', ['fontsize']],
+				    // 굵기, 기울임꼴, 밑줄,취소 선, 서식지우기
+				    ['style', ['bold', 'italic', 'underline','strikethrough', 'clear']],
+				    // 글자색
+				    ['color', ['forecolor','color']],	
+				    // 글머리 기호, 번호매기기, 문단정렬
+				    ['para', ['paragraph']],
+				    // 줄간격
+				    ['height', ['height']],
+				    // 그림첨부, 링크만들기, 동영상첨부
+				    ['insert',['picture','link']],
+				  ],
+				  // 추가한 글꼴
+				fontNames = ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋음체','바탕체'],
+				 // 추가한 폰트사이즈
+				fontSizes = ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72']
 
-		    ClassicEditor
-		        .create( document.querySelector( '.ckeditor' ),{
-
-	        		image: {
-        	            toolbar: [ 'toggleImageCaption', 'imageTextAlternative' ]
-        	        },
-		        	
-			        ckfinder: {
-			            // Upload the images to the server using the CKFinder QuickUpload command.
-			            uploadUrl: '/post/upload',
-			            
-	            		options: {
-	                        resourceType: 'Images'
-	                    }
-			        }
-        	        
-		        })
-		        .catch( error => {
-		            console.error( error );
-		        } );
+			var setting = {
+		            height : 600,
+		            minHeight : null,
+		            maxHeight : null,
+		            focus : true,
+		            lang : 'ko-KR',
+		            toolbar : toolbar,
+		            //콜백 함수
+		            callbacks : { 
+		            	onImageUpload : function(files, editor, welEditable) {
+		            // 파일 업로드(다중업로드를 위해 반복문 사용)
+		            for (var i = files.length - 1; i >= 0; i--) {
+		            uploadFile(files[i], this);
+		            		}
+		            	}
+		            }
+		         };
+		        $('.summerNote').summernote(setting);
+		        
+		        function uploadFile(file, el) {
+					data = new FormData();
+					data.append("file", file);
+					$.ajax({
+						data : data,
+						type : "POST",
+						url : "uploadFile",
+						contentType : false,
+						enctype : 'multipart/form-data',
+						processData : false,
+						success : function(data) {
+							$(el).summernote('editor.insertImage', data.url);
+						}
+					});
+				}
+		        <!-- value 를 먼저 넣고 초기화 한다. -->  
+		          $('.summerNote').val('${fn:replace(productDetail.product_content,"\'","\\'")}');
+		          $('.summerNote').summernote(setting);
 		</script>
 		
 		
 		<!-- JS here -->
-	
+		
 		<!-- All JS Custom Plugins Link Here here -->
         <script src="/resources/template/gotrip-master/assets/js/vendor/modernizr-3.5.0.min.js"></script>
 		
@@ -456,7 +531,6 @@
 		<!-- Jquery, Popper, Bootstrap -->
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 		<script src="/resources/template/gotrip-master/assets/js/vendor/jquery-1.12.4.min.js"></script>
         <script src="/resources/template/gotrip-master/assets/js/popper.min.js"></script>
         <script src="/resources/template/gotrip-master/assets/js/bootstrap.min.js"></script>

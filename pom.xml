@@ -216,6 +216,18 @@
 		</dependency>
 		<!-- fileupload e 2022.03.30 -->
 		
+		<!-- summerNote image upload s 2022.11.03 -->
+		
+		<dependency>
+              <groupId>com.google.code.gson</groupId>
+              <artifactId>gson</artifactId>
+              <version>2.8.6</version>
+          </dependency>
+		
+		<!-- summerNote image upload e 2022.11.03 -->
+		
+				
+		
 	</dependencies>
     <build>
         <plugins>

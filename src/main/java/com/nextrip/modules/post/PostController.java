@@ -1,15 +1,23 @@
 package com.nextrip.modules.post;
 
+
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.UUID;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequestWrapper;
+
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springframework.web.servlet.ModelAndView;
+
+import com.google.gson.JsonObject;
 
 @Controller
 @RequestMapping
@@ -23,47 +31,42 @@ public class PostController {
 		return "user/post/postRegMod";
 	}
 	
-	@PostMapping(value = "/post/upload")
-	public ModelAndView image(MultipartHttpServletRequest request) throws Exception {
-    
-		// ckeditor는 이미지 업로드 후 이미지 표시하기 위해 uploaded 와 url을 json 형식으로 받아야 함
-		// modelandview를 사용하여 json 형식으로 보내기위해 모델앤뷰 생성자 매개변수로 jsonView 라고 써줌
-		// jsonView 라고 쓴다고 무조건 json 형식으로 가는건 아니고 @Configuration 어노테이션을 단 
-		// WebConfig 파일에 MappingJackson2JsonView 객체를 리턴하는 jsonView 매서드를 만들어서 bean으로 등록해야 함 
-		ModelAndView mav = new ModelAndView("jsonView");
-
-		// ckeditor 에서 파일을 보낼 때 upload : [파일] 형식으로 해서 넘어오기 때문에 upload라는 키의 밸류를 받아서 uploadFile에 저장함
-		MultipartFile uploadFile = request.getFile("upload");
-
-		// 파일의 오리지널 네임
-		String originalFileName = uploadFile.getOriginalFilename();
+	@RequestMapping(value="/uploadFile", produces = "application/json; charset=utf8")
+	@ResponseBody
+	public String uploadFile(@RequestParam("file") MultipartFile multipartFile, HttpServletRequest request )  {
+		JsonObject jsonObject = new JsonObject();
 		
-        // 파일의 확장자
-		String ext = originalFileName.substring(originalFileName.indexOf("."));
+        
+		/*
+		 * String fileRoot =
+		 * "D://factory/ws_sts_4151/kiwi/src/main/webapp/resources/image/post/upload/";
+		 * // 외부경로로 저장을 희망할때.
+		 */		 
 		
-        // 서버에 저장될 때 중복된 파일 이름인 경우를 방지하기 위해 UUID에 확장자를 붙여 새로운 파일 이름을 생성
-		String newFileName = UUID.randomUUID() + ext;
-
-		// 이미지를 현재 경로와 연관된 파일에 저장하기 위해 현재 경로를 알아냄
-		String realPath = request.getSession().getServletContext().getRealPath("/");
-		System.out.println(realPath);
-		// 현재경로/upload/파일명이 저장 경로
-		String savePath = realPath + "/src/main/webapp/resources/image/post/upload/" + newFileName;
-
-		// 브라우저에서 이미지 불러올 때 절대 경로로 불러오면 보안의 위험 있어 상대경로를 쓰거나 이미지 불러오는 jsp 또는 클래스 파일을 만들어 가져오는 식으로 우회해야 함
-		// 때문에 savePath와 별개로 상대 경로인 uploadPath 만들어줌
-		String uploadPath = "./upload/" + newFileName; 
-
-		// 저장 경로로 파일 객체 생성
-		File file = new File(savePath);
-
-		// 파일 업로드
-		uploadFile.transferTo(file);
-
-		// uploaded, url 값을 modelandview를 통해 보냄
-		mav.addObject("uploaded", true); // 업로드 완료
-		mav.addObject("url", uploadPath); // 업로드 파일의 경로
-
-		return mav;
+		// 내부경로로 저장
+		
+		  String contextRoot = new HttpServletRequestWrapper(request).getRealPath("/");
+		  String fileRoot = contextRoot+"resources/image/post/upload/";
+		 
+		
+		String originalFileName = multipartFile.getOriginalFilename();	//오리지날 파일명
+		String extension = originalFileName.substring(originalFileName.lastIndexOf("."));	//파일 확장자
+		String savedFileName = UUID.randomUUID() + extension;	//저장될 파일 명
+		
+		File targetFile = new File(fileRoot + savedFileName);	
+		try {
+			InputStream fileStream = multipartFile.getInputStream();
+			FileUtils.copyInputStreamToFile(fileStream, targetFile);	//파일 저장
+			jsonObject.addProperty("url", "/resources/image/post/upload/"+savedFileName); // contextroot + resources + 저장할 내부 폴더명
+			jsonObject.addProperty("responseCode", "success");
+				
+		} catch (IOException e) {
+			FileUtils.deleteQuietly(targetFile);	//저장된 파일 삭제
+			jsonObject.addProperty("responseCode", "error");
+			e.printStackTrace();
+		}
+		String a = jsonObject.toString();
+		return a;
 	}
 }
+
