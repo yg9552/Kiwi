@@ -24,7 +24,6 @@
 		,regIp
 		,regSeq
 		,regDeviceCd
-		,regDateTime
 		,regDateTimeSvr
 	</sql>
     
@@ -33,7 +32,6 @@
 		,#{regIp}
 		,#{regSeq}
 		,#{regDeviceCd}
-		,#{regDateTime}
 		,#{regDateTimeSvr}
 	</sql>
 	

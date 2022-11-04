@@ -1,5 +1,6 @@
 package com.nextrip.common.base;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class Base {
@@ -18,19 +19,18 @@ public class Base {
 	private long size;
 	private Integer delNy;
 	private String pseq;
-	
+	private Timestamp regDateTime;
+	private Timestamp modDateTime;
 //	regmod
 	private String regIp;
 	private String regSeq;
 	private String regId;
 	private Integer regDeviceCd;
-	private Date regDateTime;
 	private Date regDateTimeSvr;
 	private String modIp;
 	private String modSeq;
 	private String modId;
 	private Integer modDeviceCd;
-	private Date modDateTime;
 	private Date modDateTimeSvr;
 	public String getTableName() {
 		return tableName;
@@ -128,12 +128,7 @@ public class Base {
 	public void setRegDeviceCd(Integer regDeviceCd) {
 		this.regDeviceCd = regDeviceCd;
 	}
-	public Date getRegDateTime() {
-		return regDateTime;
-	}
-	public void setRegDateTime(Date regDateTime) {
-		this.regDateTime = regDateTime;
-	}
+	
 	public Date getRegDateTimeSvr() {
 		return regDateTimeSvr;
 	}
@@ -164,17 +159,24 @@ public class Base {
 	public void setModDeviceCd(Integer modDeviceCd) {
 		this.modDeviceCd = modDeviceCd;
 	}
-	public Date getModDateTime() {
-		return modDateTime;
-	}
-	public void setModDateTime(Date modDateTime) {
-		this.modDateTime = modDateTime;
-	}
+	
 	public Date getModDateTimeSvr() {
 		return modDateTimeSvr;
 	}
 	public void setModDateTimeSvr(Date modDateTimeSvr) {
 		this.modDateTimeSvr = modDateTimeSvr;
+	}
+	public Timestamp getRegDateTime() {
+		return regDateTime;
+	}
+	public void setRegDateTime(Timestamp regDateTime) {
+		this.regDateTime = regDateTime;
+	}
+	public Timestamp getModDateTime() {
+		return modDateTime;
+	}
+	public void setModDateTime(Timestamp modDateTime) {
+		this.modDateTime = modDateTime;
 	}
 	
 	

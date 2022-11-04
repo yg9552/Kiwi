@@ -1,6 +1,5 @@
 package com.nextrip.modules.accommodation;
 
-import java.sql.Timestamp;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -20,8 +19,7 @@ public class Accommodation extends Base {
 	private String lat;
 	private String checkin;
 	private String checkout;
-	private Timestamp regDateTime;
-	private Timestamp modDateTime;
+
 	
 	private MultipartFile[] uploadImg;
 	private Integer[] uploadImgSort;
@@ -109,18 +107,6 @@ public class Accommodation extends Base {
 	}
 	public void setCheckout(String checkout) {
 		this.checkout = checkout;
-	}
-	public Timestamp getRegDateTime() {
-		return regDateTime;
-	}
-	public void setRegDateTime(Timestamp regDateTime) {
-		this.regDateTime = regDateTime;
-	}
-	public Timestamp getModDateTime() {
-		return modDateTime;
-	}
-	public void setModDateTime(Timestamp modDateTime) {
-		this.modDateTime = modDateTime;
 	}
 	public MultipartFile[] getUploadImg() {
 		return uploadImg;

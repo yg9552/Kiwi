@@ -8,4 +8,47 @@
 
     <resultMap id="resultMapObj" type="com.nextrip.modules.codeGroup.CodeGroup"></resultMap>
 	
+	<sql id ="selectCommon">
+		FROM codeGroup a
+		WHERE 1=1
+			<if test="shDelNy != null and !shDelNy.equals('')">AND DelNy = #{shDelNy}</if>
+			<!-- <if test="shDelNy != 3 ">AND DelNy = #{shDelNy}</if> 전체검색 value값을 3인것을 생성하고 하기-->
+			<choose>
+				<when test="shOption == 1">AND CodeGroupCode LIKE CONCAT('%',#{shValue},'%')</when>
+				<when test="shOption == 2">AND name LIKE CONCAT('%',#{shValue},'%')</when>
+				<when test="shOption == 3">AND CodeGroupNameEN LIKE CONCAT('%',#{shValue},'%')</when>
+				<otherwise></otherwise>
+			</choose>
+	</sql>
+	
+	<select id="selectList" resultMap="resultMapObj">
+		<include refid="Base.selectListUpperForMysql" />
+			SELECT
+			a.codeGroupSeq
+			,a.name
+			,a.regDateTime
+			,a.modDateTime
+			,a.delNy
+			<include refid="selectCommon" />
+			ORDER BY a.seq DESC
+			<include refid="Base.orderByLimitForMysql" />
+		<include refid="Base.selectListLowerForMysql" />
+	</select>
+	
+	<select id="selectOneCount" resultType="Integer">
+		SELECT COUNT(*)
+		<include refid="selectCommon" />
+	</select>
+	
+	<select id="selectOne" resultMap="resultMapObj">
+		SELECT
+			a.codeGroupSeq
+			,a.name
+			,a.regDateTime
+			,a.modDateTime
+			,a.delNy
+		FROM codeGroup a
+		WHERE 1=1
+		AND a.codeGroupSeq = #{codeGroupSeq}
+	</select>
 </mapper>	

@@ -8,4 +8,63 @@
 
     <resultMap id="resultMapObj" type="com.nextrip.modules.code.Code"></resultMap>
 	
+	<sql id="selectCommon">
+		FROM code a
+		WHERE 1=1
+		<if test="shDelNy != null and !shDelNy.equals('')">AND DelNy = #{shDelNy}</if>
+		<choose>
+			<when test="shOption == 1">AND seq LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 2">AND name LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 3">AND codeSeq LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 4">AND cg_seq LIKE CONCAT('%',#{shValue},'%')</when>
+			<otherwise></otherwise>
+		</choose>
+	</sql>
+	
+	<select id="selectList" resultMap="resultMapObj">
+			<include refid="Base.selectListUpperForMysql" />
+			SELECT
+				a.codeSeq
+				,a.name
+				,a.replaceCode
+				,a.codeGroupSeq
+				,a.delNy
+				,(select name from codeGroup aa WHERE 1=1 AND a.codeGroupSeq = aa.codeGroupSeq) as codegroupname
+				,(select CodeGroupCode from CodeGroup aa WHERE 1=1 AND a.cg_seq = aa.seq) as codegroupcode
+			<include refid="selectCommon" />
+			ORDER BY a.codeSeq DESC
+			<include refid="Base.orderByLimitForMysql" />
+		<include refid="Base.selectListLowerForMysql" />
+	</select>
+	
+	<select id="selectOne" resultMap="resultMapObj">
+		SELECT
+			a.codeSeq
+			,a.name
+			,a.codeGroupSeq
+			,a.delNy
+			,(select name from codeGroup aa WHERE 1=1 AND a.codeGroupSeq = aa.codeGroupSeq) as codegroupname
+			,(select CodeGroupCode from CodeGroup aa WHERE 1=1 AND a.cg_seq = aa.seq) as codegroupcode
+		FROM code a
+		WHERE 1=1
+		AND a.codeSeq = #{codeSeq}
+	</select>
+	
+	<select id="selectOneCount" resultType="Integer">
+		SELECT COUNT(*)
+		<include refid="selectCommon" />
+	</select>
+	
+	<select id="selectListCachedCodeArrayList" resultMap="resultMapObj">
+		SELECT 
+			codeSeq
+			,replaceCode
+			,name
+			,codeGroupSeq
+		FROM
+			code
+		WHERE 1=1
+			AND delNy = 0
+		    <!-- AND UseNy = 1 -->
+    </select>
 </mapper>	
