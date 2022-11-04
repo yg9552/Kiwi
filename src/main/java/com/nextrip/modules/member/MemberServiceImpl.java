@@ -23,7 +23,9 @@ public class MemberServiceImpl implements MemberService {
 	public Member checkId(Member dto) throws Exception {return dao.checkId(dto);}
 
 	@Override
-	public Member login(Member dto) throws Exception {return dao.login(dto);
+	public Member login(MemberVo vo) throws Exception {
+		vo.setPassword(UtilSecurity.encryptSha256(vo.getPassword()));
+		return dao.login(vo);
 	}
 
 	@Override
