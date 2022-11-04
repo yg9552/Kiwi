@@ -21,7 +21,7 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 
 	<!-- CSS here -->
-    <link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/owl.carousel.min.css">
     <link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/flaticon.css">
     <link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/slicknav.css">
@@ -35,20 +35,20 @@
 </head>
 <body>
 	<header>
-        <!-- Header Start -->
+        Header Start
        <div class="header-area">
             <div class="main-header ">
                <div class="header-bottom  header-sticky">
                     <div class="container">
                         <div class="row align-items-center">
-                            <!-- Logo -->
+                            Logo
                             <div class="col-xl-2 col-lg-2 col-md-1">
                                 <div class="logo">
                                   <a href="index.html"><img src="/resources/template/gotrip-master/assets/img/logo/NTLogo.png" alt=""></a>
                                 </div>
                             </div>
                             <div class="col-xl-10 col-lg-10 col-md-10">
-                                <!-- Main-menu -->
+                                Main-menu
                                 <div class="main-menu f-right d-none d-lg-block">
                                     <nav>               
                                         <ul id="navigation">                                                                                                                                     
@@ -74,7 +74,7 @@
                                     </nav>
                                 </div>
                             </div>
-                            <!-- Mobile Menu -->
+                            Mobile Menu
                             <div class="col-12">
                                 <div class="mobile_menu d-block d-lg-none"></div>
                             </div>
@@ -83,8 +83,10 @@
                </div>
             </div>
        </div>
-        <!-- Header End -->
-    </header>
+        Header End
+    </header> -->
+    <%@include file="../common/userHeader.jsp"%>
+    
 	<div class="container col-6" style="text-align: center; position:relative; top:120px;">
 		sessSeq: <c:out value="${sessSeq }"/><br>
 		sessId: <c:out value="${sessId }"/><br>
@@ -177,10 +179,9 @@
 					,data : { "id" : $("#id").val(), "password" : $("#password").val() }
 					,success: function(response) {
 						if(response.rt == "success") {
-	    					alert("아작스 작동");
 	    						$(location).attr("href",goUrlMain);
 	    				} else {
-	    					alert("회원없음");
+	    					alert("일치하는 계정이 없습니다.");
 	    				}
 					}
 					,error : function(jqXHR, textStatus, errorThrown){

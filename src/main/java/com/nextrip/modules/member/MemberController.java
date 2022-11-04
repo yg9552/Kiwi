@@ -38,13 +38,13 @@ public class MemberController {
 	
 	@ResponseBody
 	@RequestMapping(value="/nextrip/loginproc")
-	public Map<String, Object> loginproc(Member dto, HttpSession httpSession) throws Exception{
+	public Map<String, Object> loginproc(Member dto,MemberVo vo, HttpSession httpSession) throws Exception{
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 
 		Member rtMember = service.checkId(dto);
 
 		if (rtMember != null) {
-			Member rtMember2 = service.login(dto);
+			Member rtMember2 = service.login(vo);
 
 			if (rtMember2 != null) {
 				

@@ -9,6 +9,9 @@ public class MemberVo extends BaseVo{
 	private Integer shDelNy;
 	private String memberSeq;
 	
+	private String password;
+	private String id;
+	
 	
 	public String getShValue() {
 		return shValue;
@@ -33,6 +36,18 @@ public class MemberVo extends BaseVo{
 	}
 	public void setMemberSeq(String memberSeq) {
 		this.memberSeq = memberSeq;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
 	}
 	
 

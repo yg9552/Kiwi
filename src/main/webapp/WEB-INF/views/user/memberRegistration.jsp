@@ -17,6 +17,7 @@
 	<link rel="manifest" href="site.webmanifest">
 	<link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 
 	<!-- CSS here -->
     <link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/bootstrap.min.css">
@@ -201,7 +202,20 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
         <script defer type="text/javascript" src="/resources/xdmin/js/validationXdmin.js"></script>
+        <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
         <script type="text/javascript">
+	        $( function() {
+				$( "#dob" ).datepicker({
+			    	changeYear: true,
+			    	changeMonth: true,
+			    	dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'],
+			    	yearRange:"1900:2023",
+			    	monthNames:["1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월"],
+			    	monthNamesShort: ["1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월"],
+					dateFormat: "yy-mm-dd"
+				});
+			} );
+        	
         	var goUrlInst = "/nextrip/userReg";
         	
         	var form = $("form[name=myForm]");
@@ -220,7 +234,7 @@
         		if(!checkNull('password',2 ,"비밀번호를 설정해 주세요.")) return false;
         		if(!checkNull('passwordCheck',2 ,"비밀번호를 확인해 주세요.")) return false;
         		if(!checkNull('name',2 ,"성명을 입력해 주세요.")) return false;
-        		if(!checkOnlyNumber('dob',2,0,0,0,0,"생일을 입력해주세요")) return false;
+        		if(!checkNull('dob',2,"생일을 입력해주세요")) return false;
         		if(!checkOnlyNumber('phoneNum',2,0,0,0,0,"휴대전화 번호를 입력해주세요")) return false;
         		if(!checkEmail('email',2,0,"이메일 주소를 입력해 주세요")) return false;
         	}
@@ -242,11 +256,6 @@
         	});
         	$("#name").on("focusout", function(){
         		if(!checkNull('name',2 ,"이름을 입력해 주세요.")) {
-        			return false;
-        		} 
-        	});
-        	$("#dob").on("focusout", function(){
-        		if(!checkOnlyNumber('dob',2,0,0,0,0, "생년월일을 양식에 맞게 입력해주세요. ex) 891114")) {
         			return false;
         		} 
         	});
@@ -304,5 +313,6 @@
         		}
         	});
         </script>
+        
 </body>
 </html>
