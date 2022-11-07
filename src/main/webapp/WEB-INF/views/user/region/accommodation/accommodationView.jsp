@@ -53,7 +53,11 @@
             <div class="col-lg-8 posts-list">
                <div class="single-post">
                   <div class="feature-img">
-                     <img class="img-fluid" src="/resources/template/gotrip-master/assets/img/blog/world-hotel.jpg" alt="">
+                  	<c:forEach items="${listUploaded}" var="listUploaded" varStatus="statusUploaded">
+                  		<c:if test="${listUploaded.type eq 2 && listUploaded.sort eq 0}">
+                     		<img class="img-fluid" src="<c:out value="${listUploaded.path }"/><c:out value="${listUploaded.uuidName }"/>" alt="">
+                  		</c:if>
+                	</c:forEach>	
                   </div>
                   <div class="blog_details">
                      <h2><c:out value="${item.hotelName }" /></h2>

@@ -81,17 +81,19 @@
             <!-- Content -->
 
             <div class="container-xxl flex-grow-1 container-p-y">
-              <h4 class="fw-bold py-3 mb-4">코드그룹</h4>
+              <h4 class="fw-bold py-3 mb-4">코드</h4>
 
               <!-- Hoverable Table rows -->
               <div class="card">
-                <h5 class="card-header">코드그룹 리스트</h5>
+                <h5 class="card-header">코드 리스트</h5>
                 <div class="table-responsive text-nowrap text-center">
                   <table class="table table-hover">
                     <thead>
                       <tr>
                         <th>#</th>
+                        <th>코드 이름</th>
                         <th>코드그룹 이름</th>
+                        <th>대체코드</th>
                         <th>작성시간</th>
                         <th>수정시간</th>
                         <th>삭제여부</th>
@@ -101,7 +103,7 @@
                     <c:choose>
                         	<c:when test="${fn:length(list) eq 0}">
                         		<tr>
-                        			<td colspan="5">
+                        			<td colspan="7">
                         				There is no date!
                         			</td>
                         		</tr>
@@ -109,8 +111,10 @@
 							<c:otherwise>
 	                        	<c:forEach items="${list}" var="list" varStatus="status">
 		                          <tr>
-		                            <td> <c:out value="${list.codeGroupSeq }"/> </td>
-		                            <td> <a href="javascript:goView(<c:out value="${list.codeGroupSeq }"/>)"> <c:out value="${list.name }"/></a> </td>
+		                            <td> <c:out value="${list.codeSeq }"/> </td>
+		                            <td> <a href="javascript:goView(<c:out value="${list.codeSeq }"/>)"> <c:out value="${list.name }"/></a> </td>
+		                            <td> <c:out value="${list.replaceCode }"/> </td>
+		                            <td> <c:out value="${list.replaceCode }"/> </td>
 		                            <td> <fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${list.regDateTime}"/> </td>
 		                            <td> <fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${list.modDateTime}"/> </td>
 		                            <td> 

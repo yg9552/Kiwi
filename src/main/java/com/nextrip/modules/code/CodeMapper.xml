@@ -13,10 +13,9 @@
 		WHERE 1=1
 		<if test="shDelNy != null and !shDelNy.equals('')">AND DelNy = #{shDelNy}</if>
 		<choose>
-			<when test="shOption == 1">AND seq LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 1">AND codeSeq LIKE CONCAT('%',#{shValue},'%')</when>
 			<when test="shOption == 2">AND name LIKE CONCAT('%',#{shValue},'%')</when>
-			<when test="shOption == 3">AND codeSeq LIKE CONCAT('%',#{shValue},'%')</when>
-			<when test="shOption == 4">AND cg_seq LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 3">AND codeGroupSeq LIKE CONCAT('%',#{shValue},'%')</when>
 			<otherwise></otherwise>
 		</choose>
 	</sql>
@@ -28,9 +27,9 @@
 				,a.name
 				,a.replaceCode
 				,a.codeGroupSeq
+				,a.regDateTime
+				,a.modDateTime
 				,a.delNy
-				,(select name from codeGroup aa WHERE 1=1 AND a.codeGroupSeq = aa.codeGroupSeq) as codegroupname
-				,(select CodeGroupCode from CodeGroup aa WHERE 1=1 AND a.cg_seq = aa.seq) as codegroupcode
 			<include refid="selectCommon" />
 			ORDER BY a.codeSeq DESC
 			<include refid="Base.orderByLimitForMysql" />
@@ -42,9 +41,9 @@
 			a.codeSeq
 			,a.name
 			,a.codeGroupSeq
+			,a.regDateTime
+			,a.modDateTime
 			,a.delNy
-			,(select name from codeGroup aa WHERE 1=1 AND a.codeGroupSeq = aa.codeGroupSeq) as codegroupname
-			,(select CodeGroupCode from CodeGroup aa WHERE 1=1 AND a.cg_seq = aa.seq) as codegroupcode
 		FROM code a
 		WHERE 1=1
 		AND a.codeSeq = #{codeSeq}

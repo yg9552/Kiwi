@@ -32,6 +32,6 @@ public class CodeController {
 		List<Code> list = service.selectlist(vo);
 		model.addAttribute("list", list);
 		
-		return "kdmin/code/codeList";
+		return "kdmin/codeGroup/codeList";
 	}
 }

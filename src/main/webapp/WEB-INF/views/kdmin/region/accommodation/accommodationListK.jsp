@@ -41,7 +41,7 @@
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/resources/template/sneat/assets/img/favicon/favicon.ico" />
-
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -69,29 +69,31 @@
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="/resources/template/sneat/assets/js/config.js"></script>
+    
   </head>
 
   <body>
   <!-- userHeader s -->
-	<%@include file="../../common/kdminHeader.jsp"%>
+	<%@include file="../../../common/kdminHeader.jsp"%>
   <!-- userHeader e -->
     
           <!-- Content wrapper -->
           <div class="content-wrapper">
             <!-- Content -->
-
+			<form name="formList" method="post">
+			<input type="hidden" name="nxAccommodationSeq">
             <div class="container-xxl flex-grow-1 container-p-y">
-              <h4 class="fw-bold py-3 mb-4">코드그룹</h4>
+              <h4 class="fw-bold py-3 mb-4">숙박상품</h4>
 
               <!-- Hoverable Table rows -->
               <div class="card">
-                <h5 class="card-header">코드그룹 리스트</h5>
+                <h5 class="card-header">숙박상품 리스트</h5>
                 <div class="table-responsive text-nowrap text-center">
                   <table class="table table-hover">
                     <thead>
                       <tr>
                         <th>#</th>
-                        <th>코드그룹 이름</th>
+                        <th>숙소명</th>
                         <th>작성시간</th>
                         <th>수정시간</th>
                         <th>삭제여부</th>
@@ -109,8 +111,8 @@
 							<c:otherwise>
 	                        	<c:forEach items="${list}" var="list" varStatus="status">
 		                          <tr>
-		                            <td> <c:out value="${list.codeGroupSeq }"/> </td>
-		                            <td> <a href="javascript:goView(<c:out value="${list.codeGroupSeq }"/>)"> <c:out value="${list.name }"/></a> </td>
+		                            <td> <c:out value="${list.nxAccommodationSeq }"/> </td>
+		                            <td> <a href="javascript:goForm(<c:out value="${list.nxAccommodationSeq }"/>)"> <c:out value="${list.hotelName }"/></a> </td>
 		                            <td> <fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${list.regDateTime}"/> </td>
 		                            <td> <fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${list.modDateTime}"/> </td>
 		                            <td> 
@@ -128,8 +130,16 @@
                 </div>
               </div>
               <!--/ Hoverable Table rows -->
-
+			  <div class="mt-2 row">
+                <div class="col">
+                	<button type="button" class="btn btn-primary me-2" id="btnForm">등록하기</button>
+                </div>
+                <div class="col-auto">
+                	<button type="button" class="btn btn-danger deactivate-account">삭제하기</button>
+                </div>
+              </div>
             </div>
+            </form>
             <!-- / Content -->
 
             <!-- Footer -->
@@ -176,7 +186,22 @@
       <div class="layout-overlay layout-menu-toggle"></div>
     </div>
     <!-- / Layout wrapper -->
-
+	<script type="text/javascript">
+	var goUrlForm = "/region/accommodation/accommodationForm";		/* #-> */
+	
+	var seq = $("input:hidden[name=nxAccommodationSeq]");				/* #-> */
+	var form = $("form[name=formList]");
+	
+	goForm = function(keyValue) {
+    	/* if(key != 0) seq.val(btoa(key)); */
+    	seq.val(keyValue);
+		form.attr("action", goUrlForm).submit();
+	}
+	
+    $('#btnForm').on("click", function() {
+		goForm(0);                
+	});
+    </script>
 
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->

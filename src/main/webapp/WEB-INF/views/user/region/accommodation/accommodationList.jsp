@@ -4,6 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
+<jsp:useBean id="CodeServiceImpl" class="com.nextrip.modules.code.CodeServiceImpl"/>
 
 <!doctype html>
 <html class="no-js" lang="zxx">
@@ -36,7 +37,7 @@
             </div>
         </div>
         <!-- slider Area End-->
-
+		<c:set var="listregion" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
         <!-- list Start -->
         <form name="formList" method="post" autocomplete="off" enctype="multipart/form-data">
         <!-- *Vo.jsp s -->
@@ -61,32 +62,25 @@
 				</div>
                 <div class="row mt-3">
                     <div class="col-lg-3">
-                        <article class="blog_item">
-                            <div class="blog_item_img">
-                                <img class="card-img rounded-0" src="/resources/template/gotrip-master/assets/img/blog/world-hotel.jpg" alt="">
-                            </div>
-                            <div class="blog_details p-3">
-                                <a class="d-inline-block" href="single-blog.html">
-                                    <h2>롯데 호텔 월드</h2>
-                                </a>
-                                <ul class="blog-info-link">
-			                        <li><a href="#"><i class="fa-solid fa-location-dot"></i> 서울</a></li>
-			                        <li><a href="#"><i class="fa fa-comments"></i> 후기 3건 </a></li>
-			                    </ul>
-			                    <h5 class="mt-2 text-danger">1박 190,000원</h5>
-                            </div>
-                        </article>
                         <c:forEach items="${list }" var="list" varStatus="status">
 	                        <article class="blog_item">
 	                            <div class="blog_item_img">
-	                                <img class="card-img rounded-0" src="/gotrip-master/assets/img/blog/world-hotel.jpg" alt="">
+	                            	<c:forEach items="${listUploaded}" var="listUploaded" varStatus="statusUploaded">
+				                  		<c:if test="${listUploaded.type eq 2 && list.nxAccommodationSeq eq listUploaded.pseq }">
+				                     		<img class="img-fluid" src="<c:out value="${listUploaded.path }"/><c:out value="${listUploaded.uuidName }"/>" alt="">
+				                  		</c:if>
+				                	</c:forEach>
 	                            </div>
 	                            <div class="blog_details p-3">
 	                                <a class="d-inline-block" href="javascript:goView(<c:out value="${list.nxAccommodationSeq }"/>)">
 	                                	<h2><c:out value="${list.hotelName }" /></h2>
 	                                </a>
 	                                <ul class="blog-info-link">
-				                        <li><a href="#"><i class="fa-solid fa-location-dot"></i> <c:out value="${list.region }" /> </a></li>
+				                        <c:forEach items="${listregion}" var="listregion" varStatus="statusregion">
+	                     					<c:if test="${list.region eq listregion.replaceCode}">
+				                        		<li><a href="#"><i class="fa-solid fa-location-dot"></i><c:out value="${listregion.name }"/></a></li>
+			                        		</c:if>
+		                        		</c:forEach>
 				                        <li><a href="#"><i class="fa fa-comments"></i> 후기 3건 </a></li>
 				                    </ul>
 				                    <h5 class="mt-2 text-danger">1박 190,000원</h5>
@@ -223,8 +217,8 @@
         <script src="/resources/template/gotrip-master/assets/js/main.js"></script>
         <script type="text/javascript">
         
-        var goUrlView = "/region/accommodation/accommodationView";			/* #-> */
-        var goUrlList = "/region/accommodation/accommodationList";			/* #-> */
+        var goUrlView = "/nextrip/region/accommodation/accommodationView";			/* #-> */
+        var goUrlList = "/nextrip/region/accommodation/accommodationList";			/* #-> */
         
         var seq = $("input:hidden[name=nxAccommodationSeq]");
 		var form = $("form[name=formList]");

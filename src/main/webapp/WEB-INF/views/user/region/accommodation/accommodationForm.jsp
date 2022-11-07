@@ -132,16 +132,16 @@
                             <label class="form-label" for="region">지역</label>
                             <select id="region" class="select2 form-select" name="region">
                             <c:forEach items="${listregion}" var="listregion" varStatus="statusDeliinfo">
-								<option value="<c:out value="${listregion.replaceCode }"/>"><c:out value="${listregion.name }"/></option>
+								<option value="<c:out value="${listregion.replaceCode }"/>" <c:if test="${item.region eq listregion.replaceCode}">selected</c:if>><c:out value="${listregion.name }"/></option>
 							</c:forEach>
                             </select>
                           </div>
                           <div class="mb-3 col-md-6">
                             <label class="form-label" for="hotelType">호텔타입</label>
                             <select id="region" class="select2 form-select" name="hotelType">
-                              <option value="1">호텔</option>
-                              <option value="2">모텔</option>
-                              <option value="3">기타</option>
+                              <option value="1" <c:if test="${item.hotelType eq 1}">selected</c:if>>호텔</option>
+                              <option value="2" <c:if test="${item.hotelType eq 2}">selected</c:if>>모텔</option>
+                              <option value="3" <c:if test="${item.hotelType eq 3}">selected</c:if>>기타</option>
                             </select>
                           </div>
                           <div class="mb-3 col-md-6">
@@ -157,7 +157,7 @@
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="hotelIntroduce" class="form-label">호텔소개</label>
-                            <textarea class="form-control" rows="" cols="4" name="hotelIntroduce" id="hotelIntroduce" value="${item.hotelIntroduce }"></textarea>
+                            <textarea class="form-control" rows="" cols="4" name="hotelIntroduce" id="hotelIntroduce"> <c:out value="${item.hotelIntroduce }"/> </textarea>
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="text" class="form-label">체크인</label>
@@ -181,14 +181,14 @@
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="addressZip" class="form-label">우편번호</label>
-                            <input type="text" class="form-control" id="addressZip" name="addressZip" />
+                            <input type="text" class="form-control" id="addressZip" name="addressZip" value="${item.addressZip }"/>
                           </div>
                           <div class="mb-3 col-md-6 align-self-end">
                             <button type="button" class="btn btn-primary" onclick="sample4_execDaumPostcode()">주소찾기</button>
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="address" class="form-label">주소</label>
-                            <input type="text" class="form-control" id="address" name="address" />
+                            <input type="text" class="form-control" id="address" name="address" value="${item.address }"/>
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="sample4_jibunAddress" class="form-label">지번주소</label>
@@ -201,15 +201,15 @@
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="adressDetail" class="form-label">상세주소</label>
-                            <input class="form-control" type="text" id="adressDetail" name="adressDetail" />
+                            <input class="form-control" type="text" id="adressDetail" name="adressDetail" value="${item.adressDetail }"/>
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="lat" class="form-label">위도</label>
-                            <input type="text" class="form-control" id="lat" name="lat" />
+                            <input type="text" class="form-control" id="lat" name="lat" value="${item.lat }"/>
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="lng" class="form-label">경도</label>
-                            <input type="text" class="form-control" id="lng" name="lng" />
+                            <input type="text" class="form-control" id="lng" name="lng" value="${item.lng }"/>
                           </div>
                           <div class="mb-3 col-md-12">
                             <div id="map" style="width:100%; height:350px;"></div>
@@ -298,9 +298,9 @@
     </div>
     <!-- 카카오주소 API -->
 	<script>
-	var goUrlList = "/region/accommodation/accommodationList"; 			/* #-> */
-	var goUrlInst = "/region/accommodation/accommodationInst"; 			/* #-> */
-	var goUrlUpdt = "/region/accommodation/accommodationUpdt";			/* #-> */
+	var goUrlList = "/nextrip/region/accommodation/accommodationList"; 			/* #-> */
+	var goUrlInst = "/nextrip/region/accommodation/accommodationInst"; 			/* #-> */
+	var goUrlUpdt = "/nextrip/region/accommodation/accommodationUpdt";			/* #-> */
 	var goUrlUele = "/member/memberUele";			/* #-> */
 	var goUrlDele = "/member/memberDele";			/* #-> */
 	

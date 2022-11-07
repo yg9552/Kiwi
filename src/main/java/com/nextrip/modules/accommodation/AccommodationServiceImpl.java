@@ -92,7 +92,7 @@ for(int i=0; i<multipartFiles.length; i++) {
 	@Override
 	public List<Accommodation> selectListUploaded(AccommodationVo vo) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return dao.selectListUploaded(vo);
 	}
 	
 

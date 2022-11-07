@@ -12,7 +12,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.nextrip.common.constants.Constants;
 
 @Controller
-@RequestMapping(value = "/region/accommodation")
+@RequestMapping(value = "/nextrip/region/accommodation/")
 public class AccommodationController {
 
 	@Autowired
@@ -24,20 +24,29 @@ public class AccommodationController {
 		vo.setParamsPaging(service.selectOneCount(vo));
 		List<Accommodation> list = service.selectList(vo);
 		model.addAttribute("list", list);
+		model.addAttribute("listUploaded", service.selectListUploaded(vo));
 		return "user/region/accommodation/accommodationList";
+	}
+	
+	@RequestMapping(value = "accommodationListK")
+	public String acmdListK(@ModelAttribute("vo") AccommodationVo vo, Model model) throws Exception {
+		vo.setParamsPaging(service.selectOneCount(vo));
+		List<Accommodation> list = service.selectList(vo);
+		model.addAttribute("list", list);
+		return "kdmin/region/accommodation/accommodationListK";
 	}
 	
 	@RequestMapping(value = "accommodationForm")
 	public String accommodationForm(@ModelAttribute("vo") AccommodationVo vo, Model model, Accommodation dto) throws Exception {
 		
-//		if (vo.getNxAccommodationSeq().equals("0") || vo.getNxAccommodationSeq().equals("")) {
+		if (vo.getNxAccommodationSeq().equals("0") || vo.getNxAccommodationSeq().equals("")) {
 //			insert
-//		} else {
+		} else {
 //			update
 			Accommodation item = service.selectOne(vo);
 			model.addAttribute("item", item);
 			model.addAttribute("listUploaded", service.selectListUploaded(vo));
-//		}
+		}
 		
 		return "user/region/accommodation/accommodationForm";
 	}
@@ -61,6 +70,7 @@ public class AccommodationController {
 	public String accommodationView(@ModelAttribute("vo") AccommodationVo vo, Model model) throws Exception {
 		Accommodation item = service.selectOne(vo);
 		model.addAttribute("item", item);
+		model.addAttribute("listUploaded", service.selectListUploaded(vo));
 		return "user/region/accommodation/accommodationView";
 	}
 }

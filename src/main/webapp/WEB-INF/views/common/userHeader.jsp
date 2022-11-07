@@ -49,8 +49,8 @@
 		                                <div class="main-menu f-right d-none d-lg-block">
 		                                    <nav>               
 		                                        <ul id="navigation">                                                                                                                                     
-		                                            <li><a href="#">로그인</a></li>
-		                                            <li><a href="#">회원가입</a></li>
+		                                            <li><a href="/nextrip/login">로그인</a></li>
+		                                            <li><a href="/nextrip/memberRegistration">회원가입</a></li>
 		                                            <li><a href="#">지역</a>
 		                                            	<ul class="submenu">
 		                                                    <li><a href="#">수도권</a></li>
@@ -102,7 +102,7 @@
 		                        </div>
 		                        <div class="col-lg-4">
 		                            <div class="header-info-right f-right text-white">
-		                                ${sessName}님 어서오세요!
+		                                <c:out value="${sessNickname}" />님 어서오세요!
 		                            </div>
 		                        </div>
 		                       </div>
@@ -122,7 +122,7 @@
 		                                <div class="main-menu f-right d-none d-lg-block">
 		                                    <nav>               
 		                                        <ul id="navigation">                                                                                                                                     
-		                                            <li><a href="#">로그아웃</a></li>
+		                                            <li><a href="/nextrip/logoutProc">로그아웃</a></li>
 		                                            <li><a href="#">지역</a>
 		                                            	<ul class="submenu">
 		                                                    <li><a href="#">수도권</a></li>
