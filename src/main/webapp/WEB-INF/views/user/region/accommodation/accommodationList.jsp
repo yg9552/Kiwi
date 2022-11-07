@@ -11,7 +11,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Travel HTML-5 Template </title>
+        <title>숙박상품 리스트 </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="manifest" href="site.webmanifest">
@@ -37,7 +37,7 @@
             </div>
         </div>
         <!-- slider Area End-->
-		<c:set var="listregion" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
+		
         <!-- list Start -->
         <form name="formList" method="post" autocomplete="off" enctype="multipart/form-data">
         <!-- *Vo.jsp s -->
@@ -62,6 +62,7 @@
 				</div>
                 <div class="row mt-3">
                     <div class="col-lg-3">
+                    	<c:set var="listregion" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
                         <c:forEach items="${list }" var="list" varStatus="status">
 	                        <article class="blog_item">
 	                            <div class="blog_item_img">
@@ -76,11 +77,19 @@
 	                                	<h2><c:out value="${list.hotelName }" /></h2>
 	                                </a>
 	                                <ul class="blog-info-link">
-				                        <c:forEach items="${listregion}" var="listregion" varStatus="statusregion">
-	                     					<c:if test="${list.region eq listregion.replaceCode}">
-				                        		<li><a href="#"><i class="fa-solid fa-location-dot"></i><c:out value="${listregion.name }"/></a></li>
-			                        		</c:if>
-		                        		</c:forEach>
+		                        		<li>
+		                        			<a href="#">
+		                        				<i class="fa-solid fa-location-dot"></i>
+						                     	<c:choose>
+						                        	<c:when test="${list.region eq 201 }">수도권</c:when>
+						                        	<c:when test="${list.region eq 202 }">강원도</c:when>
+						                        	<c:when test="${list.region eq 203 }">경상도</c:when>
+						                        	<c:when test="${list.region eq 204 }">전라도</c:when>
+						                        	<c:when test="${list.region eq 205 }">충청도</c:when>
+						                        	<c:when test="${list.region eq 206 }">제주도</c:when>
+						                        </c:choose>
+	                        				</a>
+                        				</li>
 				                        <li><a href="#"><i class="fa fa-comments"></i> 후기 3건 </a></li>
 				                    </ul>
 				                    <h5 class="mt-2 text-danger">1박 190,000원</h5>

@@ -187,7 +187,7 @@
     </div>
     <!-- / Layout wrapper -->
 	<script type="text/javascript">
-	var goUrlForm = "/region/accommodation/accommodationForm";		/* #-> */
+	var goUrlForm = "/nextrip/region/accommodation/accommodationForm";		/* #-> */
 	
 	var seq = $("input:hidden[name=nxAccommodationSeq]");				/* #-> */
 	var form = $("form[name=formList]");

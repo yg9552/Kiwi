@@ -40,6 +40,7 @@ public class AccommodationServiceImpl implements AccommodationService{
 		// TODO Auto-generated method stub
 		dao.insert(dto);
 		uploadFiles(dto.getUploadImg(), dto, "nxAccommodationUploaded", 2, dto.getUploadImgMaxNumber());
+		uploadFiles(dto.getUploadImg2(), dto, "nxAccommodationUploaded", 1, dto.getUploadImgMaxNumber());
 		return 1;
 	}
 

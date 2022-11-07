@@ -11,7 +11,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Travel HTML-5 Template </title>
+        <title><c:out value="${item.hotelName }" /> </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="manifest" href="site.webmanifest">
@@ -35,15 +35,13 @@
         <!-- slider Area Start-->
         <div class="slider-area">
             <div class="slider-wrap">
-			  <div><img src="/resources/template/gotrip-master/assets/img/blog/world-hotel.jpg" alt="" style="width: 480px; height: 432px;"></div>
-			  <div><img src="/resources/template/gotrip-master/assets/img/blog/gwanghwamun-g62f7ac45f_1920.jpg" alt="" style="width: 480px; height: 432px;"></div>
-			  <div><img src="/resources/template/gotrip-master/assets/img/blog/tower.jpg" alt="" style="width: 480px; height: 432px;"></div>
-			  <div><img src="/resources/template/gotrip-master/assets/img/blog/world-hotel.jpg" alt="" style="width: 480px; height: 432px;"></div>
-			  <div><img src="/resources/template/gotrip-master/assets/img/blog/world-hotel.jpg" alt="" style="width: 480px; height: 432px;"></div>
-			  <div><img src="/resources/template/gotrip-master/assets/img/blog/unnamed.jpg" alt="" style="width: 480px; height: 432px;"></div>
-			  <div><img src="/resources/template/gotrip-master/assets/img/blog/world-hotel.jpg" alt="" style="width: 480px; height: 432px;"></div>
-			  <div><img src="/resources/template/gotrip-master/assets/img/blog/world-hotel.jpg" alt="" style="width: 480px; height: 432px;"></div>
+			  <c:forEach items="${listUploaded}" var="listUploaded" varStatus="statusUploaded">
+			  <div>
+           		<c:if test="${listUploaded.type eq 1}">
+              		<img src="<c:out value="${listUploaded.path }"/><c:out value="${listUploaded.uuidName }"/>" alt="" style="width: 480px; height: 432px;">
+           		</c:if>
 			</div>
+			</c:forEach>
         </div>
         <!-- slider Area End-->
 
@@ -74,8 +72,8 @@
                      </p>
                      <div class="quote-wrapper">
                      	<h4 class="d-inline">시설 정보</h4>
-                     	<span class="text-primary"><i class="fa-regular fa-clock"></i>체크인 : <c:out value="${item.checkin }"/> </span>
-                     	<span class="text-primary"> · 체크아웃 : <c:out value="${item.checkout }"/></span>
+                     	<span class="text-primary"><i class="fa-regular fa-clock"></i>체크인 : <fmt:formatDate value="${item.checkin }" type="time" pattern="hh:mm" /></span>
+                     	<span class="text-primary"> · 체크아웃 : <fmt:formatDate value="${item.checkout }" pattern="hh:mm" /> </span>
                         <div class="quotes text-center">
                            <div class="col d-inline">
                            	<i class="fa-solid fa-person-swimming fa-2x mt-3 mr-3"><p class="mt-2">수영장</p></i>

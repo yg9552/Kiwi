@@ -60,9 +60,9 @@ public class AccommodationController {
 		redirectAttributes.addFlashAttribute("vo", vo);
 		
 		if (Constants.INSERT_AFTER_TYPE == 1) {
-			return "redirect:/region/accommodation/accommodationForm";
+			return "redirect:/nextrip/region/accommodation/accommodationForm";
 		} else {
-			return "redirect:/region/accommodation/accommodationList";
+			return "redirect:/nextrip/region/accommodation/accommodationListK";
 		}
 	}
 	

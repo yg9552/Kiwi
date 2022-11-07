@@ -1,6 +1,9 @@
 package com.nextrip.modules.accommodation;
 
 
+import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.nextrip.common.base.Base;
@@ -17,8 +20,10 @@ public class Accommodation extends Base {
 	private String adressDetail;
 	private String lng;
 	private String lat;
-	private String checkin;
-	private String checkout;
+	@DateTimeFormat(pattern = "hh:mm")
+	private Date checkin;
+	@DateTimeFormat(pattern = "hh:mm")
+	private Date checkout;
 
 	
 	private MultipartFile[] uploadImg;
@@ -95,18 +100,6 @@ public class Accommodation extends Base {
 	}
 	public void setLat(String lat) {
 		this.lat = lat;
-	}
-	public String getCheckin() {
-		return checkin;
-	}
-	public void setCheckin(String checkin) {
-		this.checkin = checkin;
-	}
-	public String getCheckout() {
-		return checkout;
-	}
-	public void setCheckout(String checkout) {
-		this.checkout = checkout;
 	}
 	public MultipartFile[] getUploadImg() {
 		return uploadImg;
@@ -191,6 +184,18 @@ public class Accommodation extends Base {
 	}
 	public void setUploadFileDeletePathFile(String[] uploadFileDeletePathFile) {
 		this.uploadFileDeletePathFile = uploadFileDeletePathFile;
+	}
+	public Date getCheckin() {
+		return checkin;
+	}
+	public void setCheckin(Date checkin) {
+		this.checkin = checkin;
+	}
+	public Date getCheckout() {
+		return checkout;
+	}
+	public void setCheckout(Date checkout) {
+		this.checkout = checkout;
 	}
 
 
