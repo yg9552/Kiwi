@@ -29,7 +29,6 @@
 	  	<!-- userHeader e -->
 	<c:set var="listregion" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
     <main>
-    
     	<!-- *Vo.jsp s -->
 			<%@include file="accommodationVo.jsp"%>		<!-- #-> -->
 	    <!-- *Vo.jsp e -->
