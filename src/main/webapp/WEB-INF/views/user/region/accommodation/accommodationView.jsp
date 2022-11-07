@@ -72,8 +72,8 @@
                      </p>
                      <div class="quote-wrapper">
                      	<h4 class="d-inline">시설 정보</h4>
-                     	<span class="text-primary"><i class="fa-regular fa-clock"></i>체크인 : <fmt:formatDate value="${item.checkin }" type="time" pattern="hh:mm" /></span>
-                     	<span class="text-primary"> · 체크아웃 : <fmt:formatDate value="${item.checkout }" pattern="hh:mm" /> </span>
+                     	<span class="text-primary"><i class="fa-regular fa-clock"></i>체크인 : <fmt:formatDate value="${item.checkin }" type="time" pattern="(a)hh:mm" /></span>
+                     	<span class="text-primary"> · 체크아웃 : <fmt:formatDate value="${item.checkout }" pattern="(a)hh:mm" /> </span>
                         <div class="quotes text-center">
                            <div class="col d-inline">
                            	<i class="fa-solid fa-person-swimming fa-2x mt-3 mr-3"><p class="mt-2">수영장</p></i>
