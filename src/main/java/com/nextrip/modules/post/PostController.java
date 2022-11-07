@@ -3,6 +3,8 @@ package com.nextrip.modules.post;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,16 +27,12 @@ public class PostController {
 		return "user/post/postList";
 	}
 	
-	@RequestMapping(value="postView")
+	@RequestMapping(value="postUserView")
 	public String postView(Post dto, @ModelAttribute("vo") PostVo vo, Model model)throws Exception{
-		if(vo.getNxPostSeq().equals("0") || vo.getNxPostSeq().equals("")) {
-			//insert
-		} else {
 			Post item = service.postSelectOne(vo);
 			model.addAttribute("item", item);
-		}
 		
-		return "user/post/postView";
+		return "user/post/postUserView";
 	}
 	
 	@RequestMapping(value="postUserList")
@@ -48,8 +46,8 @@ public class PostController {
 	
 	@RequestMapping(value="postRegMod")
 	public String postRegMod(Post dto, @ModelAttribute("vo") PostVo vo, Model model)throws Exception{
-		System.out.println(vo.getNxPostSeq());
-		if(vo.getNxPostSeq().equals("0") || vo.getNxPostSeq().equals("") || vo.getNxPostSeq().equals(null)) {
+		System.out.println("vo.getNxPostSeq(): " + vo.getNxPostSeq());
+		if(vo.getNxPostSeq().equals("0") || vo.getNxPostSeq().equals("")) {
 			//insert
 		} else {
 			Post item = service.postSelectOne(vo);
@@ -59,12 +57,13 @@ public class PostController {
 	}
 	
 	@RequestMapping(value="postUserInsert")
-	public String postUserInsert(Post dto, PostVo vo, RedirectAttributes redirectAttributes)throws Exception{
+	public String postUserInsert(Post dto, PostVo vo, HttpSession httpSession, RedirectAttributes redirectAttributes)throws Exception{
+		dto.setMemberSeq((String) httpSession.getAttribute("sessSeq"));
 		service.postInsert(dto);
 		vo.setNxPostSeq(dto.getNxPostSeq());
 		redirectAttributes.addFlashAttribute("vo", vo);
 		
-		return "user/post/postRegMod";
+		return "user/post/postUserView";
 	}
 	
 	@RequestMapping(value="postUserUpdate")

@@ -8,6 +8,7 @@ public class Post {
 	private String memberSeq;
 	private String region;
 	private Integer postType;
+	private String addressTitle;
 	private String title;
 	private String content;
 	private Integer addressZip;
@@ -19,6 +20,9 @@ public class Post {
 	private Timestamp regDateTime;
 	private Timestamp modDateTime;
 	
+	
+	//join
+	private String MemberName;
 	
 	private String servletContext;
 	
@@ -52,6 +56,14 @@ public class Post {
 
 	public void setPostType(Integer postType) {
 		this.postType = postType;
+	}
+
+	public String getAddressTitle() {
+		return addressTitle;
+	}
+
+	public void setAddressTitle(String addressTitle) {
+		this.addressTitle = addressTitle;
 	}
 
 	public String getTitle() {
@@ -141,6 +153,14 @@ public class Post {
 	
 	
 	
+
+	public String getMemberName() {
+		return MemberName;
+	}
+
+	public void setMemberName(String memberName) {
+		MemberName = memberName;
+	}
 
 	public String getServletContext() {
 		return servletContext;

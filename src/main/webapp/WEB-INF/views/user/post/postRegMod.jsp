@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -19,7 +19,7 @@
     
   <!-- CSS here -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-	<link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/bootstrap.min.css">
+	<!-- <link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/owl.carousel.min.css">
 	<link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/flaticon.css">
 	<link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/slicknav.css">
@@ -31,7 +31,7 @@
 	<link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/nice-select.css">
 	<link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/style.css">
 	<script src="https://kit.fontawesome.com/dca973ab96.js" crossorigin="anonymous"></script>
-	<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet"> -->
 	
 	
 	 <!-- 서머노트를 위해 추가해야할 부분 -->
@@ -81,11 +81,11 @@
        	display: none;
        }
 	</style>
-</head>
+<!-- </head>
 
-<body>
+<body> -->
     <!-- Preloader Start -->
-    <div id="preloader-active">
+    <!-- <div id="preloader-active">
         <div class="preloader d-flex align-items-center justify-content-center">
             <div class="preloader-inner position-relative">
                 <div class="preloader-circle"></div>
@@ -94,13 +94,13 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- Preloader Start-->
     <header>
         <!-- Header Start -->
-       <div class="header-area">
+       <!-- <div class="header-area">
             <div class="main-header ">
-                <!-- <div class="header-top top-bg d-none d-lg-block">
+                <div class="header-top top-bg d-none d-lg-block">
                    <div class="container">
                     <div class="row justify-content-between align-items-center">
                         <div class="col-lg-8">
@@ -124,18 +124,18 @@
                         </div>
                        </div>
                    </div>
-                </div> -->
+                </div>
                <div class="header-bottom  header-sticky">
                     <div class="container">
                         <div class="row align-items-center">
-                            <!-- Logo -->
+                            Logo
                             <div class="col-xl-2 col-lg-2 col-md-1">
                                 <div class="logo">
                                   <a href="index.html"><img src="/resources/template/gotrip-master/assets/img/logo/NTLogo.png" alt=""></a>
                                 </div>
                             </div>
                             <div class="col-xl-10 col-lg-10 col-md-10">
-                                <!-- Main-menu -->
+                                Main-menu
                                 <div class="main-menu f-right d-none d-lg-block">
                                     <nav>               
                                         <ul id="navigation">                                                                                                                                     
@@ -158,7 +158,7 @@
                                     </nav>
                                 </div>
                             </div>
-                            <!-- Mobile Menu -->
+                            Mobile Menu
                             <div class="col-12">
                                 <div class="mobile_menu d-block d-lg-none"></div>
                             </div>
@@ -166,8 +166,12 @@
                     </div>
                </div>
             </div>
-       </div>
+       </div> -->
         <!-- Header End -->
+        
+        <!-- userHeader s -->
+        <%@include file="../../common/userHeader.jsp"%>
+        <!-- userHeader e -->
     </header>
     <!--================Blog Area =================-->
     <section class="blog_area section-padding">
@@ -261,7 +265,7 @@
 				     <!-- slider Area End-->
 				     <div style="height: 50px;"></div>
                 	<!-- Blog Area Start -->
-                	<form method="post" id="postForm" name="postForm" autocomplete="off">
+                	<form method="post" id="PRMForm" name="PRMForm" autocomplete="off">
                 		<input type="hidden" id="nxPostSeq" name="nxPostSeq" value="<c:out value="${item.nxPostSeq }" />">
                 		<input type="hidden" id="memberSeq" name="memberSeq" value="<c:out value="${item.memberSeq }" />">
                 		<input type="hidden" id="addressZip" name="addressZip" value="<c:out value="${item.addressZip }" />">
@@ -276,26 +280,26 @@
 	                				<th class="col-xl-2">구분</th>
 	                				<td class="col-xl-2">
 	                					<select class="form-select" id="postType" name="postType">
-	                						<option value="" <c:if test="${item.postType eq null }">selected</c:if>>구분</option>
-	                						<option value="1" <c:if test="${item.postType eq 1 }">selected</c:if>>여행지</option>
-	                						<option value="2" <c:if test="${item.postType eq 2 }">selected</c:if>>숙박</option>
-	                						<option value="3" <c:if test="${item.postType eq 3 }">selected</c:if>>음식점</option>
+	                						<option value="">구분</option>
+	                						<option value="401" <c:if test="${item.postType eq 401 }">selected</c:if>>여행지</option>
+	                						<option value="402" <c:if test="${item.postType eq 402 }">selected</c:if>>숙박</option>
+	                						<option value="403" <c:if test="${item.postType eq 403 }">selected</c:if>>음식점</option>
 	                					</select>
 	                				</td>
 	                				<th class="col-xl-2">지역</th>
 	                				<td class="col-xl-2">
 	                					<select class="form-select" id="region" name="region">
-	                						<option value="" <c:if test="${item.region eq null }">selected</c:if>>지역</option>
-	                						<option value="1" <c:if test="${item.region eq 1 }">selected</c:if>>수도권</option>
-	                						<option value="2" <c:if test="${item.region eq 2 }">selected</c:if>>경상</option>
-	                						<option value="3" <c:if test="${item.region eq 3 }">selected</c:if>>전라</option>
-	                						<option value="4" <c:if test="${item.region eq 4 }">selected</c:if>>강원</option>
-	                						<option value="5" <c:if test="${item.region eq 5 }">selected</c:if>>충청</option>
-	                						<option value="6" <c:if test="${item.region eq 6 }">selected</c:if>>제주</option>
+	                						<option value="">지역</option>
+	                						<option value="201" <c:if test="${item.region eq 201 }">selected</c:if>>수도권</option>
+	                						<option value="202" <c:if test="${item.region eq 202 }">selected</c:if>>경상</option>
+	                						<option value="203" <c:if test="${item.region eq 203 }">selected</c:if>>전라</option>
+	                						<option value="204" <c:if test="${item.region eq 204 }">selected</c:if>>강원</option>
+	                						<option value="205" <c:if test="${item.region eq 205 }">selected</c:if>>충청</option>
+	                						<option value="206" <c:if test="${item.region eq 206 }">selected</c:if>>제주</option>
 	                					</select>
 	                				</td>
 	                				<th class="col-xl-2">
-	                					<p id="" name="">작성자</p>
+	                					<p><c:out value="${item.addressTitle }"/></p>
 	                				</th>
 	                				<td class="col-xl-2" style="vertical-align: middle">
 	                					작성자
@@ -306,7 +310,7 @@
 	                					여행지 이름
 	                				</th>
 	                				<td colspan="4">
-	                					<input type="text" class="form-control" id="addressTitle" name="addressTitle">
+	                					<input type="text" class="form-control" id="addressTitle" name="addressTitle" value="<c:out value="${item.addressTitle }"/>">
 	                				</td>
 	                				<td class="col-xl-2">
 	                					<button type="button" class="genric-btn info" id="" name="" style="height: 40px;">위치 설정</button>
@@ -320,7 +324,7 @@
 	                					제목
 	                				</th>
 	                				<td colspan="5">
-	                					<input type="text" class="form-control" id="title" name="title">
+	                					<input type="text" class="form-control" id="title" name="title" value="<c:out value="${item.title }"/>">
 	                				</td>
 	                			</tr>
 	                			<tr style="height: 500px;">
@@ -329,9 +333,12 @@
 	                				</th>
 	                				<td colspan="5" >
 	                					<div class="editor-container">
-											<div class="summerNote" id="content" name="content">
-											
-											</div>
+											<%-- <div class="summerNote" id="summerNote" name="summerNote">
+												<c:out value="${item.content }"/>
+											</div> --%>
+											<textarea class="summerNote" id="content" name="content" style="display:none;">
+												<c:out value="${item.content }"/>
+											</textarea>
 										</div>
 	                				</td>
 	                			</tr>
@@ -507,7 +514,27 @@
 		         };
 		        $('.summerNote').summernote(setting);
 		</script>
+		<script>
+		var goUrlList = "/post/postUserList";					/* #-> */
+		var goUrlInsert = "/post/postUserInsert";				/* #-> */
+		var goUrlUpdate = "/post/postUserUpdate";				/* #-> */
 		
+		var seq = $("input:hidden[name=nxPostSeq]");
+		
+		var form = $("form[name=PRMForm]"); 
+		
+		
+		$("#regModBtn").on("click", function(){
+			if(seq.val() == "0" || seq.val() == ""){
+				form.attr("action", goUrlInsert).submit();
+			} else{
+				form.attr("action", goUrlUpdate).submit();	
+			}
+		});
+		
+		$('#content').summernote('editor.insertText', "${board_data.BOARD_CONTENT}")
+		
+		</script>
 		
 		<!-- JS here -->
 		

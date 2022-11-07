@@ -10,7 +10,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>PostList</title>
+    <title>PostView</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -229,189 +229,59 @@
 				     <!-- slider Area End-->
 				     <div style="height: 50px;"></div>
                 	<!-- Blog Area Start -->
-			        <div class="home-blog-area section-padding2" style="padding: 0px;">
-			            <div class="container">
-			                <!-- Section Tittle -->
-			                <div class="row">
-			                    <div class="col-lg-12">
-			                        <div class=" text-center">
-			                            <h4 style="float: left;font-weight: bolder;">이달의 베스트 여행후기</h2>
-			                        </div>
-			                    </div>
-			                </div>
-			                <div class="row">
-			                    <div class="col-xl-4 col-lg-4 col-md-4">
-			                        <div class="home-blog-single mb-30">
-			                            <div class="blog-img-cap">
-			                                <div class="blog-img">
-			                                    <img src="/resources/template/gotrip-master/assets/img/blog/home-blog1.jpg" alt="">
-			                                </div>
-			                                <div class="">
-			                                    <p> |   Traveling</p>
-			                                    <h3><a href="single-blog.html">서울</a></h3>
-			                                    <a href="#" class="more-btn">지역 가기 »</a>
-			                                </div>
-			                            </div>
-			                        </div>
-			                    </div>
-			                    <div class="col-xl-4 col-lg-4 col-md-4">
-			                        <div class="home-blog-single mb-30">
-			                            <div class="blog-img-cap">
-			                                <div class="blog-img">
-			                                    <img src="/resources/template/gotrip-master/assets/img/blog/home-blog1.jpg" alt="">
-			                                </div>
-			                                <div class="">
-			                                    <p> |   Traveling</p>
-			                                    <h3><a href="single-blog.html">제주</a></h3>
-			                                    <a href="#" class="more-btn">지역 가기 »</a>
-			                                </div>
-			                            </div>
-			                        </div>
-			                    </div>
-			                    <div class="col-xl-4 col-lg-4 col-md-4">
-			                        <div class="home-blog-single mb-30">
-			                            <div class="blog-img-cap">
-			                                <div class="blog-img">
-			                                    <img src="/resources/template/gotrip-master/assets/img/blog/home-blog2.jpg" alt="">
-			                                </div>
-			                                <div class="">
-			                                    <p> |   Traveling</p>
-			                                    <h3><a href="single-blog.html">부산</a></h3>
-			                                    <a href="#" class="more-btn">지역 가기 »</a>
-			                                </div>
-			                            </div>
-			                        </div>
-			                    </div>
-			                </div>
-			            </div>
-			        </div>
-				        <!-- Blog Area End -->
-			        <form method="post" id="PLForm" name="PLForm">
-			        	<input type="hidden" id="nxPostSeq" name="nxPostSeq">
-				        <table class="table" style="text-align: center;">
-				          <caption class="caption-top">
-					          <div class="row">
-					          	<div class="col-lg-2">
-					          		<select class="form-select">
-					          			<option>전체 보기</option>
-                                		<option>패키지</option>
-                                		<option>여행지</option>
-                                		<option>음식점</option>
-                                	</select>
-					          	</div>
-					          	<div class="col-lg-2">
-						          	<select class="form-select">
-				          				<option>전체 지역</option>
-                                		<option>서울</option>
-                                		<option>대전</option>
-                                		<option>대구</option>
-                                	</select>
-					          	</div>
-					          	<div class="col-lg-2 offset-3">
-                                	<select class="form-select">
-                                		<option>제목</option>
-                                		<option>내용</option>
-                                		<option>구분</option>
-                                	</select> 
-                                </div>
-					          	<div class="input-group col-lg-3">
-	                                <div class="input-group mb-3">
-									  <input type="text" class="form-control" placeholder="">
-									  <button class="btn-primary" type="button" id="button-addon2"><i class="fa-solid fa-magnifying-glass"></i></button>
-									</div>
-                                </div>
-                            </div>
-				          </caption>
-						  <thead>
-						    <tr>
-						      <th scope="col col-lg-1">번호</th>
-						      <th scope="col col-lg-1">구분</th>
-						      <th scope="col col-lg-1">지역</th>
-						      <th scope="col" style="width: 375px;">제목</th>
-						      <th scope="col col-lg-1">작성자</th>
-						      <th scope="col col-lg-1">작성일</th>
-						    </tr>
-						  </thead>
-						  <tbody>
-							<c:set var="listCodeRegion" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
+                	<div>
+                		<h2><c:out value="${item.title }"/></h2>
+                		<div style="height: 20px;"></div>
+                		<div>
+                			<c:set var="listCodeRegion" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
 						  	<c:set var="listCodePostDiv" value="${CodeServiceImpl.selectListCachedCode('4')}"/>
-							<c:choose>
-								<c:when test="${fn:length(list) eq 0}"> <!-- length(list)가 0이면 이걸 하고 -->
-									<td class="text-center" colspan="6">게시글이 존재하지 않습니다.</td>
-								</c:when>
-								<c:otherwise>
-									<c:forEach items="${list}" var="list" varStatus="status">
-										<tr>
-											<td><c:out value="${status.count }"/></td>
-											<td>
-												<c:forEach items="${listCodeRegion}" var="listCodeRegion" varStatus="statusRegion">
-													<c:if test="${list.region eq listCodeRegion.replaceCode}"><span class="state"><c:out value="${listCodeRegion.name }"/></span></c:if>
-												</c:forEach>
-											</td>
-											<td>
-												<c:forEach items="${listCodePostDiv}" var="listCodePostDiv" varStatus="statusPostDiv">
-													<c:if test="${list.postType eq listCodePostDiv.replaceCode}"><span class="state"><c:out value="${listCodePostDiv.name }"/></span></c:if>
-												</c:forEach>
-											</td>
-									        <td onclick="location.href='javascript:goView(<c:out value="${list.nxPostSeq }"/>)'" style="cursor: pointer;"><c:out value="${list.title }"/></td>
-									        <td><c:out value="${list.memberName }"/></td>
-									        <td><fmt:formatDate value="${list.regDateTime }" pattern="yyyy-MM-dd"/></td>
-							        	</tr>
-									</c:forEach>
-								</c:otherwise>
-							</c:choose>
-						   <!--  <tr>
-						      <td scope="row">3</th>
-						      <td><span class="state">패키지</span></td>
-						      <td>서울</td>
-						      <td>테스트 패키지</td>
-						      <td>김**</td>
-						      <td>2022-10-21</td>
-						    </tr>
-						    <tr>
-						      <td scope="row">2</th>
-						      <td><span class="state">음식점</span></td>
-						      <td>서울</td>
-						      <td>테스트 패키지</td>
-						      <td>김**</td>
-						      <td>2022-10-21</td>
-						    </tr>
-						    <tr>
-						      <td scope="row">1</th>
-						      <td><span class="state">여행지</span></td>
-						      <td>서울</td>
-						      <td>테스트 패키지</td>
-						      <td>김**</td>
-						      <td>2022-10-21</td>
-						    </tr> -->
-						  </tbody>
-						  <caption style="caption-side: bottom;">
-						  	<button type="button" class="genric-btn success" id="regBtn" name="regBtn" style="float:right;">글 쓰기</button>
-						  </caption>
-						</table>
-	                    <div class="blog_left_sidebar">
-	                        <nav class="blog-pagination justify-content-center d-flex">
-	                            <ul class="pagination">
-	                                <li class="page-item">
-	                                    <a href="#" class="page-link" aria-label="Previous">
-	                                        <i class="ti-angle-left"></i>
-	                                    </a>
-	                                </li>
-	                                <li class="page-item">
-	                                    <a href="#" class="page-link">1</a>
-	                                </li>
-	                                <li class="page-item active">
-	                                    <a href="#" class="page-link">2</a>
-	                                </li>
-	                                <li class="page-item">
-	                                    <a href="#" class="page-link" aria-label="Next">
-	                                        <i class="ti-angle-right"></i>
-	                                    </a>
-	                                </li>
-	                            </ul>
-	                        </nav>
-	                    </div>
-                    </form>
+                			<span>구분/지역: </span>
+                			<span>
+								<c:forEach items="${listCodePostDiv}" var="listCodePostDiv" varStatus="statusPostDiv">
+									<c:if test="${item.postType eq listCodePostDiv.replaceCode}"><c:out value="${listCodePostDiv.name }"/></c:if>
+								</c:forEach>                			
+                			</span>
+                			<span>/</span>
+                			<span>
+	                			<c:forEach items="${listCodeRegion}" var="listCodeRegion" varStatus="statusRegion">
+									<c:if test="${item.region eq listCodeRegion.replaceCode}"><c:out value="${listCodeRegion.name }"/></c:if>
+								</c:forEach>
+                			</span>
+                			<div style="float:right">
+	                			<span style="margin-right: 10px;"><span>작성일: </span><span><fmt:formatDate value="${item.regDateTime }" pattern="yyyy-MM-dd"/></span></span>
+	                			<span style="margin-right: 10px;"><span>작성자: </span><span><c:out value="${item.memberName }"/></span></span>
+	                			<span style="margin-right: 10px;"><span>조회수: </span><span>1</span></span>
+	                		</div>
+                		</div>
+                		<div style="background-color: #f0f0f0; padding: 20px; border-top: 1px solid #e8e8e8; border-bottom: 2px solid #e8e8e8;">
+                			<a style="display:block;"><img src="../../../image/bamboo.jpg" width="200px" height="144px" style="float: left;"></a>
+                			<div style="display:block; height: 144px;">
+                				<span style="margin-left: 15px;">
+                					<span>후기 종류: 
+                					</span>
+		               				<span> 
+		               					<c:set var="listCodePostDiv" value="${CodeServiceImpl.selectListCachedCode('4')}"/>
+		               					<c:forEach items="${listCodePostDiv}" var="listCodePostDiv" varStatus="statusPostDiv">
+											<c:if test="${item.postType eq listCodePostDiv.replaceCode}"><c:out value="${listCodePostDiv.name }"/></c:if>
+										</c:forEach>
+		               				</span>
+                				</span>
+                				<br>
+                				<span style="margin-left: 15px;"><b><c:out value="${item.addressTitle }"/></b></span>
+                				<button type="button" class="btn btn-primary" style="float: right; margin-top: 66px;">지도 펴보기</button>
+                			</div>
+                		</div>
+                		<div class="content" style="padding: 20px;border-bottom: 1px solid #f0f0f0;">
+                			${item.content }
+                		</div>
+                		<div style="margin-top: 30px;">
+                			<button type="button" class="genric-btn info" style="float: right;" id="listBtn" name="listBtn">목록</button>
+                		</div>
+                		
+                	
+                	</div>
+				    
+				        
                 </div>
             </div>
         </div>
@@ -503,68 +373,47 @@
     </footer>
 
 <!-- JS here -->
-	<script>
-	
-	</script>
-	<!-- All JS Custom Plugins Link Here here -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-	<script>
-	var goUrlView = "/post/postUserView";
-	var goUrlRegMod = "/post/postRegMod";
-	
-	var form = $("form[name=PLForm]"); 
-	var seq = $("input:hidden[name=nxPostSeq]");
-	
-	goView = function(seqValue){
-		seq.val(seqValue);
-		form.attr("action", goUrlView).submit();
-	}
-	
-	goRegMod = function(seqValue){
-		seq.val(seqValue);
-		form.attr("action", goUrlRegMod).submit();
-	}
-	
-	$("#regBtn").on("click", function(){
-		goRegMod(0);
-	});
-	
-	</script>
-	
-	
-    <script src="/resources/template/gotrip-master/assets/js/vendor/modernizr-3.5.0.min.js"></script>
-	
-	<!-- Jquery, Popper, Bootstrap -->
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-	<script src="/resources/template/gotrip-master/assets/js/vendor/jquery-1.12.4.min.js"></script>
-       <script src="/resources/template/gotrip-master/assets/js/popper.min.js"></script>
-       <script src="/resources/template/gotrip-master/assets/js/bootstrap.min.js"></script>
-    <!-- Jquery Mobile Menu -->
-       <script src="/resources/template/gotrip-master/assets/js/jquery.slicknav.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+		<script>
+		$("#listBtn").on("click", function(){
+			location.href = "/post/postUserList";	
+		});
+		</script>	
+		<!-- All JS Custom Plugins Link Here here -->
+        <script src="/resources/template/gotrip-master/assets/js/vendor/modernizr-3.5.0.min.js"></script>
+		
+		<!-- Jquery, Popper, Bootstrap -->
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+		
+		<script src="/resources/template/gotrip-master/assets/js/vendor/jquery-1.12.4.min.js"></script>
+        <script src="/resources/template/gotrip-master/assets/js/popper.min.js"></script>
+        <script src="/resources/template/gotrip-master/assets/js/bootstrap.min.js"></script>
+	    <!-- Jquery Mobile Menu -->
+        <script src="/resources/template/gotrip-master/assets/js/jquery.slicknav.min.js"></script>
 
-	<!-- Jquery Slick , Owl-Carousel Plugins -->
-       <script src="/resources/template/gotrip-master/assets/js/owl.carousel.min.js"></script>
-       <script src="/resources/template/gotrip-master/assets/js/slick.min.js"></script>
-	<!-- One Page, Animated-HeadLin -->
-       <script src="/resources/template/gotrip-master/assets/js/wow.min.js"></script>
-	<script src="/resources/template/gotrip-master/assets/js/animated.headline.js"></script>
-       <script src="/resources/template/gotrip-master/assets/js/jquery.magnific-popup.js"></script>
+		<!-- Jquery Slick , Owl-Carousel Plugins -->
+        <script src="/resources/template/gotrip-master/assets/js/owl.carousel.min.js"></script>
+        <script src="/resources/template/gotrip-master/assets/js/slick.min.js"></script>
+		<!-- One Page, Animated-HeadLin -->
+        <script src="/resources/template/gotrip-master/assets/js/wow.min.js"></script>
+		<script src="/resources/template/gotrip-master/assets/js/animated.headline.js"></script>
+        <script src="/resources/template/gotrip-master/assets/js/jquery.magnific-popup.js"></script>
 
-	<!-- Scrollup, nice-select, sticky -->
-       <script src="/resources/template/gotrip-master/assets/js/jquery.scrollUp.min.js"></script>
-       <script src="/resources/template/gotrip-master/assets/js/jquery.nice-select.min.js"></script>
-	<script src="/resources/template/gotrip-master/assets/js/jquery.sticky.js"></script>
-       
-       <!-- contact js -->
-       <script src="/resources/template/gotrip-master/assets/js/contact.js"></script>
-       <script src="/resources/template/gotrip-master/assets/js/jquery.form.js"></script>
-       <script src="/resources/template/gotrip-master/assets/js/jquery.validate.min.js"></script>
-       <script src="/resources/template/gotrip-master/assets/js/mail-script.js"></script>
-       <script src="/resources/template/gotrip-master/assets/js/jquery.ajaxchimp.min.js"></script>
-       
-	<!-- Jquery Plugins, main Jquery -->	
-       <script src="/resources/template/gotrip-master/assets/js/plugins.js"></script>
-       <script src="/resources/template/gotrip-master/assets/js/main.js"></script>
+		<!-- Scrollup, nice-select, sticky -->
+        <script src="/resources/template/gotrip-master/assets/js/jquery.scrollUp.min.js"></script>
+        <script src="/resources/template/gotrip-master/assets/js/jquery.nice-select.min.js"></script>
+		<script src="/resources/template/gotrip-master/assets/js/jquery.sticky.js"></script>
+        
+        <!-- contact js -->
+        <script src="/resources/template/gotrip-master/assets/js/contact.js"></script>
+        <script src="/resources/template/gotrip-master/assets/js/jquery.form.js"></script>
+        <script src="/resources/template/gotrip-master/assets/js/jquery.validate.min.js"></script>
+        <script src="/resources/template/gotrip-master/assets/js/mail-script.js"></script>
+        <script src="/resources/template/gotrip-master/assets/js/jquery.ajaxchimp.min.js"></script>
+        
+		<!-- Jquery Plugins, main Jquery -->	
+        <script src="/resources/template/gotrip-master/assets/js/plugins.js"></script>
+        <script src="/resources/template/gotrip-master/assets/js/main.js"></script>
 
 </body>
