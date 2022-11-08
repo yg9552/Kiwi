@@ -9,28 +9,59 @@
     <resultMap id="resultMapObj" type="com.nextrip.modules.post.Post"></resultMap>
 	
 <select id="postSelectList" resultMap="resultMapObj">
+	<include refid="Base.selectListUpperForMysql" />
 	select
-		a.*
-		,b.name as memberName
-	from nxPost a
-	join member b on a.memberSeq = b.memberSeq
+		a.nxPostSeq
+		,a.memberSeq
+		,a.region
+		,a.postType
+		,a.addressTitle
+		,a.title
+		,a.regDateTime
+		,b.nickName as memberNickName
+	<include refid="userSelectCommon" />
+	ORDER BY nxPostSeq DESC
+	<include refid="Base.selectListLowerForMysql" />
+	
+</select>
+
+<select id="postSelectListCount" resultType="Integer">
+	select
+		count(*)
+	<include refid="userSelectCommon" />
 </select>
 
 <select id="postSelectOne" resultMap="resultMapObj">	
+
 	select
 		a.*
-		,b.name as memberName
+		,b.nickName as memberNickName
 	from nxPost a
 	join member b on a.memberSeq = b.memberSeq
 	where 1=1
 	and nxPostSeq = #{nxPostSeq}
+	
 </select>
+
+<sql id ="userSelectCommon">
+	FROM nxPost a
+	JOIN member b on a.memberSeq = b.memberSeq
+	where 1=1
+		<if test="shPostType != null and !shPostType.equals('')">AND a.postType = #{shPostType}</if>
+		<if test="shRegion != null and !shRegion.equals('')">AND a.region = #{shRegion}</if>
+		<choose>
+			<when test="shOption == 1">AND a.title LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 2">AND a.content = #{shValue} </when>
+			<when test="shOption == 3">AND b.addressTitle LIKE CONCAT('%',#{shValue},'%')</when>
+		</choose>
+	</sql>
 
 <insert id="postInsert">
 	INSERT INTO nxPost (
 			memberSeq
 			,region
 			,postType
+			,addressTitle
 			,title
 			,content
 			,addressZip
@@ -44,6 +75,7 @@
 			#{memberSeq}
 			,#{region}
 			,#{postType}
+			,#{addressTitle}
 			,#{title}
 			,#{content}
 			,#{addressZip}
@@ -59,7 +91,7 @@
 </insert>
 
 <update id="postUpdate">
-	UPDATE member
+	UPDATE nxPost
 		SET
 		region = #{region}
 		,postType = #{postType}

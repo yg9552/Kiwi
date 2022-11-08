@@ -52,91 +52,9 @@
 </head>
 
 <body>
-    <!-- Preloader Start -->
-    <div id="preloader-active">
-        <div class="preloader d-flex align-items-center justify-content-center">
-            <div class="preloader-inner position-relative">
-                <div class="preloader-circle"></div>
-                <div class="preloader-img pere-text">
-                    <img src="/resources/template/gotrip-master/assets/img/logo/NTLogo.png" alt="">
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Preloader Start-->
-    <header>
-        <!-- Header Start -->
-       <div class="header-area">
-            <div class="main-header ">
-                <!-- <div class="header-top top-bg d-none d-lg-block">
-                   <div class="container">
-                    <div class="row justify-content-between align-items-center">
-                        <div class="col-lg-8">
-                            <div class="header-info-left">
-                                <ul>                          
-                                    <li>needhelp@gotrip.com</li>
-                                    <li>666 569 025077</li>
-                                    <li>broklyn street new york</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="header-info-right f-right">
-                                <ul class="header-social">    
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                   <li> <a href="#"><i class="fab fa-pinterest-p"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                       </div>
-                   </div>
-                </div> -->
-               <div class="header-bottom  header-sticky">
-                    <div class="container">
-                        <div class="row align-items-center">
-                            <!-- Logo -->
-                            <div class="col-xl-2 col-lg-2 col-md-1">
-                                <div class="logo">
-                                  <a href="index.html"><img src="/resources/template/gotrip-master/assets/img/logo/NTLogo.png" alt=""></a>
-                                </div>
-                            </div>
-                            <div class="col-xl-10 col-lg-10 col-md-10">
-                                <!-- Main-menu -->
-                                <div class="main-menu f-right d-none d-lg-block">
-                                    <nav>               
-                                        <ul id="navigation">                                                                                                                                     
-                                            <li><a href="index.html">Home</a></li>
-                                            <li><a href="about.html">About US</a></li>
-                                            <li><a href="packages.html">Package</a></li>
-                                            <li><a href="blog.html">Blog</a>
-                                                <ul class="submenu">
-                                                    <li><a href="blog.html">Blog</a></li>
-                                                    <li><a href="single-blog.html">Blog Details</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="#">Pages</a>
-                                                <ul class="submenu">
-                                                    <li><a href="elements.html">Element</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="contact.html">Contact Us</a></li>
-                                        </ul>
-                                    </nav>
-                                </div>
-                            </div>
-                            <!-- Mobile Menu -->
-                            <div class="col-12">
-                                <div class="mobile_menu d-block d-lg-none"></div>
-                            </div>
-                        </div>
-                    </div>
-               </div>
-            </div>
-       </div>
-        <!-- Header End -->
-    </header>
+     <!-- userHeader s -->
+     <%@include file="../../common/userHeader.jsp"%>
+     <!-- userHeader e -->
     <!--================Blog Area =================-->
     <section class="blog_area section-padding">
         <div class="container">
@@ -229,59 +147,68 @@
 				     <!-- slider Area End-->
 				     <div style="height: 50px;"></div>
                 	<!-- Blog Area Start -->
-                	<div>
-                		<h2><c:out value="${item.title }"/></h2>
-                		<div style="height: 20px;"></div>
+                	<form method="post" id="PUVForm" name="PUVForm">
+	                	<input type="hidden" id="nxPostSeq" name="nxPostSeq" value="${item.nxPostSeq }">
                 		<div>
-                			<c:set var="listCodeRegion" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
-						  	<c:set var="listCodePostDiv" value="${CodeServiceImpl.selectListCachedCode('4')}"/>
-                			<span>구분/지역: </span>
-                			<span>
-								<c:forEach items="${listCodePostDiv}" var="listCodePostDiv" varStatus="statusPostDiv">
-									<c:if test="${item.postType eq listCodePostDiv.replaceCode}"><c:out value="${listCodePostDiv.name }"/></c:if>
-								</c:forEach>                			
-                			</span>
-                			<span>/</span>
-                			<span>
-	                			<c:forEach items="${listCodeRegion}" var="listCodeRegion" varStatus="statusRegion">
-									<c:if test="${item.region eq listCodeRegion.replaceCode}"><c:out value="${listCodeRegion.name }"/></c:if>
-								</c:forEach>
-                			</span>
-                			<div style="float:right">
-	                			<span style="margin-right: 10px;"><span>작성일: </span><span><fmt:formatDate value="${item.regDateTime }" pattern="yyyy-MM-dd"/></span></span>
-	                			<span style="margin-right: 10px;"><span>작성자: </span><span><c:out value="${item.memberName }"/></span></span>
-	                			<span style="margin-right: 10px;"><span>조회수: </span><span>1</span></span>
+	                		<h2 id="title" name="title"><c:out value="${item.title }"/></h2>
+	                		<div style="height: 20px;"></div>
+	                		<div>
+	                			<c:set var="listCodeRegion" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
+							  	<c:set var="listCodePostDiv" value="${CodeServiceImpl.selectListCachedCode('4')}"/>
+	                			<span>구분/지역: </span>
+	                			<span name="postType">
+									<c:forEach items="${listCodePostDiv}" var="listCodePostDiv" varStatus="statusPostDiv">
+										<c:if test="${item.postType eq listCodePostDiv.replaceCode}"><c:out value="${listCodePostDiv.name }"/></c:if>
+									</c:forEach>                			
+	                			</span>
+	                			<span>/</span>
+	                			<span id="region" name="region">
+		                			<c:forEach items="${listCodeRegion}" var="listCodeRegion" varStatus="statusRegion">
+										<c:if test="${item.region eq listCodeRegion.replaceCode}"><c:out value="${listCodeRegion.name }"/></c:if>
+									</c:forEach>
+	                			</span>
+	                			<div style="float:right">
+		                			<span style="margin-right: 10px;"><span>작성일: </span><span id="regDateTime" name="regDateTime"><fmt:formatDate value="${item.regDateTime }" pattern="yyyy-MM-dd"/></span></span>
+		                			<span style="margin-right: 10px;"><span>작성자: </span><span id="memberNickName" name="memberNickName"><c:out value="${item.memberNickName }"/></span></span>
+		                			<span style="margin-right: 10px;"><span>조회수: </span><span>1</span></span>
+		                		</div>
 	                		</div>
-                		</div>
-                		<div style="background-color: #f0f0f0; padding: 20px; border-top: 1px solid #e8e8e8; border-bottom: 2px solid #e8e8e8;">
-                			<a style="display:block;"><img src="../../../image/bamboo.jpg" width="200px" height="144px" style="float: left;"></a>
-                			<div style="display:block; height: 144px;">
-                				<span style="margin-left: 15px;">
-                					<span>후기 종류: 
-                					</span>
-		               				<span> 
-		               					<c:set var="listCodePostDiv" value="${CodeServiceImpl.selectListCachedCode('4')}"/>
-		               					<c:forEach items="${listCodePostDiv}" var="listCodePostDiv" varStatus="statusPostDiv">
-											<c:if test="${item.postType eq listCodePostDiv.replaceCode}"><c:out value="${listCodePostDiv.name }"/></c:if>
-										</c:forEach>
-		               				</span>
-                				</span>
-                				<br>
-                				<span style="margin-left: 15px;"><b><c:out value="${item.addressTitle }"/></b></span>
-                				<button type="button" class="btn btn-primary" style="float: right; margin-top: 66px;">지도 펴보기</button>
-                			</div>
-                		</div>
-                		<div class="content" style="padding: 20px;border-bottom: 1px solid #f0f0f0;">
-                			${item.content }
-                		</div>
-                		<div style="margin-top: 30px;">
-                			<button type="button" class="genric-btn info" style="float: right;" id="listBtn" name="listBtn">목록</button>
-                		</div>
-                		
-                	
-                	</div>
-				    
-				        
+	                		<div style="background-color: #f0f0f0; padding: 20px; border-top: 1px solid #e8e8e8; border-bottom: 2px solid #e8e8e8;">
+	                			<a style="display:block;"><img src="../../../image/bamboo.jpg" width="200px" height="144px" style="float: left;"></a>
+	                			<div style="display:block; height: 144px;">
+	                				<span style="margin-left: 15px;">
+	                					<span>후기 종류:
+	                					</span>
+			               				<span id="postType" name="postType"> 
+			               					<c:set var="listCodePostDiv" value="${CodeServiceImpl.selectListCachedCode('4')}"/>
+			               					<c:forEach items="${listCodePostDiv}" var="listCodePostDiv" varStatus="statusPostDiv">
+												<c:if test="${item.postType eq listCodePostDiv.replaceCode}"><c:out value="${listCodePostDiv.name }"/></c:if>
+											</c:forEach>
+			               				</span>
+	                				</span>
+	                				<br>
+	                				<span style="margin-left: 15px;" id="addressTitle" name="addressTitle"><b><c:out value="${item.addressTitle }"/></b></span>
+	                				<button type="button" class="btn btn-primary" style="float: right; margin-top: 66px;">지도 펴보기</button>
+	                			</div>
+	                		</div>
+	                		<div class="content" id="content" name="content" style="padding: 20px;border-bottom: 1px solid #f0f0f0;">
+	                			${item.content }
+	                		</div>
+	                		<c:choose>
+								<c:when test="${item.memberSeq eq sessSeq}"> <!-- length(list)가 0이면 이걸 하고 -->
+									<div style="margin-top: 30px;">
+										<button type="button" class="genric-btn info" style="float: right;" id="listBtn" name="listBtn">목록</button>
+										<button type="button" class="genric-btn warning" style="float: right; margin-right: 30px;" id="ModBtn" name="ModBtn">수정</button>
+			                		</div>
+								</c:when>
+								<c:otherwise>
+			                		<div style="margin-top: 30px;">
+			                			<button type="button" class="genric-btn info" style="float: right;" id="listBtn" name="listBtn">목록</button>
+			                		</div>
+			                	</c:otherwise>
+		                	</c:choose>
+	                	</div>
+                	</form>
                 </div>
             </div>
         </div>
@@ -375,9 +302,36 @@
 <!-- JS here -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 		<script>
+		
+		var goUrlList = "/post/postUserList";
+		var goUrlView = "/post/postUserView";
+		var goUrlRegMod = "/post/postRegMod";
+		
+		var form = $("form[name=PUVForm]"); 
+		var seq = $("input:hidden[name=nxPostSeq]");
+		
+		goList = function(thisPage){
+			$("input:hidden[name=thisPage]").val(thisPage);
+				form.attr("action", goUrlList).submit();
+		}
+		
+		goRegMod = function(seqValue){
+			seq.val(seqValue);
+			form.attr("action", goUrlRegMod).submit();
+		}
+		
+		$("#ModBtn").on("click", function(){
+			form.attr("action", goUrlRegMod).submit();
+		});
+		
+		$("#shBtn").on("click", function(){
+	   		form.attr("action", goUrlList).submit();
+		}); 
 		$("#listBtn").on("click", function(){
 			location.href = "/post/postUserList";	
 		});
+		
+		
 		</script>	
 		<!-- All JS Custom Plugins Link Here here -->
         <script src="/resources/template/gotrip-master/assets/js/vendor/modernizr-3.5.0.min.js"></script>

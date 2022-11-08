@@ -85,8 +85,6 @@
         <!-- userHeader s -->
         <%@include file="../../common/userHeader.jsp"%>
         <!-- userHeader e -->
-        
-    </header>
     <!--================Blog Area =================-->
     <section class="blog_area section-padding">
         <div class="container">
@@ -184,7 +182,7 @@
                 		<input type="hidden" id="memberSeq" name="memberSeq" value="<c:out value="${item.memberSeq }" />">
                 		<input type="hidden" id="addressZip" name="addressZip" value="<c:out value="${item.addressZip }" />">
                 		<input type="hidden" id="address" name="address" value="<c:out value="${item.address }" />">
-                		<input type="hidden" id="addressExtra" name="addressExtra" value="<c:out value="${item.addressExtra }" />">
+                		<input type="hidden" id="addressExtra" name="addressExtra" value="">
                 		<input type="hidden" id="addressDetail" name="addressDetail" value="<c:out value="${item.addressDetail }" />">
                 		<input type="hidden" id="lng" name="lng" value="<c:out value="${item.lng }" />">
                 		<input type="hidden" id="lat" name="lat" value="<c:out value="${item.lat }" />">
@@ -216,7 +214,7 @@
 	                					작성자
 	                				</th>
 	                				<td class="col-xl-2" style="vertical-align: middle">
-	                					<c:out value="${sessName }"/>
+	                					<c:out value="${item.memberNickName }"/>
 	                				</td>
 	                			</tr>
 	                			<tr>
@@ -251,7 +249,7 @@
 												<c:out value="${item.content }"/>
 											</div> --%>
 											<textarea class="summerNote" id="content" name="content" style="display:none;">
-												<c:out value="${item.content }"/>
+												${item.content }
 											</textarea>
 										</div>
 	                				</td>
@@ -440,6 +438,7 @@
 		
 		$("#regModBtn").on("click", function(){
 			alert($("#region").val());
+			alert($("#nxPostSeq").val());
 			if(seq.val() == "0" || seq.val() == ""){
 				form.attr("action", goUrlInsert).submit();
 			} else{

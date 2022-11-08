@@ -4,6 +4,21 @@ import com.nextrip.common.constants.Constants;
 
 public class BaseVo {
 	
+// search
+	
+	private String shValue;
+	private Integer shOption;
+	private Integer shDelNy;
+	private Integer shUseNy;
+	private Integer shDor;
+//	private Date shDos;
+//	private Date shDoe;
+
+//	search post
+	private String shRegion;
+	private String shPostType;
+
+	
 //	paging
 	private int thisPage = 1;									// 현재 페이지
 	private int rowNumToShow = Constants.ROW_NUM_TO_SHOW;		// 화면에 보여줄 데이터 줄 갯수
@@ -159,5 +174,66 @@ public void setParamsPaging(int totalRows) {
 		System.out.println("getStartRnumForMysql(): " + getStartRnumForMysql());
 		
 	}
+//search
+
+public String getShValue() {
+	return shValue;
+}
+
+public void setShValue(String shValue) {
+	this.shValue = shValue;
+}
+
+public Integer getShOption() {
+	return shOption;
+}
+
+public void setShOption(Integer shOption) {
+	this.shOption = shOption;
+}
+
+public Integer getShDelNy() {
+	return shDelNy;
+}
+
+public void setShDelNy(Integer shDelNy) {
+	this.shDelNy = shDelNy;
+}
+
+public Integer getShUseNy() {
+	return shUseNy;
+}
+
+public void setShUseNy(Integer shUseNy) {
+	this.shUseNy = shUseNy;
+}
+
+public Integer getShDor() {
+	return shDor;
+}
+
+public void setShDor(Integer shDor) {
+	this.shDor = shDor;
+}
+
+public String getShRegion() {
+	return shRegion;
+}
+
+public void setShRegion(String shRegion) {
+	this.shRegion = shRegion;
+}
+
+public String getShPostType() {
+	return shPostType;
+}
+
+public void setShPostType(String shPostType) {
+	this.shPostType = shPostType;
+}
+
+
+
+	
 
 }

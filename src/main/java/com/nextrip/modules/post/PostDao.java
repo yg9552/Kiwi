@@ -19,6 +19,9 @@ public class PostDao {
 	public List<Post> postSelectList(PostVo vo){
 		return sqlSession.selectList(namespace + ".postSelectList", vo);
 	}
+	public int postSelectListCount(PostVo vo) {
+		return sqlSession.selectOne(namespace + ".postSelectListCount", vo);
+	}
 	public Post postSelectOne(PostVo vo) {
 		return sqlSession.selectOne(namespace + ".postSelectOne", vo);
 	}

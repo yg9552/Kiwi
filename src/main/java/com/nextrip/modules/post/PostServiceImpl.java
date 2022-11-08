@@ -16,6 +16,11 @@ public class PostServiceImpl implements PostService{
 	}
 	
 	@Override
+	public int postSelectListCount(PostVo vo) throws Exception{
+		return dao.postSelectListCount(vo);
+	}
+	
+	@Override
 	public Post postSelectOne(PostVo vo) throws Exception{
 		return dao.postSelectOne(vo);
 	}

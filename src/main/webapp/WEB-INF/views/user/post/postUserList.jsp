@@ -52,91 +52,9 @@
 </head>
 
 <body>
-    <!-- Preloader Start -->
-    <div id="preloader-active">
-        <div class="preloader d-flex align-items-center justify-content-center">
-            <div class="preloader-inner position-relative">
-                <div class="preloader-circle"></div>
-                <div class="preloader-img pere-text">
-                    <img src="/resources/template/gotrip-master/assets/img/logo/NTLogo.png" alt="">
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Preloader Start-->
-    <header>
-        <!-- Header Start -->
-       <div class="header-area">
-            <div class="main-header ">
-                <!-- <div class="header-top top-bg d-none d-lg-block">
-                   <div class="container">
-                    <div class="row justify-content-between align-items-center">
-                        <div class="col-lg-8">
-                            <div class="header-info-left">
-                                <ul>                          
-                                    <li>needhelp@gotrip.com</li>
-                                    <li>666 569 025077</li>
-                                    <li>broklyn street new york</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="header-info-right f-right">
-                                <ul class="header-social">    
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                   <li> <a href="#"><i class="fab fa-pinterest-p"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                       </div>
-                   </div>
-                </div> -->
-               <div class="header-bottom  header-sticky">
-                    <div class="container">
-                        <div class="row align-items-center">
-                            <!-- Logo -->
-                            <div class="col-xl-2 col-lg-2 col-md-1">
-                                <div class="logo">
-                                  <a href="index.html"><img src="/resources/template/gotrip-master/assets/img/logo/NTLogo.png" alt=""></a>
-                                </div>
-                            </div>
-                            <div class="col-xl-10 col-lg-10 col-md-10">
-                                <!-- Main-menu -->
-                                <div class="main-menu f-right d-none d-lg-block">
-                                    <nav>               
-                                        <ul id="navigation">                                                                                                                                     
-                                            <li><a href="index.html">Home</a></li>
-                                            <li><a href="about.html">About US</a></li>
-                                            <li><a href="packages.html">Package</a></li>
-                                            <li><a href="blog.html">Blog</a>
-                                                <ul class="submenu">
-                                                    <li><a href="blog.html">Blog</a></li>
-                                                    <li><a href="single-blog.html">Blog Details</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="#">Pages</a>
-                                                <ul class="submenu">
-                                                    <li><a href="elements.html">Element</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="contact.html">Contact Us</a></li>
-                                        </ul>
-                                    </nav>
-                                </div>
-                            </div>
-                            <!-- Mobile Menu -->
-                            <div class="col-12">
-                                <div class="mobile_menu d-block d-lg-none"></div>
-                            </div>
-                        </div>
-                    </div>
-               </div>
-            </div>
-       </div>
-        <!-- Header End -->
-    </header>
+     <!-- userHeader s -->
+     <%@include file="../../common/userHeader.jsp"%>
+     <!-- userHeader e -->
     <!--================Blog Area =================-->
     <section class="blog_area section-padding">
         <div class="container">
@@ -287,37 +205,43 @@
 			        </div>
 				        <!-- Blog Area End -->
 			        <form method="post" id="PLForm" name="PLForm">
+			        	<input type="hidden" id="thisPage" name="thisPage" value="<c:out value="${vo.thisPage }" default="1"/>">
+						<input type="hidden" id="rowNumToShow" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
 			        	<input type="hidden" id="nxPostSeq" name="nxPostSeq">
 				        <table class="table" style="text-align: center;">
 				          <caption class="caption-top">
 					          <div class="row">
 					          	<div class="col-lg-2">
-					          		<select class="form-select">
-					          			<option>전체 보기</option>
-                                		<option>패키지</option>
-                                		<option>여행지</option>
-                                		<option>음식점</option>
+					          		<select class="form-select" id="shPostType" name="shPostType">
+					          			<option value="">전체 보기</option>
+                                		<option value="401" <c:if test="${vo.shPostType eq 401}">selected</c:if>>여행지</option>
+                                		<option value="402" <c:if test="${vo.shPostType eq 402}">selected</c:if>>숙박</option>
+                                		<option value="403" <c:if test="${vo.shPostType eq 403}">selected</c:if>>음식점</option>
                                 	</select>
 					          	</div>
 					          	<div class="col-lg-2">
-						          	<select class="form-select">
-				          				<option>전체 지역</option>
-                                		<option>서울</option>
-                                		<option>대전</option>
-                                		<option>대구</option>
+						          	<select class="form-select" id="" name="shRegion">
+				          				<option value="">전체 지역</option>
+                                		<option value="201" <c:if test="${vo.shRegion eq 201}">selected</c:if>>수도권</option>
+                                		<option value="202" <c:if test="${vo.shRegion eq 202}">selected</c:if>>강원도</option>
+                                		<option value="203" <c:if test="${vo.shRegion eq 203}">selected</c:if>>경상도</option>
+                                		<option value="204" <c:if test="${vo.shRegion eq 204}">selected</c:if>>전라도</option>
+                                		<option value="205" <c:if test="${vo.shRegion eq 205}">selected</c:if>>충청도</option>
+                                		<option value="206" <c:if test="${vo.shRegion eq 206}">selected</c:if>>제주도</option>
                                 	</select>
 					          	</div>
 					          	<div class="col-lg-2 offset-3">
                                 	<select class="form-select">
-                                		<option>제목</option>
-                                		<option>내용</option>
-                                		<option>구분</option>
+                                		<option>검색 구분</option>
+                                		<option value="206" <c:if test="${vo.shOption eq 1}">selected</c:if>>제목</option>
+                                		<option value="206" <c:if test="${vo.shOption eq 2}">selected</c:if>>내용</option>
+                                		<option value="206" <c:if test="${vo.shOption eq 3}">selected</c:if>>지역 이름</option>
                                 	</select> 
                                 </div>
 					          	<div class="input-group col-lg-3">
 	                                <div class="input-group mb-3">
-									  <input type="text" class="form-control" placeholder="">
-									  <button class="btn-primary" type="button" id="button-addon2"><i class="fa-solid fa-magnifying-glass"></i></button>
+									  <input type="text" class="form-control" placeholder="검색" id="shValue" name="shValue">
+									  <button type="button" id="shBtn" name="shBtn" style="background-color: navy;"><i class="fa-solid fa-magnifying-glass"></i></button>
 									</div>
                                 </div>
                             </div>
@@ -333,63 +257,42 @@
 						    </tr>
 						  </thead>
 						  <tbody>
-							<c:set var="listCodeRegion" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
-						  	<c:set var="listCodePostDiv" value="${CodeServiceImpl.selectListCachedCode('4')}"/>
 							<c:choose>
 								<c:when test="${fn:length(list) eq 0}"> <!-- length(list)가 0이면 이걸 하고 -->
 									<td class="text-center" colspan="6">게시글이 존재하지 않습니다.</td>
 								</c:when>
 								<c:otherwise>
 									<c:forEach items="${list}" var="list" varStatus="status">
+										<c:set var="listCodeRegion" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
+									  	<c:set var="listCodePostDiv" value="${CodeServiceImpl.selectListCachedCode('4')}"/>
 										<tr>
-											<td><c:out value="${status.count }"/></td>
-											<td>
-												<c:forEach items="${listCodeRegion}" var="listCodeRegion" varStatus="statusRegion">
-													<c:if test="${list.region eq listCodeRegion.replaceCode}"><span class="state"><c:out value="${listCodeRegion.name }"/></span></c:if>
-												</c:forEach>
-											</td>
+											<td><c:out value="${list.nxPostSeq }"/></td>
 											<td>
 												<c:forEach items="${listCodePostDiv}" var="listCodePostDiv" varStatus="statusPostDiv">
 													<c:if test="${list.postType eq listCodePostDiv.replaceCode}"><span class="state"><c:out value="${listCodePostDiv.name }"/></span></c:if>
 												</c:forEach>
 											</td>
+											<td>
+												<c:forEach items="${listCodeRegion}" var="listCodeRegion" varStatus="statusRegion">
+													<c:if test="${list.region eq listCodeRegion.replaceCode}"><span class="state"><c:out value="${listCodeRegion.name }"/></span></c:if>
+												</c:forEach>
+											</td>
 									        <td onclick="location.href='javascript:goView(<c:out value="${list.nxPostSeq }"/>)'" style="cursor: pointer;"><c:out value="${list.title }"/></td>
-									        <td><c:out value="${list.memberName }"/></td>
+									        <td><c:out value="${list.memberNickName }"/></td>
 									        <td><fmt:formatDate value="${list.regDateTime }" pattern="yyyy-MM-dd"/></td>
 							        	</tr>
 									</c:forEach>
 								</c:otherwise>
 							</c:choose>
-						   <!--  <tr>
-						      <td scope="row">3</th>
-						      <td><span class="state">패키지</span></td>
-						      <td>서울</td>
-						      <td>테스트 패키지</td>
-						      <td>김**</td>
-						      <td>2022-10-21</td>
-						    </tr>
-						    <tr>
-						      <td scope="row">2</th>
-						      <td><span class="state">음식점</span></td>
-						      <td>서울</td>
-						      <td>테스트 패키지</td>
-						      <td>김**</td>
-						      <td>2022-10-21</td>
-						    </tr>
-						    <tr>
-						      <td scope="row">1</th>
-						      <td><span class="state">여행지</span></td>
-						      <td>서울</td>
-						      <td>테스트 패키지</td>
-						      <td>김**</td>
-						      <td>2022-10-21</td>
-						    </tr> -->
 						  </tbody>
 						  <caption style="caption-side: bottom;">
 						  	<button type="button" class="genric-btn success" id="regBtn" name="regBtn" style="float:right;">글 쓰기</button>
 						  </caption>
 						</table>
-	                    <div class="blog_left_sidebar">
+						<!-- userPagination s -->
+							<%@include file="../../common/userPagination.jsp"%>
+						<!-- userPagination e -->
+	                    <!-- <div class="blog_left_sidebar">
 	                        <nav class="blog-pagination justify-content-center d-flex">
 	                            <ul class="pagination">
 	                                <li class="page-item">
@@ -410,7 +313,7 @@
 	                                </li>
 	                            </ul>
 	                        </nav>
-	                    </div>
+	                    </div> -->
                     </form>
                 </div>
             </div>
@@ -509,11 +412,17 @@
 	<!-- All JS Custom Plugins Link Here here -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	<script>
+	var goUrlList = "/post/postUserList";
 	var goUrlView = "/post/postUserView";
 	var goUrlRegMod = "/post/postRegMod";
 	
 	var form = $("form[name=PLForm]"); 
 	var seq = $("input:hidden[name=nxPostSeq]");
+	
+	goList = function(thisPage){
+		$("input:hidden[name=thisPage]").val(thisPage);
+			form.attr("action", goUrlList).submit();
+	}
 	
 	goView = function(seqValue){
 		seq.val(seqValue);
@@ -528,6 +437,10 @@
 	$("#regBtn").on("click", function(){
 		goRegMod(0);
 	});
+	
+	$("#shBtn").on("click", function(){
+   		form.attr("action", goUrlList).submit();
+	}); 
 	
 	</script>
 	

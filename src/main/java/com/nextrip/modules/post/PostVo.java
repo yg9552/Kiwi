@@ -1,7 +1,8 @@
 package com.nextrip.modules.post;
 
+import com.nextrip.common.base.BaseVo;
 
-public class PostVo {
+public class PostVo extends BaseVo {
 	
 	private String nxPostSeq;
 	private String memberSeq;

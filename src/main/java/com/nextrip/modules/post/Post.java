@@ -22,7 +22,7 @@ public class Post {
 	
 	
 	//join
-	private String MemberName;
+	private String MemberNickName;
 	
 	private String servletContext;
 	
@@ -154,12 +154,14 @@ public class Post {
 	
 	
 
-	public String getMemberName() {
-		return MemberName;
+	
+
+	public String getMemberNickName() {
+		return MemberNickName;
 	}
 
-	public void setMemberName(String memberName) {
-		MemberName = memberName;
+	public void setMemberNickName(String memberNickName) {
+		MemberNickName = memberNickName;
 	}
 
 	public String getServletContext() {
