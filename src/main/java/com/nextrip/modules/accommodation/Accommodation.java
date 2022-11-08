@@ -1,6 +1,8 @@
 package com.nextrip.modules.accommodation;
 
 
+import java.sql.Time;
+import java.sql.Timestamp;
 import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -21,9 +23,9 @@ public class Accommodation extends Base {
 	private String lng;
 	private String lat;
 	@DateTimeFormat(pattern = "hh:mm")
-	private Date checkin;
+	private Timestamp checkin;
 	@DateTimeFormat(pattern = "hh:mm")
-	private Date checkout;
+	private Timestamp checkout;
 
 	
 	private MultipartFile[] uploadImg;
@@ -185,16 +187,16 @@ public class Accommodation extends Base {
 	public void setUploadFileDeletePathFile(String[] uploadFileDeletePathFile) {
 		this.uploadFileDeletePathFile = uploadFileDeletePathFile;
 	}
-	public Date getCheckin() {
+	public Timestamp getCheckin() {
 		return checkin;
 	}
-	public void setCheckin(Date checkin) {
+	public void setCheckin(Timestamp checkin) {
 		this.checkin = checkin;
 	}
-	public Date getCheckout() {
+	public Timestamp getCheckout() {
 		return checkout;
 	}
-	public void setCheckout(Date checkout) {
+	public void setCheckout(Timestamp checkout) {
 		this.checkout = checkout;
 	}
 
