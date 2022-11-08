@@ -18,6 +18,10 @@ public class MemberServiceImpl implements MemberService {
 	public List<Member> selectMemberList(MemberVo vo) throws Exception {
 		return dao.selectMemberList(vo);
 	}
+	@Override
+	public Member selectOneMember(MemberVo vo) throws Exception {
+		return dao.selectOneMember(vo);
+	}
 
 	@Override
 	public Member checkId(Member dto) throws Exception {return dao.checkId(dto);}
@@ -36,5 +40,6 @@ public class MemberServiceImpl implements MemberService {
 		dto.setPassword(UtilSecurity.encryptSha256(dto.getPassword()));
 		return dao.userReg(dto);
 	}
+
 
 }

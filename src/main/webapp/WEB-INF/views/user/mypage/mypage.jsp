@@ -51,8 +51,12 @@
 		list-style-type:square ;
 	}
 </style>
+<%@include file="../../common/userHeader.jsp"%>
 <body>
     <div class="container">
+    	<div class="col-3">
+    		<%@include file="../../common/mypageSideMenu.jsp"%>
+    	</div>
     	sessSeq: <c:out value="${sessSeq }"/><br>
 		sessId: <c:out value="${sessId }"/><br>
 		<form method="post">

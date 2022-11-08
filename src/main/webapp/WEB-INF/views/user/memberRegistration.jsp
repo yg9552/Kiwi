@@ -18,19 +18,8 @@
 	<link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-
-	<!-- CSS here -->
-    <link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/flaticon.css">
-    <link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/slicknav.css">
-    <link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/animate.min.css">
-    <link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/magnific-popup.css">
-    <link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/fontawesome-all.min.css">
-    <link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/themify-icons.css">
-    <link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/slick.css">
-    <link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/nice-select.css">
-    <link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/style.css">
+	<%@include file="../common/templateCSS.jsp"%>
+	<%@include file="../common/templateScript.jsp"%>
 </head>
 <style type="text/css">
 	td{
@@ -164,43 +153,6 @@
 		</div>
 	</div>
 
-
-		<!-- All JS Custom Plugins Link Here here -->
-        <script src="/resources/template/gotrip-master/assets/js/vendor/modernizr-3.5.0.min.js"></script>
-		
-		<!-- Jquery, Popper, Bootstrap -->
-		<script src="/resources/template/gotrip-master/assets/js/vendor/jquery-1.12.4.min.js"></script>
-        <script src="/resources/template/gotrip-master/assets/js/popper.min.js"></script>
-        <script src="/resources/template/gotrip-master/assets/js/bootstrap.min.js"></script>
-	    <!-- Jquery Mobile Menu -->
-        <script src="/resources/tempalte/gotrip-master/assets/js/jquery.slicknav.min.js"></script>
-
-		<!-- Jquery Slick , Owl-Carousel Plugins -->
-        <script src="/resources/template/gotrip-master/assets/js/owl.carousel.min.js"></script>
-        <script src="/resources/template/gotrip-master/assets/js/slick.min.js"></script>
-		<!-- One Page, Animated-HeadLin -->
-        <script src="/resources/tempalae/gotrip-master/assets/js/wow.min.js"></script>
-		<script src="/resources/tempalae/gotrip-master/assets/js/animated.headline.js"></script>
-        <script src="/resources/tempalae/gotrip-master/assets/js/jquery.magnific-popup.js"></script>
-
-		<!-- Scrollup, nice-select, sticky -->
-        <script src="/resources/template/gotrip-master/assets/js/jquery.scrollUp.min.js"></script>
-        <script src="/resources/template/gotrip-master/assets/js/jquery.nice-select.min.js"></script>
-		<script src="/resources/template/gotrip-master/assets/js/jquery.sticky.js"></script>
-        
-        <!-- contact js -->
-        <script src="/resources/template/gotrip-master/assets/js/contact.js"></script>
-        <script src="/resources/template/gotrip-master/assets/js/jquery.form.js"></script>
-        <script src="/resources/template/gotrip-master/assets/js/jquery.validate.min.js"></script>
-        <script src="/resources/template/gotrip-master/assets/js/mail-script.js"></script>
-        <script src="/resources/template/gotrip-master/assets/js/jquery.ajaxchimp.min.js"></script>
-        
-		<!-- Jquery Plugins, main Jquery -->	
-        <script src="/resources/template/gotrip-master/assets/js/plugins.js"></script>
-        <script src="/resources/template/gotrip-master/assets/js/main.js"></script>
-        
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
-        <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
         <script defer type="text/javascript" src="/resources/xdmin/js/validationXdmin.js"></script>
         <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
         <script type="text/javascript">
@@ -249,13 +201,38 @@
         			return false;
         		} 
         	});
-        	$("#passwordCheck").on("focusout", function(){
-        		if(!checkNull('passwordCheck',2 ,"비밀번호를 확인해 주세요.")) {
+//        	$("#passwordCheck").on("focusout", function(){
+ //       		if(!checkNull('passwordCheck',2 ,"비밀번호를 확인해 주세요.")) {
+  //      			return false;
+   //     		} 
+    //    	});
+    		$("#passwordCheck").on("focusout", function(){
+    			if($("#passwordCheck").val() != null && $("#passwordCheck").val() != ""  && $("#passwordCheck").val() == $("#password").val()){
+    				document.getElementById("passwordCheck").classList.remove('is-invalid');
+    				document.getElementById("passwordCheck").classList.add('is-valid');
+    				
+    				document.getElementById("passwordCheckFeedback").classList.remove('invalid-feedback');
+    				document.getElementById("passwordCheckFeedback").classList.add('valid-feedback');
+    				document.getElementById("passwordCheckFeedback").innerText = "비밀번호가 일치합니다.";
+    			} else {
+    				document.getElementById("passwordCheck").classList.remove('is-valid');
+    				document.getElementById("passwordCheck").classList.add('is-invalid');
+    				
+    				document.getElementById("passwordCheckFeedback").classList.remove('valid-feedback');
+    				document.getElementById("passwordCheckFeedback").classList.add('invalid-feedback');
+    				document.getElementById("passwordCheckFeedback").innerText = "비밀번호가 일치하지 않습니다.";
+    				return false;
+    			}
+    			
+    		});
+    
+        	$("#name").on("focusout", function(){
+        		if(!checkNull('name',2 ,"이름을 입력해 주세요.")) {
         			return false;
         		} 
         	});
-        	$("#name").on("focusout", function(){
-        		if(!checkNull('name',2 ,"이름을 입력해 주세요.")) {
+        	$("#dob").on("focusout", function(){
+        		if(!checkNull('dob',2 ,"생일을 선택해 주세요.")) {
         			return false;
         		} 
         	});

@@ -31,6 +31,16 @@ public class MemberController {
 		return "user/mypage/mypage";
 	}
 	
+	@RequestMapping(value="/nextrip/memberModification")
+	public String memberModification(HttpSession httpSession, Model model,@ModelAttribute("vo") MemberVo vo, Member dto) throws Exception {
+		String rtSeq = (String) httpSession.getAttribute("sessSeq");
+		vo.setMemberSeq(rtSeq);
+		Member result = service.selectOneMember(vo);
+		model.addAttribute("item", result);
+		
+		return "user/mypage/mypageMemberModification";
+	}
+	
 	@RequestMapping(value="/nextrip/login")
 	public String login() throws Exception {
 		return "user/login";

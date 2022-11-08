@@ -18,6 +18,7 @@ public class MemberDao {
 	private static String namespace="com.nextrip.modules.member.MemberMapper";
 	
 	public List<Member> selectMemberList(MemberVo vo) {return sqlSession.selectList(namespace+".selectMemberList", vo);}
+	public Member selectOneMember(MemberVo vo) {return sqlSession.selectOne(namespace+".selectOneMember", vo);}
 	
 	public Member checkId(Member dto) {return sqlSession.selectOne(namespace+".checkId", dto);}
 	

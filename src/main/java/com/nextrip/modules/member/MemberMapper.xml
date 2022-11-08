@@ -41,11 +41,29 @@
 				,adminNy
 				,delNy
 				,regDateTime
-				,modDatetime
+				,modDateTime
 			<include refid="selectCommon"></include>
 			order by memberSeq DESC
 			<include refid="Base.orderByLimitForMysql" />
 		<include refid="Base.selectListLowerForMysql" />
+	</select>
+	
+	<select id="selectOneMember" resultMap="resultMapObj">
+		SELECT
+			memberSeq
+			,id
+			,nickname
+			,name
+			,dob
+			,phoneNum
+			,email
+			,adminNy
+			,delNy
+			,regDateTime
+			,modDateTime
+		FROM member
+		WHERE 1=1
+			AND memberSeq=#{memberSeq}
 	</select>
 	
 	<select id="getIdList" resultMap="resultMapObj">

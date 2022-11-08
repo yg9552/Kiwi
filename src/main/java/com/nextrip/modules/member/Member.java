@@ -16,6 +16,8 @@ public class Member {
 	private Integer adminNy;
 	private Integer delNy;
 	private Integer lgResultNy;
+	private String regDateTime;
+	private String modDateTime;
 	
 	public String getPasswordCheck() {
 		return passwordCheck;
@@ -100,6 +102,18 @@ public class Member {
 	}
 	public void setLgResultNy(Integer lgResultNy) {
 		this.lgResultNy = lgResultNy;
+	}
+	public String getRegDateTime() {
+		return regDateTime;
+	}
+	public void setRegDateTime(String regDateTime) {
+		this.regDateTime = regDateTime;
+	}
+	public String getModDateTime() {
+		return modDateTime;
+	}
+	public void setModDateTime(String modDateTime) {
+		this.modDateTime = modDateTime;
 	}
 	
 	
