@@ -60,7 +60,7 @@
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
-                  <a href="/region/accommodation/accommodationListK" class="menu-link">
+                  <a href="/nextrip/region/accommodation/accommodationListK" class="menu-link">
                     <div data-i18n="Error">숙박상품</div>
                   </a>
                 </li>
