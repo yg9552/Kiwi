@@ -16,7 +16,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="manifest" href="site.webmanifest">
 		<link rel="shortcut icon" type="image/x-icon" href="/resources/template/gotrip-master/assets/img/favicon.ico">
-		<script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=fff4722d1b0684553d2d53d2ea3f7fe9"></script>
 		<link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/bootstrap.min.css">
         <link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/owl.carousel.min.css">
         <link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/flaticon.css">
@@ -29,7 +28,8 @@
         <link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/nice-select.css">
         <link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        
+        <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+   		<script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=fff4722d1b0684553d2d53d2ea3f7fe9"></script>
    </head>
 
    <body>
@@ -78,8 +78,8 @@
 				</div>
                 <div class="row mt-3">
                     <div class="col-lg-3">
-                    	<c:set var="listregion" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
                         <c:forEach items="${list }" var="list" varStatus="status">
+                        	<c:set var="listregion" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
 	                        <article class="blog_item">
 	                            <div class="blog_item_img">
 	                            	<c:forEach items="${listUploaded}" var="listUploaded" varStatus="statusUploaded">
@@ -93,19 +93,9 @@
 	                                	<h2><c:out value="${list.hotelName }" /></h2>
 	                                </a>
 	                                <ul class="blog-info-link">
-		                        		<li>
-		                        			<a href="#">
-		                        				<i class="fa-solid fa-location-dot"></i>
-						                     	<c:choose>
-						                        	<c:when test="${list.region eq 201 }">수도권</c:when>
-						                        	<c:when test="${list.region eq 202 }">강원도</c:when>
-						                        	<c:when test="${list.region eq 203 }">경상도</c:when>
-						                        	<c:when test="${list.region eq 204 }">전라도</c:when>
-						                        	<c:when test="${list.region eq 205 }">충청도</c:when>
-						                        	<c:when test="${list.region eq 206 }">제주도</c:when>
-						                        </c:choose>
-	                        				</a>
-                        				</li>
+	                                	<c:forEach items="${listregion}" var="listregion" varStatus="statuslistregion">
+	                                		<c:if test="${list.region eq listregion.replaceCode }"><li><a href="#"><i class="fa-solid fa-location-dot"></i><c:out value="${listregion.name }"/></a></li></c:if>
+		                        		</c:forEach>
 				                        <li><a href="#"><i class="fa fa-comments"></i> 후기 3건 </a></li>
 				                    </ul>
 				                    <h5 class="mt-2 text-danger">1박 190,000원</h5>
@@ -240,6 +230,7 @@
 		<!-- Jquery Plugins, main Jquery -->	
         <script src="/resources/template/gotrip-master/assets/js/plugins.js"></script>
         <script src="/resources/template/gotrip-master/assets/js/main.js"></script>
+       	
         <script type="text/javascript">
         
         var goUrlView = "/nextrip/region/accommodation/accommodationView";			/* #-> */

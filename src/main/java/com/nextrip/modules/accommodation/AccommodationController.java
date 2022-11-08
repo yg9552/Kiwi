@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.nextrip.common.constants.Constants;
+import com.nextrip.modules.room.Room;
+import com.nextrip.modules.room.RoomServiceImpl;
+import com.nextrip.modules.room.RoomVo;
 
 @Controller
 @RequestMapping(value = "/nextrip/region/accommodation/")
@@ -17,6 +20,8 @@ public class AccommodationController {
 
 	@Autowired
 	AccommodationServiceImpl service;
+	@Autowired
+	RoomServiceImpl serviceR;
 	
 	@RequestMapping(value = "accommodationList")
 	public String acmdList(@ModelAttribute("vo") AccommodationVo vo, Model model) throws Exception {
@@ -67,10 +72,20 @@ public class AccommodationController {
 	}
 	
 	@RequestMapping(value = "accommodationView")
-	public String accommodationView(@ModelAttribute("vo") AccommodationVo vo, Model model) throws Exception {
+	public String accommodationView(@ModelAttribute("vo") AccommodationVo vo, Model model, RoomVo voR) throws Exception {
+		Accommodation item = service.selectOne(vo);
+		List<Room> listR = serviceR.selectList(voR);
+		model.addAttribute("item", item);
+		model.addAttribute("listR", listR);
+		model.addAttribute("listUploaded", service.selectListUploaded(vo));
+		return "user/region/accommodation/accommodationView";
+	}
+	
+	@RequestMapping(value = "accommodationPurchase")
+	public String acccommodationPurchase(@ModelAttribute("vo") AccommodationVo vo, Model model) throws Exception {
 		Accommodation item = service.selectOne(vo);
 		model.addAttribute("item", item);
 		model.addAttribute("listUploaded", service.selectListUploaded(vo));
-		return "user/region/accommodation/accommodationView";
+		return "user/region/accommodation/accommodationPurchase";
 	}
 }

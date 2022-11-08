@@ -22,10 +22,8 @@ public class Accommodation extends Base {
 	private String adressDetail;
 	private String lng;
 	private String lat;
-	@DateTimeFormat(pattern = "hh:mm")
-	private Timestamp checkin;
-	@DateTimeFormat(pattern = "hh:mm")
-	private Timestamp checkout;
+	private String checkin;
+	private String checkout;
 
 	
 	private MultipartFile[] uploadImg;
@@ -187,18 +185,19 @@ public class Accommodation extends Base {
 	public void setUploadFileDeletePathFile(String[] uploadFileDeletePathFile) {
 		this.uploadFileDeletePathFile = uploadFileDeletePathFile;
 	}
-	public Timestamp getCheckin() {
+	public String getCheckin() {
 		return checkin;
 	}
-	public void setCheckin(Timestamp checkin) {
+	public void setCheckin(String checkin) {
 		this.checkin = checkin;
 	}
-	public Timestamp getCheckout() {
+	public String getCheckout() {
 		return checkout;
 	}
-	public void setCheckout(Timestamp checkout) {
+	public void setCheckout(String checkout) {
 		this.checkout = checkout;
 	}
+	
 
 
 }

@@ -166,7 +166,7 @@
                               type="text"
                               id="checkin"
                               name="checkin"
-                              value="<fmt:formatDate value="${item.checkin }" pattern="(a)hh:mm" />"
+                              value="<c:out value="${item.checkin }" />"
                             />
                           </div>
                           <div class="mb-3 col-md-6">
@@ -176,7 +176,7 @@
                               type="text"
                               id="checkout"
                               name="checkout"
-                              value="<fmt:formatDate value="${item.checkout }" pattern="(a)hh:mm" />"
+                              value="<c:out value="${item.checkout }" />"
                             />
                           </div>
                           <div class="mb-3 col-md-6">

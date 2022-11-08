@@ -7,5 +7,99 @@
 <mapper namespace="com.nextrip.modules.purchaseHistory.PurchaseHistoryMapper">
 
     <resultMap id="resultMapObj" type="com.nextrip.modules.purchaseHistory.PurchaseHistory"></resultMap>
+	<sql id="selectCommon">
+	FROM nxPurchaseHistory a
+	WHERE 1=1
 	
+	</sql>
+	
+	<select id="selectList" resultMap="resultMapObj">
+		<include refid="Base.selectListUpperForMysql" />
+			SELECT 
+			    a.nxPurchaseHistorySeq
+			    ,a.memberSeq
+			    ,a.nxRoomSeq
+			    ,a.reservationName
+			    ,a.reservationPhoneNum
+			    ,a.reservationStatus
+			    ,a.paymentMethod
+			    ,a.checkInDate
+			    ,a.checkOutDate
+			    ,a.pay
+			    ,a.delNy
+			    ,a.regDateTime
+			    ,a.modDateTime
+			    ,a.personnel
+		    <include refid="selectCommon" />
+	    	ORDER BY a.nxPurchaseHistorySeq DESC
+	    	<include refid="Base.orderByLimitForMysql" />
+		<include refid="Base.selectListLowerForMysql" />
+	</select>
+	
+	<select id="selectOne" resultMap="resultMapObj">
+		SELECT 
+		    a.nxPurchaseHistorySeq
+		    ,a.memberSeq
+		    ,a.nxRoomSeq
+		    ,a.reservationName
+		    ,a.reservationPhoneNum
+		    ,a.reservationStatus
+		    ,a.paymentMethod
+		    ,a.checkInDate
+		    ,a.checkOutDate
+		    ,a.pay
+		    ,a.delNy
+		    ,a.regDateTime
+		    ,a.modDateTime
+		    ,a.personnel
+	    FROM nxPurchaseHistory a
+	    WHERE 1=1
+	    AND a.nxPurchaseHistorySeq = #{nxPurchaseHistorySeq}
+	</select>
+	
+	<select id="selectOneCount" resultType="Integer">
+		SELECT COUNT(*)
+		<include refid="selectCommon" />
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO nxPurchaseHistory(
+			memberSeq
+			,nxRoomSeq
+			,reservationStatus
+			,checkInDate
+			,checkOutDate
+			,pay
+			,delNy
+			,personnel
+			)
+		VALUES(
+			#{memberSeq }
+			,#{nxRoomSeq }
+			,1
+			,#{checkInDate }
+			,#{checkOutDate }
+			,#{pay }
+			,0
+			,#{personnel }
+			)
+		<selectKey resultType="String" keyProperty="nxPurchaseHistorySeq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
+	
+	<update id="update">
+	UPDATE nxPurchaseHistory
+	SET
+		reservationName = #{reservationName }
+		,reservationPhoneNum = #{reservationPhoneNum }
+		,reservationStatus = 2
+		,paymentMethod = #{paymentMethod }
+		,checkInDate = #{checkInDate }
+		,checkOutDate = #{checkOutDate }
+		,pay = #{pay }
+		,personnel = #{personnel }
+	WHERE 
+		nxPurchaseHistorySeq = #{nxPurchaseHistorySeq}
+	</update>
 </mapper>	

@@ -51,17 +51,22 @@
         <div class="slider-area">
             <div class="slider-wrap">
 			  <c:forEach items="${listUploaded}" var="listUploaded" varStatus="statusUploaded">
-			  <div>
-           		<c:if test="${listUploaded.type eq 1}">
-              		<img src="<c:out value="${listUploaded.path }"/><c:out value="${listUploaded.uuidName }"/>" alt="" style="width: 480px; height: 432px;">
-           		</c:if>
-			</div>
-			</c:forEach>
+			  	<div>
+           			<c:if test="${listUploaded.type eq 1}">
+              			<img src="<c:out value="${listUploaded.path }"/><c:out value="${listUploaded.uuidName }"/>" alt="" style="width: 480px; height: 432px;">
+           			</c:if>
+				</div>
+			  </c:forEach>
+	        </div>
         </div>
         <!-- slider Area End-->
 
    <section class="blog_area single-post-area section-padding">
       <div class="container">
+      	 <form name="viewForm" method="post">
+      	 <!-- *Vo.jsp s -->
+			<%@include file="accommodationVo.jsp"%>		<!-- #-> -->
+	    <!-- *Vo.jsp e -->
          <div class="row">
             <div class="col-lg-8 posts-list">
                <div class="single-post">
@@ -87,8 +92,8 @@
                      </p>
                      <div class="quote-wrapper">
                      	<h4 class="d-inline">시설 정보</h4>
-                     	<span class="text-primary"><i class="fa-regular fa-clock"></i>체크인 : <fmt:formatDate value="${item.checkin }" type="time" pattern="(a)hh:mm" /></span>
-                     	<span class="text-primary"> · 체크아웃 : <fmt:formatDate value="${item.checkout }" pattern="(a)hh:mm" /> </span>
+                     	<span class="text-primary"><i class="fa-regular fa-clock"></i>체크인 : <c:out value="${item.checkin }" /> </span>
+                     	<span class="text-primary"> · 체크아웃 : <c:out value="${item.checkout }" /> </span>
                         <div class="quotes text-center">
                            <div class="col d-inline">
                            	<i class="fa-solid fa-person-swimming fa-2x mt-3 mr-3"><p class="mt-2">수영장</p></i>
@@ -162,10 +167,10 @@
                      <form action="#">
                      	<div class="form-group">
                      		<label>객실타입</label>
-		                    <select class="form-select" style="border: 1px solid #ced4da; border-radius: 0.25rem; color: #495057;">
-							  <option value="1">Double</option>
-							  <option value="2">Twin</option>
-							  <option value="3">Suite</option>
+		                    <select class="form-select" style="border: 1px solid #ced4da; border-radius: 0.25rem; color: #495057;" name="nxRoomSeq">
+							  <c:forEach items="${listR }" var="listR" varStatus="statusR">
+							  	<option value="<c:out value="${listR.nxRoomSeq }"/>"> <c:out value="${listR.roomName }"/> </option>
+							  </c:forEach>
 							</select>
 						</div>
                         <div class="form-group">
@@ -178,17 +183,17 @@
                         </div>
                         <div class="form-group">
                            <label>인원</label>
-                           <input type="number" class="form-control" value="2">
+                           <input type="number" class="form-control" value="2" name="personnel">
                         </div>
-                        <h5 class="text-danger text-center" style="margin: 50px 0 30px">1박 190000원</h5>
+                        <h5 class="text-danger text-center" style="margin: 50px 0 30px">1박 원</h5>
                         <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn" type="button">예약하기</button>
                      </form>
                   	</aside>
                  </div>
                </div>
             </div>
-         </div>
-      </div>
+            </form>
+    	</div>
    </section>
 
     </main>

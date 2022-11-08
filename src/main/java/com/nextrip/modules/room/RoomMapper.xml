@@ -7,5 +7,65 @@
 <mapper namespace="com.nextrip.modules.room.RoomMapper">
 
     <resultMap id="resultMapObj" type="com.nextrip.modules.room.Room"></resultMap>
+    
+    <sql id="selectCommon">
+    	FROM nxRoom a
+    	WHERE 1=1
+    	<if test="nxAccommodationSeq != null and !nxAccommodationSeq.equals('')">AND a.nxAccommodationSeq = #{nxAccommodationSeq}</if>
+    </sql>
 	
+	<select id="selectList" resultMap="resultMapObj">
+		<include refid="Base.selectListUpperForMysql" />
+			SELECT
+			    a.nxRoomSeq
+			    ,a.nxAccommodationSeq
+			    ,a.roomName
+			    ,a.roomType
+			    ,a.price
+			    ,a.delNy
+	    	<include refid="selectCommon" />
+	    	ORDER BY a.nxRoomSeq DESC
+	    	<include refid="Base.orderByLimitForMysql" />
+		<include refid="Base.selectListLowerForMysql" />
+	</select>
+	
+	<select id="selectOne" resultMap="resultMapObj">
+		SELECT
+		    a.nxRoomSeq
+		    ,a.nxAccommodationSeq
+		    ,a.roomName
+		    ,a.roomType
+		    ,a.price
+		    ,a.delNy
+		FROM nxRoom a
+		WEHRE 1=1
+		AND a.nxRoomSeq = #{nxRoomSeq}
+	</select>
+	
+	<select id="selectOneCount" resultType="Integer">
+		SELECT COUNT(*)
+		<include refid="selectCommon" />
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO nxRoom(
+			nxRoomSeq
+			,nxAccommodationSeq
+			,roomName
+			,roomType
+			,price
+			,delNy
+			)
+		VALUES(
+			#{nxRoomSeq }
+			,#{nxAccommodationSeq }
+			,#{roomName }
+			,#{roomType }
+			,#{price }
+			,0
+			)
+		<selectKey resultType="String" keyProperty="nxRoomSeq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
 </mapper>	
