@@ -19,7 +19,7 @@
     
   <!-- CSS here -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-	<!-- <link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/owl.carousel.min.css">
 	<link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/flaticon.css">
 	<link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/slicknav.css">
@@ -31,7 +31,7 @@
 	<link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/nice-select.css">
 	<link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/style.css">
 	<script src="https://kit.fontawesome.com/dca973ab96.js" crossorigin="anonymous"></script>
-	<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet"> -->
+	<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 	
 	
 	 <!-- 서머노트를 위해 추가해야할 부분 -->
@@ -40,47 +40,6 @@
 	 <script src="/resources/summernote/lang/summernote-ko-KR.js"></script>
 	 <link rel="stylesheet" href="/resources/summernote/summernote-lite.css">
 	 <!--  -->
-	
-	<style>
-		.state{
-			    display: block;
-			    width: 68px;
-			    height: 28px;
-			    line-height: 28px;
-			    text-align: center;
-			    border: 1px solid #008aff;
-			    color: #008aff;
-			    font-size: 13px;
-			    font-weight: bold;
-			    margin: 0 auto;
-		
-		}
-		.table th {
-			background-color: #f0f0f0;
-			vertical-align: middle;
-		}
-		
-		#container {
-                width: 1000px;
-                margin: 20px auto;
-            }
-            .ck-editor__editable[role="textbox"] {
-                /* editing area */
-                min-height: 500px;
-            }
-            .ck-content .image {
-                /* block images */
-                max-width: 80%;
-                margin: 20px auto;
-            }
-       .bottomBtn {
-       		width: 200px;
-       		height: 50px;
-       }
-       .note-icon-caret::before{
-       	display: none;
-       }
-	</style>
 <!-- </head>
 
 <body> -->
@@ -172,6 +131,47 @@
         <!-- userHeader s -->
         <%@include file="../../common/userHeader.jsp"%>
         <!-- userHeader e -->
+        
+        <style>
+		.state{
+			    display: block;
+			    width: 68px;
+			    height: 28px;
+			    line-height: 28px;
+			    text-align: center;
+			    border: 1px solid #008aff;
+			    color: #008aff;
+			    font-size: 13px;
+			    font-weight: bold;
+			    margin: 0 auto;
+		
+		}
+		.table th {
+			background-color: #f0f0f0;
+			vertical-align: middle;
+		}
+		
+		#container {
+                width: 1000px;
+                margin: 20px auto;
+            }
+            .ck-editor__editable[role="textbox"] {
+                /* editing area */
+                min-height: 500px;
+            }
+            .ck-content .image {
+                /* block images */
+                max-width: 80%;
+                margin: 20px auto;
+            }
+       .bottomBtn {
+       		width: 200px;
+       		height: 50px;
+       }
+       .note-icon-caret::before{
+       	display: none;
+       }
+	</style>
     </header>
     <!--================Blog Area =================-->
     <section class="blog_area section-padding">
@@ -275,9 +275,9 @@
                 		<input type="hidden" id="lng" name="lng" value="<c:out value="${item.lng }" />">
                 		<input type="hidden" id="lat" name="lat" value="<c:out value="${item.lat }" />">
 	                	<div>
-	                		<table class="table table-bordered text-center" style="vertical-align: middle">
+	                		<table class="table table-bordered text-center">
 	                			<tr>
-	                				<th class="col-xl-2">구분</th>
+	                				<th class="col-xl-2 VMiddle">구분</th>
 	                				<td class="col-xl-2">
 	                					<select class="form-select" id="postType" name="postType">
 	                						<option value="">구분</option>
@@ -286,7 +286,7 @@
 	                						<option value="403" <c:if test="${item.postType eq 403 }">selected</c:if>>음식점</option>
 	                					</select>
 	                				</td>
-	                				<th class="col-xl-2">지역</th>
+	                				<th class="col-xl-2 VMiddle">지역</th>
 	                				<td class="col-xl-2">
 	                					<select class="form-select" id="region" name="region">
 	                						<option value="">지역</option>
@@ -298,15 +298,15 @@
 	                						<option value="206" <c:if test="${item.region eq 206 }">selected</c:if>>제주</option>
 	                					</select>
 	                				</td>
-	                				<th class="col-xl-2">
-	                					<p><c:out value="${item.addressTitle }"/></p>
+	                				<th class="col-xl-2 VMiddle">
+	                					작성자
 	                				</th>
 	                				<td class="col-xl-2" style="vertical-align: middle">
-	                					작성자
+	                					<c:out value="${sessName }"/>
 	                				</td>
 	                			</tr>
 	                			<tr>
-	                				<th class="col-xl-2">
+	                				<th class="col-xl-2 VMiddle">
 	                					여행지 이름
 	                				</th>
 	                				<td colspan="4">
@@ -320,7 +320,7 @@
 	                				
 	                			</tr>
 	                			<tr>
-	                				<th class="col-xl-2">
+	                				<th class="col-xl-2 VMiddle">
 	                					제목
 	                				</th>
 	                				<td colspan="5">
@@ -328,7 +328,7 @@
 	                				</td>
 	                			</tr>
 	                			<tr style="height: 500px;">
-	                				<th>
+	                				<th class="VMiddle">
 	                					내용
 	                				</th>
 	                				<td colspan="5" >
@@ -525,6 +525,7 @@
 		
 		
 		$("#regModBtn").on("click", function(){
+			alert($("#region").val());
 			if(seq.val() == "0" || seq.val() == ""){
 				form.attr("action", goUrlInsert).submit();
 			} else{
