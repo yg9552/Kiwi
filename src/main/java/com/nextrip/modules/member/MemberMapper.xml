@@ -66,6 +66,26 @@
 			AND memberSeq=#{memberSeq}
 	</select>
 	
+	<update id="memberUpdt">
+		UPDATE member
+		SET
+			name = #{name}
+			,nickname = #{nickname}
+			,dob = #{dob}
+			,phoneNum = #{phoneNum}
+			,email = #{email}
+		WHERE 1=1
+			AND memberSeq=#{memberSeq}
+	</update>
+	
+	<update id="memberVele">
+		UPDATE member
+		SET
+			delNy = 1
+		WHERE 1=1
+			AND memberSeq=#{memberSeq}
+	</update>
+	
 	<select id="getIdList" resultMap="resultMapObj">
 		SELECT
 			memberSeq

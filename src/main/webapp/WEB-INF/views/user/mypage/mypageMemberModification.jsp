@@ -18,6 +18,7 @@
 	<link rel="manifest" href="site.webmanifest">
 	<link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 	<%@include file="../../common/templateCSS.jsp"%>
 	<%@include file="../../common/templateScript.jsp"%>
 </head>
@@ -45,7 +46,7 @@
 	       	</div>
 	       	<div class="col-9">
 	       		<p>개인정보 수정</p>
-	       		<form method="post" name="myForm">
+	       		<form method="post" name="myForm" autocomplete="off">
 		       		<div>
 					    <table class="table">
 					        <colgroup>
@@ -70,19 +71,19 @@
 		                        <tr>
 		                            <th>생년월일</th>
 		                            <td colspan="3">
-		                            	<input type="text" class="form-control" id="dob" value="<c:out value="${item.dob }"/>" style="border: none;">
+		                            	<input type="text" class="form-control" id="dob" name="dob" value="<c:out value="${item.dob }"/>" style="border: none;">
 				                    </td>
 						      	</tr>
 					            <tr>
 					                <th>휴대전화</th>
 					                <td colspan="3">
-					                    <input class="form-control" id="phoneNum" placeholder="휴대폰 번호를 입력해주세요." style="width:300px; margin:0 10px 0 0; border: none;" type="text" value="<c:out value="${item.phoneNum }"/>">
+					                    <input class="form-control" id="phoneNum" name="phoneNum" placeholder="휴대폰 번호를 입력해주세요." style="width:300px; margin:0 10px 0 0; border: none;" type="text" value="<c:out value="${item.phoneNum }"/>">
 					                </td>
 					            </tr>
 					            <tr>
 					                <th>이메일</th>
 					                <td colspan="3">
-					                    <input class="form-control" id="email" maxlength="50" placeholder="이메일을 입력해주세요." style="border:none; width:450px;" type="text" value="<c:out value="${item.email }"/>">
+					                    <input class="form-control" id="email" name="email" maxlength="50" placeholder="이메일을 입력해주세요." style="border:none; width:450px;" type="text" value="<c:out value="${item.email }"/>">
 					                </td>
 					            </tr>
 					        </tbody>
@@ -132,5 +133,32 @@
 	       	</div>
 		</div>
 	</div>
+	
+	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+	 <script type="text/javascript">
+	 	var goUrlUpdt = "/nextrip/memberUpdt";
+	 	var goUrlVele = "/nextrip/memberVele";
+	 	
+	 	var form = $("form[name=myForm]");
+	 	
+        $( function() {
+			$( "#dob" ).datepicker({
+		    	changeYear: true,
+		    	changeMonth: true,
+		    	dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'],
+		    	yearRange:"1900:2023",
+		    	monthNames:["1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월"],
+		    	monthNamesShort: ["1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월"],
+				dateFormat: "yy-mm-dd"
+			});
+		} );
+        
+        $("#btnUpdt").on("click",function(){
+        	form.attr("action", goUrlUpdt).submit();
+        });
+        $("#btnResign").on("click",function(){
+        	form.attr("action", goUrlVele).submit();
+        });
+	</script>
 </body>
 </html>

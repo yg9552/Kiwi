@@ -6,6 +6,8 @@ public interface MemberService {
 	 
 	public List<Member> selectMemberList(MemberVo vo) throws Exception;
 	public Member selectOneMember(MemberVo vo) throws Exception;
+	public int memberUpdt(Member dto) throws Exception;
+	public int memberVele(Member dto) throws Exception;
 	
 	public Member checkId(Member dto) throws Exception;
 	public Member login(MemberVo vo) throws Exception;

@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.nextrip.common.constants.Constants;
 
@@ -39,6 +40,23 @@ public class MemberController {
 		model.addAttribute("item", result);
 		
 		return "user/mypage/mypageMemberModification";
+	}
+	
+	@RequestMapping(value="/nextrip/memberUpdt")
+	public String memberUpdt(HttpSession httpSession, Member dto, RedirectAttributes redirectAttributes) throws Exception {
+		String rtSeq = (String) httpSession.getAttribute("sessSeq");
+		dto.setMemberSeq(rtSeq);
+		service.memberUpdt(dto);
+		return "redirect:/nextrip/memberModification";
+	}
+	
+	@RequestMapping(value="/nextrip/memberVele")
+	public String memberVele(HttpSession httpSession, Member dto, RedirectAttributes redirectAttributes) throws Exception {
+		String rtSeq = (String) httpSession.getAttribute("sessSeq");
+		dto.setMemberSeq(rtSeq);
+		service.memberVele(dto);
+		httpSession.invalidate();
+		return "redirect:/nextrip/mypage";
 	}
 	
 	@RequestMapping(value="/nextrip/login")

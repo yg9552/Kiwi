@@ -19,6 +19,8 @@ public class MemberDao {
 	
 	public List<Member> selectMemberList(MemberVo vo) {return sqlSession.selectList(namespace+".selectMemberList", vo);}
 	public Member selectOneMember(MemberVo vo) {return sqlSession.selectOne(namespace+".selectOneMember", vo);}
+	public int memberUpdt(Member dto) {return sqlSession.update(namespace+".memberUpdt", dto);}
+	public int memberVele(Member dto) {return sqlSession.update(namespace+".memberVele", dto);}
 	
 	public Member checkId(Member dto) {return sqlSession.selectOne(namespace+".checkId", dto);}
 	
