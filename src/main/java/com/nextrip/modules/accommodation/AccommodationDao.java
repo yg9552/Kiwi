@@ -36,4 +36,35 @@ public class AccommodationDao {
 	public List<Accommodation> selectListUploaded(AccommodationVo vo) {
 		return sqlSession.selectList(namespace + ".selectListUploaded", vo);
 	}
+	
+	//PurchaseHistory
+	public List<Accommodation> selectListPurchaseHistory(AccommodationVo vo) {
+		return sqlSession.selectList(namespace + ".selectListPurchaseHistory", vo);
+	}
+	public Accommodation selectOnePurchaseHistory(AccommodationVo vo) {
+		return sqlSession.selectOne(namespace + ".selectOnePurchaseHistory", vo);
+	}
+	public int selectOneCountPurchaseHistory(AccommodationVo vo) {
+		return sqlSession.selectOne(namespace + ".selectOneCountPurchaseHistory", vo);
+	}
+	public int insertPurchaseHistory(Accommodation dto) {
+		return sqlSession.insert(namespace + ".insertPurchaseHistory", dto);
+	}
+	public int updatePurchaseHistory(Accommodation dto) {
+		return sqlSession.update(namespace + ".updatePurchaseHistory", dto);
+	}
+	
+	//Room
+	public List<Accommodation> selectListRoom(AccommodationVo vo) {
+		return sqlSession.selectList(namespace + ".selectListRoom", vo);
+	}
+	public Accommodation selectOneRoom(AccommodationVo vo) {
+		return sqlSession.selectOne(namespace + ".selectOneRoom", vo);
+	}
+	public int selectOneCountRoom(AccommodationVo vo) {
+		return sqlSession.selectOne(namespace + ".selectOneCountRoom", vo);
+	}
+	public int insertRoom(Accommodation dto) {
+		return sqlSession.insert(namespace + ".insertRoom", dto);
+	}
 }

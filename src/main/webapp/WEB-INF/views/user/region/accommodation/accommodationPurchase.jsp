@@ -136,18 +136,10 @@
                                 <li>
                                     <h6>체크인</h6>
                                     <p class="p-3"><c:out value="${itemph.checkInDate }" /></p>
-                                    <div class="form-group">
-			                           <label for="checkInDate">체크인</label>
-			                           <input type="text" id="datePicker" class="form-control" name="checkInDate" />
-			                        </div>
                                 </li>
                                 <li>
                                     <h6>체크아웃</h6>
                                     <p class="p-3"><c:out value="${itemph.checkOutDate }" /></p>
-                                    <div class="form-group">
-			                           <label for="checkInDate">체크아웃</label>
-			                           <input type="text" id="datePicker" class="form-control" name="checkInDate" disabled="disabled" />
-			                        </div>
                                 </li>
                                 <li>
                                     <h5>총 결제 금액</h5>

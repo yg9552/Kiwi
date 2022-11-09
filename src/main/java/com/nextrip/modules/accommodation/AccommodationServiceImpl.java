@@ -95,6 +95,60 @@ for(int i=0; i<multipartFiles.length; i++) {
 		// TODO Auto-generated method stub
 		return dao.selectListUploaded(vo);
 	}
+
+	@Override
+	public List<Accommodation> selectListPurchaseHistory(AccommodationVo vo) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.selectListPurchaseHistory(vo);
+	}
+
+	@Override
+	public Accommodation selectOnePurchaseHistory(AccommodationVo vo) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.selectOnePurchaseHistory(vo);
+	}
+
+	@Override
+	public int selectOneCountPurchaseHistory(AccommodationVo vo) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.selectOneCountPurchaseHistory(vo);
+	}
+
+	@Override
+	public int insertPurchaseHistory(Accommodation dto) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.insertPurchaseHistory(dto);
+	}
+
+	@Override
+	public int updatePurchaseHistory(Accommodation dto) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.updatePurchaseHistory(dto);
+	}
+
+	@Override
+	public List<Accommodation> selectListRoom(AccommodationVo vo) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.selectListRoom(vo);
+	}
+
+	@Override
+	public Accommodation selectOneRoom(AccommodationVo vo) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.selectOneRoom(vo);
+	}
+
+	@Override
+	public int selectOneCountRoom(AccommodationVo vo) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.selectOneCountRoom(vo);
+	}
+
+	@Override
+	public int insertRoom(Accommodation dto) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.insertRoom(dto);
+	}
 	
 
 }
