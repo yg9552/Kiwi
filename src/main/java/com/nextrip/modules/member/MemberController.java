@@ -56,9 +56,6 @@ public class MemberController {
 	
 	@RequestMapping(value="/nextrip/myReservation")
 	public String selectMyReservationList(Model model, PurchaseHistoryVo vo) throws Exception {
-		vo.setParamsPaging(service2.selectOneCount(vo));
-		List<PurchaseHistory> list = service2.selectList(vo);
-		model.addAttribute("list", list);
 		
 		return "user/mypage/mypageReservationRecord";
 	}

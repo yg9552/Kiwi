@@ -10,7 +10,7 @@
 	            </a>
 	        </li>
 	        <li>
-	            <a href="./mypageReservationRecord.html" class="d-flex">
+	            <a href="/nextrip/myReservation" class="d-flex">
 	                <p>예약 내역</p>
 	            </a>
 	        </li>

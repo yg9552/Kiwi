@@ -41,87 +41,11 @@
 	}
 </style>
 <body>
-	<header>
-        <!-- Header Start -->
-       <div class="header-area">
-            <div class="main-header ">
-               <div class="header-bottom  header-sticky">
-                    <div class="container">
-                        <div class="row align-items-center">
-                            <!-- Logo -->
-                            <div class="col-xl-2 col-lg-2 col-md-1">
-                                <div class="logo">
-                                  <a href="index.html"><img src="../../../gotrip-master/assets/img/logo/NTLogo.png" alt=""></a>
-                                </div>
-                            </div>
-                            <div class="col-xl-10 col-lg-10 col-md-10">
-                                <!-- Main-menu -->
-                                <div class="main-menu f-right d-none d-lg-block">
-                                    <nav>               
-                                        <ul id="navigation">                                                                                                                                     
-                                            <li><a href="#">로그인</a></li>
-                                            <li><a href="#">회원가입</a></li>
-                                            <li><a href="#">지역</a>
-                                            	<ul class="submenu">
-                                                    <li><a href="#">수도권</a></li>
-                                                    <li><a href="#">강원도</a></li>
-                                                    <li><a href="#">경상도</a></li>
-                                                    <li><a href="#">전라도</a></li>
-                                                    <li><a href="#">충청도</a></li>
-                                                    <li><a href="#">제주도</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="#">여행지소개</a>
-                                            	<ul class="submenu">
-                                                    <li><a href="#">게시판</a></li>
-                                                    <li><a href="#">글쓰기</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </nav>
-                                </div>
-                            </div>
-                            <!-- Mobile Menu -->
-                            <div class="col-12">
-                                <div class="mobile_menu d-block d-lg-none"></div>
-                            </div>
-                        </div>
-                    </div>
-               </div>
-            </div>
-       </div>
-        <!-- Header End -->
-    </header>
+	<%@include file="../../common/userHeader.jsp"%>
     <div class="container">
     	<div class="row">
     		<div class="col-3">
-				<div class="blog_left_sidebar">
-					<aside class="single_sidebar_widget post_category_widget" style="background: #fbf9ff;">
-		                <h4 class="widget_title">Category</h4>
-		                <ul class="list cat-list">
-		                    <li>
-		                        <a href="./mypageMemberModification.html" class="d-flex">
-		                            <p>개인정보수정</p>
-		                        </a>
-		                    </li>
-		                    <li>
-		                        <a href="./mypageReservationRecord.html" class="d-flex">
-		                            <p>예약내역</p>
-		                        </a>
-		                    </li>
-		                    <li>
-		                        <a href="./mypagePostRecord.html" class="d-flex">
-		                            <p>내가 쓴 글</p>
-		                        </a>
-		                    </li>
-		                    <li>
-		                        <a href="./mypageChat.html" class="d-flex">
-		                            <p>채팅</p>
-		                        </a>
-		                    </li>
-		                </ul>
-		            </aside>
-				</div>
+				<%@include file="../../common/mypageSideMenu.jsp"%>
 	       	</div>
 	       	<div class="col-9">
 	       		<p>예매내역</p>
@@ -134,31 +58,6 @@
 	       			</ul>
 	       		</div>
 	       		<div class="my-3">
-	       			<c:choose>
-		    			<c:when test="${fn:length(list) eq 0}">
-		    				<div>
-		    					<h4>예약 내역이 없습니다.</h4>
-		    				</div>
-		    			</c:when>
-		    			<c:otherwise>
-				    		<c:forEach items="${list}" var="list" varStatus="status">
-				    		<div style="border: solid; border-width: 1px; border-color:#EEEEEE;">
-			       				<div class="row">
-				       				<div class="col-9">
-				       					<h6>예약일: <fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${list.regDateTime}"/></h6>
-			       						<img class="img-thumbnail" alt="" id="preview" style="width:160px; height:145px; float: left;">
-			       						<p style="font-size: 13px;">숙박 > 경기도</p><span style="float: right; font-size: 12px;">숙박 상세보기 > </span><span style="clear: both;"></span>
-			       						<p>&nbsp;<c:out value="${list.nxRoomSeq }"/> 2박3일</p>
-			       						<p style="font-size: 13px;">일정: <c:out value="${list.checkInDate }"/> ~ <c:out value="${list.checkOutDate }"/></p>
-				       				</div>
-				       				<div class="col-3" style="display:flex; align-items: center;">
-				       					<button type="button" class="genric-btn info radius" onclick="location.href='./mypageReservationView.html'">예약 상세보기</button>
-				       				</div>
-			       				</div>
-			       			</div>
-				    		</c:forEach>
-				    	</c:otherwise>
-		    		</c:choose>
 	       			<div style="border: solid; border-width: 1px; border-color:#EEEEEE;">
 	       				<div class="row">
 		       				<div class="col-9">
