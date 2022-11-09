@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
-@RequestMapping(value = "/nextrip/region/accommodation")
+@RequestMapping(value = "/nextrip/region/accommodation/")
 public class PurchaseHistoryController {
 	@Autowired
 	PurchaseHistoryServiceImpl service;
@@ -25,17 +25,17 @@ public class PurchaseHistoryController {
 	}
 	
 	@RequestMapping(value = "purchaseHistoryInst")
-	public String insert(@ModelAttribute("vo") PurchaseHistoryVo vo, PurchaseHistory dto, RedirectAttributes redirectAttributes) throws Exception {
+	public String insert(@ModelAttribute("voph") PurchaseHistoryVo voph, PurchaseHistory dto, RedirectAttributes redirectAttributes) throws Exception {
 		service.insert(dto);
-		vo.setNxPurchaseHistorySeq(dto.getNxPurchaseHistorySeq());
-		redirectAttributes.addFlashAttribute("vo", vo);
+		voph.setNxPurchaseHistorySeq(dto.getNxPurchaseHistorySeq());
+		redirectAttributes.addFlashAttribute("voph", voph);
 		return "redirect:/nextrip/region/accommodation/accommodationPurchase";
 	}
 	
 	@RequestMapping(value = "purchaseHistoryUpdt")
-	public String update(@ModelAttribute("vo") PurchaseHistoryVo vo, PurchaseHistory dto, RedirectAttributes redirectAttributes) throws Exception {
+	public String update(@ModelAttribute("voph") PurchaseHistoryVo voph, PurchaseHistory dto, RedirectAttributes redirectAttributes) throws Exception {
 		service.update(dto);
-		redirectAttributes.addFlashAttribute("vo", vo);
+		redirectAttributes.addFlashAttribute("vo", voph);
 		return "redirect:/nextrip/region/accommodation/purchaseComplete";
 	}
 

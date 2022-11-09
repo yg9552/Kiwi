@@ -74,15 +74,15 @@
 	                        <aside class="single_sidebar_widget">
                             	<h2 class="widget_title">예약자 정보</h2>
                                 <div class="form-group">
-                                	<label>예약자 이름</label>
-                                    <input type="text" class="form-control" name="name" placeholder="체크인시 필요한 정보입니다.">
+                                	<label for="reservationName">예약자 이름</label>
+                                    <input type="text" class="form-control" name="reservationName" placeholder="체크인시 필요한 정보입니다." id="reservationName">
                                 </div>
                                 <div class="form-group">
-                                	<label>
+                                	<label for="reservationPhoneNum">
                                 		휴대폰 번호
                                 		<p style="font-size: 12px;" class="m-0">개인 정보 보호를 위해 안심번호로 숙소에 전송됩니다.</p>
                                		</label>
-                                    <input type="text" class="form-control" name="name" placeholder="체크인시 필요한 정보입니다.">
+                                    <input type="text" class="form-control" name="reservationPhoneNum" id="reservationPhoneNum" placeholder="체크인시 필요한 정보입니다.">
                                 </div>
 	                        </aside>
 	                        <aside class="single_sidebar_widget">
@@ -127,19 +127,27 @@
                             <ul class="list cat-list">
                                 <li>
 	                                <h6>숙소이름</h6>
-	                                <p class="p-3"><c:out value="hotelName" /> </p>
+	                                <p class="p-3"><c:out value="${itemph.nxAccommodationSeq }" /> </p>
                                 </li>
                                 <li>
                                     <h6>객실타입/기간</h6>
-                                    <p class="p-3"><c:out value="roomType" /> / 1박</p>
+                                    <p class="p-3"><c:out value="${itemph.nxRoomSeq }" /> / 1박</p>
                                 </li>
                                 <li>
                                     <h6>체크인</h6>
-                                    <p class="p-3"><c:out value="${item.checkinDate }" /></p>
+                                    <p class="p-3"><c:out value="${itemph.checkInDate }" /></p>
+                                    <div class="form-group">
+			                           <label for="checkInDate">체크인</label>
+			                           <input type="text" id="datePicker" class="form-control" name="checkInDate" />
+			                        </div>
                                 </li>
                                 <li>
                                     <h6>체크아웃</h6>
-                                    <p class="p-3"><c:out value="${item.checkoutDate }" /></p>
+                                    <p class="p-3"><c:out value="${itemph.checkOutDate }" /></p>
+                                    <div class="form-group">
+			                           <label for="checkInDate">체크아웃</label>
+			                           <input type="text" id="datePicker" class="form-control" name="checkInDate" disabled="disabled" />
+			                        </div>
                                 </li>
                                 <li>
                                     <h5>총 결제 금액</h5>

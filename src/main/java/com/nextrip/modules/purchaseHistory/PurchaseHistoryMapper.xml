@@ -17,6 +17,7 @@
 		<include refid="Base.selectListUpperForMysql" />
 			SELECT 
 			    a.nxPurchaseHistorySeq
+			    ,a.nxAccommodationSeq
 			    ,a.memberSeq
 			    ,a.nxRoomSeq
 			    ,a.reservationName
@@ -39,6 +40,7 @@
 	<select id="selectOne" resultMap="resultMapObj">
 		SELECT 
 		    a.nxPurchaseHistorySeq
+		    ,a.nxAccommodationSeq
 		    ,a.memberSeq
 		    ,a.nxRoomSeq
 		    ,a.reservationName
@@ -65,6 +67,7 @@
 	<insert id="insert">
 		INSERT INTO nxPurchaseHistory(
 			memberSeq
+			,nxAccommodationSeq
 			,nxRoomSeq
 			,reservationStatus
 			,checkInDate
@@ -75,6 +78,7 @@
 			)
 		VALUES(
 			#{memberSeq }
+			,#{nxAccommodationSeq }
 			,#{nxRoomSeq }
 			,1
 			,#{checkInDate }

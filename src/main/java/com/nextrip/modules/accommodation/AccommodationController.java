@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.nextrip.common.constants.Constants;
+import com.nextrip.modules.purchaseHistory.PurchaseHistory;
+import com.nextrip.modules.purchaseHistory.PurchaseHistoryServiceImpl;
+import com.nextrip.modules.purchaseHistory.PurchaseHistoryVo;
 import com.nextrip.modules.room.Room;
 import com.nextrip.modules.room.RoomServiceImpl;
 import com.nextrip.modules.room.RoomVo;
@@ -22,6 +25,8 @@ public class AccommodationController {
 	AccommodationServiceImpl service;
 	@Autowired
 	RoomServiceImpl serviceR;
+	@Autowired
+	PurchaseHistoryServiceImpl serviceph;
 	
 	@RequestMapping(value = "accommodationList")
 	public String acmdList(@ModelAttribute("vo") AccommodationVo vo, Model model) throws Exception {
@@ -82,9 +87,11 @@ public class AccommodationController {
 	}
 	
 	@RequestMapping(value = "accommodationPurchase")
-	public String acccommodationPurchase(@ModelAttribute("vo") AccommodationVo vo, Model model) throws Exception {
+	public String acccommodationPurchase(@ModelAttribute("vo") AccommodationVo vo, Model model, @ModelAttribute("voph") PurchaseHistoryVo voph) throws Exception {
 		Accommodation item = service.selectOne(vo);
+		PurchaseHistory itemph = serviceph.selectOne(voph);
 		model.addAttribute("item", item);
+		model.addAttribute("itemph", itemph);
 		model.addAttribute("listUploaded", service.selectListUploaded(vo));
 		return "user/region/accommodation/accommodationPurchase";
 	}
