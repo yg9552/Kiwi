@@ -102,6 +102,7 @@ public class AccommodationController {
 		return "redirect:/nextrip/region/accommodation/accommodationPurchase";
 	}
 	
+	
 	@RequestMapping(value = "purchaseHistoryUpdt")
 	public String updatePurchaseHistory(@ModelAttribute("voph") AccommodationVo vo, Accommodation dto, RedirectAttributes redirectAttributes) throws Exception {
 		service.updatePurchaseHistory(dto);
