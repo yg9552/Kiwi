@@ -106,4 +106,8 @@
 	WHERE 
 		nxPurchaseHistorySeq = #{nxPurchaseHistorySeq}
 	</update>
+	
+	<!-- 찬구 S -->
+	
+	<!-- 찬구 E -->
 </mapper>	

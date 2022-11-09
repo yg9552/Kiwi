@@ -67,8 +67,6 @@
         var goUrlMain = "/nextrip/mypage";
        	
        	$("#btnLogin").on("click", function(){
-       		alert("btnLogin 작동");
-       		
 			$.ajax({
 				async: true 
 				,cache: false
