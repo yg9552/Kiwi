@@ -103,7 +103,7 @@
 		                            <!-- Logo -->
 		                            <div class="col-xl-2 col-lg-2 col-md-1">
 		                                <div class="logo">
-		                                  <a href="/gotrip-master/index.html"><img src="/resources/template/gotrip-master/assets/img/logo/NTLogo.png" alt=""></a>
+		                                  <a href="/nextrip/main"><img src="/resources/template/gotrip-master/assets/img/logo/NTLogo.png" alt=""></a>
 		                                </div>
 		                            </div>
 		                            <div class="col-xl-10 col-lg-10 col-md-10">
