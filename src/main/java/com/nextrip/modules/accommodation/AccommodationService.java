@@ -14,4 +14,17 @@ public interface AccommodationService {
 	public int insert(Accommodation dto) throws Exception;
 	public void uploadFiles(MultipartFile[] multipartFiles, Accommodation dto, String tableName, int type, int maxNumber) throws Exception;
 	public List<Accommodation> selectListUploaded(AccommodationVo vo) throws Exception;
+	
+	//PurchaseHistory
+	public List<Accommodation> selectListPurchaseHistory(AccommodationVo vo) throws Exception;
+	public Accommodation selectOnePurchaseHistory(AccommodationVo vo) throws Exception;
+	public int selectOneCountPurchaseHistory(AccommodationVo vo) throws Exception;
+	public int insertPurchaseHistory(Accommodation dto) throws Exception;
+	public int updatePurchaseHistory(Accommodation dto) throws Exception;
+	
+	//Room
+	public List<Accommodation> selectListRoom(AccommodationVo vo) throws Exception;
+	public Accommodation selectOneRoom(AccommodationVo vo) throws Exception;
+	public int selectOneCountRoom(AccommodationVo vo) throws Exception;
+	public int insertRoom(Accommodation dto) throws Exception;
 }

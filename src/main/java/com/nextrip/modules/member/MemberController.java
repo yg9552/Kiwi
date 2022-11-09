@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.nextrip.common.constants.Constants;
+import com.nextrip.modules.purchaseHistory.PurchaseHistory;
+import com.nextrip.modules.purchaseHistory.PurchaseHistoryServiceImpl;
+import com.nextrip.modules.purchaseHistory.PurchaseHistoryVo;
 
 @Controller
 @RequestMapping
@@ -22,6 +25,9 @@ public class MemberController {
 	
 	@Autowired
 	MemberServiceImpl service;
+	
+	@Autowired
+	PurchaseHistoryServiceImpl service2;
 	
 	@RequestMapping(value="/nextrip/main")
 	public String main() throws Exception {
@@ -46,6 +52,12 @@ public class MemberController {
 		model.addAttribute("item", result);
 		
 		return "user/mypage/mypageMemberModification";
+	}
+	
+	@RequestMapping(value="/nextrip/myReservation")
+	public String selectMyReservationList(Model model, PurchaseHistoryVo vo) throws Exception {
+		
+		return "user/mypage/mypageReservationRecord";
 	}
 	
 	@RequestMapping(value="/nextrip/memberUpdt")

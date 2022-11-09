@@ -1,4 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
+	<style type="text/css">
+		#btnLogout:hover {
+			cursor: pointer;
+		}
+	</style>
     <!-- Preloader Start -->
     <div id="preloader-active">
         <div class="preloader d-flex align-items-center justify-content-center">
@@ -25,7 +30,7 @@
 		                            <!-- Logo -->
 		                            <div class="col-xl-2 col-lg-2 col-md-1">
 		                                <div class="logo">
-		                                  <a href="index.html"><img src="/resources/template/gotrip-master/assets/img/logo/NTLogo.png" alt=""></a>
+		                                  <a href="/nextrip/main"><img src="/resources/template/gotrip-master/assets/img/logo/NTLogo.png" alt=""></a>
 		                                </div>
 		                            </div>
 		                            <div class="col-xl-10 col-lg-10 col-md-10">
@@ -98,7 +103,7 @@
 		                            <!-- Logo -->
 		                            <div class="col-xl-2 col-lg-2 col-md-1">
 		                                <div class="logo">
-		                                  <a href="/gotrip-master/index.html"><img src="/resources/template/gotrip-master/assets/img/logo/NTLogo.png" alt=""></a>
+		                                  <a href="/nextrip/main"><img src="/resources/template/gotrip-master/assets/img/logo/NTLogo.png" alt=""></a>
 		                                </div>
 		                            </div>
 		                            <div class="col-xl-10 col-lg-10 col-md-10">
@@ -106,7 +111,7 @@
 		                                <div class="main-menu f-right d-none d-lg-block">
 		                                    <nav>               
 		                                        <ul id="navigation">                                                                                                                                     
-		                                            <li><a href="/nextrip/logoutProc">로그아웃</a></li>
+		                                            <li id="btnLogout">로그아웃</li>
 		                                            <li><a href="#">지역</a>
 		                                            	<ul class="submenu">
 		                                                    <li><a href="#">수도권</a></li>
@@ -126,7 +131,7 @@
 		                                            <li><a href="#">마이페이지</a>
 		                                            	<ul class="submenu">
 		                                            		<li><a href="/nextrip/memberModification">회원정보 수정</a></li>
-		                                                    <li><a href="#">예약 내역</a></li>
+		                                                    <li><a href="/nextrip/myReservation">예약 내역</a></li>
 		                                                    <li><a href="#">내가 쓴 글</a></li>
 		                                                    <li><a href="#">채팅</a></li>
 		                                                </ul>
@@ -146,6 +151,28 @@
 		       </div>
 		        <!-- Header End -->
 		    </header>
+		    <script type="text/javascript">
+        	var goUrlMain = "/nextrip/main";
+        
+	        $("#btnLogout").on("click", function(){
+	        	$.ajax({
+	    			async: true 
+	    			,cache: false
+	    			,type: "post"
+	    			/* ,dataType:"json" */
+	    			,url: "/nextrip/logoutProc"
+	    			/* ,data : $("#formLogin").serialize() */
+	    			,success: function(response) {
+	    				if(response.rt == "success") {
+	    						$(location).attr("href",goUrlMain);
+	    				} else {}
+	    			}
+	    			,error : function(jqXHR, textStatus, errorThrown){
+	    				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+	    			}
+	    		});
+	    	});
+        </script>
     	</c:otherwise>
     </c:choose>
     

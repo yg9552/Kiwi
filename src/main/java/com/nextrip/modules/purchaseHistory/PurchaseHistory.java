@@ -6,14 +6,15 @@ import com.nextrip.common.base.Base;
 
 public class PurchaseHistory extends Base{
 	private String nxPurchaseHistorySeq;
+	private String nxAccommodationSeq;
 	private String memberSeq;
 	private String nxRoomSeq;
 	private String reservationName;
 	private String reservationPhoneNum;
 	private Integer reservationStatus;
 	private Integer paymentMethod;
-	private Date checkInDate;
-	private Date checkOutDate;
+	private String checkInDate;
+	private String checkOutDate;
 	private String pay;
 	private Integer personnel;
 	public String getNxPurchaseHistorySeq() {
@@ -58,18 +59,6 @@ public class PurchaseHistory extends Base{
 	public void setPaymentMethod(Integer paymentMethod) {
 		this.paymentMethod = paymentMethod;
 	}
-	public Date getCheckInDate() {
-		return checkInDate;
-	}
-	public void setCheckInDate(Date checkInDate) {
-		this.checkInDate = checkInDate;
-	}
-	public Date getCheckOutDate() {
-		return checkOutDate;
-	}
-	public void setCheckOutDate(Date checkOutDate) {
-		this.checkOutDate = checkOutDate;
-	}
 	public String getPay() {
 		return pay;
 	}
@@ -81,6 +70,24 @@ public class PurchaseHistory extends Base{
 	}
 	public void setPersonnel(Integer personnel) {
 		this.personnel = personnel;
+	}
+	public String getCheckInDate() {
+		return checkInDate;
+	}
+	public void setCheckInDate(String checkInDate) {
+		this.checkInDate = checkInDate;
+	}
+	public String getCheckOutDate() {
+		return checkOutDate;
+	}
+	public void setCheckOutDate(String checkOutDate) {
+		this.checkOutDate = checkOutDate;
+	}
+	public String getNxAccommodationSeq() {
+		return nxAccommodationSeq;
+	}
+	public void setNxAccommodationSeq(String nxAccommodationSeq) {
+		this.nxAccommodationSeq = nxAccommodationSeq;
 	}
 
 

@@ -25,8 +25,6 @@
 <body>
 	<%@include file="../common/userHeader.jsp"%>
 	<div class="container col-6" style="text-align: center; position:relative; top:120px;">
-		sessSeq: <c:out value="${sessSeq }"/><br>
-		sessId: <c:out value="${sessId }"/><br>
 		<form method="post" name="myForm">
 			<div class="row justify-content-center pt-5">
 				<div class="form-floating mb-3" style="width:340px;">
@@ -64,11 +62,9 @@
 	</div>
 
 	<script type="text/javascript">
-        var goUrlMain = "/nextrip/mypage";
+        var goUrlMain = "/nextrip/main";
        	
        	$("#btnLogin").on("click", function(){
-       		alert("btnLogin 작동");
-       		
 			$.ajax({
 				async: true 
 				,cache: false

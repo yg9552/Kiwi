@@ -112,11 +112,8 @@
 	    			/* ,data : $("#formLogin").serialize() */
 	    			,success: function(response) {
 	    				if(response.rt == "success") {
-	    					alert("아작스 작동");
 	    						$(location).attr("href",goUrlMain);
-	    				} else {
-	    					
-	    				}
+	    				} else {}
 	    			}
 	    			,error : function(jqXHR, textStatus, errorThrown){
 	    				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);

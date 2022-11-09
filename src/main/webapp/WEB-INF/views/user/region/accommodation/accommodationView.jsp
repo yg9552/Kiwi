@@ -44,9 +44,6 @@
 	  	<!-- userHeader e -->
 	<c:set var="listregion" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
     <main>
-    	<!-- *Vo.jsp s -->
-			<%@include file="accommodationVo.jsp"%>		<!-- #-> -->
-	    <!-- *Vo.jsp e -->
         <!-- slider Area Start-->
         <div class="slider-area">
             <div class="slider-wrap">
@@ -186,7 +183,7 @@
                            <input type="number" class="form-control" value="2" name="personnel">
                         </div>
                         <h5 class="text-danger text-center" style="margin: 50px 0 30px">1박 원</h5>
-                        <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn" type="button">예약하기</button>
+                        <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn" type="button" id="btnSave">예약하기</button>
                      </form>
                   	</aside>
                  </div>
@@ -450,6 +447,13 @@
 
             });
         })
+        
+        var goUrlInst = "/nextrip/region/accommodation/purchaseHistoryInst"; 			/* #-> */
+        
+        var form = $("form[name=viewForm]");
+        $("#btnSave").on("click", function(){
+    	   	form.attr("action", goUrlInst).submit();
+    	}); 
 		</script>
     </body>
 </html>

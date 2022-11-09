@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.nextrip.common.constants.Constants;
-import com.nextrip.modules.room.Room;
-import com.nextrip.modules.room.RoomServiceImpl;
 import com.nextrip.modules.room.RoomVo;
 
 @Controller
@@ -20,8 +18,6 @@ public class AccommodationController {
 
 	@Autowired
 	AccommodationServiceImpl service;
-	@Autowired
-	RoomServiceImpl serviceR;
 	
 	@RequestMapping(value = "accommodationList")
 	public String acmdList(@ModelAttribute("vo") AccommodationVo vo, Model model) throws Exception {
@@ -74,7 +70,7 @@ public class AccommodationController {
 	@RequestMapping(value = "accommodationView")
 	public String accommodationView(@ModelAttribute("vo") AccommodationVo vo, Model model, RoomVo voR) throws Exception {
 		Accommodation item = service.selectOne(vo);
-		List<Room> listR = serviceR.selectList(voR);
+		List<Accommodation> listR = service.selectListRoom(vo);
 		model.addAttribute("item", item);
 		model.addAttribute("listR", listR);
 		model.addAttribute("listUploaded", service.selectListUploaded(vo));
@@ -88,4 +84,31 @@ public class AccommodationController {
 		model.addAttribute("listUploaded", service.selectListUploaded(vo));
 		return "user/region/accommodation/accommodationPurchase";
 	}
+	
+	@RequestMapping(value = "purchaseHistoryList")
+	public String purchaseHistoryList(@ModelAttribute("vo") AccommodationVo vo, Model model) throws Exception {
+		
+		vo.setParamsPaging(service.selectOneCount(vo));
+		List<Accommodation> list = service.selectList(vo);
+		model.addAttribute("list", list);
+		return "kdmin/region/accommodation/purchaseHistoryListK";
+	}
+	
+	@RequestMapping(value = "purchaseHistoryInst")
+	public String insertPurchaseHistory(@ModelAttribute("voph") AccommodationVo vo, Accommodation dto, RedirectAttributes redirectAttributes) throws Exception {
+		service.insertPurchaseHistory(dto);
+		vo.setNxPurchaseHistorySeq(dto.getNxPurchaseHistorySeq());
+		redirectAttributes.addFlashAttribute("voph", vo);
+		return "redirect:/nextrip/region/accommodation/accommodationPurchase";
+	}
+	
+	
+	@RequestMapping(value = "purchaseHistoryUpdt")
+	public String updatePurchaseHistory(@ModelAttribute("voph") AccommodationVo vo, Accommodation dto, RedirectAttributes redirectAttributes) throws Exception {
+		service.updatePurchaseHistory(dto);
+		redirectAttributes.addFlashAttribute("vo", vo);
+		return "redirect:/nextrip/region/accommodation/purchaseComplete";
+	}
 }
+
+
