@@ -80,7 +80,11 @@ public class AccommodationController {
 	@RequestMapping(value = "accommodationPurchase")
 	public String acccommodationPurchase(@ModelAttribute("vo") AccommodationVo vo, Model model) throws Exception {
 		Accommodation item = service.selectOne(vo);
+		Accommodation itemph = service.selectOnePurchaseHistory(vo);
+		List<Accommodation> listr = service.selectListRoom(vo);
 		model.addAttribute("item", item);
+		model.addAttribute("itemph", itemph);
+		model.addAttribute("listr", listr);
 		model.addAttribute("listUploaded", service.selectListUploaded(vo));
 		return "user/region/accommodation/accommodationPurchase";
 	}
@@ -98,10 +102,9 @@ public class AccommodationController {
 	public String insertPurchaseHistory(@ModelAttribute("voph") AccommodationVo vo, Accommodation dto, RedirectAttributes redirectAttributes) throws Exception {
 		service.insertPurchaseHistory(dto);
 		vo.setNxPurchaseHistorySeq(dto.getNxPurchaseHistorySeq());
-		redirectAttributes.addFlashAttribute("voph", vo);
+		redirectAttributes.addFlashAttribute("vo", vo);
 		return "redirect:/nextrip/region/accommodation/accommodationPurchase";
 	}
-	
 	
 	@RequestMapping(value = "purchaseHistoryUpdt")
 	public String updatePurchaseHistory(@ModelAttribute("voph") AccommodationVo vo, Accommodation dto, RedirectAttributes redirectAttributes) throws Exception {

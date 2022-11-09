@@ -66,6 +66,7 @@
         	<form name="purchaseForm">
         	<!-- *Vo.jsp s -->
 			<%@include file="accommodationVo.jsp"%>		<!-- #-> -->
+			<input type="text" name="nxRoomSeq" value="${vo.nxRoomSeq }">
 	    	<!-- *Vo.jsp e -->
             <div class="row">
                 <div class="col-lg-8 mb-5 mb-lg-0">
@@ -127,11 +128,14 @@
                             <ul class="list cat-list">
                                 <li>
 	                                <h6>숙소이름</h6>
-	                                <p class="p-3"><c:out value="${itemph.nxAccommodationSeq }" /> </p>
+	                                <p class="p-3"><c:out value="${item.hotelName }" /> </p>
                                 </li>
                                 <li>
                                     <h6>객실타입/기간</h6>
-                                    <p class="p-3"><c:out value="${itemph.nxRoomSeq }" /> / 1박</p>
+                                    <%-- <c:forEach items="listr" var="listr" varStatus="statuslistR">
+                                    <p class="p-3"> <c:if test="${listr.nxRoomSeq eq itemph.nxRoomSeq}"> <c:out value="${listr.roomName }" /> </c:if> / 1박</p>
+                                	</c:forEach> --%>
+                                	<c:out value="${vo.nxRoomSeq }" />
                                 </li>
                                 <li>
                                     <h6>체크인</h6>
