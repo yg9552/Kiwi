@@ -23,6 +23,12 @@ public class MemberController {
 	@Autowired
 	MemberServiceImpl service;
 	
+	@RequestMapping(value="/nextrip/main")
+	public String main() throws Exception {
+		
+		return "user/main";
+	}
+	
 	@RequestMapping(value="/nextrip/mypage")
 	public String selectMemberList(Model model,@ModelAttribute("vo") MemberVo vo) throws Exception {
 		

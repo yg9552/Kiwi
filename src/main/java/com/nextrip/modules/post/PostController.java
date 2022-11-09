@@ -59,33 +59,33 @@ public class PostController {
 	}
 	
 	@RequestMapping(value="postUserInsert")
-	public String postUserInsert(Post dto, @ModelAttribute("vo") PostVo vo, HttpSession httpSession, RedirectAttributes redirectAttributes)throws Exception{
+	public String postUserInsert(Post dto, PostVo vo, HttpSession httpSession, RedirectAttributes redirectAttributes)throws Exception{
 		dto.setMemberSeq((String) httpSession.getAttribute("sessSeq"));
 		service.postInsert(dto);
 		vo.setNxPostSeq(dto.getNxPostSeq());
 		redirectAttributes.addFlashAttribute("vo", vo);
 		
-		return "user/post/postUserView";
+		return "redirect:postUserView";
 	}
 	
 	@RequestMapping(value="postUserUpdate")
-	public String postUserUpdate(Post dto, @ModelAttribute("vo") PostVo vo, RedirectAttributes redirectAttributes)throws Exception{
+	public String postUserUpdate(Post dto, PostVo vo, RedirectAttributes redirectAttributes)throws Exception{
 		
 		service.postUpdate(dto);
 		redirectAttributes.addFlashAttribute("vo", vo);
-		return "user/post/postUserView";
+		return "redirect:postUserView";
 	}
 	
 	@RequestMapping(value="postInsert")
 	public String postInsert(Post dto, PostVo vo, RedirectAttributes redirectAttributes)throws Exception{
 		
-		return "user/post/postView";
+		return "redirect:postView";
 	}
 	
 	@RequestMapping(value="postUpdate")
 	public String postUpdate(Post dto, PostVo vo, RedirectAttributes redirectAttributes)throws Exception{
 		
-		return "user/post/postView";
+		return "redirect:postView";
 	}
 	
 	@RequestMapping(value="postUelete")

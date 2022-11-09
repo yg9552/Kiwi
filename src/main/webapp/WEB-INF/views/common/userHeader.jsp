@@ -5,7 +5,9 @@
             <div class="preloader-inner position-relative">
                 <div class="preloader-circle"></div>
                 <div class="preloader-img pere-text">
-                    <img src="/resources/template/gotrip-master/assets/img/logo/NTLogo.png" alt="">
+                	<a href="/nextrip/main">
+                    	<img src="/resources/template/gotrip-master/assets/img/logo/NTLogo.png" alt="">
+                	</a>
                 </div>
             </div>
         </div>
@@ -117,7 +119,7 @@
 		                                            </li>
 		                                            <li><a href="#">여행지소개</a>
 		                                            	<ul class="submenu">
-		                                                    <li><a href="#">게시판</a></li>
+		                                                    <li><a href="/post/postUserList">게시판</a></li>
 		                                                    <li><a href="#">글쓰기</a></li>
 		                                                </ul>
 		                                            </li>
