@@ -38,57 +38,7 @@
 </style>
 
 <body>
-	<header>
-        <!-- Header Start -->
-       <div class="header-area">
-            <div class="main-header ">
-               <div class="header-bottom  header-sticky">
-                    <div class="container">
-                        <div class="row align-items-center">
-                            <!-- Logo -->
-                            <div class="col-xl-2 col-lg-2 col-md-1">
-                                <div class="logo">
-                                  <a href="index.html"><img src="/resources/template/gotrip-master/assets/img/logo/NTLogo.png" alt=""></a>
-                                </div>
-                            </div>
-                            <div class="col-xl-10 col-lg-10 col-md-10">
-                                <!-- Main-menu -->
-                                <div class="main-menu f-right d-none d-lg-block">
-                                    <nav>               
-                                        <ul id="navigation">                                                                                                                                     
-                                            <li><a href="#">로그인</a></li>
-                                            <li><a href="#">회원가입</a></li>
-                                            <li><a href="#">지역</a>
-                                            	<ul class="submenu">
-                                                    <li><a href="#">수도권</a></li>
-                                                    <li><a href="#">강원도</a></li>
-                                                    <li><a href="#">경상도</a></li>
-                                                    <li><a href="#">전라도</a></li>
-                                                    <li><a href="#">충청도</a></li>
-                                                    <li><a href="#">제주도</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="#">여행지소개</a>
-                                            	<ul class="submenu">
-                                                    <li><a href="#">게시판</a></li>
-                                                    <li><a href="#">글쓰기</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </nav>
-                                </div>
-                            </div>
-                            <!-- Mobile Menu -->
-                            <div class="col-12">
-                                <div class="mobile_menu d-block d-lg-none"></div>
-                            </div>
-                        </div>
-                    </div>
-               </div>
-            </div>
-       </div>
-        <!-- Header End -->
-    </header>
+	<%@include file="../common/userHeader.jsp"%>
 	<div class="container col-6" style="text-align: center; position:relative; top:120px;">
 		<div class="row justify-content-center mb-2">
 			<h4>회원가입</h4>
