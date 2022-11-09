@@ -8,6 +8,61 @@
 
     <resultMap id="resultMapObj" type="com.nextrip.modules.post.Post"></resultMap>
 	
+<select id="selectSeq" resultMap="resultMapObj">
+	<include refid="Base.selectListUpperForMysql" />
+	select
+		a.nxPostSeq
+		,a.memberSeq
+		,a.region
+		,a.postType
+		,a.title
+		,a.delNy
+		,a.regDateTime
+		,a.modDateTime
+		,b.name as memberName
+		,b.nickname as memberNicName
+		<include refid="selectCommon" />
+		ORDER BY nxPostSeq DESC
+	<include refid="Base.selectListLowerForMysql" />
+
+</select>	
+
+<sql id ="selectCommon">
+FROM nxPost a
+JOIN member b on a.memberSeq = b.memberSeq
+where 1=1
+	<if test="shDelNy != null and !shPostType.equals('')">AND a.delNy = #{shDelNy}</if>
+	<if test="shPostType != null and !shPostType.equals('')">AND a.postType = #{shPostType}</if>
+	<if test="shRegion != null and !shRegion.equals('')">AND a.region = #{shRegion}</if>
+	<choose>
+		<when test="shOption == 1">AND a.title LIKE CONCAT('%',#{shValue},'%')</when>
+		<when test="shOption == 2">AND a.content = #{shValue} </when>
+		<when test="shOption == 3">AND a.addressTitle LIKE CONCAT('%',#{shValue},'%')</when>
+		<when test="shOption == 4">AND memberName LIKE CONCAT('%',#{shValue},'%')</when>
+		<when test="shOption == 5">AND memberNickName LIKE CONCAT('%',#{shValue},'%')</when>
+	</choose>
+</sql>
+
+<select id="selectListCount" resultType="Integer">
+	select
+		count(*)
+	<include refid="selectCommon" />
+</select>
+
+<select id="selectOne" resultMap="resultMapObj">	
+
+	select
+		a.*
+		,b.name as memberName
+		,b.nickName as memberNickName
+	from nxPost a
+	join member b on a.memberSeq = b.memberSeq
+	where 1=1
+	and nxPostSeq = #{nxPostSeq}
+	
+</select>
+
+	
 <select id="postSelectList" resultMap="resultMapObj">
 	<include refid="Base.selectListUpperForMysql" />
 	select
@@ -44,17 +99,18 @@
 </select>
 
 <sql id ="userSelectCommon">
-	FROM nxPost a
-	JOIN member b on a.memberSeq = b.memberSeq
-	where 1=1
-		<if test="shPostType != null and !shPostType.equals('')">AND a.postType = #{shPostType}</if>
-		<if test="shRegion != null and !shRegion.equals('')">AND a.region = #{shRegion}</if>
-		<choose>
-			<when test="shOption == 1">AND a.title LIKE CONCAT('%',#{shValue},'%')</when>
-			<when test="shOption == 2">AND a.content = #{shValue} </when>
-			<when test="shOption == 3">AND b.addressTitle LIKE CONCAT('%',#{shValue},'%')</when>
-		</choose>
-	</sql>
+FROM nxPost a
+JOIN member b on a.memberSeq = b.memberSeq
+where 1=1
+	<if test="shPostType != null and !shPostType.equals('')">AND a.postType = #{shPostType}</if>
+	<if test="shRegion != null and !shRegion.equals('')">AND a.region = #{shRegion}</if>
+	<choose>
+		<when test="shOption == 1">AND a.title LIKE CONCAT('%',#{shValue},'%')</when>
+		<when test="shOption == 2">AND a.content = #{shValue} </when>
+		<when test="shOption == 3">AND a.addressTitle LIKE CONCAT('%',#{shValue},'%')</when>
+		<when test="shOption == 4">AND memberNickName LIKE CONCAT('%',#{shValue},'%')</when>
+	</choose>
+</sql>
 
 <insert id="postInsert">
 	INSERT INTO nxPost (

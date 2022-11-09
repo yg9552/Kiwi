@@ -16,6 +16,16 @@ public class PostDao {
 	
 	private static String namespace = "com.nextrip.modules.post.PostMapper";
 	
+	public List<Post> selectList(PostVo vo){
+		return sqlSession.selectList(namespace + ".selectList", vo);
+	}
+	public int selectListCount(PostVo vo) {
+		return sqlSession.selectOne(namespace + ".selectListCount", vo);
+	}
+	public Post selectOne(PostVo vo) {
+		return sqlSession.selectOne(namespace + ".selectOne", vo);
+	}
+	
 	public List<Post> postSelectList(PostVo vo){
 		return sqlSession.selectList(namespace + ".postSelectList", vo);
 	}

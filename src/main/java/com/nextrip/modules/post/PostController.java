@@ -20,15 +20,25 @@ public class PostController {
 	
 	@RequestMapping(value="postList")
 	public String postList(@ModelAttribute("vo") PostVo vo, Model model)throws Exception{
-		
-		List<Post> list = service.postSelectList(vo);
+		vo.setParamsPaging(service.selectListCount(vo));
+		List<Post> list = service.selectList(vo);
 		model.addAttribute("list", list);
 		
-		return "user/post/postList";
+		return "kdmin/post/postList";
+	}
+	@RequestMapping(value="postView")
+	public String postView(Post dto, @ModelAttribute("vo") PostVo vo, Model model) throws Exception{
+		if(vo.getNxPostSeq().equals("0") || vo.getNxPostSeq().equals("")) {
+			//insert
+		} else {
+			Post item = service.selectOne(vo);
+			model.addAttribute("item", item);
+		}
+		return "kdmin/post/postView";
 	}
 	
 	@RequestMapping(value="postUserView")
-	public String postView(Post dto, @ModelAttribute("vo") PostVo vo, Model model)throws Exception{
+	public String postUserView(Post dto, @ModelAttribute("vo") PostVo vo, Model model)throws Exception{
 			Post item = service.postSelectOne(vo);
 			model.addAttribute("item", item);
 		
