@@ -63,10 +63,10 @@
     <!--================Blog Area =================-->
     <section class="blog_area section-padding">
         <div class="container">
-        	<form name="purchaseForm">
+        	<form name="purchaseForm" method="post" autocomplete="off">
         	<!-- *Vo.jsp s -->
 			<%@include file="accommodationVo.jsp"%>		<!-- #-> -->
-			<input type="text" name="nxRoomSeq" value="${vo.nxRoomSeq }">
+			<input type="hidden" name="nxRoomSeq" value="${vo.nxRoomSeq }">
 	    	<!-- *Vo.jsp e -->
             <div class="row">
                 <div class="col-lg-8 mb-5 mb-lg-0">
@@ -132,10 +132,9 @@
                                 </li>
                                 <li>
                                     <h6>객실타입/기간</h6>
-                                    <%-- <c:forEach items="listr" var="listr" varStatus="statuslistR">
-                                    <p class="p-3"> <c:if test="${listr.nxRoomSeq eq itemph.nxRoomSeq}"> <c:out value="${listr.roomName }" /> </c:if> / 1박</p>
-                                	</c:forEach> --%>
-                                	<c:out value="${vo.nxRoomSeq }" />
+                                	<c:forEach items="${listr }" var="listr" varStatus="statuslistR">
+                                		<c:if test="${itemph.nxRoomSeq eq listr.nxRoomSeq }"><p class="p-3"> <c:out value="${listr.roomName }" /> / 1박</p></c:if>
+                                	</c:forEach>
                                 </li>
                                 <li>
                                     <h6>체크인</h6>
@@ -147,10 +146,12 @@
                                 </li>
                                 <li>
                                     <h5>총 결제 금액</h5>
-                                    <p class="p-3 text-danger">190,000원</p>
+                                    <c:forEach items="${listr }" var="listr" varStatus="statuslistR">
+                                		<c:if test="${itemph.nxRoomSeq eq listr.nxRoomSeq }"><p class="p-3 text-danger"> <fmt:formatNumber value="${listr.price }" pattern="#,###" /> / 1박</p></c:if>
+                                	</c:forEach>
                                 </li>
                             </ul>
-                            <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn" type="button">결제하기</button>
+                            <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn" type="button" id="btnSave">결제하기</button>
                         </aside>
 
                     </div>
@@ -290,6 +291,15 @@
 				else $("#cbx_chkAll").prop("checked", true); 
 			});
 		});
+		
+		var goUrlUpdt = "/nextrip/region/accommodation/purchaseHistoryUpdt";		/* #-> */
+		
+		var form = $("form[name=purchaseForm]");
+		
+		$("#btnSave").on("click", function(){
+    	   	form.attr("action", goUrlUpdt).submit();
+    	}); 
+		
 		</script>
 
 </body>

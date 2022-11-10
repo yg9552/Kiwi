@@ -60,7 +60,7 @@
 
    <section class="blog_area single-post-area section-padding">
       <div class="container">
-      	 <form name="viewForm" method="post">
+      	 <form name="viewForm" method="post" autocomplete="off">
       	 <!-- *Vo.jsp s -->
 			<%@include file="accommodationVo.jsp"%>		<!-- #-> -->
 	    <!-- *Vo.jsp e -->
@@ -166,7 +166,7 @@
                      		<label>객실타입</label>
 		                    <select class="form-select" style="border: 1px solid #ced4da; border-radius: 0.25rem; color: #495057;" name="nxRoomSeq">
 							  <c:forEach items="${listR }" var="listR" varStatus="statusR">
-							  	<option value="<c:out value="${listR.nxRoomSeq }"/>"> <c:out value="${listR.roomName }"/> </option>
+							  	<option value="<c:out value="${listR.nxRoomSeq }"/>"> <c:out value="${listR.roomName }"/> <c:out value="${listR.price }"/></option>
 							  </c:forEach>
 							</select>
 						</div>
@@ -182,7 +182,10 @@
                            <label>인원</label>
                            <input type="number" class="form-control" value="2" name="personnel">
                         </div>
-                        <h5 class="text-danger text-center" style="margin: 50px 0 30px">1박 원</h5>
+                        <div class="form-group">
+                           <label for="dateGap">가격</label>
+                           <input type="text" id="dateGap" class="form-control text-danger" name="price" />
+                        </div>
                         <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn" type="button" id="btnSave">예약하기</button>
                      </form>
                   	</aside>
@@ -351,6 +354,24 @@
          console.log(e);
          // e.date를 찍어보면 Thu Jun 27 2019 00:00:00 GMT+0900 (한국 표준시) 위와 같은 형태로 보인다.
       });
+      
+      function call()
+      {
+          var sdd = document.getElementById("datePicker").value;
+          var edd = document.getElementById("datePicker2").value;
+          var ar1 = sdd.split('-');
+          var ar2 = edd.split('-');
+          var da1 = new Date(ar1[0], ar1[1], ar1[2]);
+          var da2 = new Date(ar2[0], ar2[1], ar2[2]);
+          var dif = da2 - da1;
+          var cDay = 24 * 60 * 60 * 1000;// 시 * 분 * 초 * 밀리세컨
+          var cMonth = cDay * 30;// 월 만듬
+          var cYear = cMonth * 12; // 년 만듬
+       if(sdd && edd){
+          document.getElementById('dateGap').value = parseInt(dif/cDay)
+       }
+      }
+      
    </script>
   
 	<!-- JS here -->

@@ -50,7 +50,7 @@
 				</div>
 			</div>
 			<div class="row justify-content-center mb-2">
-				<span><a href=""><input type="button" class="btn" value="카카오톡으로 로그인" style="background-color:#FCE51E; color:black; width:320px;"></a></span>
+				<a href=""><img alt="" src="/resources/common/kakao_login_large_narrow.png" style="width: 320px;"></a>
 			</div>
 			<div class="row justify-content-center mb-2">
 				<span><a href=""><input type="button" class="btn" value="Facebook으로 로그인" style="background-color:#1877F2; color:white; width:320px;"></a></span>

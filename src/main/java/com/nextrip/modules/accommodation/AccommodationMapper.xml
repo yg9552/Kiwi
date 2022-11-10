@@ -228,7 +228,7 @@
 			    ,a.delNy
 	    	FROM nxRoom a
 	    	WHERE 1=1
-	    	<!-- <if test="nxAccommodationSeq != null and !nxAccommodationSeq.equals('')">AND a.nxAccommodationSeq = #{nxAccommodationSeq}</if> -->
+	    	<if test="nxAccommodationSeq != null and !nxAccommodationSeq.equals('')">AND a.nxAccommodationSeq = #{nxAccommodationSeq}</if>
 	    	ORDER BY a.nxRoomSeq ASC
 	    	<include refid="Base.orderByLimitForMysql" />
 		<include refid="Base.selectListLowerForMysql" />

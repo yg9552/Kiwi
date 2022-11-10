@@ -86,6 +86,7 @@ public class AccommodationController {
 		model.addAttribute("itemph", itemph);
 		model.addAttribute("listr", listr);
 		model.addAttribute("listUploaded", service.selectListUploaded(vo));
+		
 		return "user/region/accommodation/accommodationPurchase";
 	}
 	
@@ -99,7 +100,7 @@ public class AccommodationController {
 	}
 	
 	@RequestMapping(value = "purchaseHistoryInst")
-	public String insertPurchaseHistory(@ModelAttribute("voph") AccommodationVo vo, Accommodation dto, RedirectAttributes redirectAttributes) throws Exception {
+	public String insertPurchaseHistory(@ModelAttribute("vo") AccommodationVo vo, Accommodation dto, RedirectAttributes redirectAttributes) throws Exception {
 		service.insertPurchaseHistory(dto);
 		vo.setNxPurchaseHistorySeq(dto.getNxPurchaseHistorySeq());
 		redirectAttributes.addFlashAttribute("vo", vo);
@@ -107,10 +108,10 @@ public class AccommodationController {
 	}
 	
 	@RequestMapping(value = "purchaseHistoryUpdt")
-	public String updatePurchaseHistory(@ModelAttribute("voph") AccommodationVo vo, Accommodation dto, RedirectAttributes redirectAttributes) throws Exception {
+	public String updatePurchaseHistory(@ModelAttribute("vo") AccommodationVo vo, Accommodation dto, RedirectAttributes redirectAttributes) throws Exception {
 		service.updatePurchaseHistory(dto);
 		redirectAttributes.addFlashAttribute("vo", vo);
-		return "redirect:/nextrip/region/accommodation/purchaseComplete";
+		return "redirect:/nextrip/region/accommodation/accommodationList";
 	}
 }
 
