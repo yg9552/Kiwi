@@ -8,7 +8,7 @@
 
     <resultMap id="resultMapObj" type="com.nextrip.modules.post.Post"></resultMap>
 	
-<select id="selectSeq" resultMap="resultMapObj">
+<select id="selectList" resultMap="resultMapObj">
 	<include refid="Base.selectListUpperForMysql" />
 	select
 		a.nxPostSeq
@@ -20,7 +20,7 @@
 		,a.regDateTime
 		,a.modDateTime
 		,b.name as memberName
-		,b.nickname as memberNicName
+		,b.nickname as memberNickName
 		<include refid="selectCommon" />
 		ORDER BY nxPostSeq DESC
 	<include refid="Base.selectListLowerForMysql" />

@@ -81,6 +81,10 @@
             <!-- Content -->
             <div class="container-fluid flex-grow-1 container-p-y">
             	<div class="card">
+            		<form method="post" id="PLForm" name="PLForm">
+            		<input type="hidden" id="thisPage" name="thisPage" value="<c:out value="${vo.thisPage }" default="1"/>">
+					<input type="hidden" id="rowNumToShow" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
+		        	<input type="hidden" id="nxPostSeq" name="nxPostSeq">
             		<h5 class="card-header">코드 검색</h5>
             		<div class="card-body">
             			<div class="row">
@@ -118,8 +122,8 @@
 								<input class="form-control" type="text" value="" id="html5-text-input" />
 	                       </div>
 	                       <div class="mb-3 col-lg-2">
-		                       	<button type="button" class="btn btn-primary" style="margin-right: 15px;"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></button>
-		                       	<button type="button" class="btn btn-warning"><i class="fa-solid fa-rotate-left"></i></button>
+		                       	<button type="button" id="shBtn" name="shBtn" class="btn btn-primary" style="margin-right: 15px;"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></button>
+		                       	<button type="button" id="resetBtn" name="resetBtn" class="btn btn-warning"><i class="fa-solid fa-rotate-left"></i></button>
 	                       </div>
                        </div>
             		</div>
@@ -135,6 +139,7 @@
                       	<th><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" /></th>
                       	<th>번호</th>
                         <th>회원 번호</th>
+                        <th>회원 이름</th>
                         <th>회원 닉네임</th>
                         <th>구분</th>
                         <th>지역</th>
@@ -151,18 +156,26 @@
 						<c:otherwise>
 						<c:forEach items="${list}" var="list" varStatus="status">
 							<c:set var="listCodeRegion" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
-						  	<c:set var="listCodePostDiv" value="${CodeServiceImpl.selectListCachedCode('4')}"/>
-		                      <tr>
+						  	<c:set var="listCodePostType" value="${CodeServiceImpl.selectListCachedCode('4')}"/>
+		                      <tr onclick="location.href='javascript:goView(<c:out value="${list.nxPostSeq }"/>)'" style="cursor: pointer;">
 		                        <td><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" /></td>
-		                        <td>1</td>
-		                        <td>codeGroup1</td>
-		                        <td>codeGroup name</td>
-		                        <td>code1</td>
-		                        <td>code name</td>
-		                        <td>Y</td>
-		                        <td>1</td>
-		                        <td>2022-10-25</td>
-		                        <td>2022-10-25</td>
+		                        <td><c:out value="${list.nxPostSeq }"/></td>
+		                        <td><c:out value="${list.memberSeq }"/></td>
+		                        <td><c:out value="${list.memberName }"/></td>
+		                        <td><c:out value="${list.memberNickName }"/></td>
+		                        <td>
+		                        	<c:forEach items="${listCodePostType}" var="listCodePostType" varStatus="statusPostType">
+										<c:if test="${list.postType eq listCodePostType.replaceCode}"><c:out value="${listCodePostType.name }"/></c:if>
+									</c:forEach>
+	                        	</td>
+		                        <td>
+		                        	<c:forEach items="${listCodeRegion}" var="listCodeRegion" varStatus="statusRegion">
+										<c:if test="${list.region eq listCodeRegion.replaceCode}"><c:out value="${listCodeRegion.name }"/></c:if>
+									</c:forEach>
+		                        </td>
+		                        <td><c:out value="${list.title }"/></td>
+		                        <td><fmt:formatDate value="${list.regDateTime }" pattern="yyyy-MM-dd"/></td>
+		                        <td><fmt:formatDate value="${list.modDateTime }" pattern="yyyy-MM-dd"/></td>
 		                      </tr>
 		                      </c:forEach>
 	                      </c:otherwise>
@@ -172,50 +185,14 @@
                 </div>
               </div>
               <!--/ Basic Bootstrap Table -->
+              <!-- kdmin pagination s -->
+              	<%@include file="../../common/kdminButtonDiv.jsp"%>
+			  <!-- kdmin pagination e -->
               <div style="height: 40px;"></div>
-			   <!-- Basic Pagination -->
-			   <div>
-                 <nav aria-label="Page navigation">
-                   <ul class="pagination justify-content-center">
-                     <li class="page-item first">
-                       <a class="page-link" href="javascript:void(0);"
-                         ><i class="tf-icon bx bx-chevrons-left"></i
-                       ></a>
-                     </li>
-                     <li class="page-item prev">
-                       <a class="page-link" href="javascript:void(0);"
-                         ><i class="tf-icon bx bx-chevron-left"></i
-                       ></a>
-                     </li>
-                     <li class="page-item">
-                       <a class="page-link" href="javascript:void(0);">1</a>
-                     </li>
-                     <li class="page-item">
-                       <a class="page-link" href="javascript:void(0);">2</a>
-                     </li>
-                     <li class="page-item active">
-                       <a class="page-link" href="javascript:void(0);">3</a>
-                     </li>
-                     <li class="page-item">
-                       <a class="page-link" href="javascript:void(0);">4</a>
-                     </li>
-                     <li class="page-item">
-                       <a class="page-link" href="javascript:void(0);">5</a>
-                     </li>
-                     <li class="page-item next">
-                       <a class="page-link" href="javascript:void(0);"
-                         ><i class="tf-icon bx bx-chevron-right"></i
-                       ></a>
-                     </li>
-                     <li class="page-item last">
-                       <a class="page-link" href="javascript:void(0);"
-                         ><i class="tf-icon bx bx-chevrons-right"></i
-                       ></a>
-                     </li>
-                   </ul>
-                 </nav>
-                 </div>
-                 <!--/ Basic Pagination -->
+              <!-- kdmin pagination s -->
+              	<%@include file="../../common/kdminPagination.jsp"%>
+			  <!-- kdmin pagination e -->
+              </form>
             </div>
             <!-- / Content -->
 
@@ -263,7 +240,46 @@
       <div class="layout-overlay layout-menu-toggle"></div>
     </div>
     <!-- / Layout wrapper -->
-
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+	<script>
+	
+	var goUrlList = "/post/postList";
+	var goUrlView = "/post/postView";
+	
+	var form = $("form[name=PLForm]"); 
+	var seq = $("input:hidden[name=nxPostSeq]");
+	
+	goList = function(thisPage){
+		$("input:hidden[name=thisPage]").val(thisPage);
+			form.attr("action", goUrlList).submit();
+	}
+	
+	goView = function(seqValue){
+		seq.val(seqValue);
+		form.attr("action", goUrlView).submit();
+	}
+	
+	goRegMod = function(seqValue){
+		seq.val(seqValue);
+		form.attr("action", goUrlRegMod).submit();
+	}
+	
+	$("#regBtn").on("click", function(){
+		goView(0);
+	});
+	
+	$("#shBtn").on("click", function(){
+   		form.attr("action", goUrlList).submit();
+	}); 
+	
+	$("#resetBtn").on("click", function(){
+		$(location).attr("href", goUrlList);
+	}); 
+	
+	
+	
+	
+	</script>
 
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
