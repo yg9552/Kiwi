@@ -27,4 +27,5 @@ public interface AccommodationService {
 	public Accommodation selectOneRoom(AccommodationVo vo) throws Exception;
 	public int selectOneCountRoom(AccommodationVo vo) throws Exception;
 	public int insertRoom(Accommodation dto) throws Exception;
+	public Accommodation selectRoomPrice(Accommodation dto) throws Exception;
 }

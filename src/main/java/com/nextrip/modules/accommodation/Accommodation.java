@@ -48,10 +48,13 @@ public class Accommodation extends Base {
 	private String reservationPhoneNum;
 	private Integer reservationStatus;
 	private Integer paymentMethod;
-	private String checkInDate;
-	private String checkOutDate;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date checkInDate;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date checkOutDate;
 	private String pay;
 	private Integer personnel;
+	private Integer dateGap;
 	
 	//Room
 	private String roomName;
@@ -258,16 +261,16 @@ public class Accommodation extends Base {
 	public void setPaymentMethod(Integer paymentMethod) {
 		this.paymentMethod = paymentMethod;
 	}
-	public String getCheckInDate() {
+	public Date getCheckInDate() {
 		return checkInDate;
 	}
-	public void setCheckInDate(String checkInDate) {
+	public void setCheckInDate(Date checkInDate) {
 		this.checkInDate = checkInDate;
 	}
-	public String getCheckOutDate() {
+	public Date getCheckOutDate() {
 		return checkOutDate;
 	}
-	public void setCheckOutDate(String checkOutDate) {
+	public void setCheckOutDate(Date checkOutDate) {
 		this.checkOutDate = checkOutDate;
 	}
 	public String getPay() {
@@ -281,6 +284,12 @@ public class Accommodation extends Base {
 	}
 	public void setPersonnel(Integer personnel) {
 		this.personnel = personnel;
+	}
+	public Integer getDateGap() {
+		return dateGap;
+	}
+	public void setDateGap(Integer dateGap) {
+		this.dateGap = dateGap;
 	}
 	
 	//Room
@@ -302,6 +311,7 @@ public class Accommodation extends Base {
 	public void setPrice(Integer price) {
 		this.price = price;
 	}
+	
 	
 
 

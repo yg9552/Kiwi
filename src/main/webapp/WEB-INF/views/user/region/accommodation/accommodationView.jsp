@@ -164,9 +164,10 @@
                      <form action="#">
                      	<div class="form-group">
                      		<label>객실타입</label>
-		                    <select class="form-select" style="border: 1px solid #ced4da; border-radius: 0.25rem; color: #495057;" name="nxRoomSeq">
+		                    <select class="form-select" style="border: 1px solid #ced4da; border-radius: 0.25rem; color: #495057;" name="nxRoomSeq" onchange="chageLangSelect()" id="nxRoomSeq">
+							  <option value="">선택하세요</option>
 							  <c:forEach items="${listR }" var="listR" varStatus="statusR">
-							  	<option value="<c:out value="${listR.nxRoomSeq }"/>"> <c:out value="${listR.roomName }"/> <c:out value="${listR.price }"/></option>
+							  	<option value="<c:out value="${listR.nxRoomSeq }"/>"> <c:out value="${listR.roomName }"/></option>
 							  </c:forEach>
 							</select>
 						</div>
@@ -182,10 +183,8 @@
                            <label>인원</label>
                            <input type="number" class="form-control" value="2" name="personnel">
                         </div>
-                        <div class="form-group">
-                           <label for="dateGap">가격</label>
-                           <input type="text" id="dateGap" class="form-control text-danger" name="price" />
-                        </div>
+                        <h5 class="text-danger text-center" style="margin: 50px 0 30px" id="price2"></h5>
+                   		<input type="hidden" id="price" value="" class="form-control" name="pay" style="border: none; background-color: #fbf9ff;" />
                         <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn" type="button" id="btnSave">예약하기</button>
                      </form>
                   	</aside>
@@ -355,23 +354,29 @@
          // e.date를 찍어보면 Thu Jun 27 2019 00:00:00 GMT+0900 (한국 표준시) 위와 같은 형태로 보인다.
       });
       
-      function call()
-      {
-          var sdd = document.getElementById("datePicker").value;
-          var edd = document.getElementById("datePicker2").value;
-          var ar1 = sdd.split('-');
-          var ar2 = edd.split('-');
-          var da1 = new Date(ar1[0], ar1[1], ar1[2]);
-          var da2 = new Date(ar2[0], ar2[1], ar2[2]);
-          var dif = da2 - da1;
-          var cDay = 24 * 60 * 60 * 1000;// 시 * 분 * 초 * 밀리세컨
-          var cMonth = cDay * 30;// 월 만듬
-          var cYear = cMonth * 12; // 년 만듬
-       if(sdd && edd){
-          document.getElementById('dateGap').value = parseInt(dif/cDay)
-       }
-      }
-      
+      $("#nxRoomSeq").on("change", function(){
+    	  $.ajax({
+   			async: true 
+   			,cache: false
+   			,type: "post"
+   			/* ,dataType:"json" */
+   			,url: "/nextrip/region/accommodation/selectRoomPrice"
+   			/* ,data : $("#formLogin").serialize() */
+   			,data : { "nxRoomSeq" : $("#nxRoomSeq").val() }
+   			,success: function(response) {
+   				if(response.rt == "success") {
+   					$("#price").val(response.price);
+   				//	document.getElementById("price2").innerText = "1박 " + response.price + "원";
+   					$("#price2").text("1박 " + response.price + "원");
+   				} else {
+   					alert("객실타입을 선택하세요");
+   				}
+   			}
+   			,error : function(jqXHR, textStatus, errorThrown){
+   				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+   			}
+  			});
+      });
    </script>
   
 	<!-- JS here -->
@@ -476,5 +481,18 @@
     	   	form.attr("action", goUrlInst).submit();
     	}); 
 		</script>
+		<!-- <script>
+		function chageLangSelect(){
+		    var langSelect = document.getElementById("nxRoomSeq");
+		     
+		    // select element에서 선택된 option의 value가 저장된다.
+		    var selectValue = langSelect.options[langSelect.selectedIndex].value;
+		 
+		    // select element에서 선택된 option의 text가 저장된다.
+		    var selectText = langSelect.options[langSelect.selectedIndex].text;
+		    
+		    $("#price").val(selectValue);
+		}
+		</script> -->
     </body>
 </html>

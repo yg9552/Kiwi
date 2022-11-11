@@ -142,6 +142,7 @@
 			    ,a.regDateTime
 			    ,a.modDateTime
 			    ,a.personnel
+			    ,TIMESTAMPDIFF(DAY, a.checkInDate, a.checkOutDate) as dateGap
 			FROM nxPurchaseHistory a
 			WHERE 1=1
 	    	ORDER BY a.nxPurchaseHistorySeq DESC
@@ -166,6 +167,7 @@
 		    ,a.regDateTime
 		    ,a.modDateTime
 		    ,a.personnel
+		    ,TIMESTAMPDIFF(DAY, a.checkInDate, a.checkOutDate) as dateGap
 	    FROM nxPurchaseHistory a
 	    WHERE 1=1
 	    AND a.nxPurchaseHistorySeq = #{nxPurchaseHistorySeq}
@@ -210,6 +212,7 @@
 			reservationName = #{reservationName }
 			,reservationPhoneNum = #{reservationPhoneNum }
 			,reservationStatus = 2
+			,pay = #{pay }
 			,paymentMethod = #{paymentMethod }
 		WHERE 
 			nxPurchaseHistorySeq = #{nxPurchaseHistorySeq}
@@ -273,5 +276,13 @@
 			SELECT last_insert_id()
 		</selectKey>
 	</insert>
+	
+	<select id="selectRoomPrice" resultMap="resultMapObj">
+		SELECT
+			a.price
+		FROM nxRoom a
+		WHERE 1=1
+		AND a.nxRoomSeq = #{nxRoomSeq}
+	</select>
 	<!-- Room E -->
 </mapper>	

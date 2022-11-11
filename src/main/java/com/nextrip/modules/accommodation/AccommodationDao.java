@@ -67,4 +67,7 @@ public class AccommodationDao {
 	public int insertRoom(Accommodation dto) {
 		return sqlSession.insert(namespace + ".insertRoom", dto);
 	}
+	public Accommodation selectRoomPrice(Accommodation dto) {
+		return sqlSession.selectOne(namespace + ".selectRoomPrice", dto);
+	}
 }

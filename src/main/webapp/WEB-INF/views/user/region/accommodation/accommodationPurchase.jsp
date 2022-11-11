@@ -122,6 +122,7 @@
                     </form>
                 </div>
                 <div class="col-lg-4">
+                <c:set var = "total" value = "${itemph.pay * itemph.dateGap}" />
                     <div class="blog_right_sidebar">
                         <aside class="single_sidebar_widget post_category_widget">
                             <h4 class="widget_title">숙소 정보</h4>
@@ -133,22 +134,25 @@
                                 <li>
                                     <h6>객실타입/기간</h6>
                                 	<c:forEach items="${listr }" var="listr" varStatus="statuslistR">
-                                		<c:if test="${itemph.nxRoomSeq eq listr.nxRoomSeq }"><p class="p-3"> <c:out value="${listr.roomName }" /> / 1박</p></c:if>
+                                		<c:if test="${itemph.nxRoomSeq eq listr.nxRoomSeq }"><p class="p-3"> <c:out value="${listr.roomName }" /> / <c:out value="${itemph.dateGap }"/>박</p></c:if>
                                 	</c:forEach>
                                 </li>
                                 <li>
                                     <h6>체크인</h6>
-                                    <p class="p-3"><c:out value="${itemph.checkInDate }" /></p>
+                                    <p class="p-3" id="checkInDate"><fmt:formatDate value="${itemph.checkInDate }" pattern="yyyy-MM-dd"/></p>
                                 </li>
                                 <li>
                                     <h6>체크아웃</h6>
-                                    <p class="p-3"><c:out value="${itemph.checkOutDate }" /></p>
+                                    <p class="p-3" id="checkOutDate"><fmt:formatDate value="${itemph.checkOutDate }" pattern="yyyy-MM-dd"/></p>
                                 </li>
                                 <li>
                                     <h5>총 결제 금액</h5>
-                                    <c:forEach items="${listr }" var="listr" varStatus="statuslistR">
-                                		<c:if test="${itemph.nxRoomSeq eq listr.nxRoomSeq }"><p class="p-3 text-danger"> <fmt:formatNumber value="${listr.price }" pattern="#,###" /> / 1박</p></c:if>
-                                	</c:forEach>
+                                    <p class="p-3 text-danger"> <c:out value="${itemph.dateGap }" />박 / <fmt:formatNumber value="${total }" pattern="#,###" />원</p>
+                                    <input type="hidden" id="pay" value="${total }" class="form-control text-danger" name="pay" style="border: none; background-color: #fbf9ff;" />
+                                    <%-- <c:forEach items="${listr }" var="listr" varStatus="statuslistR">
+                                		<c:if test="${itemph.nxRoomSeq eq listr.nxRoomSeq }"><p class="p-3 text-danger"> <fmt:formatNumber value="${listr.price }" pattern="#,###" />원</p></c:if>
+                                		<c:if test="${itemph.nxRoomSeq eq listr.nxRoomSeq }"><input type="text" id="pay" value="${listr.price }" class="form-control" name="pay" style="border: none; background-color: #fbf9ff;" /></c:if>
+                                	</c:forEach> --%>
                                 </li>
                             </ul>
                             <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn" type="button" id="btnSave">결제하기</button>
@@ -299,7 +303,6 @@
 		$("#btnSave").on("click", function(){
     	   	form.attr("action", goUrlUpdt).submit();
     	}); 
-		
 		</script>
 
 </body>
