@@ -56,6 +56,7 @@
 		                                                    <li><a href="#">글쓰기</a></li>
 		                                                </ul>
 		                                            </li>
+		                                            <li><a href="/nextrip/region/accommodation/accommodationList">숙박</a>
 		                                        </ul>
 		                                    </nav>
 		                                </div>
@@ -127,6 +128,8 @@
 		                                                    <li><a href="/post/postUserList">게시판</a></li>
 		                                                    <li><a href="#">글쓰기</a></li>
 		                                                </ul>
+		                                            </li>
+		                                            <li><a href="/nextrip/region/accommodation/accommodationList">숙박</a>
 		                                            </li>
 		                                            <li><a href="#">마이페이지</a>
 		                                            	<ul class="submenu">

@@ -65,6 +65,8 @@ public class MemberController {
 		String rtSeq = (String) httpSession.getAttribute("sessSeq");
 		dto.setMemberSeq(rtSeq);
 		service.memberUpdt(dto);
+		httpSession.setAttribute("sessNickname", dto.getNickname());
+		
 		return "redirect:/nextrip/memberModification";
 	}
 	
