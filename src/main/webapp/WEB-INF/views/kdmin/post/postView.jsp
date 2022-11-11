@@ -68,6 +68,12 @@
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="/resources/template/sneat/assets/js/config.js"></script>
+    
+    <!-- 서머노트를 위해 추가해야할 부분 -->
+	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>	
+	 <script src="/resources/summernote/summernote-lite.js"></script>
+	 <script src="/resources/summernote/lang/summernote-ko-KR.js"></script>
+	 <link rel="stylesheet" href="/resources/summernote/summernote-lite.css">
   </head>
 
   <body>
@@ -81,9 +87,108 @@
 
             <div class="container-fluid flex-grow-1 container-p-y">
               <!-- Layout Demo -->
-              <div class="layout-demo-wrapper">
-              	<h1 style="float:right;">코드 관리</h1>
-              </div>
+				<div class="layout-demo-wrapper">
+					<h1 style="float:right;">게시글 관리</h1>
+						<div class="col-md-12">
+							<div class="card mb-4">
+								<h5 class="card-header">글 정보</h5>
+								<div class="card-body">
+									<div class="row mb-4">
+										<div class="col-md-2">
+											<label for="nxPostSeq" class="form-label">게시글 번호</label>
+											<input type="text" class="form-control" id="nxPostSeq"/ readonly>
+										</div>
+										<div class="col-md-2">
+											<label for="memberSeq" class="form-label">멤버 번호</label>
+											<input type="text" class="form-control" id="memberSeq"/ readonly>
+										</div>
+										<div class="col-md-2">
+											<label for="delNy" class="form-label">삭제 여부</label>
+											<select class="form-select" id="delNy" name="delNy">
+												<option value="">삭제 여부</option>
+												<option value="0">N</option>
+												<option value="1">Y</option>
+											</select>
+										</div>
+										<div class="col-md-2">
+											<label for="postType" class="form-label">구분</label>
+											<select class="form-select" id="postType" name="postType">
+												<option value="">구분</option>
+												<option value="401">여행지</option>
+												<option value="402">숙박</option>
+												<option value="403">음식점</option>
+											</select>
+										</div>
+										<div class="col-md-2">
+											<label for="region" class="form-label">지역</label>
+											<select class="form-select" id="region" name="region">
+												<option value="">지역</option>
+												<option value="201">수도권</option>
+												<option value="202">경상</option>
+												<option value="203">전라</option>
+												<option value="204">강원</option>
+												<option value="205">충청</option>
+												<option value="206">제주</option>
+											</select>
+										</div>
+										<div class="col-md-2">
+											<label for="memberNickName" class="form-label">닉네임</label>
+											<input type="text" class="form-control" id="memberNickName"/ readonly>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="card mb-4">
+								<h5 class="card-header">여행지</h5>
+								<div class="card-body">
+									<div class="row">
+										<div class="col-md-6">
+											<img class="col-md-12" alt="" src="../../image/bamboo.jpg">
+										</div>
+										<div class="col-md-6">
+											<div class="row">
+												<div class="col-md-10 offset-1">
+													<label for="addressTitle" class="form-label">여행지 제목</label>
+													<input type="text" class="form-control" id="addressTitle"/>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-md-5 offset-1">
+													<label for="addressZip" class="form-label">우편번호</label>
+													<input type="text" class="form-control" id="addressZip"/>
+												</div>
+												<button class="btn btn-primary col-md-3 offset-1" style="height: 38.94px; margin-top: 28px;">주소 입력</button>
+											</div>
+											<div class="row">
+												<div class="col-md-10 offset-1">
+													<label for="address" class="form-label">주소</label>
+													<input type="text" class="form-control" id="memberNickName"/ >
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-md-5 offset-1">
+													<label for="lng" class="form-label">위도</label>
+													<input type="text" class="form-control" id="lng"/ >
+												</div>
+												<div class="col-md-5">
+													<label for="lat" class="form-label">경도</label>
+													<input type="text" class="form-control" id="lat"/ >
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="card mb-4">
+								<div class="card-body">
+									<div class="col-md-6 offset-3">
+										<textarea class="summerNote" id="content" name="content" style="display:none;"></textarea>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
               <!--/ Layout Demo -->
             </div>
             <!-- / Content -->
@@ -132,7 +237,41 @@
       <div class="layout-overlay layout-menu-toggle"></div>
     </div>
     <!-- / Layout wrapper -->
+	<script>
+		// 툴바생략
+		 var toolbar = [
+			    // 글꼴 설정
+			    ['fontname', ['fontname']],
+			    // 글자 크기 설정
+			    ['fontsize', ['fontsize']],
+			    // 굵기, 기울임꼴, 밑줄,취소 선, 서식지우기
+			    ['style', ['bold', 'italic', 'underline','strikethrough', 'clear']],
+			    // 글자색
+			    ['color', ['forecolor','color']],	
+			    // 글머리 기호, 번호매기기, 문단정렬
+			    ['para', ['paragraph']],
+			    // 줄간격
+			    ['height', ['height']],
+			    // 그림첨부, 링크만들기, 동영상첨부
+			    ['insert',['picture','link']],
+			  ],
+			  // 추가한 글꼴
+			fontNames = ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋음체','바탕체'],
+			 // 추가한 폰트사이즈
+			fontSizes = ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72']
 
+		var setting = {
+	            height : 600,
+	            minHeight : null,
+	            maxHeight : null,
+	            focus : true,
+	            lang : 'ko-KR',
+	            toolbar : toolbar
+	            //콜백 함수
+	           
+	         };
+	        $('.summerNote').summernote(setting);
+	</script>
 
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
