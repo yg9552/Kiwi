@@ -11,13 +11,11 @@
 	<sql id="selectCommon">
 	FROM nxAccommodation a
 	WHERE 1=1
-	<!-- <if test="shDelNy != null and !shDelNy.equals('')">AND DelNy = #{shDelNy}</if>
+	<!-- <if test="shDelNy != null and !shDelNy.equals('')">AND DelNy = #{shDelNy}</if> -->
 		<choose>
-			<when test="shOption == 1">AND productSeq LIKE CONCAT('%',#{shValue},'%')</when>
-			<when test="shOption == 2">AND product_name LIKE CONCAT('%',#{shValue},'%')</when>
-			<when test="shOption == 3">AND brand_code LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 1">AND a.region = #{shValue}</when>
 			<otherwise></otherwise>
-		</choose> -->
+		</choose>
 	</sql>
 	
 	<select id="selectList" resultMap="resultMapObj">

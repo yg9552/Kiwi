@@ -67,12 +67,12 @@
             	<div class="collapse" id="collapseExample">
 				  <div class="card card-body border border-white">
 				    <div class="button-group-area text-center">
-						<a href="#" class="genric-btn default circle">수도권</a>
-						<a href="#" class="genric-btn primary circle">강원도</a>
-						<a href="#" class="genric-btn success circle">경상도</a>
-						<a href="#" class="genric-btn info circle">전라도</a>
-						<a href="#" class="genric-btn warning circle">충청도</a>
-						<a href="#" class="genric-btn danger circle">제주도</a>
+				    	<c:set var="listregion" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
+				    	<input type="hidden" value="1" name="shOption">
+						<c:forEach items="${listregion}" var="listregion" varStatus="statuslistregion">
+							<input type="text" name="shValue" id="btnSh" value='<c:out value="${listregion.replaceCode eq 201}" />'>
+							<button type="submit" class="genric-btn primary circle"><c:out value="${listregion.name }" /></button>
+						</c:forEach>
 					</div>
 				  </div>
 				</div>
@@ -238,6 +238,10 @@
         
         var seq = $("input:hidden[name=nxAccommodationSeq]");
 		var form = $("form[name=formList]");
+		
+		$("#btnSh").on("click", function(){
+	   		form.attr("action", goUrlList).submit();
+    	});
 		
 		goView = function(keyValue) {
 			seq.val(keyValue);
