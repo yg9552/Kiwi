@@ -32,6 +32,8 @@
 	<link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/style.css">
 	<script src="https://kit.fontawesome.com/dca973ab96.js" crossorigin="anonymous"></script>
 	<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=fbcf9729cf4cb4a9f70ddf30309fa210&libraries=services"></script>
+	
 	
 	
 	 <!-- 서머노트를 위해 추가해야할 부분 -->
@@ -190,7 +192,7 @@
 	                		<table class="table table-bordered text-center">
 	                			<tr>
 	                				<th class="col-xl-2 VMiddle">구분</th>
-	                				<td class="col-xl-2">
+	                				<td class="col-xl-4">
 	                					<select class="form-select" id="postType" name="postType">
 	                						<option value="">구분</option>
 	                						<option value="401" <c:if test="${item.postType eq 401 }">selected</c:if>>여행지</option>
@@ -199,7 +201,7 @@
 	                					</select>
 	                				</td>
 	                				<th class="col-xl-2 VMiddle">지역</th>
-	                				<td class="col-xl-2">
+	                				<td class="col-xl-2" colspan="2">
 	                					<select class="form-select" id="region" name="region">
 	                						<option value="">지역</option>
 	                						<option value="201" <c:if test="${item.region eq 201 }">selected</c:if>>수도권</option>
@@ -210,11 +212,35 @@
 	                						<option value="206" <c:if test="${item.region eq 206 }">selected</c:if>>제주도</option>
 	                					</select>
 	                				</td>
+	                				<td class="col-xl-2">
+	                					<!-- <button type="button" class="genric-btn success" id="imageBtn" name="imageBtn" style="height: 40px;">사진 첨부</button> -->
+	                					<label for="uploadImage" class="genric-btn success input-file-button" style="height: 40px;">사진 첨부</label>
+	                				</td>
+	                			</tr>
+	                			<tr>
 	                				<th class="col-xl-2 VMiddle">
-	                					작성자
+	                					여행지 사진
 	                				</th>
-	                				<td class="col-xl-2" style="vertical-align: middle">
-	                					<c:out value="${item.memberNickName }"/>
+	                				<td colspan="5">
+	                					<div style="background-color: #f0f0f0;">
+	                						<c:set var="type" value="1"/>		<!-- #-> -->
+								        	<c:set var="name" value="uploadImage"/>		<!-- #-> -->
+								        	<input type="hidden" id="<c:out value="${name }"/>MaxNumber" name="<c:out value="${name }"/>MaxNumber" value="0"/>
+								        	<input type="hidden" id="<c:out value="${name }"/>DeleteSeq" name="<c:out value="${name }"/>DeleteSeq"/>
+								        	<input type="hidden" id="<c:out value="${name }"/>DeletePathFile" name="<c:out value="${name }"/>DeletePathFile"/>
+								            <!-- <label for="uploadImage" class="form-label input-file-button">표지 첨부</label> -->
+								 			<input class="form-control form-control-sm" id="<c:out value="${name }"/>" name="<c:out value="${name }"/>" type="file" multiple="multiple" style="display: none;" onChange="upload('<c:out value="${name }"/>', <c:out value="${type }"/>, 1, 1, 0, 0, 1);">
+											<div id="<c:out value="${name }"/>Preview" class="addScroll" style="padding: 5px; width: 520px;">
+												<c:forEach items="${postListUploaded}" var="postListUploaded" varStatus="statusUploaded">
+													<c:if test="${postListUploaded.type eq type }">
+														<div id="imageDiv_<c:out value="${type }"/>_<c:out value="${postListUploaded.sort }"/>" style="display: inline-block; height: 95px;">
+															<img src="<c:out value="${postListUploaded.path }"/><c:out value="${postListUploaded.uuidName }"/>" class="rounded" style="cursor:pointer;" onClick="openViewer(<c:out value="${postListUploaded.type }"/>, <c:out value="${postListUploaded. sort }"/>);">
+															<div style="position: relative; top:-190px; left:5px"><span style="color: red; cursor:pointer;" onClick="delImageDiv('<c:out value="${name }"/>', <c:out value="${type }"/>,<c:out value="${postListUploaded.sort }"/>, <c:out value="${postListUploaded.seq }"/>, '<c:out value="${postListUploaded.path }"/><c:out value="${postListUploaded.uuidName }"/>')">X</span></div>
+														</div>
+													</c:if>
+												</c:forEach>
+											</div>
+	                					</div>
 	                				</td>
 	                			</tr>
 	                			<tr>
@@ -225,7 +251,12 @@
 	                					<input type="text" class="form-control" id="addressTitle" name="addressTitle" value="<c:out value="${item.addressTitle }"/>">
 	                				</td>
 	                				<td class="col-xl-2">
-	                					<button type="button" class="genric-btn info" id="" name="" style="height: 40px;">위치 설정</button>
+	                					<button type="button" id="mapBtn" name="mapBtn" class="genric-btn info" style="height: 40px;">위치 설정</button>
+	                				</td>
+	                			</tr>
+	                			<tr id="mapTable" name="mapTable" style="display: none;">
+	                				<td colspan="6">
+	                					<div id="MapDiv" name="MapDiv"></div>
 	                				</td>
 	                			</tr>
 	                			<tr>
@@ -261,7 +292,6 @@
                 		<button class="genric-btn default bottomBtn" id="cancelBtn" name="cancelBtn" >취소</button>
 	                	<button class="genric-btn info bottomBtn" id="regModBtn" name="regModBtn" >등록</button>
                 	</div>
-                	
 				    <div class="border border-gray" style="padding:20px; margin-top: 50px;">
                         <p class="border-bottom"><b>꼭 읽어주세요!</b></p>
                         <ul style="list-style-type: square;">
@@ -390,7 +420,18 @@
 					
 			});
 		</script> -->
-		
+		<script>
+			var mapContainer = document.getElementById('MapDiv'), // 지도를 표시할 div 
+			    mapOption = {
+			        center: new kakao.maps.LatLng(37.56682, 126.97865), // 지도의 중심좌표
+			        level: 3, // 지도의 확대 레벨
+			        mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
+			    }; 
+	
+			// 지도를 생성한다 
+			var map = new kakao.maps.Map(mapContainer, mapOption); 
+	
+		</script>
 		<script>
 			// 툴바생략
 			 var toolbar = [
@@ -448,7 +489,232 @@
 		
 		$('#content').summernote('editor.insertText', "${board_data.BOARD_CONTENT}")
 		
-		</script>
+		upload = function(objName, seq, allowedMaxTotalFileNumber, allowedExtdiv, allowedEachFileSize, allowedTotalFileSize, uiType) {
+			
+//			objName 과 seq 는 jsp 내에서 유일 하여야 함.
+//			memberProfileImage: 1
+//			memberImage: 2
+//			memberFile : 3
+
+//			uiType: 1 => 이미지형
+//			uiType: 2 => 파일형
+//			uiType: 3 => 프로필형
+
+			var files = $("#" + objName +"")[0].files;
+			var filePreview = $("#" + objName +"Preview");
+			var numbering = [];
+			var maxNumber = 0;
+			
+			if(uiType == 1) {
+				var uploadedFilesCount = document.querySelectorAll("#" + objName + "Preview > div > img").length;
+				var tagIds = document.querySelectorAll("#" + objName + "Preview > div");
+				
+				for(var i=0; i<tagIds.length; i++){
+					var tagId = tagIds[i].getAttribute("id").split("_");
+					numbering.push(tagId[2]);
+				}
+				
+				if(uploadedFilesCount > 0){
+					numbering.sort();
+					maxNumber = parseInt(numbering[numbering.length-1]) + parseInt(1);
+				}
+			} else if(uiType == 2){
+				var uploadedFilesCount = document.querySelectorAll("#" + objName + "Preview > div > img").length;
+				var tagIds = document.querySelectorAll("#" + objName + "Preview > div");
+
+				for(var i=0; i<tagIds.length; i++){
+					var tagId = tagIds[i].getAttribute("id").split("_");
+					numbering.push(tagId[2]);
+				}
+				
+				if(uploadedFilesCount > 0){
+					numbering.sort();
+					maxNumber = parseInt(numbering[numbering.length-1]) + parseInt(1);
+				}
+			} else {
+				// by pass
+			}
+			
+			$("#" + objName + "MaxNumber").val(maxNumber);
+
+			var totalFileSize = 0;
+			var filesCount = files.length;
+			var filesArray = [];
+			
+			allowedMaxTotalFileNumber = allowedMaxTotalFileNumber == 0 ? MAX_TOTAL_FILE_NUMBER : allowedMaxTotalFileNumber;
+			allowedEachFileSize = allowedEachFileSize == 0 ? MAX_EACH_FILE_SIZE : allowedEachFileSize;
+			allowedTotalFileSize = allowedTotalFileSize == 0 ? MAX_TOTAL_FILE_SIZE : allowedTotalFileSize;
+			
+			if(checkUploadedTotalFileNumber(files, allowedMaxTotalFileNumber, filesCount, uploadedFilesCount) == false) { return false; }
+			
+			for (var i=0; i<filesCount; i++) {
+				if(checkUploadedExt(files[i].name, seq, allowedExtdiv) == false) { return false; }
+				if(checkUploadedEachFileSize(files[i], seq, allowedEachFileSize) == false) { return false; }
+
+				totalFileSize += files[i].size;
+				
+				filesArray.push(files[i]);
+			}
+
+			if(checkUploadedTotalFileSize(seq, totalFileSize, allowedTotalFileSize) == false) { return false; }
+			
+			if (uiType == 1) {
+				for (var i=0; i<filesArray.length; i++) {
+					var file = filesArray[i];
+
+					var picReader = new FileReader();
+				    picReader.addEventListener("load", addEventListenerCustom (objName, seq, i, file, filePreview, maxNumber));
+				    picReader.readAsDataURL(file);
+				}			
+			} else {
+				return false;
+			}
+			return false;
+		}
+		
+		
+		addEventListenerCustom = function (objName, type, i, file, filePreview, maxNumber) { 
+			return function(event) {
+				var imageFile = event.target;
+				var sort = parseInt(maxNumber) + i;
+				if(sort == 0){
+				var divImage = "";
+				divImage += '<div id="imageDiv_'+type+'_'+ sort +'" style="display: inline-block; height: 95px;">';
+				divImage += '	<img src="'+ imageFile.result +'" class="rounded" width="555px">';
+				divImage += '	<div style="position: relative; top:-176px; left:5px"><span style="color: red; cursor:pointer;" onClick="delImageDiv(0,' + type +','+ sort +')">X</span></div>';
+				divImage += '</div> ';
+				
+				filePreview.append(divImage);
+				} else {
+					alert("설정되있는 사진을 취소하고 다시 올려주세요");
+				}
+		    };
+		}
+		
+		
+		delImageDiv = function(objName, type, sort, deleteSeq, pathFile) {
+			
+			$("#imageDiv_"+type+"_"+sort).remove();
+			
+			var objDeleteSeq = $('input[name='+ objName +'DeleteSeq]');
+			var objDeletePathFile = $('input[name='+ objName +'DeletePathFile]');
+
+			if(objDeleteSeq.val() == "") {
+				objDeleteSeq.val(deleteSeq);
+			} else {
+				objDeleteSeq.val(objDeleteSeq.val() + "," + deleteSeq);
+			}
+			
+			if(objDeletePathFile.val() == "") {
+				objDeletePathFile.val(pathFile);
+			} else {
+				objDeletePathFile.val(objDeletePathFile.val() + "," + pathFile);
+			}
+		}
+		
+		
+		addUploadLi = function (objName, type, i, name, filePreview, maxNumber){
+
+			var sort = parseInt(maxNumber) + i;
+			
+			var li ="";
+			li += '<input type="hidden" id="'+ objName +'Process_'+type+'_'+ sort +'" name="'+ objName +'Process" value="1">';
+			li += '<input type="hidden" id="'+ objName +'Sort_'+type+'_'+ sort +'" name="'+ objName +'Sort" value="'+ sort +'">';
+			li += '<li id="li_'+type+'_'+sort+'" class="list-group-item d-flex justify-content-between align-items-center">';
+			li += name;
+			li +='<span class="badge bg-danger rounded-pill" onClick="delLi(0,'+ type +','+ sort +')"><i class="fa-solid fa-x" style="cursor: pointer;"></i></span>';
+			li +='</li>';
+			
+			filePreview.append(li);
+		}
+		
+		
+		delLi = function(objName, type, sort, deleteSeq, pathFile) {
+			
+			$("#li_"+type+"_"+sort).remove();
+
+			var objDeleteSeq = $('input[name='+ objName +'DeleteSeq]');
+			var objDeletePathFile = $('input[name='+ objName +'DeletePathFile]');
+
+			if(objDeleteSeq.val() == "") {
+				objDeleteSeq.val(deleteSeq);
+			} else {
+				objDeleteSeq.val(objDeleteSeq.val() + "," + deleteSeq);
+			}
+			
+			if(objDeletePathFile.val() == "") {
+				objDeletePathFile.val(pathFile);
+			} else {
+				objDeletePathFile.val(objDeletePathFile.val() + "," + pathFile);
+			}
+		}
+		
+		openViewer = function (type, sort) {
+			var str = '<c:set var="tmp" value="'+ type +'"/>';
+			$("#modalImgViewer").append(str);
+			$("#modalImgViewer").modal("show");
+		}
+		
+		
+	// 추가 밸리데이션 체크
+		
+		var MegaSize = 1024 * 1024;
+		
+		var extArray1 = new Array();
+		extArray1 = ["jpg","gif","png","jpeg","bmp","tif"];
+		
+		checkUploadedTotalFileNumber = function(obj, allowedMaxTotalFileNumber, fileCount) {
+			if(allowedMaxTotalFileNumber < fileCount){
+				alert("전체 파일 갯수는 "+ allowedMaxTotalFileNumber +"개 까지 허용됩니다.");
+				$("#file"+seq).val("");
+				obj.val("");
+				return false;
+			}
+		}
+		
+		checkUploadedEachFileSize = function(obj, seq, allowedEachFileSize) {
+
+			if(obj.size > allowedEachFileSize){
+				alert("각 첨부 파일 사이즈는 "+kbToMb(allowedEachFileSize)+"MB 이내로 등록 가능합니다.");
+				$("#file"+seq).val("");
+				return false;
+			}
+		}
+
+
+		checkUploadedTotalFileSize = function(seq, totalSize, allowedTotalFileSize) {
+			if(totalSize > allowedTotalFileSize){
+				alert("전체 용량은 "+kbToMb(allowedTotalFileSize)+"MB를 넘을 수 없습니다.");
+				$("#file"+seq).val("");
+				return false;
+			}
+		}
+		
+		checkUploadedExt = function(objName, seq, div) {
+			var ext = objName.split('.').pop().toLowerCase();
+			var extArray = eval("extArray" + div);
+			
+			if(extArray.indexOf(ext) == -1) {	
+				alert("허용된 확장자가 아닙니다.");
+//				$("#file"+seq).val("");
+				return false;
+			}
+		}
+
+
+		const MAX_EACH_FILE_SIZE = 5 * 1024 * 1024;		//	5M
+		const MAX_TOTAL_FILE_SIZE = 7 * 1024 * 1024;	//	7M
+		const MAX_TOTAL_FILE_NUMBER = 2;				//	2
+		
+		function kbToMb(bytes) {
+		    var e = Math.floor(Math.log(bytes)/Math.log(1024));
+
+		    if(e == "-Infinity") return 0;
+		    else return (bytes/Math.pow(1024, Math.floor(e))).toFixed(2).slice(0, -3);
+		}
+		
+	</script>
+		
 		
 		<!-- JS here -->
 		

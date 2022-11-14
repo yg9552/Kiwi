@@ -3,7 +3,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
-<jsp:useBean id="CodeServiceImpl" class="com.nextrip.modules.code.CodeServiceImpl"/>
 
 
 <input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
@@ -11,6 +10,8 @@
 
 <input type="hidden" name="shDelNy" value="<c:out value="${vo.shDelNy}"/>"/>
 <input type="hidden" name="shDor" value="<c:out value="${vo.shDor}"/>"/>
+<input type="hidden" name="shPostType" value="<c:out value="${vo.shPostType}"/>"/>
+<input type="hidden" name="shRegion" value="<c:out value="${vo.shRegion}"/>"/>
 
 <%-- <input type="hidden" name="searchDos" value="<c:out value="${vo.searchDos}"/>"/>
 <input type="hidden" name="searchDoe" value="<c:out value="${vo.searchDoe}"/>"/> --%>

@@ -91,8 +91,8 @@
               <!-- Layout Demo -->
 				<div class="layout-demo-wrapper">
 					<h1 style="float:right;">게시글 관리</h1>
-						<form method="post" id="PVForm" name="PVForm">
-							<div class="col-md-12">
+						<div class="col-md-12">
+							<form method="post" id="PVForm" name="PVForm">
 								<div class="card mb-4">
 									<h5 class="card-header">글 정보</h5>
 									<div class="card-body">
@@ -187,6 +187,7 @@
 								<div class="card mb-4">
 									<div class="card-body">
 										<div class="col-md-6 offset-3">
+											<input type="text" class="form-control mb-3" id="title	" name="title" value="<c:out value="${item.title }" />" placeholder="제목">
 											<textarea class="summerNote" id="content" name="content" style="display:none;">
 												${item.content }
 											</textarea>
@@ -199,8 +200,8 @@
 					              	<%@include file="../../common/kdminViewModalDiv.jsp"%>
 								    <!-- kdmin pagination e -->
 								</div>
-							</div>
-						</form>
+							</form>
+						</div>	
 						<form method="post" id="PVFormVo" name="PVFormVo">
 							<!-- kdmin pagination s -->
 			              	<%@include file="postVo.jsp"%>

@@ -19,8 +19,8 @@ public class Base {
 	private long size;
 	private Integer delNy;
 	private String pseq;
-	private Timestamp regDateTime;
-	private Timestamp modDateTime;
+	private Date regDateTime;
+	private Date modDateTime;
 //	regmod
 	private String regIp;
 	private String regSeq;
@@ -32,6 +32,7 @@ public class Base {
 	private String modId;
 	private Integer modDeviceCd;
 	private Date modDateTimeSvr;
+	
 	public String getTableName() {
 		return tableName;
 	}
@@ -166,16 +167,16 @@ public class Base {
 	public void setModDateTimeSvr(Date modDateTimeSvr) {
 		this.modDateTimeSvr = modDateTimeSvr;
 	}
-	public Timestamp getRegDateTime() {
+	public Date getRegDateTime() {
 		return regDateTime;
 	}
-	public void setRegDateTime(Timestamp regDateTime) {
+	public void setRegDateTime(Date regDateTime) {
 		this.regDateTime = regDateTime;
 	}
-	public Timestamp getModDateTime() {
+	public Date getModDateTime() {
 		return modDateTime;
 	}
-	public void setModDateTime(Timestamp modDateTime) {
+	public void setModDateTime(Date modDateTime) {
 		this.modDateTime = modDateTime;
 	}
 	

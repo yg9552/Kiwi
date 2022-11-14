@@ -8,7 +8,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        사용 여부가 Y로 바뀌게 됩니다 삭제하시겠습니까?
+        사용자 게시판에서 보이지 않게 됩니다 삭제하시겠습니까?
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
@@ -29,7 +29,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        테이블에서 데이터가 삭제 됩니다 삭제하시겠습니까?
+        게시글 데이터가 완전히 삭제 됩니다 삭제하시겠습니까?
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">

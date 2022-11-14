@@ -8,6 +8,26 @@
 
     <resultMap id="resultMapObj" type="com.nextrip.modules.post.Post"></resultMap>
 	
+<!-- uploaded s -->
+
+<select id="postListUploaded" resultMap="resultMapObj">
+	SELECT 
+		seq
+		,type
+		,defaultNy
+		,sort
+		,path
+		,originalName
+		,uuidName
+	FROM postUploaded
+	WHERE 1=1
+		AND delNy = 0
+		AND pseq = #{nxPostSeq}
+	ORDER BY
+		type, sort
+</select>
+<!-- uploaded e -->	
+	
 <select id="selectList" resultMap="resultMapObj">
 	<include refid="Base.selectListUpperForMysql" />
 	select
