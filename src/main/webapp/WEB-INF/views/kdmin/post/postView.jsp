@@ -34,7 +34,7 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>codeView</title>
+    <title>게시글 관리</title>
 
     <meta name="description" content="" />
 
@@ -74,6 +74,8 @@
 	 <script src="/resources/summernote/summernote-lite.js"></script>
 	 <script src="/resources/summernote/lang/summernote-ko-KR.js"></script>
 	 <link rel="stylesheet" href="/resources/summernote/summernote-lite.css">
+	 <script src="https://kit.fontawesome.com/dca973ab96.js" crossorigin="anonymous"></script>
+	 
   </head>
 
   <body>
@@ -89,104 +91,121 @@
               <!-- Layout Demo -->
 				<div class="layout-demo-wrapper">
 					<h1 style="float:right;">게시글 관리</h1>
-						<div class="col-md-12">
-							<div class="card mb-4">
-								<h5 class="card-header">글 정보</h5>
-								<div class="card-body">
-									<div class="row mb-4">
-										<div class="col-md-2">
-											<label for="nxPostSeq" class="form-label">게시글 번호</label>
-											<input type="text" class="form-control" id="nxPostSeq"/ readonly>
-										</div>
-										<div class="col-md-2">
-											<label for="memberSeq" class="form-label">멤버 번호</label>
-											<input type="text" class="form-control" id="memberSeq"/ readonly>
-										</div>
-										<div class="col-md-2">
-											<label for="delNy" class="form-label">삭제 여부</label>
-											<select class="form-select" id="delNy" name="delNy">
-												<option value="">삭제 여부</option>
-												<option value="0">N</option>
-												<option value="1">Y</option>
-											</select>
-										</div>
-										<div class="col-md-2">
-											<label for="postType" class="form-label">구분</label>
-											<select class="form-select" id="postType" name="postType">
-												<option value="">구분</option>
-												<option value="401">여행지</option>
-												<option value="402">숙박</option>
-												<option value="403">음식점</option>
-											</select>
-										</div>
-										<div class="col-md-2">
-											<label for="region" class="form-label">지역</label>
-											<select class="form-select" id="region" name="region">
-												<option value="">지역</option>
-												<option value="201">수도권</option>
-												<option value="202">경상</option>
-												<option value="203">전라</option>
-												<option value="204">강원</option>
-												<option value="205">충청</option>
-												<option value="206">제주</option>
-											</select>
-										</div>
-										<div class="col-md-2">
-											<label for="memberNickName" class="form-label">닉네임</label>
-											<input type="text" class="form-control" id="memberNickName"/ readonly>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="card mb-4">
-								<h5 class="card-header">여행지</h5>
-								<div class="card-body">
-									<div class="row">
-										<div class="col-md-6">
-											<img class="col-md-12" alt="" src="../../image/bamboo.jpg">
-										</div>
-										<div class="col-md-6">
-											<div class="row">
-												<div class="col-md-10 offset-1">
-													<label for="addressTitle" class="form-label">여행지 제목</label>
-													<input type="text" class="form-control" id="addressTitle"/>
-												</div>
+						<form method="post" id="PVForm" name="PVForm">
+							<div class="col-md-12">
+								<div class="card mb-4">
+									<h5 class="card-header">글 정보</h5>
+									<div class="card-body">
+										<div class="row mb-4">
+											<div class="col-md-2">
+												<label for="nxPostSeq" class="form-label">게시글 번호</label>
+												<input type="text" class="form-control" id="nxPostSeq" name="nxPostSeq" value="<c:out value="${item.nxPostSeq }" />" readonly>
 											</div>
-											<div class="row">
-												<div class="col-md-5 offset-1">
-													<label for="addressZip" class="form-label">우편번호</label>
-													<input type="text" class="form-control" id="addressZip"/>
-												</div>
-												<button class="btn btn-primary col-md-3 offset-1" style="height: 38.94px; margin-top: 28px;">주소 입력</button>
+											<div class="col-md-2">
+												<label for="memberSeq" class="form-label">멤버 번호</label>
+												<input type="text" class="form-control" id="memberSeq" name="memberSeq" value="<c:out value="${item.memberSeq }" />" readonly>
 											</div>
-											<div class="row">
-												<div class="col-md-10 offset-1">
-													<label for="address" class="form-label">주소</label>
-													<input type="text" class="form-control" id="memberNickName"/ >
-												</div>
+											<div class="col-md-2">
+												<label for="delNy" class="form-label">삭제 여부</label>
+												<select class="form-select" id="delNy" name="delNy">
+													<option value="">삭제 여부</option>
+													<option value="0" <c:if test="${item.delNy eq 0 }">selected</c:if>>N</option>
+													<option value="1" <c:if test="${item.delNy eq 1 }">selected</c:if>>Y</option>
+												</select>
 											</div>
-											<div class="row">
-												<div class="col-md-5 offset-1">
-													<label for="lng" class="form-label">위도</label>
-													<input type="text" class="form-control" id="lng"/ >
-												</div>
-												<div class="col-md-5">
-													<label for="lat" class="form-label">경도</label>
-													<input type="text" class="form-control" id="lat"/ >
-												</div>
+											<div class="col-md-2">
+												<label for="postType" class="form-label">구분</label>
+												<select class="form-select" id="postType" name="postType">
+													<option value="">구분</option>
+		                						<option value="401" <c:if test="${item.postType eq 401 }">selected</c:if>>여행지</option>
+		                						<option value="402" <c:if test="${item.postType eq 402 }">selected</c:if>>숙박</option>
+		                						<option value="403" <c:if test="${item.postType eq 403 }">selected</c:if>>음식점</option>
+												</select>
+											</div>
+											<div class="col-md-2">
+												<label for="region" class="form-label">지역</label>
+												<select class="form-select" id="region" name="region">
+													<option value="">지역</option>
+		                						<option value="201" <c:if test="${item.region eq 201 }">selected</c:if>>수도권</option>
+		                						<option value="202" <c:if test="${item.region eq 202 }">selected</c:if>>강원도</option>
+		                						<option value="203" <c:if test="${item.region eq 203 }">selected</c:if>>경상도</option>
+		                						<option value="204" <c:if test="${item.region eq 204 }">selected</c:if>>전라도</option>
+		                						<option value="205" <c:if test="${item.region eq 205 }">selected</c:if>>충청도</option>
+		                						<option value="206" <c:if test="${item.region eq 206 }">selected</c:if>>제주도</option>
+												</select>
+											</div>
+											<div class="col-md-2">
+												<label for="memberNickName" class="form-label">닉네임</label>
+												<input type="text" class="form-control" id="memberNickName" value="<c:out value="${item.memberNickName }"/>" readonly>
 											</div>
 										</div>
 									</div>
 								</div>
-							</div>
-							<div class="card mb-4">
-								<div class="card-body">
-									<div class="col-md-6 offset-3">
-										<textarea class="summerNote" id="content" name="content" style="display:none;"></textarea>
+								<div class="card mb-4">
+									<h5 class="card-header">여행지</h5>
+									<div class="card-body">
+										<div class="row">
+											<div class="col-md-6">
+												<img class="col-md-12" alt="" src="../../image/bamboo.jpg">
+											</div>
+											<div class="col-md-6">
+												<div class="row">
+													<div class="col-md-10 offset-1">
+														<label for="addressTitle" class="form-label">여행지 제목</label>
+														<input type="text" class="form-control" id="addressTitle" name="addressTitle" value="<c:out value="${item.addressTitle }" />">
+													</div>
+												</div>
+												<div class="row">
+													<div class="col-md-5 offset-1">
+														<label for="addressZip" class="form-label">우편번호</label>
+														<input type="text" class="form-control" id="addressZip"name="addressZip" value="<c:out value="${item.addressZip }" />">
+													</div>
+													<button class="btn btn-primary col-md-3 offset-1" style="height: 38.94px; margin-top: 28px;">주소 입력</button>
+												</div>
+												<div class="row">
+													<div class="col-md-10 offset-1">
+														<label for="address" class="form-label">주소</label>
+														<input type="text" class="form-control" id="address" name="address" value="<c:out value="${item.address }" />">
+														<input type="hidden" id="addressExtra" name="addressExtra" value="">
+														<input type="hidden" id="addressDetail" name="addressDetail" value="">
+													</div>
+												</div>
+												<div class="row">
+													<div class="col-md-5 offset-1">
+														<label for="lng" class="form-label">위도</label>
+														<input type="text" class="form-control" id="lng" name="lng" value="<c:out value="${item.lng }" />">
+													</div>
+													<div class="col-md-5">
+														<label for="lat" class="form-label">경도</label>
+														<input type="text" class="form-control" id="lat" name="lat" value="<c:out value="${item.lat }" />">
+													</div>
+												</div>
+											</div>
+										</div>
 									</div>
 								</div>
+								<div class="card mb-4">
+									<div class="card-body">
+										<div class="col-md-6 offset-3">
+											<textarea class="summerNote" id="content" name="content" style="display:none;">
+												${item.content }
+											</textarea>
+										</div>
+									</div>
+									<!-- kdmin pagination s -->
+					              	<%@include file="../../common/kdminViewButtonDiv.jsp"%>
+								    <!-- kdmin pagination e -->
+								    <!-- kdmin pagination s -->
+					              	<%@include file="../../common/kdminViewModalDiv.jsp"%>
+								    <!-- kdmin pagination e -->
+								</div>
 							</div>
-						</div>
+						</form>
+						<form method="post" id="PVFormVo" name="PVFormVo">
+							<!-- kdmin pagination s -->
+			              	<%@include file="postVo.jsp"%>
+						    <!-- kdmin pagination e -->
+						</form>
 					</div>
 				</div>
               <!--/ Layout Demo -->
@@ -271,6 +290,40 @@
 	           
 	         };
 	        $('.summerNote').summernote(setting);
+	        
+	</script>
+	<script>
+	var goUrlList = "/post/postList";					/* #-> */
+	var goUrlInsert = "/post/postInsert";				/* #-> */
+	var goUrlUpdate = "/post/postUpdate";				/* #-> */
+	var goUrlUelete = "/post/postUelete";				/* #-> */
+	var goUrlDelete = "/post/postDelete";				/* #-> */
+	
+	var seq = $("input:hidden[name=nxPostSeq]");
+	
+	var form = $("form[name=PVForm]"); 
+	var formVo = $("form[name=PVFormVo]");
+	
+	$("#listBtn").on("click", function(){
+		formVo.attr("action", goUrlList).submit();
+	}); 
+	
+	$("#updateBtn").on("click", function(){
+		if(seq.val() == "0" || seq.val() == ""){
+			form.attr("action", goUrlInsert).submit();
+		} else{
+			form.attr("action", goUrlUpdate).submit();	
+		}
+	});
+	
+	$("#deleteBtn").on("click", function(){
+   		form.attr("action", goUrlDelete).submit();
+	}); 
+	
+	$("#ueleteBtn").on("click", function(){
+   		form.attr("action", goUrlUelete).submit();
+	}); 
+	
 	</script>
 
     <!-- Core JS -->

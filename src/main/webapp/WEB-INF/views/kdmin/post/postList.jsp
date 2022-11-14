@@ -89,37 +89,58 @@
             		<div class="card-body">
             			<div class="row">
 	            			<div class="mb-3 col-lg-2">
-	                     	   <select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example">
-	                      	   <option selected>삭제여부</option>
-	                           <option value="1">N</option>
-	                           <option value="2">Y</option>
+	                     	   <select class="form-select" id="shDelNy" name="shDelNy" aria-label="Default select example">
+	                      	   <option value="" <c:if test="${empty vo.shDelNy}">selected</c:if>>삭제여부</option>
+	                           <option value="1" <c:if test="${vo.shDelNy eq 1}">selected</c:if>>N</option>
+	                           <option value="2" <c:if test="${vo.shDelNy eq 2}">selected</c:if>>Y</option>
 	                         </select>
 	                       </div>
 	                       <div class="mb-3 col-lg-2">
-	                     	   <select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example">
-	                      	   <option selected>등록일</option>
-	                           <option value="1">N</option>
-	                           <option value="2">Y</option>
+								<select class="form-select" id="shPostType" name="shPostType">
+									<option value="" <c:if test="${empty vo.shPostType}">selected</c:if>>게시글 구분</option>
+	             						<option value="401" <c:if test="${vo.shPostType eq 401 }">selected</c:if>>여행지</option>
+	             						<option value="402" <c:if test="${vo.shPostType eq 402 }">selected</c:if>>숙박</option>
+	             						<option value="403" <c:if test="${vo.shPostType eq 403 }">selected</c:if>>음식점</option>
+								</select>
+							</div>
+							<div class="mb-3 col-lg-2">
+								<select class="form-select" id="shRegion" name="shRegion">
+									<option value="" <c:if test="${empty vo.shRegion}">selected</c:if>>지역 구분</option>
+	             						<option value="201" <c:if test="${vo.shRegion eq 201 }">selected</c:if>>수도권</option>
+	             						<option value="202" <c:if test="${vo.shRegion eq 202 }">selected</c:if>>강원도</option>
+	             						<option value="203" <c:if test="${vo.shRegion eq 203 }">selected</c:if>>경상도</option>
+	             						<option value="204" <c:if test="${vo.shRegion eq 204 }">selected</c:if>>전라도</option>
+	             						<option value="205" <c:if test="${vo.shRegion eq 205 }">selected</c:if>>충청도</option>
+	             						<option value="206" <c:if test="${vo.shRegion eq 206 }">selected</c:if>>제주도</option>
+								</select>
+							</div>
+	                       <div class="mb-3 col-lg-2">
+	                     	   <select class="form-select" id="shDor" name="shDor" aria-label="Default select example">
+	                      	   <option value="" <c:if test="${empty vo.shDor}">selected</c:if>>날짜 검색 기준</option>
+	                           <option value="1" <c:if test="${vo.shDor eq 1}">selected</c:if>>등록일</option>
+	                           <option value="2" <c:if test="${vo.shDor eq 2}">selected</c:if>>수정일</option>
 	                         </select>
 	                       </div>
 	                       <div class="mb-3 col-lg-2">
-	                           <input class="form-control" type="date" value="2021-06-18" id="html5-date-input" />
+	                           <input class="form-control" type="date" value="" id="html5-date-input" name="">
 	                       </div>
 	                       <div class="mb-3 col-lg-2">
-	                          <input class="form-control" type="date" value="2021-06-18" id="html5-date-input" />
+	                          <input class="form-control" type="date" value="" id="html5-date-input" name="">
 	                      </div>
 	                       
                        </div>
                        <div class="row">
 	                       <div class="mb-3 col-lg-2">
-		                       <select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example">
-			                       <option selected>검색조건</option>
-			                       <option value="1">N</option>
-			                       <option value="2">Y</option>
+		                       <select class="form-select" id="shOption" name="shOption" aria-label="Default select example">
+			                       <option value="" <c:if test="${empty vo.shOption}">selected</c:if>>검색조건</option>
+			                       <option value="1" <c:if test="${vo.shOption eq 1}">selected</c:if>>제목</option>
+			                       <option value="2" <c:if test="${vo.shOption eq 2}">selected</c:if>>여행지 제목</option>
+			                       <option value="3" <c:if test="${vo.shOption eq 3}">selected</c:if>>회원 이름</option>
+			                       <option value="4" <c:if test="${vo.shOption eq 4}">selected</c:if>>회원 닉네임</option>
 		                       </select>
 	                       </div>
 	                       <div class="mb-3 col-lg-2">
-								<input class="form-control" type="text" value="" id="html5-text-input" />
+								<input class="form-control" type="text" id="shValue" name="shValue" value="" id="html5-text-input" />
 	                       </div>
 	                       <div class="mb-3 col-lg-2">
 		                       	<button type="button" id="shBtn" name="shBtn" class="btn btn-primary" style="margin-right: 15px;"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></button>
@@ -151,7 +172,7 @@
                     <tbody class="table-border-bottom-0">
                     <c:choose>
 						<c:when test="${fn:length(list) eq 0}"> <!-- length(list)가 0이면 이걸 하고 -->
-							<td class="text-center" colspan="8">게시글이 존재하지 않습니다.</td>
+							<td class="text-center" colspan="10">게시글이 존재하지 않습니다.</td>
 						</c:when>
 						<c:otherwise>
 						<c:forEach items="${list}" var="list" varStatus="status">
@@ -186,7 +207,7 @@
               </div>
               <!--/ Basic Bootstrap Table -->
               <!-- kdmin pagination s -->
-              	<%@include file="../../common/kdminButtonDiv.jsp"%>
+              	<%@include file="../../common/kdminListButtonDiv.jsp"%>
 			  <!-- kdmin pagination e -->
               <div style="height: 40px;"></div>
               <!-- kdmin pagination s -->

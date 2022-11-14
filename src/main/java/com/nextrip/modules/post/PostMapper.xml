@@ -31,15 +31,14 @@
 FROM nxPost a
 JOIN member b on a.memberSeq = b.memberSeq
 where 1=1
-	<if test="shDelNy != null and !shPostType.equals('')">AND a.delNy = #{shDelNy}</if>
+	<if test="shDelNy != null and !shDelNy.equals('')">AND a.delNy = #{shDelNy}</if>
 	<if test="shPostType != null and !shPostType.equals('')">AND a.postType = #{shPostType}</if>
 	<if test="shRegion != null and !shRegion.equals('')">AND a.region = #{shRegion}</if>
 	<choose>
 		<when test="shOption == 1">AND a.title LIKE CONCAT('%',#{shValue},'%')</when>
-		<when test="shOption == 2">AND a.content = #{shValue} </when>
-		<when test="shOption == 3">AND a.addressTitle LIKE CONCAT('%',#{shValue},'%')</when>
-		<when test="shOption == 4">AND memberName LIKE CONCAT('%',#{shValue},'%')</when>
-		<when test="shOption == 5">AND memberNickName LIKE CONCAT('%',#{shValue},'%')</when>
+		<when test="shOption == 2">AND a.addressTitle LIKE CONCAT('%',#{shValue},'%')</when>
+		<when test="shOption == 3">AND memberName LIKE CONCAT('%',#{shValue},'%')</when>
+		<when test="shOption == 4">AND memberNickName LIKE CONCAT('%',#{shValue},'%')</when>
 	</choose>
 </sql>
 

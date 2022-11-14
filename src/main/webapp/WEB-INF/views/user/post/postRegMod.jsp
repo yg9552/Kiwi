@@ -203,11 +203,11 @@
 	                					<select class="form-select" id="region" name="region">
 	                						<option value="">지역</option>
 	                						<option value="201" <c:if test="${item.region eq 201 }">selected</c:if>>수도권</option>
-	                						<option value="202" <c:if test="${item.region eq 202 }">selected</c:if>>경상</option>
-	                						<option value="203" <c:if test="${item.region eq 203 }">selected</c:if>>전라</option>
-	                						<option value="204" <c:if test="${item.region eq 204 }">selected</c:if>>강원</option>
-	                						<option value="205" <c:if test="${item.region eq 205 }">selected</c:if>>충청</option>
-	                						<option value="206" <c:if test="${item.region eq 206 }">selected</c:if>>제주</option>
+	                						<option value="202" <c:if test="${item.region eq 202 }">selected</c:if>>강원도</option>
+	                						<option value="203" <c:if test="${item.region eq 203 }">selected</c:if>>경상도</option>
+	                						<option value="204" <c:if test="${item.region eq 204 }">selected</c:if>>전라도</option>
+	                						<option value="205" <c:if test="${item.region eq 205 }">selected</c:if>>충청도</option>
+	                						<option value="206" <c:if test="${item.region eq 206 }">selected</c:if>>제주도</option>
 	                					</select>
 	                				</td>
 	                				<th class="col-xl-2 VMiddle">
