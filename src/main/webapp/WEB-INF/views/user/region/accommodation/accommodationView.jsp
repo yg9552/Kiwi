@@ -35,7 +35,6 @@
         <link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/nice-select.css">
         <link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        
    </head>
 
    <body>
@@ -158,6 +157,7 @@
                    <aside class="single_sidebar_widget">
                     <h4 class="widget_title">숙소위치</h4>
                     <div id="map" style="width:100%;height:350px;"></div>
+                    <button type="button" class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn" id="btnFindRoad">길찾기</button>
                    </aside>
                    <aside class="single_sidebar_widget">
                      <h4 class="widget_title">예약</h4>
@@ -479,7 +479,11 @@
         var form = $("form[name=viewForm]");
         $("#btnSave").on("click", function(){
     	   	form.attr("action", goUrlInst).submit();
-    	}); 
+    	});
+        
+        $("#btnFindRoad").on("click", function() {
+    		window.open('https://map.kakao.com/link/to/<c:out value="${item.hotelName }" />,<c:out value="${item.lat }" />,<c:out value="${item.lng }" />','target="blank"',"width: 1920px ,height: 937px");
+    	});
 		</script>
 		<!-- <script>
 		function chageLangSelect(){
