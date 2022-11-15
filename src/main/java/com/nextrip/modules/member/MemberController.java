@@ -35,6 +35,11 @@ public class MemberController {
 		return "user/main";
 	}
 	
+	@RequestMapping(value = "/")
+	public String index() throws Exception {
+		return "common/index";
+	}
+	
 	@RequestMapping(value="/nextrip/mypage")
 	public String selectMemberList(Model model,@ModelAttribute("vo") MemberVo vo) throws Exception {
 		

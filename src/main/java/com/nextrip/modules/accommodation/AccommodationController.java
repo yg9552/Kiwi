@@ -28,6 +28,8 @@ public class AccommodationController {
 		vo.setParamsPaging(service.selectOneCount(vo));
 		List<Accommodation> list = service.selectList(vo);
 		model.addAttribute("list", list);
+		List<Accommodation> listR = service.selectListRoom(vo);
+		model.addAttribute("listR", listR);
 		model.addAttribute("listUploaded", service.selectListUploaded(vo));
 		return "user/region/accommodation/accommodationList";
 	}

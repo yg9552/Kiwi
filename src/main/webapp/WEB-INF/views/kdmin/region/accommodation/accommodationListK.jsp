@@ -114,17 +114,17 @@
                       </div>
                       <div class="row">
                        <div class="mb-3 col-lg-2">
-	                       <select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example">
+	                       <select class="form-select" id="shOption" aria-label="Default select example" name="shOption">
 		                       <option selected>검색조건</option>
-		                       <option value="1">N</option>
+		                       <option value="1">지역</option>
 		                       <option value="2">Y</option>
 	                       </select>
                        </div>
                        <div class="mb-3 col-lg-2">
-							<input class="form-control" type="text" value="" id="html5-text-input" />
+							<input class="form-control" name="shValue" type="search" value="<c:out value="${vo.shValue }"/>" id="shValue" />
                        </div>
                        <div class="mb-3 col-lg-2">
-	                       	<button type="button" class="btn btn-primary" style="margin-right: 15px;"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></button>
+	                       	<button type="submit" class="btn btn-primary" style="margin-right: 15px;"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></button>
 	                       	<button type="button" class="btn btn-warning"><i class="fa-solid fa-rotate-left"></i></button>
                        </div>
                       </div>

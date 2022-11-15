@@ -89,44 +89,43 @@
               	<h5 class="card-header">코드 검색</h5>
            		<div class="card-body">
            			<div class="row">
-            			<div class="mb-3 col-lg-2">
-                     	   <select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example">
-                      	   <option selected>삭제여부</option>
-                           <option value="1">N</option>
-                           <option value="2">Y</option>
-                         </select>
-                       </div>
+           				<div class="mb-3 col-lg-2">
+                     	   	<select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example">
+	                      	   <option selected>삭제여부</option>
+	                           <option value="0">N</option>
+	                           <option value="1">Y</option>
+                         	</select>
+                        </div>
                        <div class="mb-3 col-lg-2">
-                     	   <select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example">
-                      	   <option selected>등록일</option>
-                           <option value="1">N</option>
-                           <option value="2">Y</option>
-                         </select>
+                     	   	<select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example">
+	                      	   <option selected>등록일</option>
+	                           <option value="1">N</option>
+	                           <option value="2">Y</option>
+                         	</select>
                        </div>
                        <div class="mb-3 col-lg-2">
                            <input class="form-control" type="date" value="2021-06-18" id="html5-date-input" />
                        </div>
                        <div class="mb-3 col-lg-2">
                           <input class="form-control" type="date" value="2021-06-18" id="html5-date-input" />
-                      </div>
-                       
-                      </div>
-                      <div class="row">
-                       <div class="mb-3 col-lg-2">
+                       </div>
+                    </div>
+                   	<div class="row">
+                      <div class="mb-3 col-lg-2">
 	                       <select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example">
 		                       <option selected>검색조건</option>
 		                       <option value="1">N</option>
 		                       <option value="2">Y</option>
 	                       </select>
-                       </div>
-                       <div class="mb-3 col-lg-2">
-							<input class="form-control" type="text" value="" id="html5-text-input" />
-                       </div>
-                       <div class="mb-3 col-lg-2">
-	                       	<button type="button" class="btn btn-primary" style="margin-right: 15px;"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></button>
-	                       	<button type="button" class="btn btn-warning"><i class="fa-solid fa-rotate-left"></i></button>
-                       </div>
                       </div>
+                      <div class="mb-3 col-lg-2">
+						<input class="form-control" type="text" value="" id="html5-text-input" />
+                      </div>
+                      <div class="mb-3 col-lg-2">
+                       	<button type="button" class="btn btn-primary" style="margin-right: 15px;"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></button>
+                       	<button type="button" class="btn btn-warning"><i class="fa-solid fa-rotate-left"></i></button>
+                      </div>
+                    </div>	
            		</div>
                 <h5 class="card-header">코드 리스트</h5>
                 <div class="table-responsive text-nowrap text-center">
@@ -135,7 +134,7 @@
                       <tr>
                         <th>#</th>
                         <th>코드 이름</th>
-                        <th>코드그룹 이름</th>
+                        <th>코드그룹 번호</th>
                         <th>대체코드</th>
                         <th>작성시간</th>
                         <th>수정시간</th>
@@ -156,7 +155,7 @@
 		                          <tr>
 		                            <td> <c:out value="${list.codeSeq }"/> </td>
 		                            <td> <a href="javascript:goView(<c:out value="${list.codeSeq }"/>)"> <c:out value="${list.name }"/></a> </td>
-		                            <td> <c:out value="${list.replaceCode }"/> </td>
+		                            <td> <c:out value="${list.codeGroupSeq }"/> </td>
 		                            <td> <c:out value="${list.replaceCode }"/> </td>
 		                            <td> <fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${list.regDateTime}"/> </td>
 		                            <td> <fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${list.modDateTime}"/> </td>

@@ -70,8 +70,45 @@
 				    	<c:set var="listregion" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
 				    	<input type="hidden" value="1" name="shOption">
 						<c:forEach items="${listregion}" var="listregion" varStatus="statuslistregion">
-							<input type="text" name="shValue" id="btnSh" value='<c:out value="${listregion.replaceCode eq 201}" />'>
-							<button type="submit" class="genric-btn primary circle"><c:out value="${listregion.name }" /></button>
+							<c:if test="${listregion.replaceCode eq 201 }">
+							<button type="submit" class="genric-btn default circle" id="201">수도권</button>
+							<input type="hidden" name="shValue" id="seoul" value='<c:out value="${listregion.replaceCode}"/>'>
+							</c:if>
+						</c:forEach>
+						<c:set var="listregion" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
+						<c:forEach items="${listregion}" var="listregion" varStatus="statuslistregion">
+							<c:if test="${listregion.replaceCode eq 202 }">
+							<button type="submit" class="genric-btn info circle" id="202">강원도</button>
+							<input type="hidden" name="shValue" id="kangwon" value='<c:out value="${listregion.replaceCode}"/>'>
+							</c:if>
+						</c:forEach>
+						<c:set var="listregion" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
+						<c:forEach items="${listregion}" var="listregion" varStatus="statuslistregion">
+							<c:if test="${listregion.replaceCode eq 203 }">
+							<button type="button" class="genric-btn danger circle" id="203">경상도</button>
+							<input type="hidden" name="shValue" id="busan" value='<c:out value="${listregion.replaceCode}"/>'>
+							</c:if>
+						</c:forEach>
+						<c:set var="listregion" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
+						<c:forEach items="${listregion}" var="listregion" varStatus="statuslistregion">
+							<c:if test="${listregion.replaceCode eq 204 }">
+							<button type="button" class="genric-btn primary circle" id="204">전라도</button>
+							<input type="hidden" name="shValue" id="jeonla" value='<c:out value="${listregion.replaceCode}"/>'>
+							</c:if>
+						</c:forEach>
+						<c:set var="listregion" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
+						<c:forEach items="${listregion}" var="listregion" varStatus="statuslistregion">
+							<c:if test="${listregion.replaceCode eq 205 }">
+							<button type="button" class="genric-btn warning circle" id="205">충청도</button>
+							<input type="hidden" name="shValue" id="chung" value='<c:out value="${listregion.replaceCode}"/>'>
+							</c:if>
+						</c:forEach>
+						<c:set var="listregion" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
+						<c:forEach items="${listregion}" var="listregion" varStatus="statuslistregion">
+							<c:if test="${listregion.replaceCode eq 206 }">
+							<button type="button" class="genric-btn success circle" id="206">제주도</button>
+							<input type="hidden" name="shValue" id="jeju" value='<c:out value="${listregion.replaceCode}"/>'>
+							</c:if>
 						</c:forEach>
 					</div>
 				  </div>
@@ -98,14 +135,16 @@
 		                        		</c:forEach>
 				                        <li><a href="#"><i class="fa fa-comments"></i> 후기 3건 </a></li>
 				                    </ul>
-				                    <h5 class="mt-2 text-danger">1박 190,000원</h5>
+				                    <c:forEach items="${listR }" var="listR" varStatus="statuslistR">
+				                    	<c:if test="${listR.nxAccommodationSeq eq list.nxAccommodationSeq && listR.roomType eq 1 }"><h5 class="mt-2 text-danger">1박 <fmt:formatNumber value="${listR.price }" pattern="#,###" /> 원 ~</h5></c:if>
+				                    </c:forEach>
 	                            </div>
 	                        </article>
                         </c:forEach>
                     </div>
                     <div class="d-none d-lg-block col-lg-9">
                         <div class="right-caption">
-                            <div id="map2" style="width:100%; height: 1000px;"></div>
+                            <div id="map2" style="width:95%; height: 1000px;"></div>
                         </div>
                     </div>
                 </div>
@@ -243,6 +282,49 @@
 	   		form.attr("action", goUrlList).submit();
     	});
 		
+		$("#201").on("click", function(){
+			document.getElementById('kangwon').disabled = true;
+			document.getElementById('busan').disabled = true;
+			document.getElementById('jeonla').disabled = true;
+			document.getElementById('chung').disabled = true;
+			document.getElementById('jeju').disabled = true;
+    	});
+		$("#202").on("click", function(){
+			document.getElementById('seoul').disabled = true;
+			document.getElementById('busan').disabled = true;
+			document.getElementById('jeonla').disabled = true;
+			document.getElementById('chung').disabled = true;
+			document.getElementById('jeju').disabled = true;
+    	});
+		$("#203").on("click", function(){
+			document.getElementById('seoul').disabled = true;
+			document.getElementById('jeonla').disabled = true;
+			document.getElementById('kangwon').disabled = true;
+			document.getElementById('chung').disabled = true;
+			document.getElementById('jeju').disabled = true;
+    	});
+		$("#204").on("click", function(){
+			document.getElementById('seoul').disabled = true;
+			document.getElementById('busan').disabled = true;
+			document.getElementById('chung').disabled = true;
+			document.getElementById('kangwon').disabled = true;
+			document.getElementById('jeju').disabled = true;
+    	});
+		$("#205").on("click", function(){
+			document.getElementById('seoul').disabled = true;
+			document.getElementById('busan').disabled = true;
+			document.getElementById('jeonla').disabled = true;
+			document.getElementById('kangwon').disabled = true;
+			document.getElementById('jeju').disabled = true;
+    	});
+		$("#206").on("click", function(){
+			document.getElementById('seoul').disabled = true;
+			document.getElementById('busan').disabled = true;
+			document.getElementById('jeonla').disabled = true;
+			document.getElementById('chung').disabled = true;
+			document.getElementById('kangwon').disabled = true;
+    	});
+		
 		goView = function(keyValue) {
 			seq.val(keyValue);
 			form.attr("action", goUrlView).submit();
@@ -256,6 +338,12 @@
 
 		var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 		 
+		// 지도에 확대 축소 컨트롤을 생성한다
+		var zoomControl = new kakao.maps.ZoomControl();
+
+		// 지도의 우측에 확대 축소 컨트롤을 추가한다
+		map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+		
 		// 마커를 표시할 위치와 내용을 가지고 있는 객체 배열입니다 
 		var positions = [
 			<c:forEach items="${list }" var="list" varStatus="status">
