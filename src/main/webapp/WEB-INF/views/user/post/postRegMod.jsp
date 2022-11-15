@@ -222,7 +222,7 @@
 	                					여행지 사진
 	                				</th>
 	                				<td colspan="5">
-	                					<div style="background-color: #f0f0f0;">
+	                					<div>
 	                						<c:set var="type" value="1"/>		<!-- #-> -->
 								        	<c:set var="name" value="uploadImage"/>		<!-- #-> -->
 								        	<input type="hidden" id="<c:out value="${name }"/>MaxNumber" name="<c:out value="${name }"/>MaxNumber" value="0"/>
@@ -230,12 +230,12 @@
 								        	<input type="hidden" id="<c:out value="${name }"/>DeletePathFile" name="<c:out value="${name }"/>DeletePathFile"/>
 								            <!-- <label for="uploadImage" class="form-label input-file-button">표지 첨부</label> -->
 								 			<input class="form-control form-control-sm" id="<c:out value="${name }"/>" name="<c:out value="${name }"/>" type="file" multiple="multiple" style="display: none;" onChange="upload('<c:out value="${name }"/>', <c:out value="${type }"/>, 1, 1, 0, 0, 1);">
-											<div id="<c:out value="${name }"/>Preview" class="addScroll" style="padding: 5px; width: 520px;">
+											<div id="<c:out value="${name }"/>Preview" class="addScroll" style="padding: 5px;">
 												<c:forEach items="${postListUploaded}" var="postListUploaded" varStatus="statusUploaded">
 													<c:if test="${postListUploaded.type eq type }">
-														<div id="imageDiv_<c:out value="${type }"/>_<c:out value="${postListUploaded.sort }"/>" style="display: inline-block; height: 95px;">
+														<div id="imageDiv_<c:out value="${type }"/>_<c:out value="${postListUploaded.sort }"/>" style="background-color: #f0f0f0; display: inline-block; height: 95px;">
 															<img src="<c:out value="${postListUploaded.path }"/><c:out value="${postListUploaded.uuidName }"/>" class="rounded" style="cursor:pointer;" onClick="openViewer(<c:out value="${postListUploaded.type }"/>, <c:out value="${postListUploaded. sort }"/>);">
-															<div style="position: relative; top:-190px; left:5px"><span style="color: red; cursor:pointer;" onClick="delImageDiv('<c:out value="${name }"/>', <c:out value="${type }"/>,<c:out value="${postListUploaded.sort }"/>, <c:out value="${postListUploaded.seq }"/>, '<c:out value="${postListUploaded.path }"/><c:out value="${postListUploaded.uuidName }"/>')">X</span></div>
+															<div style="position: relative; top:-460px; left:-330px"><span style="color: red; cursor:pointer;" onClick="delImageDiv('<c:out value="${name }"/>', <c:out value="${type }"/>,<c:out value="${postListUploaded.sort }"/>, <c:out value="${postListUploaded.seq }"/>, '<c:out value="${postListUploaded.path }"/><c:out value="${postListUploaded.uuidName }"/>')">X</span></div>
 														</div>
 													</c:if>
 												</c:forEach>
@@ -580,8 +580,8 @@
 				if(sort == 0){
 				var divImage = "";
 				divImage += '<div id="imageDiv_'+type+'_'+ sort +'" style="display: inline-block; height: 95px;">';
-				divImage += '	<img src="'+ imageFile.result +'" class="rounded" width="555px">';
-				divImage += '	<div style="position: relative; top:-176px; left:5px"><span style="color: red; cursor:pointer;" onClick="delImageDiv(0,' + type +','+ sort +')">X</span></div>';
+				divImage += '	<img src="'+ imageFile.result +'" class="rounded" width= "700px" height="467px" style="object-fit:contain;">';
+				divImage += '	<div style="position: relative; top:-460px; left:-330px"><span style="color: red; cursor:pointer;" onClick="delImageDiv(0,' + type +','+ sort +')">X</span></div>';
 				divImage += '</div> ';
 				
 				filePreview.append(divImage);
