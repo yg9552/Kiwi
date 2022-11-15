@@ -48,7 +48,6 @@ public class PostController {
 	@RequestMapping(value="postUserList")
 	public String postUserList(@ModelAttribute("vo") PostVo vo, Model model)throws Exception{
 		
-		
 		vo.setParamsPaging(service.postSelectListCount(vo));
 		List<Post> list = service.postSelectList(vo);
 		model.addAttribute("list", list);
@@ -89,25 +88,36 @@ public class PostController {
 	@RequestMapping(value="postInsert")
 	public String postInsert(Post dto, PostVo vo, RedirectAttributes redirectAttributes)throws Exception{
 		
+		service.postInsert(dto);
+		vo.setNxPostSeq(dto.getNxPostSeq());	
+		redirectAttributes.addFlashAttribute("vo", vo);
+		
 		return "redirect:postView";
 	}
 	
 	@RequestMapping(value="postUpdate")
 	public String postUpdate(Post dto, PostVo vo, RedirectAttributes redirectAttributes)throws Exception{
 		
+		service.postUpdate(dto);
+		redirectAttributes.addFlashAttribute("vo", vo);
+		
 		return "redirect:postView";
 	}
 	
 	@RequestMapping(value="postUelete")
-	public String postUelete()throws Exception{
+	public String postUelete(Post dto, RedirectAttributes redirectAttributes)throws Exception{
 		
-		return "user/post/postList";
+		service.postUelete(dto);
+		
+		return "redirect:postList";
 	}
 	
 	@RequestMapping(value="postDelete")
-	public String postDelete()throws Exception{
+	public String postDelete(PostVo vo, RedirectAttributes redirectAttributes)throws Exception{
 		
-		return "user/post/postList";
+		service.postDelete(vo);
+		
+		return "redirect:postList";
 	}
 	
 	

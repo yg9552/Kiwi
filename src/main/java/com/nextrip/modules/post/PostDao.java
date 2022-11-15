@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+
 @Repository
 public class PostDao {
 	@Inject
@@ -15,6 +16,21 @@ public class PostDao {
 	private SqlSession sqlSession;
 	
 	private static String namespace = "com.nextrip.modules.post.PostMapper";
+	
+//	uploaded
+	public int insertUploaded(Post dto) { 
+		return sqlSession.insert("Base" + ".insertUploaded", dto); 
+	}
+	public int ueleteUploaded(Post dto) { 
+		return sqlSession.insert("Base" + ".ueleteUploaded", dto); 
+	}
+	public int deleteUploaded(Post dto) { 
+		return sqlSession.delete("Base" + ".deleteUploaded", dto); 
+	}
+	
+	public List<Post> postListUploaded(PostVo vo){
+		return sqlSession.selectList(namespace + ".postListUploaded", vo);
+	}
 	
 	public List<Post> selectList(PostVo vo){
 		return sqlSession.selectList(namespace + ".selectList", vo);

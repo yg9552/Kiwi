@@ -80,142 +80,145 @@
           <div class="content-wrapper">
             <!-- Content -->
             <div class="container-fluid flex-grow-1 container-p-y">
-            	<div class="card">
-            		<form method="post" id="PLForm" name="PLForm">
-            		<input type="hidden" id="thisPage" name="thisPage" value="<c:out value="${vo.thisPage }" default="1"/>">
-					<input type="hidden" id="rowNumToShow" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
-		        	<input type="hidden" id="nxPostSeq" name="nxPostSeq">
-            		<h5 class="card-header">코드 검색</h5>
-            		<div class="card-body">
-            			<div class="row">
-	            			<div class="mb-3 col-lg-2">
-	                     	   <select class="form-select" id="shDelNy" name="shDelNy" aria-label="Default select example">
-	                      	   <option value="" <c:if test="${empty vo.shDelNy}">selected</c:if>>삭제여부</option>
-	                           <option value="1" <c:if test="${vo.shDelNy eq 1}">selected</c:if>>N</option>
-	                           <option value="2" <c:if test="${vo.shDelNy eq 2}">selected</c:if>>Y</option>
-	                         </select>
+            	<form method="post" id="PLForm" name="PLForm">
+	            	<div class="card">
+	            		<input type="hidden" id="thisPage" name="thisPage" value="<c:out value="${vo.thisPage }" default="1"/>">
+						<input type="hidden" id="rowNumToShow" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
+			        	<input type="hidden" id="nxPostSeq" name="nxPostSeq">
+	            		<h5 class="card-header">코드 검색</h5>
+	            		<div class="card-body">
+	            			<div class="row">
+		            			<div class="mb-3 col-lg-2">
+		                     	   <select class="form-select" id="shDelNy" name="shDelNy" aria-label="Default select example">
+		                      	   <option value="" <c:if test="${empty vo.shDelNy}">selected</c:if>>삭제여부</option>
+		                           <option value="1" <c:if test="${vo.shDelNy eq 1}">selected</c:if>>N</option>
+		                           <option value="2" <c:if test="${vo.shDelNy eq 2}">selected</c:if>>Y</option>
+		                         </select>
+		                       </div>
+		                       <div class="mb-3 col-lg-2">
+									<select class="form-select" id="shPostType" name="shPostType">
+										<option value="" <c:if test="${empty vo.shPostType}">selected</c:if>>게시글 구분</option>
+		             						<option value="401" <c:if test="${vo.shPostType eq 401 }">selected</c:if>>여행지</option>
+		             						<option value="402" <c:if test="${vo.shPostType eq 402 }">selected</c:if>>숙박</option>
+		             						<option value="403" <c:if test="${vo.shPostType eq 403 }">selected</c:if>>음식점</option>
+									</select>
+								</div>
+								<div class="mb-3 col-lg-2">
+									<select class="form-select" id="shRegion" name="shRegion">
+										<option value="" <c:if test="${empty vo.shRegion}">selected</c:if>>지역 구분</option>
+		             						<option value="201" <c:if test="${vo.shRegion eq 201 }">selected</c:if>>수도권</option>
+		             						<option value="202" <c:if test="${vo.shRegion eq 202 }">selected</c:if>>강원도</option>
+		             						<option value="203" <c:if test="${vo.shRegion eq 203 }">selected</c:if>>경상도</option>
+		             						<option value="204" <c:if test="${vo.shRegion eq 204 }">selected</c:if>>전라도</option>
+		             						<option value="205" <c:if test="${vo.shRegion eq 205 }">selected</c:if>>충청도</option>
+		             						<option value="206" <c:if test="${vo.shRegion eq 206 }">selected</c:if>>제주도</option>
+									</select>
+								</div>
+		                       <div class="mb-3 col-lg-2">
+		                     	   <select class="form-select" id="shDor" name="shDor" aria-label="Default select example">
+		                      	   <option value="" <c:if test="${empty vo.shDor}">selected</c:if>>날짜 검색 기준</option>
+		                           <option value="1" <c:if test="${vo.shDor eq 1}">selected</c:if>>등록일</option>
+		                           <option value="2" <c:if test="${vo.shDor eq 2}">selected</c:if>>수정일</option>
+		                         </select>
+		                       </div>
+		                       <div class="mb-3 col-lg-2">
+		                           <input class="form-control" type="date" value="" id="html5-date-input" name="">
+		                       </div>
+		                       <div class="mb-3 col-lg-2">
+		                          <input class="form-control" type="date" value="" id="html5-date-input" name="">
+		                      </div>
+		                       
 	                       </div>
-	                       <div class="mb-3 col-lg-2">
-								<select class="form-select" id="shPostType" name="shPostType">
-									<option value="" <c:if test="${empty vo.shPostType}">selected</c:if>>게시글 구분</option>
-	             						<option value="401" <c:if test="${vo.shPostType eq 401 }">selected</c:if>>여행지</option>
-	             						<option value="402" <c:if test="${vo.shPostType eq 402 }">selected</c:if>>숙박</option>
-	             						<option value="403" <c:if test="${vo.shPostType eq 403 }">selected</c:if>>음식점</option>
-								</select>
-							</div>
-							<div class="mb-3 col-lg-2">
-								<select class="form-select" id="shRegion" name="shRegion">
-									<option value="" <c:if test="${empty vo.shRegion}">selected</c:if>>지역 구분</option>
-	             						<option value="201" <c:if test="${vo.shRegion eq 201 }">selected</c:if>>수도권</option>
-	             						<option value="202" <c:if test="${vo.shRegion eq 202 }">selected</c:if>>강원도</option>
-	             						<option value="203" <c:if test="${vo.shRegion eq 203 }">selected</c:if>>경상도</option>
-	             						<option value="204" <c:if test="${vo.shRegion eq 204 }">selected</c:if>>전라도</option>
-	             						<option value="205" <c:if test="${vo.shRegion eq 205 }">selected</c:if>>충청도</option>
-	             						<option value="206" <c:if test="${vo.shRegion eq 206 }">selected</c:if>>제주도</option>
-								</select>
-							</div>
-	                       <div class="mb-3 col-lg-2">
-	                     	   <select class="form-select" id="shDor" name="shDor" aria-label="Default select example">
-	                      	   <option value="" <c:if test="${empty vo.shDor}">selected</c:if>>날짜 검색 기준</option>
-	                           <option value="1" <c:if test="${vo.shDor eq 1}">selected</c:if>>등록일</option>
-	                           <option value="2" <c:if test="${vo.shDor eq 2}">selected</c:if>>수정일</option>
-	                         </select>
+	                       <div class="row">
+		                       <div class="mb-3 col-lg-2">
+			                       <select class="form-select" id="shOption" name="shOption" aria-label="Default select example">
+				                       <option value="" <c:if test="${empty vo.shOption}">selected</c:if>>검색조건</option>
+				                       <option value="1" <c:if test="${vo.shOption eq 1}">selected</c:if>>제목</option>
+				                       <option value="2" <c:if test="${vo.shOption eq 2}">selected</c:if>>여행지 제목</option>
+				                       <option value="3" <c:if test="${vo.shOption eq 3}">selected</c:if>>회원 이름</option>
+				                       <option value="4" <c:if test="${vo.shOption eq 4}">selected</c:if>>회원 닉네임</option>
+			                       </select>
+		                       </div>
+		                       <div class="mb-3 col-lg-2">
+									<input class="form-control" type="text" id="shValue" name="shValue" value="" id="html5-text-input" />
+		                       </div>
+		                       <div class="mb-3 col-lg-2">
+			                       	<button type="button" id="shBtn" name="shBtn" class="btn btn-primary" style="margin-right: 15px;"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></button>
+			                       	<button type="button" id="resetBtn" name="resetBtn" class="btn btn-warning"><i class="fa-solid fa-rotate-left"></i></button>
+		                       </div>
 	                       </div>
-	                       <div class="mb-3 col-lg-2">
-	                           <input class="form-control" type="date" value="" id="html5-date-input" name="">
-	                       </div>
-	                       <div class="mb-3 col-lg-2">
-	                          <input class="form-control" type="date" value="" id="html5-date-input" name="">
-	                      </div>
-	                       
-                       </div>
-                       <div class="row">
-	                       <div class="mb-3 col-lg-2">
-		                       <select class="form-select" id="shOption" name="shOption" aria-label="Default select example">
-			                       <option value="" <c:if test="${empty vo.shOption}">selected</c:if>>검색조건</option>
-			                       <option value="1" <c:if test="${vo.shOption eq 1}">selected</c:if>>제목</option>
-			                       <option value="2" <c:if test="${vo.shOption eq 2}">selected</c:if>>여행지 제목</option>
-			                       <option value="3" <c:if test="${vo.shOption eq 3}">selected</c:if>>회원 이름</option>
-			                       <option value="4" <c:if test="${vo.shOption eq 4}">selected</c:if>>회원 닉네임</option>
-		                       </select>
-	                       </div>
-	                       <div class="mb-3 col-lg-2">
-								<input class="form-control" type="text" id="shValue" name="shValue" value="" id="html5-text-input" />
-	                       </div>
-	                       <div class="mb-3 col-lg-2">
-		                       	<button type="button" id="shBtn" name="shBtn" class="btn btn-primary" style="margin-right: 15px;"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></button>
-		                       	<button type="button" id="resetBtn" name="resetBtn" class="btn btn-warning"><i class="fa-solid fa-rotate-left"></i></button>
-	                       </div>
-                       </div>
-            		</div>
-           		</div>
-             <div style="height: 30px;"></div>
-              <!-- Basic Bootstrap Table -->
-              <div class="card">
-                <h5 class="card-header">코드 관리</h5>
-                <div class="table-responsive text-nowrap">
-                  <table class="table table-striped text-center">
-                    <thead>
-                      <tr>
-                      	<th><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" /></th>
-                      	<th>번호</th>
-                        <th>회원 번호</th>
-                        <th>회원 이름</th>
-                        <th>회원 닉네임</th>
-                        <th>구분</th>
-                        <th>지역</th>
-                        <th>제목</th>
-                        <th>등록일</th>
-                        <th>수정일</th>
-                      </tr>
-                    </thead>
-                    <tbody class="table-border-bottom-0">
-                    <c:choose>
-						<c:when test="${fn:length(list) eq 0}"> <!-- length(list)가 0이면 이걸 하고 -->
-							<td class="text-center" colspan="10">게시글이 존재하지 않습니다.</td>
-						</c:when>
-						<c:otherwise>
-						<c:forEach items="${list}" var="list" varStatus="status">
-							<c:set var="listCodeRegion" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
-						  	<c:set var="listCodePostType" value="${CodeServiceImpl.selectListCachedCode('4')}"/>
-		                      <tr onclick="location.href='javascript:goView(<c:out value="${list.nxPostSeq }"/>)'" style="cursor: pointer;">
-		                        <td><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" /></td>
-		                        <td><c:out value="${list.nxPostSeq }"/></td>
-		                        <td><c:out value="${list.memberSeq }"/></td>
-		                        <td><c:out value="${list.memberName }"/></td>
-		                        <td><c:out value="${list.memberNickName }"/></td>
-		                        <td>
-		                        	<c:forEach items="${listCodePostType}" var="listCodePostType" varStatus="statusPostType">
-										<c:if test="${list.postType eq listCodePostType.replaceCode}"><c:out value="${listCodePostType.name }"/></c:if>
-									</c:forEach>
-	                        	</td>
-		                        <td>
-		                        	<c:forEach items="${listCodeRegion}" var="listCodeRegion" varStatus="statusRegion">
-										<c:if test="${list.region eq listCodeRegion.replaceCode}"><c:out value="${listCodeRegion.name }"/></c:if>
-									</c:forEach>
-		                        </td>
-		                        <td><c:out value="${list.title }"/></td>
-		                        <td><fmt:formatDate value="${list.regDateTime }" pattern="yyyy-MM-dd"/></td>
-		                        <td><fmt:formatDate value="${list.modDateTime }" pattern="yyyy-MM-dd"/></td>
+	            		</div>
+	           		</div>
+	             	<div style="height: 30px;"></div>
+		              <!-- Basic Bootstrap Table -->
+		              <div class="card">
+		                <h5 class="card-header">코드 관리</h5>
+		                <div class="table-responsive text-nowrap">
+		                  <table class="table table-striped text-center">
+		                    <thead>
+		                      <tr>
+		                      	<th><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" /></th>
+		                      	<th>번호</th>
+		                        <th>회원 번호</th>
+		                        <th>회원 이름</th>
+		                        <th>회원 닉네임</th>
+		                        <th>구분</th>
+		                        <th>지역</th>
+		                        <th>제목</th>
+		                        <th>등록일</th>
+		                        <th>수정일</th>
 		                      </tr>
-		                      </c:forEach>
-	                      </c:otherwise>
-                      </c:choose>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-              <!--/ Basic Bootstrap Table -->
-              <!-- kdmin pagination s -->
-              	<%@include file="../../common/kdminListButtonDiv.jsp"%>
-			  <!-- kdmin pagination e -->
-              <div style="height: 40px;"></div>
-              <!-- kdmin pagination s -->
-              	<%@include file="../../common/kdminPagination.jsp"%>
-			  <!-- kdmin pagination e -->
-              </form>
-            </div>
-            <!-- / Content -->
+		                    </thead>
+		                    <tbody class="table-border-bottom-0">
+		                    <c:choose>
+								<c:when test="${fn:length(list) eq 0}"> <!-- length(list)가 0이면 이걸 하고 -->
+									<td class="text-center" colspan="10">게시글이 존재하지 않습니다.</td>
+								</c:when>
+								<c:otherwise>
+								<c:forEach items="${list}" var="list" varStatus="status">
+									<c:set var="listCodeRegion" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
+								  	<c:set var="listCodePostType" value="${CodeServiceImpl.selectListCachedCode('4')}"/>
+				                      <tr onclick="location.href='javascript:goView(<c:out value="${list.nxPostSeq }"/>)'" style="cursor: pointer;">
+				                        <td><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" /></td>
+				                        <td><c:out value="${list.nxPostSeq }"/></td>
+				                        <td><c:out value="${list.memberSeq }"/></td>
+				                        <td><c:out value="${list.memberName }"/></td>
+				                        <td><c:out value="${list.memberNickName }"/></td>
+				                        <td>
+				                        	<c:forEach items="${listCodePostType}" var="listCodePostType" varStatus="statusPostType">
+												<c:if test="${list.postType eq listCodePostType.replaceCode}"><c:out value="${listCodePostType.name }"/></c:if>
+											</c:forEach>
+			                        	</td>
+				                        <td>
+				                        	<c:forEach items="${listCodeRegion}" var="listCodeRegion" varStatus="statusRegion">
+												<c:if test="${list.region eq listCodeRegion.replaceCode}"><c:out value="${listCodeRegion.name }"/></c:if>
+											</c:forEach>
+				                        </td>
+				                        <td><c:out value="${list.title }"/></td>
+				                        <td><fmt:formatDate value="${list.regDateTime }" pattern="yyyy-MM-dd"/></td>
+				                        <td><fmt:formatDate value="${list.modDateTime }" pattern="yyyy-MM-dd"/></td>
+				                      </tr>
+				                      </c:forEach>
+			                      </c:otherwise>
+		                      </c:choose>
+		                    </tbody>
+		                  </table>
+		                </div>
+	              	</form>
+	              </div>
+	              <!--/ Basic Bootstrap Table -->
+	              <!-- kdmin pagination s -->
+	              	<%@include file="../../common/kdminListButtonDiv.jsp"%>
+				  <!-- kdmin pagination e -->
+	              <div style="height: 40px;"></div>
+	              <!-- kdmin pagination s -->
+	              	<%@include file="../../common/kdminPagination.jsp"%>
+				  <!-- kdmin pagination e -->
+				  <!-- modal start -->
+				  <%@include file="../../common/kdminListModalDiv.jsp"%>
+				  <!-- modal end -->
+	            </div>
+	            <!-- / Content -->
 
             <!-- Footer -->
             <footer class="content-footer footer bg-footer-theme">
