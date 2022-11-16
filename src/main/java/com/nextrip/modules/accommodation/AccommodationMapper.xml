@@ -283,4 +283,36 @@
 		AND a.nxRoomSeq = #{nxRoomSeq}
 	</select>
 	<!-- Room E -->
+	
+	<!-- 찬구 S -->
+	<select id="selectUserPurchaseHistoryList" resultMap="resultMapObj">
+		<include refid="Base.selectListUpperForMysql" />
+			SELECT 
+			    a.nxPurchaseHistorySeq
+			    ,a.nxAccommodationSeq
+			    ,a.memberSeq
+			    ,a.nxRoomSeq
+			    ,(SELECT a.hotelName FROM nxAccommodation a inner join nxRoom b on b.nxAccommodationSeq = a.nxAccommodationSeq WHERE b.nxRoomSeq =a.nxRoomSeq) as hotelName
+			    ,(SELECT a.region FROM nxAccommodation a inner join nxRoom b on b.nxAccommodationSeq = a.nxAccommodationSeq WHERE b.nxRoomSeq =a.nxRoomSeq) as region
+			    ,a.reservationName
+			    ,a.reservationPhoneNum
+			    ,a.reservationStatus
+			    ,a.paymentMethod
+			    ,a.checkInDate
+			    ,a.checkOutDate
+			    ,a.pay
+			    ,a.delNy
+			    ,a.regDateTime
+			    ,a.modDateTime
+			    ,a.personnel
+			    ,TIMESTAMPDIFF(DAY, a.checkInDate, a.checkOutDate) as dateGap
+			FROM nxPurchaseHistory a
+			WHERE 1=1
+				AND memberSeq = #{memberSeq}
+	    	ORDER BY a.nxPurchaseHistorySeq DESC
+	    	<include refid="Base.orderByLimitForMysql" />
+		<include refid="Base.selectListLowerForMysql" />
+	</select>
+	
+	<!-- 찬구 E -->
 </mapper>	

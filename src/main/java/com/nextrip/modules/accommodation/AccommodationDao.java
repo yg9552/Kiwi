@@ -53,6 +53,9 @@ public class AccommodationDao {
 	public int updatePurchaseHistory(Accommodation dto) {
 		return sqlSession.update(namespace + ".updatePurchaseHistory", dto);
 	}
+	public List<Accommodation> selectUserPurchaseHistoryList(AccommodationVo vo) {
+		return sqlSession.selectList(namespace+".selectUserPurchaseHistoryList", vo);
+	}
 	
 	//Room
 	public List<Accommodation> selectListRoom(AccommodationVo vo) {

@@ -5,6 +5,8 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
+<jsp:useBean id="CodeServiceImpl" class="com.nextrip.modules.code.CodeServiceImpl"/>
+
 <!DOCTYPE HTML>
 <html  class="no-js" lang="zxx">
 <html>
@@ -58,48 +60,47 @@
 	       			</ul>
 	       		</div>
 	       		<div class="my-3">
-	       			<div style="border: solid; border-width: 1px; border-color:#EEEEEE;">
-	       				<div class="row">
-		       				<div class="col-9">
-		       					<h6>예약일: 2022-10-24</h6>
-	       						<img class="img-thumbnail" alt="" id="preview" style="width:160px; height:145px; float: left;">
-	       						<p style="font-size: 13px;">숙박 > 경기도</p><span style="float: right; font-size: 12px;">숙박 상세보기 > </span><span style="clear: both;"></span>
-	       						<p>&nbsp;라한 셀렉트 경주 2박3일</p>
-	       						<p style="font-size: 13px;">일정: 2022-11-19 ~ 2022-11-21</p>
-		       				</div>
-		       				<div class="col-3" style="display:flex; align-items: center;">
-		       					<button type="button" class="genric-btn info radius" onclick="location.href='./mypageReservationView.html'">예약 상세보기</button>
-		       				</div>
-	       				</div>
-	       			</div>
-	       			<div style="border: solid; border-width: 1px; border-color:#EEEEEE;">
-	       				<div class="row">
-		       				<div class="col-9">
-		       					<h6>예약일: 2022-10-24</h6>
-	       						<img class="img-thumbnail" alt="" id="preview" style="width:160px; height:145px; float: left;">
-	       						<p style="font-size: 13px;">숙박 > 경기도</p><span style="float: right; font-size: 12px;">숙박 상세보기 > </span><span style="clear: both;"></span>
-	       						<p>&nbsp;라한 셀렉트 경주 / 2박3일</p>
-	       						<p style="font-size: 13px;">일정: 2022-11-19 ~ 2022-11-21</p>
-		       				</div>
-		       				<div class="col-3" style="display:flex; align-items: center;">
-		       					<button type="button" class="genric-btn info radius" onclick="location.href='./mypageReservationView.html'">예약 상세보기</button>
-		       				</div>
-	       				</div>
-	       			</div>
-	       			<div style="border: solid; border-width: 1px; border-color:#EEEEEE;">
-	       				<div class="row">
-		       				<div class="col-9">
-		       					<h6>예약일: 2022-10-24</h6>
-	       						<img class="img-thumbnail" alt="" id="preview" style="width:160px; height:145px; float: left;">
-	       						<p style="font-size: 13px;">숙박 > 경기도</p><span style="float: right; font-size: 12px;">숙박 상세보기 > </span><span style="clear: both;"></span>
-	       						<p>&nbsp;라한 셀렉트 경주 2박3일</p>
-	       						<p style="font-size: 13px;">일정: 2022-11-19 ~ 2022-11-21</p>
-		       				</div>
-		       				<div class="col-3" style="display:flex; align-items: center;">
-		       					<button type="button" class="genric-btn info radius" onclick="location.href='./mypageReservationView.html'">예약 상세보기</button>
-		       				</div>
-	       				</div>
-	       			</div>
+	       			<c:choose>
+		    			<c:when test="${fn:length(list) eq 0 }">
+		    					<div style="border: solid; border-width: 1px; border-color:#EEEEEE;">
+				       				<div class="row">
+					       				<div class="col-9">
+					       					<p>예매내역이 존재하지 않습니다.</p>
+					       				</div>
+				       				</div>
+				       			</div>
+		    			</c:when>
+		    			<c:otherwise>
+		    				<c:set var="listCodeRegion" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
+		    				<c:forEach items="${list}" var="list" varStatus="status">
+		    					<div class="my-3" style="border: solid; border-width: 1px; border-color:#EEEEEE;">
+				       				<div class="row">
+					       				<div class="col-9">
+					       					<h6>예약일: <fmt:formatDate value="${list.regDateTime }" pattern="yyyy-MM-dd"/></h6>
+					       					<c:forEach items="${listUploaded}" var="listUploaded" varStatus="statusUploaded">
+						                  		<c:if test="${listUploaded.type eq 2 && list.nxAccommodationSeq eq listUploaded.pseq }">
+						                  			<img class="img-thumbnail" src="<c:out value="${listUploaded.path }"/><c:out value="${listUploaded.uuidName }"/>" alt="" id="preview" style="width:160px; height:145px; float: left;">
+						                  		</c:if>
+						                	</c:forEach>
+				       						<!-- <img class="img-thumbnail" src="" alt="" id="preview" style="width:160px; height:145px; float: left;"> -->
+				       						<p style="font-size: 13px;">
+				       							숙박 > 
+				       							<c:forEach items="${listCodeRegion}" var="listRegion" varStatus="statusRegion">
+													<c:if test="${list.region eq listRegion.replaceCode}"><c:out value="${listRegion.name }"/></c:if>
+												</c:forEach> 
+				       						</p><span style="float: right; font-size: 12px;">숙박 상세보기 > </span><span style="clear: both;"></span>
+				       						<p>&nbsp;<c:out value="${list.hotelName }"/> <c:out value="${list.dateGap }"/>박<c:out value="${list.dateGap + 1}"/>일</p>
+				       						<p style="font-size: 13px;">일정: <fmt:formatDate value="${list.checkInDate }" pattern="yyyy-MM-dd"/> ~ <fmt:formatDate value="${list.checkOutDate }" pattern="yyyy-MM-dd"/></p>
+					       				</div>
+					       				<div class="col-3" style="display:flex; align-items: center;">
+					       					<h5 class="float-end"><c:out value="${list.reservationStatus }"/></h5>
+					       					<button type="button" class="genric-btn info radius">예약 상세보기</button>
+					       				</div>
+				       				</div>
+				       			</div>
+		    				</c:forEach>
+		    			</c:otherwise>
+		    		</c:choose>
 				</div>
 	       	</div>
 		</div>

@@ -34,9 +34,13 @@
 		<!-- session interceptor s 2022.03.13 for logincheck -->
 	<!-- <interceptors>
 		<interceptor>
-			<mapping path="/**"/>
+			<mapping path="/nextrip/**"/>
 			<exclude-mapping path="/resources/**" />
-			<exclude-mapping path="/nextrip/**" />
+			<exclude-mapping path="/nextrip/main" />
+			<exclude-mapping path="/nextrip/region/**" />
+			<exclude-mapping path="/nextrip/login" />
+			<exclude-mapping path="/nextrip/loginproc" />
+			<exclude-mapping path="/nextrip/logoutProc" />
 			<beans:bean id="checkLoginSessionInterception" class="com.nextrip.common.interceptor.CheckLoginSessionInterception"/>
 		</interceptor>
 	</interceptors>	 -->

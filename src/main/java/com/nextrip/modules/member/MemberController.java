@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,9 +16,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.nextrip.common.constants.Constants;
-import com.nextrip.modules.purchaseHistory.PurchaseHistory;
-import com.nextrip.modules.purchaseHistory.PurchaseHistoryServiceImpl;
-import com.nextrip.modules.purchaseHistory.PurchaseHistoryVo;
+import com.nextrip.modules.accommodation.Accommodation;
+import com.nextrip.modules.accommodation.AccommodationServiceImpl;
+import com.nextrip.modules.accommodation.AccommodationVo;
 
 @Controller
 @RequestMapping
@@ -27,7 +28,7 @@ public class MemberController {
 	MemberServiceImpl service;
 	
 	@Autowired
-	PurchaseHistoryServiceImpl service2;
+	AccommodationServiceImpl service2;
 	
 	@RequestMapping(value="/nextrip/main")
 	public String main() throws Exception {
@@ -50,9 +51,10 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value="/nextrip/memberModification")
-	public String memberModification(HttpSession httpSession, Model model,@ModelAttribute("vo") MemberVo vo, Member dto) throws Exception {
-		String rtSeq = (String) httpSession.getAttribute("sessSeq");
-		vo.setMemberSeq(rtSeq);
+	public String memberModification(HttpServletRequest request, Model model,@ModelAttribute("vo") MemberVo vo, Member dto) throws Exception {
+//		String rtSeq = (String) httpSession.getAttribute("sessSeq");
+//		vo.setMemberSeq(rtSeq);
+		vo.setMemberSeq((String)request.getSession().getAttribute("sessSeq"));
 		Member result = service.selectOneMember(vo);
 		model.addAttribute("item", result);
 		
@@ -60,7 +62,14 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value="/nextrip/myReservation")
-	public String selectMyReservationList(Model model, PurchaseHistoryVo vo) throws Exception {
+	public String selectMyReservationList(Model model,@ModelAttribute("vo") AccommodationVo vo, HttpSession httpSession) throws Exception {
+		String rtSeq = (String) httpSession.getAttribute("sessSeq");
+		vo.setMemberSeq(rtSeq);
+		
+		List<Accommodation> list = service2.selectUserPurchaseHistoryList(vo);
+		model.addAttribute("list", list);
+		
+		model.addAttribute("listUploaded", service2.selectListUploaded(vo));
 		
 		return "user/mypage/mypageReservationRecord";
 	}
@@ -91,7 +100,7 @@ public class MemberController {
 	
 	@ResponseBody
 	@RequestMapping(value="/nextrip/loginproc")
-	public Map<String, Object> loginproc(Member dto,MemberVo vo, HttpSession httpSession) throws Exception{
+	public Map<String, Object> loginproc(Member dto,@ModelAttribute("vo") MemberVo vo, HttpSession httpSession) throws Exception{
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 
 		Member rtMember = service.checkId(dto);

@@ -155,6 +155,11 @@ for(int i=0; i<multipartFiles.length; i++) {
 		// TODO Auto-generated method stub
 		return dao.selectRoomPrice(dto);
 	}
+
+	@Override
+	public List<Accommodation> selectUserPurchaseHistoryList(AccommodationVo vo) throws Exception {
+		return dao.selectUserPurchaseHistoryList(vo);
+	}
 	
 
 }

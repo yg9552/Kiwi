@@ -13,7 +13,7 @@ public class CheckLoginSessionInterception extends HandlerInterceptorAdapter{
 		if (request.getSession().getAttribute("sessSeq") != null ) {
 			// by pass
 		} else {
-			response.sendRedirect("/nextrip/loginproc");
+			response.sendRedirect("/nextrip/login");
             return false;
 		}
 		System.out.println("CheckLoginSessionInterception running");
