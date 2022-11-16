@@ -34,7 +34,7 @@
 			</div>
 			<div class="row justify-content-center pb-3">
 				<div class="form-floating" style="width:340px;">
-				  <input type="password" class="form-control" id="password" placeholder="Password">
+				  <input type="password" class="form-control" id="password" placeholder="Password" onkeyup="enterLogin();">
 				  <label for="password" style="text-align:left;">비밀번호</label>
 				</div>
 			</div>
@@ -85,6 +85,31 @@
 				}
 			});
   		});
+       	
+       	function enterLogin() {
+	        if (window.event.keyCode == 13) {
+	            // 엔터키가 눌렸을 때 실행할 내용
+				$.ajax({
+					async: true 
+					,cache: false
+					,type: "post"
+					/* ,dataType:"json" */
+					,url: "/nextrip/loginproc"
+					/* ,data : $("#formLogin").serialize() */
+					,data : { "id" : $("#id").val(), "password" : $("#password").val() }
+					,success: function(response) {
+						if(response.rt == "success") {
+								$(location).attr("href",goUrlMain);
+						} else {
+							alert("일치하는 계정이 없습니다.");
+						}
+					}
+					,error : function(jqXHR, textStatus, errorThrown){
+						alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+					}
+				});
+	        }
+		}
 	</script>
 </body>
 </html>

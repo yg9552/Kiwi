@@ -60,25 +60,13 @@
 			vertical-align: middle;
 		}
 		
-		#container {
-                width: 1000px;
-                margin: 20px auto;
-            }
-            .ck-editor__editable[role="textbox"] {
-                /* editing area */
-                min-height: 500px;
-            }
-            .ck-content .image {
-                /* block images */
-                max-width: 80%;
-                margin: 20px auto;
-            }
+		
        .bottomBtn {
        		width: 200px;
        		height: 50px;
        }
-       .note-icon-caret::before{
-       	display: none;
+       .dropdown-toggle::after {
+       		display: none;
        }
 	</style>
 </head>
@@ -179,7 +167,7 @@
 				     <!-- slider Area End-->
 				     <div style="height: 50px;"></div>
                 	<!-- Blog Area Start -->
-                	<form method="post" id="PRMForm" name="PRMForm" autocomplete="off">
+                	<form method="post" id="PRMForm" name="PRMForm" autocomplete="off" enctype="multipart/form-data">
                 		<input type="hidden" id="nxPostSeq" name="nxPostSeq" value="<c:out value="${item.nxPostSeq }" />">
                 		<input type="hidden" id="memberSeq" name="memberSeq" value="<c:out value="${item.memberSeq }" />">
                 		<input type="hidden" id="addressZip" name="addressZip" value="<c:out value="${item.addressZip }" />">
@@ -229,12 +217,12 @@
 								        	<input type="hidden" id="<c:out value="${name }"/>DeleteSeq" name="<c:out value="${name }"/>DeleteSeq"/>
 								        	<input type="hidden" id="<c:out value="${name }"/>DeletePathFile" name="<c:out value="${name }"/>DeletePathFile"/>
 								            <!-- <label for="uploadImage" class="form-label input-file-button">표지 첨부</label> -->
-								 			<input class="form-control form-control-sm" id="<c:out value="${name }"/>" name="<c:out value="${name }"/>" type="file" multiple="multiple" style="display: none;" onChange="upload('<c:out value="${name }"/>', <c:out value="${type }"/>, 1, 1, 0, 0, 1);">
+								 			<input class="form-control form-control-sm" id="<c:out value="${name }"/>" name="<c:out value="${name }"/>" type="file" multiple="multiple" style="display: none;" onChange="upload('<c:out value="${name }"/>', <c:out value="${type }"/>, 0, 1, 0, 0, 1);">
 											<div id="<c:out value="${name }"/>Preview" class="addScroll" style="padding: 5px;">
 												<c:forEach items="${postListUploaded}" var="postListUploaded" varStatus="statusUploaded">
 													<c:if test="${postListUploaded.type eq type }">
-														<div id="imageDiv_<c:out value="${type }"/>_<c:out value="${postListUploaded.sort }"/>" style="background-color: #f0f0f0; display: inline-block; height: 95px;">
-															<img src="<c:out value="${postListUploaded.path }"/><c:out value="${postListUploaded.uuidName }"/>" class="rounded" style="cursor:pointer;" onClick="openViewer(<c:out value="${postListUploaded.type }"/>, <c:out value="${postListUploaded. sort }"/>);">
+														<div id="imageDiv_<c:out value="${type }"/>_<c:out value="${postListUploaded.sort }"/>" style="display: inline-block; height: 95px;">
+															<img src="<c:out value="${postListUploaded.path }"/><c:out value="${postListUploaded.uuidName }"/>" class="rounded" style="cursor:pointer; width: 700px; height: 467px; object-fit:contain;" onClick="openViewer(<c:out value="${postListUploaded.type }"/>, <c:out value="${postListUploaded. sort }"/>);">
 															<div style="position: relative; top:-460px; left:-330px"><span style="color: red; cursor:pointer;" onClick="delImageDiv('<c:out value="${name }"/>', <c:out value="${type }"/>,<c:out value="${postListUploaded.sort }"/>, <c:out value="${postListUploaded.seq }"/>, '<c:out value="${postListUploaded.path }"/><c:out value="${postListUploaded.uuidName }"/>')">X</span></div>
 														</div>
 													</c:if>
@@ -442,7 +430,7 @@
 				    // 굵기, 기울임꼴, 밑줄,취소 선, 서식지우기
 				    ['style', ['bold', 'italic', 'underline','strikethrough', 'clear']],
 				    // 글자색
-				    ['color', ['forecolor','color']],	
+				    ['color', ['forecolor', 'color']],	
 				    // 글머리 기호, 번호매기기, 문단정렬
 				    ['para', ['paragraph']],
 				    // 줄간격
@@ -478,8 +466,6 @@
 		
 		
 		$("#regModBtn").on("click", function(){
-			alert($("#region").val());
-			alert($("#nxPostSeq").val());
 			if(seq.val() == "0" || seq.val() == ""){
 				form.attr("action", goUrlInsert).submit();
 			} else{

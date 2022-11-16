@@ -52,7 +52,7 @@
 		                                            </li>
 		                                            <li><a href="#">여행지소개</a>
 		                                            	<ul class="submenu">
-		                                                    <li><a href="#">게시판</a></li>
+		                                                    <li><a href="/post/postUserList">게시판</a></li>
 		                                                    <li><a href="#">글쓰기</a></li>
 		                                                </ul>
 		                                            </li>

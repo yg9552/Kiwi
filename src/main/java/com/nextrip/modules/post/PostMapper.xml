@@ -74,8 +74,11 @@ where 1=1
 		a.*
 		,b.name as memberName
 		,b.nickName as memberNickName
+		,c.path
+		,c.uuidName
 	from nxPost a
 	join member b on a.memberSeq = b.memberSeq
+	left join postUploaded c on a.nxPostSeq = c.pSeq
 	where 1=1
 	and nxPostSeq = #{nxPostSeq}
 	
@@ -110,8 +113,11 @@ where 1=1
 	select
 		a.*
 		,b.nickName as memberNickName
+		,c.path
+		,c.uuidName
 	from nxPost a
 	join member b on a.memberSeq = b.memberSeq
+	left join postUploaded c on a.nxPostSeq = c.pSeq
 	where 1=1
 	and nxPostSeq = #{nxPostSeq}
 	

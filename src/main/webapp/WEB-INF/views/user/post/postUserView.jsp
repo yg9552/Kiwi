@@ -174,7 +174,7 @@
 		                		</div>
 	                		</div>
 	                		<div style="background-color: #f0f0f0; padding: 20px; border-top: 1px solid #e8e8e8; border-bottom: 2px solid #e8e8e8;">
-	                			<a style="display:block;"><img src="../../../image/bamboo.jpg" width="200px" height="144px" style="float: left;"></a>
+	                			<a style="display:block;"><img src="<c:out value="${item.path }"/><c:out value="${item.uuidName }"/>" width="200px" height="144px" style="float: left; object-fit:contain;"></a>
 	                			<div style="display:block; height: 144px;">
 	                				<span style="margin-left: 15px;">
 	                					<span>후기 종류:

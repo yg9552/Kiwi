@@ -31,7 +31,11 @@ public class PostController {
 		if(vo.getNxPostSeq().equals("0") || vo.getNxPostSeq().equals("")) {
 			//insert
 		} else {
+			
 			Post item = service.selectOne(vo);
+			model.addAttribute("postListUploaded", service.postListUploaded(vo));
+			item.setLng(item.getLng() == null ?  Integer.toString(127) : item.getLng());
+			item.setLat(item.getLat() == null ? Integer.toString(37) : item.getLat());
 			model.addAttribute("item", item);
 		}
 		return "kdmin/post/postView";
@@ -62,6 +66,7 @@ public class PostController {
 			//insert
 		} else {
 			Post item = service.postSelectOne(vo);
+			model.addAttribute("postListUploaded", service.postListUploaded(vo));
 			model.addAttribute("item", item);
 		}
 		return "user/post/postRegMod";
