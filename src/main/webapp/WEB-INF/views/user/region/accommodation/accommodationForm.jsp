@@ -257,7 +257,7 @@
                         <div class="mt-2 row">
                           <div class="col">
                           	<button type="button" class="btn btn-primary me-2" id="btnSave">등록하기</button>
-                          	<button type="button" class="btn btn-outline-secondary">뒤로가기</button>
+                          	<button type="button" class="btn btn-outline-secondary" id="btnList">뒤로가기</button>
                           </div>
                           <div class="col-auto">
                           	<button type="button" class="btn btn-danger deactivate-account">삭제하기</button>
@@ -322,7 +322,7 @@
     </div>
     <!-- 카카오주소 API -->
 	<script>
-	var goUrlList = "/nextrip/region/accommodation/accommodationList"; 			/* #-> */
+	var goUrlList = "/nextrip/region/accommodation/accommodationListK"; 			/* #-> */
 	var goUrlInst = "/nextrip/region/accommodation/accommodationInst"; 			/* #-> */
 	var goUrlUpdt = "/nextrip/region/accommodation/accommodationUpdt";			/* #-> */
 	var goUrlUele = "/member/memberUele";			/* #-> */
@@ -344,6 +344,9 @@
 	   		// seq.remove();	html 에서 seq 보여지지 않으면 이 구문은 필요치 않다.
 	   		form.attr("action", goUrlUpdt).submit();
 	   	}
+	});
+	$("#btnList").on("click", function(){
+		formVo.attr("action", goUrlList).submit();
 	});
 	//본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
 	function sample4_execDaumPostcode() {

@@ -115,7 +115,6 @@
                       <div class="row">
                        <div class="mb-3 col-lg-2">
 	                       <select class="form-select" id="shOption" aria-label="Default select example" name="shOption">
-		                       <option selected>검색조건</option>
 		                       <option value="1">지역</option>
 		                       <option value="2">Y</option>
 	                       </select>
@@ -230,6 +229,7 @@
     <!-- / Layout wrapper -->
 	<script type="text/javascript">
 	var goUrlForm = "/nextrip/region/accommodation/accommodationForm";		/* #-> */
+	var goUrlList = "/nextrip/region/accommodation/accommodationListK";		/* #-> */
 	
 	var seq = $("input:hidden[name=nxAccommodationSeq]");				/* #-> */
 	var form = $("form[name=formList]");

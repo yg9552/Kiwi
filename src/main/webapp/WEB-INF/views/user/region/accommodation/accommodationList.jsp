@@ -62,7 +62,7 @@
         <div class="support-company-area support-padding fix">
             <div class="container-fluid">
             	<button class="button rounded primary-bg text-white btn_1 w-100 boxed-btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-			    	지역 설정
+			    	지역 검색
 			    </button>
             	<div class="collapse" id="collapseExample">
 				  <div class="card card-body border border-white">
@@ -85,28 +85,79 @@
 						<c:set var="listregion" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
 						<c:forEach items="${listregion}" var="listregion" varStatus="statuslistregion">
 							<c:if test="${listregion.replaceCode eq 203 }">
-							<button type="button" class="genric-btn danger circle" id="203">경상도</button>
+							<button type="submit" class="genric-btn danger circle" id="203">경상도</button>
 							<input type="hidden" name="shValue" id="busan" value='<c:out value="${listregion.replaceCode}"/>'>
 							</c:if>
 						</c:forEach>
 						<c:set var="listregion" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
 						<c:forEach items="${listregion}" var="listregion" varStatus="statuslistregion">
 							<c:if test="${listregion.replaceCode eq 204 }">
-							<button type="button" class="genric-btn primary circle" id="204">전라도</button>
+							<button type="submit" class="genric-btn primary circle" id="204">전라도</button>
 							<input type="hidden" name="shValue" id="jeonla" value='<c:out value="${listregion.replaceCode}"/>'>
 							</c:if>
 						</c:forEach>
 						<c:set var="listregion" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
 						<c:forEach items="${listregion}" var="listregion" varStatus="statuslistregion">
 							<c:if test="${listregion.replaceCode eq 205 }">
-							<button type="button" class="genric-btn warning circle" id="205">충청도</button>
+							<button type="submit" class="genric-btn warning circle" id="205">충청도</button>
 							<input type="hidden" name="shValue" id="chung" value='<c:out value="${listregion.replaceCode}"/>'>
 							</c:if>
 						</c:forEach>
 						<c:set var="listregion" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
 						<c:forEach items="${listregion}" var="listregion" varStatus="statuslistregion">
 							<c:if test="${listregion.replaceCode eq 206 }">
-							<button type="button" class="genric-btn success circle" id="206">제주도</button>
+							<button type="submit" class="genric-btn success circle" id="206">제주도</button>
+							<input type="hidden" name="shValue" id="jeju" value='<c:out value="${listregion.replaceCode}"/>'>
+							</c:if>
+						</c:forEach>
+					</div>
+				  </div>
+				</div>
+				<button class="button rounded primary-bg text-white btn_1 w-100 boxed-btn mt-1" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">
+			    	지역 이동
+			    </button>
+            	<div class="collapse" id="collapseExample2">
+				  <div class="card card-body border border-white">
+				    <div class="button-group-area text-center">
+				    	<c:set var="listregion" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
+						<c:forEach items="${listregion}" var="listregion" varStatus="statuslistregion">
+							<c:if test="${listregion.replaceCode eq 201 }">
+							<button type="button" class="genric-btn default circle" onclick="setCenter()">수도권</button>
+							<input type="hidden" name="shValue" id="seoul" value='<c:out value="${listregion.replaceCode}"/>'>
+							</c:if>
+						</c:forEach>
+						<c:set var="listregion" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
+						<c:forEach items="${listregion}" var="listregion" varStatus="statuslistregion">
+							<c:if test="${listregion.replaceCode eq 202 }">
+							<button type="button" class="genric-btn info circle" onclick="setCenter2()">강원도</button>
+							<input type="hidden" name="shValue" id="kangwon" value='<c:out value="${listregion.replaceCode}"/>'>
+							</c:if>
+						</c:forEach>
+						<c:set var="listregion" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
+						<c:forEach items="${listregion}" var="listregion" varStatus="statuslistregion">
+							<c:if test="${listregion.replaceCode eq 203 }">
+							<button type="button" class="genric-btn danger circle" onclick="setCenter3()">경상도</button>
+							<input type="hidden" name="shValue" id="busan" value='<c:out value="${listregion.replaceCode}"/>'>
+							</c:if>
+						</c:forEach>
+						<c:set var="listregion" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
+						<c:forEach items="${listregion}" var="listregion" varStatus="statuslistregion">
+							<c:if test="${listregion.replaceCode eq 204 }">
+							<button type="button" class="genric-btn primary circle" onclick="setCenter4()">전라도</button>
+							<input type="hidden" name="shValue" id="jeonla" value='<c:out value="${listregion.replaceCode}"/>'>
+							</c:if>
+						</c:forEach>
+						<c:set var="listregion" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
+						<c:forEach items="${listregion}" var="listregion" varStatus="statuslistregion">
+							<c:if test="${listregion.replaceCode eq 205 }">
+							<button type="button" class="genric-btn warning circle" onclick="setCenter5()">충청도</button>
+							<input type="hidden" name="shValue" id="chung" value='<c:out value="${listregion.replaceCode}"/>'>
+							</c:if>
+						</c:forEach>
+						<c:set var="listregion" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
+						<c:forEach items="${listregion}" var="listregion" varStatus="statuslistregion">
+							<c:if test="${listregion.replaceCode eq 206 }">
+							<button type="button" class="genric-btn success circle" onclick="setCenter6()">제주도</button>
 							<input type="hidden" name="shValue" id="jeju" value='<c:out value="${listregion.replaceCode}"/>'>
 							</c:if>
 						</c:forEach>
@@ -154,85 +205,11 @@
         <!-- list End -->
 		
     </main>
-    <footer>
-        <!-- Footer Start-->
-        <div class="footer-area footer-padding footer-bg" data-background="/resources/template/gotrip-master/assets/img/service/footer_bg.jpg">
-            <div class="container">
-                <div class="row d-flex justify-content-between">
-                    <div class="col-xl-3 col-lg-3 col-md-5 col-sm-6">
-                       <div class="single-footer-caption mb-50">
-                         <div class="single-footer-caption mb-30">
-                              <!-- logo -->
-                             <div class="footer-logo">
-                                 <a href="index.html"><img src="/resources/template/gotrip-master/assets/img/logo/NTlogo.png" alt=""></a>
-                             </div>
-                             <div class="footer-tittle">
-                                 <div class="footer-pera">
-                                     <p>대표번호 | 1588-1025</p>
-                                </div>
-                             </div>
-                         </div>
-                       </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-5">
-                        <div class="single-footer-caption mb-50">
-                            <div class="footer-tittle">
-                                <h4>회사소개</h4>
-                                <ul>
-                                    <li><a href="#">회사정보</a></li>
-                                    <li><a href="#">사업자정보확인</a></li>
-                                    <li><a href="#">마케팅센터</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-7">
-                        <div class="single-footer-caption mb-50">
-                            <div class="footer-tittle">
-                                <h4>고객센터</h4>
-                                <ul>
-                                    <li><a href="#">CONTACT US</a></li>
-                                    <li><a href="#">카카오톡 문의</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-5 col-sm-7">
-                        <div class="single-footer-caption mb-50">
-                            <div class="footer-tittle">
-                                <h4>개인정보보호</h4>
-                                <ul>
-                                 <li><a href="#">정책</a></li>
-                                 <li><a href="#">이용약관</a></li>
-                                 <li><a href="#">개인정보처리방침</a></li>
-                             </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Footer bottom -->
-                <div class="row pt-padding">
-                 <div class="col-xl-7 col-lg-7 col-md-7">
-                    <div class="footer-copy-right">
-                         <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="ti-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-                    </div>
-                 </div>
-                  <div class="col-xl-5 col-lg-5 col-md-5">
-                        <!-- social -->
-                        <div class="footer-social f-right">
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-behance"></i></a>
-                            <a href="#"><i class="fas fa-globe"></i></a>
-                        </div>
-                 </div>
-             </div>
-            </div>
-        </div>
-        <!-- Footer End-->
-    </footer>
+    
+    <!-- userFooter s -->
+		<%@include file="../../../common/userFooter.jsp"%>
+  	<!-- userFooter e -->
+    
 
 	<!-- JS here -->
 	
@@ -330,14 +307,118 @@
 			form.attr("action", goUrlView).submit();
 		}
 
-		    var mapContainer = document.getElementById('map2'), // 지도를 표시할 div  
-		    mapOption = { 
-		        center: new kakao.maps.LatLng(37.50257499386316, 127.01349205512591), // 지도의 중심좌표
-		        level: 8 // 지도의 확대 레벨
-		    };
-
+	    var mapContainer = document.getElementById('map2'), // 지도를 표시할 div  
+	    mapOption = { 
+	        center: new kakao.maps.LatLng(35.714279638823946 , 127.92518292730689), // 지도의 중심좌표
+	        level: 12 // 지도의 확대 레벨
+	    };
+	    
 		var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-		 
+		
+		function setCenter() {            
+		    // 이동할 위도 경도 위치를 생성합니다 
+		    var moveLatLon = new kakao.maps.LatLng(37.50179616484808 , 127.00233956077265);
+		    
+		    // 지도 중심을 이동 시킵니다
+		    map.setCenter(moveLatLon);
+		    
+		 // 현재 지도의 레벨을 얻어옵니다
+			var level = map.getLevel();
+		    
+		    // 지도를 1레벨 내립니다 (지도가 확대됩니다)
+		    map.setLevel(level - 4);
+		    
+		    // 지도 레벨을 표시합니다
+		    displayLevel();
+		}
+		
+		function setCenter2() {            
+		    // 이동할 위도 경도 위치를 생성합니다 
+		    var moveLatLon = new kakao.maps.LatLng(37.7912807517797, 128.920931374973);
+		    
+		    // 지도 중심을 이동 시킵니다
+		    map.setCenter(moveLatLon);
+		    
+		 // 현재 지도의 레벨을 얻어옵니다
+			var level = map.getLevel();
+		    
+		    // 지도를 1레벨 내립니다 (지도가 확대됩니다)
+		    map.setLevel(level - 6);
+		    
+		    // 지도 레벨을 표시합니다
+		    displayLevel();
+		}
+		
+		function setCenter3() {            
+		    // 이동할 위도 경도 위치를 생성합니다 
+		    var moveLatLon = new kakao.maps.LatLng(35.1421527230017, 129.107970121975);
+		    
+		    // 지도 중심을 이동 시킵니다
+		    map.setCenter(moveLatLon);
+		    
+		 // 현재 지도의 레벨을 얻어옵니다
+			var level = map.getLevel();
+		    
+		    // 지도를 1레벨 내립니다 (지도가 확대됩니다)
+		    map.setLevel(level - 5);
+		    
+		    // 지도 레벨을 표시합니다
+		    displayLevel();
+		}
+		
+		function setCenter4() {            
+		    // 이동할 위도 경도 위치를 생성합니다 
+		    var moveLatLon = new kakao.maps.LatLng(35.1421527230017, 129.107970121975);
+		    
+		    // 지도 중심을 이동 시킵니다
+		    map.setCenter(moveLatLon);
+		    
+		 // 현재 지도의 레벨을 얻어옵니다
+			var level = map.getLevel();
+		    
+		    // 지도를 1레벨 내립니다 (지도가 확대됩니다)
+		    map.setLevel(level - 5);
+		    
+		    // 지도 레벨을 표시합니다
+		    displayLevel();
+		}
+		
+		function setCenter5() {            
+		    // 이동할 위도 경도 위치를 생성합니다 
+		    var moveLatLon = new kakao.maps.LatLng(36.5200770799832, 127.253445607288);
+		    
+		    // 지도 중심을 이동 시킵니다
+		    map.setCenter(moveLatLon);
+		    
+		 // 현재 지도의 레벨을 얻어옵니다
+			var level = map.getLevel();
+		    
+		    // 지도를 1레벨 내립니다 (지도가 확대됩니다)
+		    map.setLevel(level - 2);
+		    
+		    // 지도 레벨을 표시합니다
+		    displayLevel();
+		}
+		
+		function setCenter6() {            
+		    // 이동할 위도 경도 위치를 생성합니다 
+		    var moveLatLon = new kakao.maps.LatLng(33.3619949718734, 126.617641755095);
+		    
+		    // 지도 중심을 이동 시킵니다
+		    map.setCenter(moveLatLon);
+		    
+		 // 현재 지도의 레벨을 얻어옵니다
+			var level = map.getLevel();
+		    
+		    // 지도를 1레벨 내립니다 (지도가 확대됩니다)
+		    map.setLevel(level - 3);
+		    
+		    // 지도 레벨을 표시합니다
+		    displayLevel();
+		}
+		
+		
+		
 		// 지도에 확대 축소 컨트롤을 생성한다
 		var zoomControl = new kakao.maps.ZoomControl();
 
@@ -354,6 +435,13 @@
 		    </c:forEach>
 		];
 		
+		var bounds = new kakao.maps.LatLngBounds();
+		
+		function setBounds() {
+		    // LatLngBounds 객체에 추가된 좌표들을 기준으로 지도의 범위를 재설정합니다
+		    // 이때 지도의 중심좌표와 레벨이 변경될 수 있습니다
+		    map.setBounds(bounds);
+		}
 
 		for (var i = 0; i < positions.length; i ++) {
 		    // 마커를 생성합니다
@@ -372,6 +460,7 @@
 		    // for문에서 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
 		    kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
 		    kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+		    
 		}
 
 		// 인포윈도우를 표시하는 클로저를 만드는 함수입니다 
