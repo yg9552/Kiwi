@@ -131,9 +131,8 @@ where 1=1
 	<if test="shRegion != null and !shRegion.equals('')">AND a.region = #{shRegion}</if>
 	<choose>
 		<when test="shOption == 1">AND a.title LIKE CONCAT('%',#{shValue},'%')</when>
-		<when test="shOption == 2">AND a.content = #{shValue} </when>
-		<when test="shOption == 3">AND a.addressTitle LIKE CONCAT('%',#{shValue},'%')</when>
-		<when test="shOption == 4">AND memberNickName LIKE CONCAT('%',#{shValue},'%')</when>
+		<when test="shOption == 2">AND a.addressTitle LIKE CONCAT('%',#{shValue},'%')</when>
+		<when test="shOption == 3">AND memberNickName LIKE CONCAT('%',#{shValue},'%')</when>
 	</choose>
 </sql>
 
@@ -145,9 +144,8 @@ where 1=1
 			,addressTitle
 			,title
 			,content
-			,addressZip
-			,address
-			,addressDetail
+			,roadAddress
+			,jibunAddress
 			,lng
 			,lat
 			,delNy
@@ -159,9 +157,8 @@ where 1=1
 			,#{addressTitle}
 			,#{title}
 			,#{content}
-			,#{addressZip}
-			,#{address}
-			,#{addressDetail}
+			,#{roadAddress}
+			,#{jibunAddress}
 			,#{lng}
 			,#{lat}
 			,0
@@ -178,9 +175,9 @@ where 1=1
 		,postType = #{postType}
 		,title = #{title}
 		,content = #{content}
-		,addressZip = #{addressZip}
-		,address = #{address}
-		,addressDetail = #{addressDetail}
+		,addressTitle = #{addressTitle}
+		,roadAddress = #{roadAddress}
+		,jibunAddress = #{jibunAddress}
 		,lng = #{lng}
 		,lat = #{lat}
 	WHERE 1=1

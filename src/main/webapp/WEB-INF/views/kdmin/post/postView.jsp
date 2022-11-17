@@ -76,12 +76,17 @@
 	 <link rel="stylesheet" href="/resources/summernote/summernote-lite.css">
 	 <script src="https://kit.fontawesome.com/dca973ab96.js" crossorigin="anonymous"></script>
 	
-	<style>
-	.dropdown-toggle::after {
+	 <style>
+	 .dropdown-toggle::after {
        		display: none;
        }
 	
-	</style>	 
+    .map_wrap {position:relative;width:100%;height:350px;}
+    .title {font-weight:bold;display:block;}
+    .hAddr {position:absolute;left:24px;top:78px;border-radius: 2px;background:#fff;background:rgba(255,255,255,0.8);z-index:1;padding:5px;}
+    #centerAddr {display:block;margin-top:2px;font-weight: normal;}
+    .bAddr {padding:5px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
+</style>
   </head>
 
   <body>
@@ -193,7 +198,11 @@
 									<div class="card-body">
 										<div class="row">
 											<div class="col-md-6">
-												<div id="map" style="height:300px; margin-top:10px;"></div>
+												<div id="map" style="height:340px; margin-top:10px;"></div>
+												<div class="hAddr">
+												    <span class="title">지도중심기준 행정동 주소정보</span>
+												    <span id="centerAddr"></span>
+												</div>
 											</div>
 											<div class="col-md-6">
 												<div class="row mb-4">
@@ -203,18 +212,16 @@
 													</div>
 												</div>
 												<div class="row mb-4">
-													<div class="col-md-5 offset-1">
-														<label for="addressZip" class="form-label">우편번호</label>
-														<input type="text" class="form-control" id="addressZip"name="addressZip" value="<c:out value="${item.addressZip }" />">
+													<div class="col-md-10 offset-1">
+														<label for="address" class="form-label">도로명 주소</label>
+														<input type="text" class="form-control" id="roadAddress" name="roadAddress" value="<c:out value="${item.roadAddress }" />">
+														<input type="hidden" id="addressExtra" name="addressExtra" value="">
 													</div>
-													<button type="button" class="btn btn-primary col-md-3 offset-1" style="height: 38.94px; margin-top: 28px;" onclick="PostCode();">주소 입력</button>
 												</div>
 												<div class="row mb-4">
 													<div class="col-md-10 offset-1">
-														<label for="address" class="form-label">도로명 주소</label>
-														<input type="text" class="form-control" id="address" name="address" value="<c:out value="${item.address }" />">
-														<input type="hidden" id="addressExtra" name="addressExtra" value="">
-														<input type="hidden" id="addressJibun" name="addressJibun" value="">
+														<label for="jibunAddress" class="form-label">지번 주소</label>
+														<input type="text" class="form-control" id="jibunAddress" name="jibunAddress" value="<c:out value="${item.jibunAddress }" />">
 													</div>
 												</div>
 												<div class="row mb-4">
@@ -344,96 +351,109 @@
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script> -->
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=fbcf9729cf4cb4a9f70ddf30309fa210&libraries=services"></script>
+	<!-- <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=fbcf9729cf4cb4a9f70ddf30309fa210"></script> -->
 	<script>
-	var mapContainer = document.getElementById('map'), // 지도를 표시할 div
-    mapOption = {
-        center: new daum.maps.LatLng(127, 37), // 지도의 중심좌표
-        level: 5 // 지도의 확대 레벨
-    };
+	
+	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+	    mapOption = {
+        center: new kakao.maps.LatLng(37.56682, 126.97865), // 지도의 중심좌표
+        level: 10, // 지도의 확대 레벨
+        mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
+    }; 
 
-    //지도를 미리 생성
-    var map = new daum.maps.Map(mapContainer, mapOption);
-    //주소-좌표 변환 객체를 생성
-    var geocoder = new daum.maps.services.Geocoder();
+	// 지도를 생성한다 
+	var map = new kakao.maps.Map(mapContainer, mapOption); 
+	
+	
     //마커를 미리 생성
-    var marker = new daum.maps.Marker({
-        position: new daum.maps.LatLng(127.10864661825, 37.10864661825),
-        map: map
-    });
+    /* var marker = new kakao.maps.Marker({
+	    position: new kakao.maps.LatLng(37.56682, 126.97865), // 마커의 좌표
+	    map: map // 마커를 표시할 지도 객체
+	});
     
-    function PostCode() {
-        new daum.Postcode({
-            oncomplete: function(data) {
-                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+   
+    
+ // 지도 클릭 이벤트를 등록한다 (좌클릭 : click, 우클릭 : rightclick, 더블클릭 : dblclick)
+	kakao.maps.event.addListener(map, 'click', function (mouseEvent) {
+		var latlng = mouseEvent.latLng; 
+		
+		document.getElementById("lng").value = latlng.getLng()// 위도 
+        document.getElementById("lat").value = latlng.getLat(); // 경도
+		marker.setPosition(latlng);
+		
+	});	 */
+ 
+	
+	 
+  	//주소-좌표 변환 객체를 생성
+    var geocoder = new daum.maps.services.Geocoder();
+    
+   
+ 
+	var marker = new kakao.maps.Marker(), // 클릭한 위치를 표시할 마커입니다
+    infowindow = new kakao.maps.InfoWindow({zindex:1}); // 클릭한 위치에 대한 주소를 표시할 인포윈도우입니다
 
-                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
-                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-                var addr = ''; // 주소 변수
-                var extraAddr = ''; // 참고항목 변수
-                var geocoder = new daum.maps.services.Geocoder(); // 주소-좌표 변환 객체
-
-                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-                    addr = data.roadAddress;
-                } else { // 사용자가 지번 주소를 선택했을 경우(J)
-                    addr = data.jibunAddress;
-                }
-                
-
-                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
-                if(data.userSelectedType === 'R'){
-                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
-                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
-                        extraAddr += data.bname;
-                    }
-                    // 건물명이 있고, 공동주택일 경우 추가한다.
-                    if(data.buildingName !== '' && data.apartment === 'Y'){
-                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-                    }
-                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-                    if(extraAddr !== ''){
-                        extraAddr = ' (' + extraAddr + ')';
-                    }
-                    // 조합된 참고항목을 해당 필드에 넣는다.
-                    document.getElementById("addressExtra").value = extraAddr;
-                
-                } else {
-                    document.getElementById("addressExtra").value = '';
-                }
-                
-                geocoder.addressSearch(data.address, function(results, status) {
-                    // 정상적으로 검색이 완료됐으면
-                    if (status === daum.maps.services.Status.OK) {
-
-                        var result = results[0]; //첫번째 결과의 값을 활용
-
-                        // 해당 주소에 대한 좌표를 받아서
-                        var coords = new daum.maps.LatLng(result.y, result.x);
-    	                document.getElementById("lng").value = coords.getLat(); // 위도 
-    	                document.getElementById("lat").value = coords.getLng(); // 경도
-    	                
-//    	                //위의 것과 같다
-//    	                document.getElementById("lng").value = result[0].y; // 위도
-//    	                document.getElementById("lat").value = result[0].x; // 경도
- 						mapContainer.style.display = "block";
-                        map.relayout();
-                        // 지도 중심을 변경한다.
-                        map.setCenter(coords);
-                        // 마커를 결과값으로 받은 위치로 옮긴다.
-                        marker.setPosition(coords)
-    	                
-                    }
-                });
-               
-                // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                document.getElementById('addressZip').value = data.zonecode; // 우편번호
-                document.getElementById("address").value = addr; // 주소
-                
-
-            }
-        }).open();
-    }
+	// 현재 지도 중심좌표로 주소를 검색해서 지도 좌측 상단에 표시합니다
+	searchAddrFromCoords(map.getCenter(), displayCenterInfo);
+	
+	// 지도를 클릭했을 때 클릭 위치 좌표에 대한 주소정보를 표시하도록 이벤트를 등록합니다
+	kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
+	    searchDetailAddrFromCoords(mouseEvent.latLng, function(result, status) {
+	        if (status === kakao.maps.services.Status.OK) {
+	        	var latlng = mouseEvent.latLng; 
+	            /* var detailAddr = !!result[0].road_address ? '<div>도로명주소 : ' + result[0].road_address.address_name + '</div>' : ''; */
+	           /*  detailAddr += '<div>지번 주소 : ' + result[0].address.address_name + '</div>';
+	            
+	            var content = '<div class="bAddr">' +
+	                            '<span class="title">법정동 주소정보</span>' + 
+	                            detailAddr + 
+	                        '</div>'; */
+                document.getElementById("lng").value = latlng.getLng()// 위도 
+                document.getElementById("lat").value = latlng.getLat(); // 경도
+                document.getElementById("roadAddress").value = result[0].road_address.address_name;// 도로명 주소 
+                document.getElementById("jibunAddress").value = result[0].address.address_name; // 지번 주소
+	            // 마커를 클릭한 위치에 표시합니다 
+	            marker.setPosition(mouseEvent.latLng);
+	            marker.setMap(map);
+	
+	            // 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다
+	            /* infowindow.setContent(content); */
+	            /* infowindow.open(map, marker); */
+	        }   
+	    });
+	});
+	
+	// 중심 좌표나 확대 수준이 변경됐을 때 지도 중심 좌표에 대한 주소 정보를 표시하도록 이벤트를 등록합니다
+	kakao.maps.event.addListener(map, 'idle', function() {
+	    searchAddrFromCoords(map.getCenter(), displayCenterInfo);
+	});
+	
+	function searchAddrFromCoords(coords, callback) {
+	    // 좌표로 행정동 주소 정보를 요청합니다
+	    geocoder.coord2RegionCode(coords.getLng(), coords.getLat(), callback);         
+	}
+	
+	function searchDetailAddrFromCoords(coords, callback) {
+	    // 좌표로 법정동 상세 주소 정보를 요청합니다
+	    geocoder.coord2Address(coords.getLng(), coords.getLat(), callback);
+	}
+	
+	// 지도 좌측상단에 지도 중심좌표에 대한 주소정보를 표출하는 함수입니다
+	function displayCenterInfo(result, status) {
+	    if (status === kakao.maps.services.Status.OK) {
+	        var infoDiv = document.getElementById('centerAddr');
+	
+	        for(var i = 0; i < result.length; i++) {
+	            // 행정동의 region_type 값은 'H' 이므로
+	            if (result[i].region_type === 'H') {
+	                infoDiv.innerHTML = result[i].address_name;
+	                break;
+	            }
+	        }
+	    }    
+	}
+    
+   
 	</script>
 	<script>
 	var goUrlList = "/post/postList";					/* #-> */
