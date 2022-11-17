@@ -25,6 +25,7 @@
 			SELECT
 				a.codeSeq
 				,a.name
+				,a.enName
 				,a.replaceCode
 				,a.codeGroupSeq
 				,a.regDateTime
@@ -40,6 +41,7 @@
 		SELECT
 			a.codeSeq
 			,a.name
+			,a.enName
 			,a.replaceCode
 			,a.codeGroupSeq
 			,a.regDateTime
@@ -54,6 +56,7 @@
 		SELECT
 			a.codeSeq
 			,a.name
+			,a.enName
 			,a.replaceCode
 			,a.codeGroupSeq
 			,a.regDateTime
@@ -74,6 +77,7 @@
 			codeSeq
 			,replaceCode
 			,name
+			,enName
 			,codeGroupSeq
 		FROM
 			code

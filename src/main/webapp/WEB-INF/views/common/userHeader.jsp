@@ -48,23 +48,6 @@
 		                                            		<c:forEach items="${listregion}" var="listregion" varStatus="statuslistregion">
 		                                            			<li><a href="javascript:goRegionView(<c:out value="${listregion.replaceCode }"/>)"><c:out value="${listregion.name}"/></a></li>
 															</c:forEach>
-		                                            		<%-- <c:forEach items="${listregion}" var="listregion" varStatus="statuslistregion">
-		                                            			<c:if test="${listregion.replaceCode eq 201}">
-		                                            			<li><a href="javascript:goRegionView(<c:out value="${listregion.replaceCode }"/>)"><c:out value="${listregion.name}"/></a></li>
-		                                            			</c:if>
-															</c:forEach>
-															<c:set var="listregion" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
-		                                            		<c:forEach items="${listregion}" var="listregion" varStatus="statuslistregion">
-		                                            			<c:if test="${listregion.replaceCode eq 202}">
-		                                            			<li><a href="javascript:goRegionView(<c:out value="${listregion.replaceCode }"/>)"><c:out value="${listregion.name}"/></a></li>
-		                                            			</c:if>
-															</c:forEach>
-															<c:set var="listregion" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
-		                                            		<c:forEach items="${listregion}" var="listregion" varStatus="statuslistregion">
-		                                            			<c:if test="${listregion.replaceCode eq 203}">
-		                                            			<li><a href="javascript:goRegionView(<c:out value="${listregion.replaceCode }"/>)"><c:out value="${listregion.name}"/></a></li>
-		                                            			</c:if>
-															</c:forEach> --%>
 		                                                </ul>
 		                                            </li>
 		                                            <li><a href="#">여행지소개</a>
@@ -131,13 +114,12 @@
 		                                        <ul id="navigation">                                                                                                                                     
 		                                            <li id="btnLogout">로그아웃</li>
 		                                            <li><a href="#">지역</a>
+		                                            <input type="hidden" name="replaceCode">
 		                                            	<ul class="submenu">
-		                                                    <li><a href="#">수도권</a></li>
-		                                                    <li><a href="#">강원도</a></li>
-		                                                    <li><a href="#">경상도</a></li>
-		                                                    <li><a href="#">전라도</a></li>
-		                                                    <li><a href="#">충청도</a></li>
-		                                                    <li><a href="#">제주도</a></li>
+		                                                    <c:set var="listregion" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
+		                                            		<c:forEach items="${listregion}" var="listregion" varStatus="statuslistregion">
+		                                            			<li><a href="javascript:goRegionView(<c:out value="${listregion.replaceCode }"/>)"><c:out value="${listregion.name}"/></a></li>
+															</c:forEach>
 		                                                </ul>
 		                                            </li>
 		                                            <li><a href="#">여행지소개</a>
@@ -175,12 +157,6 @@
     </c:choose>
     </form>
     <script type="text/javascript">
-   	var goUrlMain = "/nextrip/main";
-   	var goUrlRegionView = "/nextrip/regionView";			/* #-> */
-   	var seqRegion = $("input:hidden[name=replaceCode]");
-   	
-   	var formRegion = $("form[name=formRegion]");
-   
     $("#btnLogout").on("click", function(){
     	$.ajax({
 			async: true 
@@ -199,6 +175,13 @@
 			}
 		});
 	});
+    
+   	var goUrlMain = "/nextrip/main";
+   	var goUrlRegionView = "/nextrip/regionView";			/* #-> */
+   	var seqRegion = $("input:hidden[name=replaceCode]");
+   	
+   	var formRegion = $("form[name=formRegion]");
+   
    	
     goRegionView = function(keyValue) {
 		seqRegion.val(keyValue);

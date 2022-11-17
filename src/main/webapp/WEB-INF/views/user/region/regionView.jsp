@@ -93,6 +93,8 @@
                 			<div class="blog_right_sidebar">
 		                        <aside class="single_sidebar_widget post_category_widget">
 		                            <h4 class="widget_title">날씨</h4>
+		                            <p id="description"></p>
+		                            <p id="temperature"></p>
 		                        </aside>
 		                        <aside class="single_sidebar_widget post_category_widget">
 		                            <h4 class="widget_title">CCTV</h4>
@@ -117,7 +119,7 @@
 									  <c:forEach items="${list }" var="list" varStatus="statuslist">
 									  	<c:if test="${list.region eq itemC.replaceCode }">
 										  <div>
-										  	<a href="#">
+										  	<a href="/nextrip/region/accommodation/accommodationView?nxAccommodationSeq=${list.nxAccommodationSeq }">
 										  		<c:forEach items="${listUploaded}" var="listUploaded" varStatus="statusUploaded">
 							                  		<c:if test="${listUploaded.type eq 2 && list.nxAccommodationSeq eq listUploaded.pseq }">
 							                     		<img src="<c:out value="${listUploaded.path }"/><c:out value="${listUploaded.uuidName }"/>" alt="" style="width: 150px; height: 150px;">
@@ -125,7 +127,7 @@
 							                	</c:forEach>
 											</a>
 										  	<ul class="blog-info-link">
-						                        <li><a href="#" class="text-dark"><c:out value="${list.hotelName }" /></a></li>
+						                        <li><a href="/nextrip/region/accommodation/accommodationView?nxAccommodationSeq=${list.nxAccommodationSeq }" class="text-dark"><c:out value="${list.hotelName }" /></a></li>
 						                    </ul>
 									  	  </div>
 								  	  	</c:if>
@@ -133,7 +135,7 @@
 									  <c:forEach items="${list }" var="list" varStatus="statuslist">
 									  	<c:if test="${list.region eq itemC.replaceCode }">
 										  <div>
-										  	<a href="#">
+										  	<a href="/nextrip/region/accommodation/accommodationView?nxAccommodationSeq=${list.nxAccommodationSeq }">
 										  		<c:forEach items="${listUploaded}" var="listUploaded" varStatus="statusUploaded">
 							                  		<c:if test="${listUploaded.type eq 2 && list.nxAccommodationSeq eq listUploaded.pseq }">
 							                     		<img src="<c:out value="${listUploaded.path }"/><c:out value="${listUploaded.uuidName }"/>" alt="" style="width: 150px; height: 150px;">
@@ -141,7 +143,7 @@
 							                	</c:forEach>
 											</a>
 										  	<ul class="blog-info-link">
-						                        <li><a href="#" class="text-dark"><c:out value="${list.hotelName }" /></a></li>
+						                        <li><a href="/nextrip/region/accommodation/accommodationView?nxAccommodationSeq=${list.nxAccommodationSeq }" class="text-dark"><c:out value="${list.hotelName }" /></a></li>
 						                    </ul>
 									  	  </div>
 								  	  	</c:if>
@@ -401,6 +403,16 @@
               }
             ]
 		});
+        
+         fetch("https://goweather.herokuapp.com/weather/<c:out value="${itemC.enName}" />")
+        .then((response) => response.json())
+        .then((data) => {
+        	document.getElementById("temperature").innerHTML = data['temperature'];
+        	document.getElementById("description").innerHTML = data['description'];
+        }); 
+        fetch("https://goweather.herokuapp.com/weather/<c:out value="${itemC.enName}" />")
+        .then((response) => response.json())
+        .then((data) => console.log(data));
         
 		</script>
 

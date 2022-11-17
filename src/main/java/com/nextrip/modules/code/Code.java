@@ -10,6 +10,7 @@ public class Code extends Base {
 	private String codeGroupSeq;
 	private String replaceCode;
 	private String name;
+	private String enName;
 	private String codegroupname;
 	private String codegroupcode;
 	
@@ -53,6 +54,12 @@ public class Code extends Base {
 	}
 	public void setCodegroupcode(String codegroupcode) {
 		this.codegroupcode = codegroupcode;
+	}
+	public String getEnName() {
+		return enName;
+	}
+	public void setEnName(String enName) {
+		this.enName = enName;
 	}
 
 }

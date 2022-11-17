@@ -19,7 +19,7 @@
 	</sql>
 	
 	<select id="selectList" resultMap="resultMapObj">
-		<include refid="Base.selectListUpperForMysql" />
+		<!-- <include refid="Base.selectListUpperForMysql" /> -->
 			SELECT
 			    a.nxAccommodationSeq
 			    ,a.region
@@ -38,8 +38,8 @@
 			    ,a.modDateTime
 	    	<include refid="selectCommon" />
 	    	ORDER BY a.nxAccommodationSeq ASC
-	    	<include refid="Base.orderByLimitForMysql" />
-		<include refid="Base.selectListLowerForMysql" />
+	    	<!-- <include refid="Base.orderByLimitForMysql" />
+		<include refid="Base.selectListLowerForMysql" /> -->
 	</select>
 	
 	<select id="selectOne" resultMap="resultMapObj">
