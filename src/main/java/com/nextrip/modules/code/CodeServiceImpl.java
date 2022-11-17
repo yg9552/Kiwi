@@ -33,7 +33,14 @@ public class CodeServiceImpl implements CodeService {
 		return dao.selectOneCount(vo);
 	}
 	
-	//cache
+	
+	@Override
+	public Code selectOneRegion(CodeVo vo) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.selectOneRegion(vo);
+	}
+
+		//cache
 		@PostConstruct
 		public void selectListCachedCodeArrayList() throws Exception {
 			List<Code> codeListFromDb = (ArrayList<Code>) dao.selectListCachedCodeArrayList();

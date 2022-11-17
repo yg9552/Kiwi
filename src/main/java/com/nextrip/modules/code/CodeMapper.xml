@@ -40,6 +40,7 @@
 		SELECT
 			a.codeSeq
 			,a.name
+			,a.replaceCode
 			,a.codeGroupSeq
 			,a.regDateTime
 			,a.modDateTime
@@ -47,6 +48,20 @@
 		FROM code a
 		WHERE 1=1
 		AND a.codeSeq = #{codeSeq}
+	</select>
+	
+	<select id="selectOneRegion" resultMap="resultMapObj">
+		SELECT
+			a.codeSeq
+			,a.name
+			,a.replaceCode
+			,a.codeGroupSeq
+			,a.regDateTime
+			,a.modDateTime
+			,a.delNy
+		FROM code a
+		WHERE 1=1
+		AND a.replaceCode = #{replaceCode}
 	</select>
 	
 	<select id="selectOneCount" resultType="Integer">

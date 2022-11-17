@@ -18,6 +18,7 @@
         </div>
     </div>
     <!-- Preloader End -->
+    <form name="formRegion" method="post">
     <c:choose>
     	<c:when test="${sessSeq eq null}">
     		<header>
@@ -41,13 +42,29 @@
 		                                            <li><a href="/nextrip/login">로그인</a></li>
 		                                            <li><a href="/nextrip/memberRegistration">회원가입</a></li>
 		                                            <li><a href="#">지역</a>
+		                                            <input type="hidden" name="replaceCode">
 		                                            	<ul class="submenu">
-		                                                    <li><a href="#">수도권</a></li>
-		                                                    <li><a href="#">강원도</a></li>
-		                                                    <li><a href="#">경상도</a></li>
-		                                                    <li><a href="#">전라도</a></li>
-		                                                    <li><a href="#">충청도</a></li>
-		                                                    <li><a href="#">제주도</a></li>
+		                                            		<c:set var="listregion" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
+		                                            		<c:forEach items="${listregion}" var="listregion" varStatus="statuslistregion">
+		                                            			<li><a href="javascript:goRegionView(<c:out value="${listregion.replaceCode }"/>)"><c:out value="${listregion.name}"/></a></li>
+															</c:forEach>
+		                                            		<%-- <c:forEach items="${listregion}" var="listregion" varStatus="statuslistregion">
+		                                            			<c:if test="${listregion.replaceCode eq 201}">
+		                                            			<li><a href="javascript:goRegionView(<c:out value="${listregion.replaceCode }"/>)"><c:out value="${listregion.name}"/></a></li>
+		                                            			</c:if>
+															</c:forEach>
+															<c:set var="listregion" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
+		                                            		<c:forEach items="${listregion}" var="listregion" varStatus="statuslistregion">
+		                                            			<c:if test="${listregion.replaceCode eq 202}">
+		                                            			<li><a href="javascript:goRegionView(<c:out value="${listregion.replaceCode }"/>)"><c:out value="${listregion.name}"/></a></li>
+		                                            			</c:if>
+															</c:forEach>
+															<c:set var="listregion" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
+		                                            		<c:forEach items="${listregion}" var="listregion" varStatus="statuslistregion">
+		                                            			<c:if test="${listregion.replaceCode eq 203}">
+		                                            			<li><a href="javascript:goRegionView(<c:out value="${listregion.replaceCode }"/>)"><c:out value="${listregion.name}"/></a></li>
+		                                            			</c:if>
+															</c:forEach> --%>
 		                                                </ul>
 		                                            </li>
 		                                            <li><a href="#">여행지소개</a>
@@ -154,28 +171,37 @@
 		       </div>
 		        <!-- Header End -->
 		    </header>
-		    <script type="text/javascript">
-        	var goUrlMain = "/nextrip/main";
-        
-	        $("#btnLogout").on("click", function(){
-	        	$.ajax({
-	    			async: true 
-	    			,cache: false
-	    			,type: "post"
-	    			/* ,dataType:"json" */
-	    			,url: "/nextrip/logoutProc"
-	    			/* ,data : $("#formLogin").serialize() */
-	    			,success: function(response) {
-	    				if(response.rt == "success") {
-	    						$(location).attr("href",goUrlMain);
-	    				} else {}
-	    			}
-	    			,error : function(jqXHR, textStatus, errorThrown){
-	    				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
-	    			}
-	    		});
-	    	});
-        </script>
     	</c:otherwise>
     </c:choose>
-    
+    </form>
+    <script type="text/javascript">
+   	var goUrlMain = "/nextrip/main";
+   	var goUrlRegionView = "/nextrip/regionView";			/* #-> */
+   	var seqRegion = $("input:hidden[name=replaceCode]");
+   	
+   	var formRegion = $("form[name=formRegion]");
+   
+    $("#btnLogout").on("click", function(){
+    	$.ajax({
+			async: true 
+			,cache: false
+			,type: "post"
+			/* ,dataType:"json" */
+			,url: "/nextrip/logoutProc"
+			/* ,data : $("#formLogin").serialize() */
+			,success: function(response) {
+				if(response.rt == "success") {
+						$(location).attr("href",goUrlMain);
+				} else {}
+			}
+			,error : function(jqXHR, textStatus, errorThrown){
+				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+			}
+		});
+	});
+   	
+    goRegionView = function(keyValue) {
+		seqRegion.val(keyValue);
+		formRegion.attr("action", goUrlRegionView).submit();
+	}
+   	</script>

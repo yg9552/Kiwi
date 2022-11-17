@@ -306,7 +306,7 @@
 			seq.val(keyValue);
 			form.attr("action", goUrlView).submit();
 		}
-
+		
 	    var mapContainer = document.getElementById('map2'), // 지도를 표시할 div  
 	    mapOption = { 
 	        center: new kakao.maps.LatLng(35.714279638823946 , 127.92518292730689), // 지도의 중심좌표

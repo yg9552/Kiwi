@@ -42,7 +42,6 @@
     <!-- userHeader s -->
 		<%@include file="../../common/userHeader.jsp"%>
   	<!-- userHeader e -->
-  
      <!-- slider Area Start-->
      <div class="slider-area ">
         <!-- Mobile Menu -->
@@ -51,7 +50,7 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="hero-cap text-center">
-                            <h2>수도권</h2>
+                            <h2> <c:out value="${itemC.name }"/> </h2>
                         </div>
                     </div>
                 </div>
@@ -60,6 +59,7 @@
      </div>
      <!-- slider Area End-->
     <!--================Blog Area =================-->
+    <form name="formRegion2" method="post">
     <section class="blog_area section-padding">
         <div class="container">
             <div class="row">
@@ -68,50 +68,20 @@
                         <aside class="single_sidebar_widget post_category_widget">
                             <h4 class="widget_title">여행지역</h4>
                             <ul class="list cat-list">
-                            	<li class="nav-item menu-items m-0">
-						            <a class="nav-link" data-toggle="collapse" href="#seoul" aria-expanded="false" aria-controls="auth">
-						              <span class="menu-icon">
-						              </span>
-						              <span class="menu-title">수도권</span>
-						            </a>
-						        </li>
-                            	<li class="nav-item menu-items m-0">
-						            <a class="nav-link" data-toggle="collapse" href="#gangwon" aria-expanded="false" aria-controls="auth">
-						              <span class="menu-icon">
-						              </span>
-						              <span class="menu-title">강원도</span>
-						            </a>
-						        </li>
-                            	<li class="nav-item menu-items m-0">
-						            <a class="nav-link" data-toggle="collapse" href="#sang" aria-expanded="false" aria-controls="auth">
-						              <span class="menu-icon">
-						              </span>
-						              <span class="menu-title">경상도</span>
-						            </a>
-						        </li>
-						        <li class="nav-item menu-items m-0">
-						            <a class="nav-link" data-toggle="collapse" href="#jeon" aria-expanded="false" aria-controls="auth">
-						              <span class="menu-icon">
-						              </span>
-						              <span class="menu-title">전라도</span>
-						            </a>
-						        </li>
-                            	<li class="nav-item menu-items m-0">
-						            <a class="nav-link" data-toggle="collapse" href="#chungc" aria-expanded="false" aria-controls="auth">
-						              <span class="menu-icon">
-						              </span>
-						              <span class="menu-title">충청도</span>
-						            </a>
-						        </li>
-						        <li class="nav-item menu-items m-0">
-						            <a class="nav-link" data-toggle="collapse" href="#jeju" aria-expanded="false" aria-controls="auth">
-						              <span class="menu-icon"></span>
-						              <span class="menu-title">제주도</span>
-						            </a>
-						        </li>
+                            <input type="hidden" name="replaceCode">
+                            	<c:set var="listregion" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
+                                <c:forEach items="${listregion}" var="listregion" varStatus="statuslistregion">
+                                    <li class="nav-item menu-items m-0">
+							            <a class="nav-link" href="javascript:goRegionView2(<c:out value="${listregion.replaceCode }"/>)">
+							              <span class="menu-icon">
+							              </span>
+							              <span class="menu-title"><c:out value="${listregion.name}"/></span>
+							            </a>
+							        </li>
+								</c:forEach>
                             </ul>
                             <br>
-                            <h4 class="widget_title"><a href="#">숙박상품</a></h4>
+                            <h4 class="widget_title"><a href="/nextrip/region/accommodation/accommodationList">숙박상품</a></h4>
                             <h4 class="widget_title"><a href="#">여행지소개</a></h4>
                         </aside>
                             
@@ -145,7 +115,7 @@
 		                            <h4 class="widget_title">숙박상품</h4>
 		                            <div class="autoplay">
 									  <c:forEach items="${list }" var="list" varStatus="statuslist">
-									  	<c:if test="${list.region eq 201 }">
+									  	<c:if test="${list.region eq itemC.replaceCode }">
 										  <div>
 										  	<a href="#">
 										  		<c:forEach items="${listUploaded}" var="listUploaded" varStatus="statusUploaded">
@@ -161,7 +131,7 @@
 								  	  	</c:if>
 									  </c:forEach>
 									  <c:forEach items="${list }" var="list" varStatus="statuslist">
-									  	<c:if test="${list.region eq 201 }">
+									  	<c:if test="${list.region eq itemC.replaceCode }">
 										  <div>
 										  	<a href="#">
 										  		<c:forEach items="${listUploaded}" var="listUploaded" varStatus="statusUploaded">
@@ -238,6 +208,7 @@
             </div>
         </div>
     </section>
+    </form>
     <!--================Blog Area =================-->
     <footer>
         <!-- Footer Start-->
@@ -357,6 +328,16 @@
         <script src="/resources/template/gotrip-master/assets/js/plugins.js"></script>
         <script src="/resources/template/gotrip-master/assets/js/main.js"></script>
         <script type="text/javascript">
+        var goUrlRegionView = "/nextrip/regionView";			/* #-> */
+       	var seqRegion2 = $("input:hidden[name=replaceCode]");
+       	
+       	var formRegion2 = $("form[name=formRegion2]");
+       	
+       	goRegionView2 = function(keyValue) {
+    		seqRegion2.val(keyValue);
+    		formRegion2.attr("action", goUrlRegionView).submit();
+    	}
+        
         $(function(){
             $('.slider-wrap').slick({
               slide: 'div',        //슬라이드 되어야 할 태그

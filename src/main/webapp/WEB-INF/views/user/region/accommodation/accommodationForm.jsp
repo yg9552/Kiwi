@@ -184,7 +184,7 @@
                             <input type="text" class="form-control" id="addressZip" name="addressZip" value="${item.addressZip }"/>
                           </div>
                           <div class="mb-3 col-md-6 align-self-end">
-                            <button type="button" class="btn btn-primary" onclick="sample4_execDaumPostcode()">주소찾기</button>
+                            <button type="button" class="btn btn-primary" onclick="sample4_execDaumPostcode()" id="btnAddr">주소찾기</button> <!-- onclick="sample4_execDaumPostcode()" -->
                           </div>
                           <div class="mb-3 col-md-6">
                             <label for="address" class="form-label">주소</label>
@@ -348,6 +348,7 @@
 	$("#btnList").on("click", function(){
 		formVo.attr("action", goUrlList).submit();
 	});
+    
 	//본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
 	function sample4_execDaumPostcode() {
 	    new daum.Postcode({
@@ -440,6 +441,21 @@
 	         }
 	    }).open();
 	}
+	/* 
+	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    mapOption = {
+        center: new kakao.maps.LatLng(<c:out value="${item.lat}" />, <c:out value="${item.lng}" />), // 지도의 중심좌표
+        level: 3 // 지도의 확대 레벨
+    };  
+ 	// 지도를 생성합니다    
+    var map = new kakao.maps.Map(mapContainer, mapOption);
+    
+	 // 결과값으로 받은 위치를 마커로 표시합니다
+    var marker = new kakao.maps.Marker({
+        map: map,
+        position: new kakao.maps.LatLng(<c:out value="${item.lat}" />, <c:out value="${item.lng}" />)
+    });
+	 */
 	
 		upload = function(objName, seq, allowedMaxTotalFileNumber, allowedExtdiv, allowedEachFileSize, allowedTotalFileSize, uiType) {
 		            		

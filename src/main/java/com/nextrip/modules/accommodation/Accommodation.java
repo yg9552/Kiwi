@@ -24,7 +24,9 @@ public class Accommodation extends Base {
 	private String lat;
 	private String checkin;
 	private String checkout;
-
+	private String replaceCode;
+	private String codeSeq;
+	
 	private MultipartFile[] uploadImg;
 	private Integer[] uploadImgSort;
 	private String[] uploadImgDeleteSeq;
@@ -310,6 +312,18 @@ public class Accommodation extends Base {
 	}
 	public void setPrice(Integer price) {
 		this.price = price;
+	}
+	public String getReplaceCode() {
+		return replaceCode;
+	}
+	public void setReplaceCode(String replaceCode) {
+		this.replaceCode = replaceCode;
+	}
+	public String getCodeSeq() {
+		return codeSeq;
+	}
+	public void setCodeSeq(String codeSeq) {
+		this.codeSeq = codeSeq;
 	}
 	
 	

@@ -24,6 +24,9 @@ public class CodeDao {
 	public Code selectOne(CodeVo vo) {
 		return sqlSession.selectOne(namespace + ".selectOne", vo);
 	}
+	public Code selectOneRegion(CodeVo vo) {
+		return sqlSession.selectOne(namespace + ".selectOneRegion", vo);
+	}
 	public int selectOneCount(CodeVo vo) {
 		return sqlSession.selectOne(namespace + ".selectOneCount", vo);
 	}

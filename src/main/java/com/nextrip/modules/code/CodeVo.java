@@ -8,6 +8,7 @@ public class CodeVo extends BaseVo {
 	private Integer shDelNy;
 	private String codeGroupSeq;
 	private String codeSeq;
+	private String replaceCode;
 	
 	public String getShValue() {
 		return shValue;
@@ -38,6 +39,12 @@ public class CodeVo extends BaseVo {
 	}
 	public void setCodeSeq(String codeSeq) {
 		this.codeSeq = codeSeq;
+	}
+	public String getReplaceCode() {
+		return replaceCode;
+	}
+	public void setReplaceCode(String replaceCode) {
+		this.replaceCode = replaceCode;
 	}
 	
 	

@@ -16,6 +16,7 @@
 <input type="hidden" name="nxAccommodationSeq" value="<c:out value="${vo.nxAccommodationSeq}"/>">		<!-- #-> -->
 <input type="hidden" name="memberSeq" value="<c:out value="${sessSeq}"/>">		<!-- #-> -->
 <input type="hidden" name="nxPurchaseHistorySeq" value="<c:out value="${vo.nxPurchaseHistorySeq}"/>">		<!-- #-> -->
+<input type="hidden" name="replaceCode" value="<c:out value="${vo.region}"/>">		<!-- #-> -->
 
 
 
