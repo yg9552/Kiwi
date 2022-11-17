@@ -56,6 +56,9 @@ public class AccommodationDao {
 	public List<Accommodation> selectUserPurchaseHistoryList(AccommodationVo vo) {
 		return sqlSession.selectList(namespace+".selectUserPurchaseHistoryList", vo);
 	}
+	public Accommodation getOnePurchaseHistory(AccommodationVo vo) {
+		return sqlSession.selectOne(namespace+".getOnePurchaseHistory", vo);
+	}
 	
 	//Room
 	public List<Accommodation> selectListRoom(AccommodationVo vo) {

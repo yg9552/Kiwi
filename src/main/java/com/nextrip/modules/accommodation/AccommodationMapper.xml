@@ -314,5 +314,35 @@
 		<include refid="Base.selectListLowerForMysql" />
 	</select>
 	
+	<select id="getOnePurchaseHistory" resultMap="resultMapObj">
+		SELECT 
+			a.nxPurchaseHistorySeq
+		    ,a.memberSeq
+			,a.nxAccommodationSeq
+		    ,a.modDateTime
+		    ,a.paymentMethod
+		    ,a.pay
+		    ,b.hotelName
+		    ,b.address
+		    ,b.adressDetail
+		    ,(SELECT roomName FROM nxRoom c WHERE a.nxRoomSeq = c.nxRoomSeq) as roomName
+		    ,a.personnel
+		    ,a.checkInDate
+			,a.checkOutDate
+		    ,TIMESTAMPDIFF(DAY, a.checkInDate, a.checkOutDate) as dateGap
+		    ,a.reservationStatus
+		    ,a.reservationName
+			,a.reservationPhoneNum
+		    ,b.checkin
+		    ,b.checkout
+			,(SELECT a.region FROM nxAccommodation a inner join nxRoom b on b.nxAccommodationSeq = a.nxAccommodationSeq WHERE b.nxRoomSeq =a.nxRoomSeq) as region
+			,a.nxRoomSeq
+			,a.delNy
+		FROM nxPurchaseHistory a
+			inner join nxAccommodation b on b.nxAccommodationSeq = a.nxAccommodationSeq
+		WHERE 1=1
+	    AND a.nxPurchaseHistorySeq = #{nxPurchaseHistorySeq}
+	</select>
+	
 	<!-- 찬구 E -->
 </mapper>	

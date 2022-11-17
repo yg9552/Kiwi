@@ -160,6 +160,11 @@ for(int i=0; i<multipartFiles.length; i++) {
 	public List<Accommodation> selectUserPurchaseHistoryList(AccommodationVo vo) throws Exception {
 		return dao.selectUserPurchaseHistoryList(vo);
 	}
+
+	@Override
+	public Accommodation getOnePurchaseHistory(AccommodationVo vo) throws Exception {
+		return dao.getOnePurchaseHistory(vo);
+	}
 	
 
 }
