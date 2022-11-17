@@ -41,6 +41,7 @@ public class MemberController {
 		return "common/index";
 	}
 	
+	/* 마이페이지 S */
 	@RequestMapping(value="/nextrip/mypage")
 	public String selectMemberList(Model model,@ModelAttribute("vo") MemberVo vo) throws Exception {
 		
@@ -92,6 +93,16 @@ public class MemberController {
 		httpSession.invalidate();
 		return "redirect:/nextrip/mypage";
 	}
+	
+	@RequestMapping(value="/nextrip/mypageReservationView")
+	public String mypageReservationView(Model model,@ModelAttribute("vo") AccommodationVo vo, HttpSession httpSession) throws Exception {
+		Accommodation result = service2.getOnePurchaseHistory(vo);
+		model.addAttribute("item", result);
+		
+		return "user/mypage/mypageReservationView";
+	}
+	
+	/* 마이페이지 E */
 	
 	@RequestMapping(value="/nextrip/login")
 	public String login() throws Exception {

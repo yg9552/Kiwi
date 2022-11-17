@@ -14,7 +14,7 @@
 	<meta charset="uTF-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="viewport" content = "width=device-width, initial-scale=1.0">
-	<title>ReservationRecord</title>
+	<title>Nextrip</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="manifest" href="site.webmanifest">
@@ -60,50 +60,72 @@
 	       			</ul>
 	       		</div>
 	       		<div class="my-3">
-	       			<c:choose>
-		    			<c:when test="${fn:length(list) eq 0 }">
-		    					<div style="border: solid; border-width: 1px; border-color:#EEEEEE;">
-				       				<div class="row">
-					       				<div class="col-9">
-					       					<p>예매내역이 존재하지 않습니다.</p>
+	       			<form method="post" name="formList">
+	       				<input type="hidden" name="nxPurchaseHistorySeq" id="nxPurchaseHistorySeq" value=""/>
+		       			<c:choose>
+			    			<c:when test="${fn:length(list) eq 0 }">
+			    					<div style="border: solid; border-width: 1px; border-color:#EEEEEE;">
+					       				<div class="row">
+						       				<div class="col-9">
+						       					<p>예매내역이 존재하지 않습니다.</p>
+						       				</div>
 					       				</div>
-				       				</div>
-				       			</div>
-		    			</c:when>
-		    			<c:otherwise>
-		    				<c:set var="listCodeRegion" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
-		    				<c:forEach items="${list}" var="list" varStatus="status">
-		    					<div class="my-3" style="border: solid; border-width: 1px; border-color:#EEEEEE;">
-				       				<div class="row">
-					       				<div class="col-9">
-					       					<h6>예약일: <fmt:formatDate value="${list.regDateTime }" pattern="yyyy-MM-dd"/></h6>
-					       					<c:forEach items="${listUploaded}" var="listUploaded" varStatus="statusUploaded">
-						                  		<c:if test="${listUploaded.type eq 2 && list.nxAccommodationSeq eq listUploaded.pseq }">
-						                  			<img class="img-thumbnail" src="<c:out value="${listUploaded.path }"/><c:out value="${listUploaded.uuidName }"/>" alt="" id="preview" style="width:160px; height:145px; float: left;">
-						                  		</c:if>
-						                	</c:forEach>
-				       						<!-- <img class="img-thumbnail" src="" alt="" id="preview" style="width:160px; height:145px; float: left;"> -->
-				       						<p style="font-size: 13px;">
-				       							숙박 > 
-				       							<c:forEach items="${listCodeRegion}" var="listRegion" varStatus="statusRegion">
-													<c:if test="${list.region eq listRegion.replaceCode}"><c:out value="${listRegion.name }"/></c:if>
-												</c:forEach> 
-				       						</p><span style="float: right; font-size: 12px;">숙박 상세보기 > </span><span style="clear: both;"></span>
-				       						<p>&nbsp;<c:out value="${list.hotelName }"/> <c:out value="${list.dateGap }"/>박<c:out value="${list.dateGap + 1}"/>일</p>
-				       						<p style="font-size: 13px;">일정: <fmt:formatDate value="${list.checkInDate }" pattern="yyyy-MM-dd"/> ~ <fmt:formatDate value="${list.checkOutDate }" pattern="yyyy-MM-dd"/></p>
+					       			</div>
+			    			</c:when>
+			    			<c:otherwise>
+			    				<c:set var="listCodeRegion" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
+			    				<c:forEach items="${list}" var="list" varStatus="status">
+			    					<div class="my-3" style="border: solid; border-width: 1px; border-color:#EEEEEE;">
+					       				<div class="row">
+						       				<div class="col-9">
+						       					<h6>예약일: <fmt:formatDate value="${list.regDateTime }" pattern="yyyy-MM-dd"/></h6>
+						       					<c:forEach items="${listUploaded}" var="listUploaded" varStatus="statusUploaded">
+							                  		<c:if test="${listUploaded.type eq 2 && list.nxAccommodationSeq eq listUploaded.pseq }">
+							                  			<img class="img-thumbnail" src="<c:out value="${listUploaded.path }"/><c:out value="${listUploaded.uuidName }"/>" alt="" id="preview" style="width:160px; height:145px; float: left;">
+							                  		</c:if>
+							                	</c:forEach>
+					       						<!-- <img class="img-thumbnail" src="" alt="" id="preview" style="width:160px; height:145px; float: left;"> -->
+					       						<p style="font-size: 13px;">
+					       							숙박 > 
+					       							<c:forEach items="${listCodeRegion}" var="listRegion" varStatus="statusRegion">
+														<c:if test="${list.region eq listRegion.replaceCode}"><c:out value="${listRegion.name }"/></c:if>
+													</c:forEach>
+					       						</p>
+					       						<div class="" style="font-weight: bold;">
+													<c:if test="${list.reservationStatus eq 1 }">결제 대기</c:if>
+													<c:if test="${list.reservationStatus eq 2 }">결제 완료</c:if>
+													<c:if test="${list.reservationStatus eq 3 }">리뷰 작성</c:if>
+												</div>
+					       						<span style="float: right; font-size: 12px;">숙박 상세보기 > </span><span style="clear: both;"></span>
+					       						<p>&nbsp;<c:out value="${list.hotelName }"/> <c:out value="${list.dateGap }"/>박<c:out value="${list.dateGap + 1}"/>일</p>
+					       						<p style="font-size: 13px;">일정: <fmt:formatDate value="${list.checkInDate }" pattern="yyyy-MM-dd"/> ~ <fmt:formatDate value="${list.checkOutDate }" pattern="yyyy-MM-dd"/></p>
+						       				</div>
+						       				<div class="col-3" style="display:flex; align-items: center;">
+					       						<button type="button" class="genric-btn info radius" onclick="goReservationView(<c:out value="${list.nxPurchaseHistorySeq }"/>)">예약 상세보기</button>
+						       				</div>
 					       				</div>
-					       				<div class="col-3" style="display:flex; align-items: center;">
-					       					<h5 class="float-end"><c:out value="${list.reservationStatus }"/></h5>
-					       					<button type="button" class="genric-btn info radius">예약 상세보기</button>
-					       				</div>
-				       				</div>
-				       			</div>
-		    				</c:forEach>
-		    			</c:otherwise>
-		    		</c:choose>
+					       			</div>
+			    				</c:forEach>
+			    			</c:otherwise>
+			    		</c:choose>
+		    		</form>
 				</div>
 	       	</div>
 		</div>
 	</div>
+	<script type="text/javascript">
+		var goUrlReservationView = "/nextrip/mypageReservationView";
+		
+		var nxPurchaseHistorySeq = $("input:hidden[name=nxPurchaseHistorySeq]");
+
+		var form = $("form[name=formList]");
+		
+		goReservationView = function(keyValue) {
+	    	/* if(keyValue != 0) seq.val(btoa(keyValue)); */
+	    	nxPurchaseHistorySeq.val(keyValue);
+			form.attr("action", goUrlReservationView).submit();
+		}
+	
+	</script>
 </body>
 </html>
