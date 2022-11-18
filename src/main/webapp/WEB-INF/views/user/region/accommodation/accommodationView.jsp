@@ -35,6 +35,7 @@
         <link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/nice-select.css">
         <link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+   		<script defer type="text/javascript" src="/resources/xdmin/js/validationXdmin.js"></script>
    </head>
 
    <body>
@@ -164,20 +165,23 @@
                      <form action="#">
                      	<div class="form-group">
                      		<label>객실타입</label>
-		                    <select class="form-select" style="border: 1px solid #ced4da; border-radius: 0.25rem; color: #495057;" name="nxRoomSeq" onchange="chageLangSelect()" id="nxRoomSeq">
+		                    <select class="form-select" style="border: 1px solid #ced4da; border-radius: 0.25rem; color: #495057;" name="nxRoomSeq" id="nxRoomSeq">
 							  <option value="">선택하세요</option>
 							  <c:forEach items="${listR }" var="listR" varStatus="statusR">
 							  	<option value="<c:out value="${listR.nxRoomSeq }"/>"> <c:out value="${listR.roomName }"/></option>
 							  </c:forEach>
 							</select>
+							<div class="invalid-feedback" id="nxRoomSeqFeedback"></div>
 						</div>
                         <div class="form-group">
                            <label for="checkInDate">체크인</label>
-                           <input type="text" id="datePicker" class="form-control" name="checkInDate" />
+                           <input type="text" id="checkInDate" class="form-control" name="checkInDate" />
+                           <div class="invalid-feedback" id="checkInDateFeedback"></div>
                         </div>
                         <div class="form-group">
                            <label for="checkOutDate">체크아웃</label>
-                           <input type="text" id="datePicker2" class="form-control" name="checkOutDate" />
+                           <input type="text" id="checkOutDate" class="form-control" name="checkOutDate" />
+                           <div class="invalid-feedback" id="checkOutDateFeedback"></div>
                         </div>
                         <div class="form-group">
                            <label>인원</label>
@@ -277,7 +281,7 @@
     </footer>
    <script type="text/javascript">
    // datepicker
-	$('#datePicker').datepicker({
+	$('#checkInDate').datepicker({
    	  format: 'yyyy-mm-dd', //데이터 포맷 형식(yyyy : 년 mm : 월 dd : 일 )
    	  startDate: '-0d', //달력에서 선택 할 수 있는 가장 빠른 날짜. 이전으로는 선택 불가능 ( d : 일 m : 달 y : 년 w : 주)
          endDate: '+10y', //달력에서 선택 할 수 있는 가장 느린 날짜. 이후로 선택 불가 ( d : 일 m : 달 y : 년 w : 주)
@@ -315,7 +319,7 @@
          console.log(e);
          // e.date를 찍어보면 Thu Jun 27 2019 00:00:00 GMT+0900 (한국 표준시) 위와 같은 형태로 보인다.
       });
-	$('#datePicker2').datepicker({
+	$('#checkOutDate').datepicker({
    	  format: 'yyyy-mm-dd', //데이터 포맷 형식(yyyy : 년 mm : 월 dd : 일 )
    	  startDate: '-0d', //달력에서 선택 할 수 있는 가장 빠른 날짜. 이전으로는 선택 불가능 ( d : 일 m : 달 y : 년 w : 주)
          endDate: '+10y', //달력에서 선택 할 수 있는 가장 느린 날짜. 이후로 선택 불가 ( d : 일 m : 달 y : 년 w : 주)
@@ -477,9 +481,20 @@
         var goUrlInst = "/nextrip/region/accommodation/purchaseHistoryInst"; 			/* #-> */
         
         var form = $("form[name=viewForm]");
+        
         $("#btnSave").on("click", function(){
-    	   	form.attr("action", goUrlInst).submit();
+        	if (validationInst() == false){
+	   			return false;
+	   		} else {
+	   			form.attr("action", goUrlInst).submit();
+	   		}
     	});
+        
+        validationInst = function() {
+        	if(!checkSelectNull('nxRoomSeq', 2, "객실타입을 선택해 주세요.")) return false;
+        	if(!checkNull('checkInDate', 2, "체크인 날짜를 선택해 주세요.")) return false;
+        	if(!checkNull('checkOutDate', 2, "체크아웃 날짜를 선택해 주세요.")) return false;
+    	}
         
         $("#btnFindRoad").on("click", function() {
     		window.open('https://map.kakao.com/link/to/<c:out value="${item.hotelName }" />,<c:out value="${item.lat }" />,<c:out value="${item.lng }" />','target="blank"',"width: 1920px ,height: 937px");
