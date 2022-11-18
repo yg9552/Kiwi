@@ -113,7 +113,7 @@
 					</div>
 				  </div>
 				</div>
-				<button class="button rounded primary-bg text-white btn_1 w-100 boxed-btn mt-1" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">
+				<button class="d-none d-lg-block button rounded primary-bg text-white btn_1 w-100 boxed-btn mt-1" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">
 			    	지역 이동
 			    </button>
             	<div class="collapse" id="collapseExample2">

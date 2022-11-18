@@ -246,7 +246,7 @@
 			} 
 		});
 		$("#cbx_chkAll").on("checked", function(){
-			if(!checkSelectNull('reservationPhoneNum',2," - 없이 휴대전화 번호를 입력해주세요")) {
+			if(!checkSelectNull('reservationPhoneNum',2,"필수동의 사항을 체크해주세요.")) {
 				return false;
 			} 
 		});
