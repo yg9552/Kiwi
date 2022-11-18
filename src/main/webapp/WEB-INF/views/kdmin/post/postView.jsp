@@ -166,7 +166,7 @@
 										</div>
 									</div>
 									<div class="col-md-9">
-										<div class="card mb-4" style="padding-bottom: 31px; margin-bottom: 0px;">
+										<div class="card mb-4" style="padding-bottom: 28px; margin-bottom: 0px;">
 											<h5 class="card-header"><label for="uploadImage" class="btn btn-primary input-file-button">사진 첨부</label></h5>
 											<div class="row justify-content-center">
 												<div class="col-md-8">
@@ -354,15 +354,37 @@
 	<!-- <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=fbcf9729cf4cb4a9f70ddf30309fa210"></script> -->
 	<script>
 	
-	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-	    mapOption = {
-        center: new kakao.maps.LatLng(37.56682, 126.97865), // 지도의 중심좌표
-        level: 10, // 지도의 확대 레벨
-        mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
-    }; 
-
-	// 지도를 생성한다 
-	var map = new kakao.maps.Map(mapContainer, mapOption); 
+	<c:choose>
+		<c:when test="${item.lng eq null && item.lat eq null}">
+			var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+		    mapOption = {
+	        center: new kakao.maps.LatLng(37.56682, 126.97865), // 지도의 중심좌표
+	        level: 10, // 지도의 확대 레벨
+	        mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
+	    	}; 
+			var map = new kakao.maps.Map(mapContainer, mapOption);
+			var marker = new kakao.maps.Marker({
+			    position: new kakao.maps.LatLng(37.56682, 126.97865), // 마커의 좌표
+			    map: map // 마커를 표시할 지도 객체
+			});
+		
+		</c:when>
+		<c:otherwise>
+			var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+		    mapOption = {
+	        center: new kakao.maps.LatLng(${item.lat}, ${item.lng}), // 지도의 중심좌표
+	        level: 3, // 지도의 확대 레벨
+	        mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
+	 	   }; 
+			
+			var map = new kakao.maps.Map(mapContainer, mapOption);
+			
+			var marker = new kakao.maps.Marker({
+			    position: new kakao.maps.LatLng(${item.lat}, ${item.lng}), // 마커의 좌표
+			    map: map // 마커를 표시할 지도 객체
+			});
+		</c:otherwise>
+	</c:choose>
 	
 	
     //마커를 미리 생성
@@ -390,8 +412,8 @@
     
    
  
-	var marker = new kakao.maps.Marker(), // 클릭한 위치를 표시할 마커입니다
-    infowindow = new kakao.maps.InfoWindow({zindex:1}); // 클릭한 위치에 대한 주소를 표시할 인포윈도우입니다
+/* 	var marker = new kakao.maps.Marker(), // 클릭한 위치를 표시할 마커입니다
+    infowindow = new kakao.maps.InfoWindow({zindex:1}); // 클릭한 위치에 대한 주소를 표시할 인포윈도우입니다 */
 
 	// 현재 지도 중심좌표로 주소를 검색해서 지도 좌측 상단에 표시합니다
 	searchAddrFromCoords(map.getCenter(), displayCenterInfo);
@@ -453,6 +475,64 @@
 	    }    
 	}
     
+	$("#region").on("change", function(){
+		if($("#region").val() == ""){
+			
+			var moveLatLon = new kakao.maps.LatLng(37.56682, 126.97865);
+		    
+		    // 지도 중심을 이동 시킵니다
+		    map.setCenter(moveLatLon);
+			
+		} else if($("#region").val() == 201){ // 수도권
+			
+			var moveLatLon = new kakao.maps.LatLng(37.56682, 126.97865);
+		    
+		    // 지도 중심을 이동 시킵니다
+		    map.setCenter(moveLatLon);
+		    map.setLevel(11);
+		} else if ($("#region").val() == 202) { //강원도
+			
+			var moveLatLon = new kakao.maps.LatLng(37.82123424116001, 128.1627713690872);
+		    
+		    // 지도 중심을 이동 시킵니다
+		    map.setCenter(moveLatLon);
+		    map.setLevel(11);
+		    
+		} else if ($("#region").val() == 203) { // 경상도
+			
+			var moveLatLon = new kakao.maps.LatLng(35.51268586543139, 128.4597516331637);
+		    
+		    // 지도 중심을 이동 시킵니다
+		    map.setCenter(moveLatLon);
+		    map.setLevel(11);
+			
+		} else if ($("#region").val() == 204) { // 전라도
+			
+			var moveLatLon = new kakao.maps.LatLng(35.376595816315245, 127.1811226210432);
+		    
+		    // 지도 중심을 이동 시킵니다
+		    map.setCenter(moveLatLon);
+		    map.setLevel(11);
+		} else if ($("#region").val() == 205) { //충청도
+			
+			var moveLatLon = new kakao.maps.LatLng(36.555802145981865, 127.20849894912541);
+		    
+		    // 지도 중심을 이동 시킵니다
+		    map.setCenter(moveLatLon);
+		    map.setLevel(11);
+		} else if ($("#region").val() == 206) { //제주도
+			
+			var moveLatLon = new kakao.maps.LatLng(33.39454354909461, 126.59045954260189);
+		    
+		    // 지도 중심을 이동 시킵니다
+		    map.setCenter(moveLatLon);
+		    // 지도 레벨을 설정합니다
+		    map.setLevel(10);
+		    
+		    // 지도 레벨을 표시합니다
+		    displayLevel(); 
+		}
+	});	
    
 	</script>
 	<script>

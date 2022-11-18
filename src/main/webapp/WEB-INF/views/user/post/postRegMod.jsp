@@ -174,17 +174,15 @@
                 	<form method="post" id="PRMForm" name="PRMForm" autocomplete="off" enctype="multipart/form-data">
                 		<input type="hidden" id="nxPostSeq" name="nxPostSeq" value="<c:out value="${item.nxPostSeq }" />">
                 		<input type="hidden" id="memberSeq" name="memberSeq" value="<c:out value="${item.memberSeq }" />">
-                		<input type="hidden" id="addressZip" name="addressZip" value="<c:out value="${item.addressZip }" />">
-                		<input type="hidden" id="address" name="address" value="<c:out value="${item.address }" />">
-                		<input type="hidden" id="addressExtra" name="addressExtra" value="">
-                		<input type="hidden" id="addressDetail" name="addressDetail" value="<c:out value="${item.addressDetail }" />">
+                		<input type="hidden" id="roadAddress" name="roadAddress" value="<c:out value="${item.roadAddress }" />">
+                		<input type="hidden" id="jibunAddress" name="jibunAddress" value="<c:out value="${item.jibunAddress }" />">
                 		<input type="hidden" id="lng" name="lng" value="<c:out value="${item.lng }" />">
                 		<input type="hidden" id="lat" name="lat" value="<c:out value="${item.lat }" />">
 	                	<div>
 	                		<table class="table table-bordered text-center">
 	                			<tr>
 	                				<th class="col-xl-2 VMiddle">구분</th>
-	                				<td class="col-xl-4">
+	                				<td class="col-xl-6 VMiddle" colspan="2">
 	                					<select class="form-select" id="postType" name="postType">
 	                						<option value="">구분</option>
 	                						<option value="401" <c:if test="${item.postType eq 401 }">selected</c:if>>여행지</option>
@@ -192,19 +190,8 @@
 	                						<option value="403" <c:if test="${item.postType eq 403 }">selected</c:if>>음식점</option>
 	                					</select>
 	                				</td>
-	                				<th class="col-xl-2 VMiddle">지역</th>
-	                				<td class="col-xl-2" colspan="2">
-	                					<select class="form-select" id="region" name="region">
-	                						<option value="">지역</option>
-	                						<option value="201" <c:if test="${item.region eq 201 }">selected</c:if>>수도권</option>
-	                						<option value="202" <c:if test="${item.region eq 202 }">selected</c:if>>강원도</option>
-	                						<option value="203" <c:if test="${item.region eq 203 }">selected</c:if>>경상도</option>
-	                						<option value="204" <c:if test="${item.region eq 204 }">selected</c:if>>전라도</option>
-	                						<option value="205" <c:if test="${item.region eq 205 }">selected</c:if>>충청도</option>
-	                						<option value="206" <c:if test="${item.region eq 206 }">selected</c:if>>제주도</option>
-	                					</select>
-	                				</td>
-	                				<td class="col-xl-2">
+	                				
+	                				<td class="col-xl-2 VMiddle">
 	                					<!-- <button type="button" class="genric-btn success" id="imageBtn" name="imageBtn" style="height: 40px;">사진 첨부</button> -->
 	                					<label for="uploadImage" class="genric-btn success input-file-button" style="height: 40px;">사진 첨부</label>
 	                				</td>
@@ -213,7 +200,7 @@
 	                				<th class="col-xl-2 VMiddle">
 	                					여행지 사진
 	                				</th>
-	                				<td colspan="5">
+	                				<td colspan="3">
 	                					<div>
 	                						<c:set var="type" value="1"/>		<!-- #-> -->
 								        	<c:set var="name" value="uploadImage"/>		<!-- #-> -->
@@ -239,19 +226,24 @@
 	                				<th class="col-xl-2 VMiddle">
 	                					여행지 이름
 	                				</th>
-	                				<td colspan="4">
+	                				<td class="col-xl-6">
 	                					<input type="text" class="form-control" id="addressTitle" name="addressTitle" value="<c:out value="${item.addressTitle }"/>">
 	                				</td>
+	                				<th class="col-xl-2 VMiddle">지역</th>
 	                				<td class="col-xl-2">
-	                					<button type="button" id="mapBtn" name="mapBtn" class="genric-btn info" style="height: 40px;">위치 설정</button>
-	                					<input type="hidden" id="roadAddress" name="roadAddress">
-	                					<input type="hidden" id="jibunAddress" name="jibunAddress">
-	                					<input type="hidden" id="lng" name="lng">
-	                					<input type="hidden" id="lat" name="lat">
+	                					<select class="form-select" id="region" name="region">
+	                						<option value="">지역</option>
+	                						<option value="201" <c:if test="${item.region eq 201 }">selected</c:if>>수도권</option>
+	                						<option value="202" <c:if test="${item.region eq 202 }">selected</c:if>>강원도</option>
+	                						<option value="203" <c:if test="${item.region eq 203 }">selected</c:if>>경상도</option>
+	                						<option value="204" <c:if test="${item.region eq 204 }">selected</c:if>>전라도</option>
+	                						<option value="205" <c:if test="${item.region eq 205 }">selected</c:if>>충청도</option>
+	                						<option value="206" <c:if test="${item.region eq 206 }">selected</c:if>>제주도</option>
+	                					</select>
 	                				</td>
 	                			</tr>
 	                			<tr id="mapTable" name="mapTable">
-	                				<td colspan="6">
+	                				<td colspan="4">
 	                					<div id="map" name="map" style="height:340px; margin-top:10px;"></div>
 	                				</td>
 	                			</tr>
@@ -262,7 +254,7 @@
 	                				<th class="col-xl-2 VMiddle">
 	                					제목
 	                				</th>
-	                				<td colspan="5">
+	                				<td colspan="3">
 	                					<input type="text" class="form-control" id="title" name="title" value="<c:out value="${item.title }"/>">
 	                				</td>
 	                			</tr>
@@ -270,7 +262,7 @@
 	                				<th class="VMiddle">
 	                					내용
 	                				</th>
-	                				<td colspan="5" >
+	                				<td colspan="3" >
 	                					<div class="editor-container">
 											<%-- <div class="summerNote" id="summerNote" name="summerNote">
 												<c:out value="${item.content }"/>
@@ -421,16 +413,40 @@
 		<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=fbcf9729cf4cb4a9f70ddf30309fa210&libraries=services"></script>
 		<!-- <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=fbcf9729cf4cb4a9f70ddf30309fa210"></script> -->
 		<script>
-		
-		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-		    mapOption = {
-	        center: new kakao.maps.LatLng(37.56682, 126.97865), // 지도의 중심좌표
-	        level: 10, // 지도의 확대 레벨
-	        mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
-	    }; 
+		<c:choose>
+			<c:when test="${item.lng eq null && item.lat eq null}">
+				var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+			    mapOption = {
+		        center: new kakao.maps.LatLng(37.56682, 126.97865), // 지도의 중심좌표
+		        level: 10, // 지도의 확대 레벨
+		        mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
+		    	}; 
+				var map = new kakao.maps.Map(mapContainer, mapOption);
+				var marker = new kakao.maps.Marker({
+				    position: new kakao.maps.LatLng(37.56682, 126.97865), // 마커의 좌표
+				    map: map // 마커를 표시할 지도 객체
+				});
+			
+			</c:when>
+			<c:otherwise>
+				var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+			    mapOption = {
+		        center: new kakao.maps.LatLng(${item.lat}, ${item.lng}), // 지도의 중심좌표
+		        level: 3, // 지도의 확대 레벨
+		        mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
+		 	   }; 
+				
+				var map = new kakao.maps.Map(mapContainer, mapOption);
+				
+				var marker = new kakao.maps.Marker({
+				    position: new kakao.maps.LatLng(${item.lat}, ${item.lng}), // 마커의 좌표
+				    map: map // 마커를 표시할 지도 객체
+				});
+			</c:otherwise>
+		</c:choose>
 	
 		// 지도를 생성한다 
-		var map = new kakao.maps.Map(mapContainer, mapOption); 
+		 
 		
 		/* $("#mapBtn").on("click", function(){
 			map.relayout();
@@ -458,13 +474,7 @@
 		 
 	  	//주소-좌표 변환 객체를 생성
 	    var geocoder = new daum.maps.services.Geocoder();
-	    
-	   
-	 
-		var marker = new kakao.maps.Marker(); // 클릭한 위치를 표시할 마커입니다
-	    /* infowindow = new kakao.maps.InfoWindow({zindex:1}); // 클릭한 위치에 대한 주소를 표시할 인포윈도우입니다 */
-	
-		// 현재 지도 중심좌표로 주소를 검색해서 지도 좌측 상단에 표시합니다
+
 		searchAddrFromCoords(map.getCenter(), displayCenterInfo);
 		
 		// 지도를 클릭했을 때 클릭 위치 좌표에 대한 주소정보를 표시하도록 이벤트를 등록합니다
@@ -524,6 +534,65 @@
 		    }    
 		}
 	    
+		
+		$("#region").on("change", function(){
+			if($("#region").val() == ""){
+				
+				var moveLatLon = new kakao.maps.LatLng(37.56682, 126.97865);
+			    
+			    // 지도 중심을 이동 시킵니다
+			    map.setCenter(moveLatLon);
+				
+			} else if($("#region").val() == 201){ // 수도권
+				
+				var moveLatLon = new kakao.maps.LatLng(37.56682, 126.97865);
+			    
+			    // 지도 중심을 이동 시킵니다
+			    map.setCenter(moveLatLon);
+			    map.setLevel(11);
+			} else if ($("#region").val() == 202) { //강원도
+				
+				var moveLatLon = new kakao.maps.LatLng(37.82123424116001, 128.1627713690872);
+			    
+			    // 지도 중심을 이동 시킵니다
+			    map.setCenter(moveLatLon);
+			    map.setLevel(11);
+			    
+			} else if ($("#region").val() == 203) { // 경상도
+				
+				var moveLatLon = new kakao.maps.LatLng(35.51268586543139, 128.4597516331637);
+			    
+			    // 지도 중심을 이동 시킵니다
+			    map.setCenter(moveLatLon);
+			    map.setLevel(11);
+				
+			} else if ($("#region").val() == 204) { // 전라도
+				
+				var moveLatLon = new kakao.maps.LatLng(35.376595816315245, 127.1811226210432);
+			    
+			    // 지도 중심을 이동 시킵니다
+			    map.setCenter(moveLatLon);
+			    map.setLevel(11);
+			} else if ($("#region").val() == 205) { //충청도
+				
+				var moveLatLon = new kakao.maps.LatLng(36.555802145981865, 127.20849894912541);
+			    
+			    // 지도 중심을 이동 시킵니다
+			    map.setCenter(moveLatLon);
+			    map.setLevel(11);
+			} else if ($("#region").val() == 206) { //제주도
+				
+				var moveLatLon = new kakao.maps.LatLng(33.39454354909461, 126.59045954260189);
+			    
+			    // 지도 중심을 이동 시킵니다
+			    map.setCenter(moveLatLon);
+			    // 지도 레벨을 설정합니다
+			    map.setLevel(10);
+			    
+			    // 지도 레벨을 표시합니다
+			    displayLevel(); 
+			}
+		});	
 	   
 		</script>
 		<script>

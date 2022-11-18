@@ -33,7 +33,7 @@
 	<link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/style.css">
 	<script src="https://kit.fontawesome.com/dca973ab96.js" crossorigin="anonymous"></script>
 	<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	<style>
 		.state{
 			    display: block;
@@ -300,7 +300,7 @@
     </footer>
 
 <!-- JS here -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+		
 		<script>
 		
 		var goUrlList = "/post/postUserList";
@@ -330,6 +330,7 @@
 		$("#listBtn").on("click", function(){
 			location.href = "/post/postUserList";	
 		});
+		
 		
 		
 		</script>	
