@@ -127,6 +127,7 @@ where 1=1
 FROM nxPost a
 JOIN member b on a.memberSeq = b.memberSeq
 where 1=1
+	and a.delNy = 0
 	<if test="shPostType != null and !shPostType.equals('')">AND a.postType = #{shPostType}</if>
 	<if test="shRegion != null and !shRegion.equals('')">AND a.region = #{shRegion}</if>
 	<choose>

@@ -188,7 +188,7 @@
 	                				</span>
 	                				<br>
 	                				<span style="margin-left: 15px;" id="addressTitle" name="addressTitle"><b><c:out value="${item.addressTitle }"/></b></span>
-	                				<button type="button" class="btn btn-primary" style="float: right; margin-top: 66px;">지도 펴보기</button>
+	                				<button type="button" id="btnFindRoad" name="btnFindRoad" class="btn btn-primary" style="float: right; margin-top: 66px;">지도 펴보기</button>
 	                			</div>
 	                		</div>
 	                		<div class="content" id="content" name="content" style="padding: 20px;border-bottom: 1px solid #f0f0f0;">
@@ -197,8 +197,11 @@
 	                		<c:choose>
 								<c:when test="${item.memberSeq eq sessSeq}"> <!-- length(list)가 0이면 이걸 하고 -->
 									<div style="margin-top: 30px;">
-										<button type="button" class="genric-btn info" style="float: right;" id="listBtn" name="listBtn">목록</button>
-										<button type="button" class="genric-btn warning" style="float: right; margin-right: 30px;" id="ModBtn" name="ModBtn">수정</button>
+										<button type="button" class="genric-btn info" style="float: left;" id="listBtn" name="listBtn">목록</button>
+										<button type="button" class="genric-btn danger" name="delModalBtn" id="delModalBtn" style="float: right;" data-bs-toggle="modal" data-bs-target="#deleteModal">
+											삭제
+										</button>
+										<button type="button" class="genric-btn warning" style="float: right; margin-right: 20px;" id="ModBtn" name="ModBtn">수정</button>
 			                		</div>
 								</c:when>
 								<c:otherwise>
@@ -214,6 +217,29 @@
         </div>
     </section>
     <!--================Blog Area =================-->
+     <!-- Modal Area s -->
+	<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="deleteModalLabel">게시글을 삭제하시겠습니까?</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					게시글이 삭제됩니다 삭제하시겠습니까?
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="genric-btn default" data-bs-dismiss="modal">
+						취소
+					</button>
+					<button type="button" class="genric-btn danger" id="delBtn" name="delBtn">
+						삭제
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+    <!-- Modal Area e -->
    <footer>
         <!-- Footer Start-->
         <div class="footer-area footer-padding footer-bg" style="background-image: url('/resources/template/gotrip-master/assets/img/service/footer_bg.jpg');">
@@ -305,7 +331,9 @@
 		
 		var goUrlList = "/post/postUserList";
 		var goUrlView = "/post/postUserView";
+		var goUrlUelete = "/post/postUserUelete"
 		var goUrlRegMod = "/post/postRegMod";
+		
 		
 		var form = $("form[name=PUVForm]"); 
 		var seq = $("input:hidden[name=nxPostSeq]");
@@ -324,6 +352,10 @@
 			form.attr("action", goUrlRegMod).submit();
 		});
 		
+		$("#delBtn").on("click", function(){
+			form.attr("action", goUrlUelete).submit();
+		});
+		
 		$("#shBtn").on("click", function(){
 	   		form.attr("action", goUrlList).submit();
 		}); 
@@ -331,6 +363,9 @@
 			location.href = "/post/postUserList";	
 		});
 		
+		$("#btnFindRoad").on("click", function() {
+    		window.open('https://map.kakao.com/link/to/<c:out value="${item.addressTitle }" />,<c:out value="${item.lat }" />,<c:out value="${item.lng }" />','target="blank"',"width=1920 ,height=1080");
+    	});
 		
 		
 		</script>	

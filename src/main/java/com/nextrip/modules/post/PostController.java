@@ -90,6 +90,14 @@ public class PostController {
 		return "redirect:postUserView";
 	}
 	
+	@RequestMapping(value="postUserUelete")
+	public String postUserUelete(Post dto, RedirectAttributes redirectAttributes)throws Exception{
+		
+		service.postUelete(dto);
+		
+		return "redirect:postUserList";
+	}
+	
 	@RequestMapping(value="postInsert")
 	public String postInsert(Post dto, PostVo vo, RedirectAttributes redirectAttributes)throws Exception{
 		

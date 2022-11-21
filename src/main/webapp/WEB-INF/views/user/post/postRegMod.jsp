@@ -75,7 +75,7 @@
 	</style>
 </head>
 
-<body>
+<body onload="window.scrollTo(0,0);">
         <!-- userHeader s -->
         <%@include file="../../common/userHeader.jsp"%>
         <!-- userHeader e -->
@@ -276,10 +276,25 @@
 	                		</table>
 	                	</div>
 	                </form>
-                	<div style="text-align: center; margin-top: 50px;">
-                		<button class="genric-btn default bottomBtn" id="cancelBtn" name="cancelBtn" >취소</button>
-	                	<button class="genric-btn info bottomBtn" id="regModBtn" name="regModBtn" >등록</button>
-                	</div>
+	                <c:choose>
+	                	<c:when test="${item.nxPostSeq eq null}">
+	                		<div style="text-align: center; margin-top: 50px;">
+		                		<button type="button" class="genric-btn default bottomBtn" name="cancelModalBtn" id="cancelModalBtn" data-bs-toggle="modal" data-bs-target="#cancelModal">
+									취소
+								</button>
+			                	<button class="genric-btn info bottomBtn" id="regBtn" name="regBtn" >등록</button>
+		                	</div>
+	                	</c:when>
+	                	<c:otherwise>
+	                		<div style="text-align: center; margin-top: 50px;">
+		                		<button type="button" class="genric-btn default bottomBtn" name="returnModalBtn" id="returnModalBtn" data-bs-toggle="modal" data-bs-target="#returnModal">
+									취소
+								</button>
+			                	<button class="genric-btn info bottomBtn" id="modBtn" name="modBtn" >수정</button>
+		                	</div>
+	                	</c:otherwise>
+	                </c:choose>
+                	
 				    <div class="border border-gray" style="padding:20px; margin-top: 50px;">
                         <p class="border-bottom"><b>꼭 읽어주세요!</b></p>
                         <ul style="list-style-type: square;">
@@ -295,6 +310,50 @@
         </div>
     </section>
     <!--================Blog Area =================-->
+    <!-- Modal Area s -->
+	<div class="modal fade" id="cancelModal" tabindex="-1" aria-labelledby="cancelModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="cancelModalLabel">게시판으로 돌아가시겠습니까?</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					지금까지 기입한 내용이 사라집니다. 돌아가시겠습니까?
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="genric-btn default" data-bs-dismiss="modal">
+						취소
+					</button>
+					<button type="button" class="genric-btn danger" id="cancelBtn" name="cancelBtn">
+						돌아가기
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" id="returnModal" tabindex="-1" aria-labelledby="returnModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="returnModalLabel">게시판으로 돌아가시겠습니까?</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					지금까지 기입한 내용이 사라집니다. 돌아가시겠습니까?
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="genric-btn default" data-bs-dismiss="modal">
+						취소
+					</button>
+					<button type="button" class="genric-btn danger" id="returnBtn" name="returnBtn">
+						돌아가기
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+    <!-- Modal Area e -->
    <footer>
         <!-- Footer Start-->
         <div class="footer-area footer-padding footer-bg" style="background-image: url('/resources/template/gotrip-master/assets/img/service/footer_bg.jpg');">
@@ -409,192 +468,6 @@
 			});
 		</script> -->
 		
-		<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-		<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=fbcf9729cf4cb4a9f70ddf30309fa210&libraries=services"></script>
-		<!-- <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=fbcf9729cf4cb4a9f70ddf30309fa210"></script> -->
-		<script>
-		<c:choose>
-			<c:when test="${item.lng eq null && item.lat eq null}">
-				var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-			    mapOption = {
-		        center: new kakao.maps.LatLng(37.56682, 126.97865), // 지도의 중심좌표
-		        level: 10, // 지도의 확대 레벨
-		        mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
-		    	}; 
-				var map = new kakao.maps.Map(mapContainer, mapOption);
-				var marker = new kakao.maps.Marker({
-				    position: new kakao.maps.LatLng(37.56682, 126.97865), // 마커의 좌표
-				    map: map // 마커를 표시할 지도 객체
-				});
-			
-			</c:when>
-			<c:otherwise>
-				var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-			    mapOption = {
-		        center: new kakao.maps.LatLng(${item.lat}, ${item.lng}), // 지도의 중심좌표
-		        level: 3, // 지도의 확대 레벨
-		        mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
-		 	   }; 
-				
-				var map = new kakao.maps.Map(mapContainer, mapOption);
-				
-				var marker = new kakao.maps.Marker({
-				    position: new kakao.maps.LatLng(${item.lat}, ${item.lng}), // 마커의 좌표
-				    map: map // 마커를 표시할 지도 객체
-				});
-			</c:otherwise>
-		</c:choose>
-	
-		// 지도를 생성한다 
-		 
-		
-		/* $("#mapBtn").on("click", function(){
-			map.relayout();
-		}); */
-		
-	    //마커를 미리 생성
-	    /* var marker = new kakao.maps.Marker({
-		    position: new kakao.maps.LatLng(37.56682, 126.97865), // 마커의 좌표
-		    map: map // 마커를 표시할 지도 객체
-		});
-	    
-	   
-	    
-	 // 지도 클릭 이벤트를 등록한다 (좌클릭 : click, 우클릭 : rightclick, 더블클릭 : dblclick)
-		kakao.maps.event.addListener(map, 'click', function (mouseEvent) {
-			var latlng = mouseEvent.latLng; 
-			
-			document.getElementById("lng").value = latlng.getLng()// 위도 
-	        document.getElementById("lat").value = latlng.getLat(); // 경도
-			marker.setPosition(latlng);
-			
-		});	 */
-	 
-		
-		 
-	  	//주소-좌표 변환 객체를 생성
-	    var geocoder = new daum.maps.services.Geocoder();
-
-		searchAddrFromCoords(map.getCenter(), displayCenterInfo);
-		
-		// 지도를 클릭했을 때 클릭 위치 좌표에 대한 주소정보를 표시하도록 이벤트를 등록합니다
-		kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
-		    searchDetailAddrFromCoords(mouseEvent.latLng, function(result, status) {
-		        if (status === kakao.maps.services.Status.OK) {
-		        	var latlng = mouseEvent.latLng; 
-		            /* var detailAddr = !!result[0].road_address ? '<div>도로명주소 : ' + result[0].road_address.address_name + '</div>' : ''; */
-		           /*  detailAddr += '<div>지번 주소 : ' + result[0].address.address_name + '</div>';
-		            
-		            var content = '<div class="bAddr">' +
-		                            '<span class="title">법정동 주소정보</span>' + 
-		                            detailAddr + 
-		                        '</div>'; */
-	                document.getElementById("lng").value = latlng.getLng()// 위도 
-	                document.getElementById("lat").value = latlng.getLat(); // 경도
-	                document.getElementById("roadAddress").value = result[0].road_address.address_name;// 도로명 주소 
-	                document.getElementById("jibunAddress").value = result[0].address.address_name; // 지번 주소
-		            // 마커를 클릭한 위치에 표시합니다 
-		            marker.setPosition(mouseEvent.latLng);
-		            marker.setMap(map);
-		
-		            // 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다
-		            /* infowindow.setContent(content); */
-		            /* infowindow.open(map, marker); */
-		        }   
-		    });
-		});
-		
-		// 중심 좌표나 확대 수준이 변경됐을 때 지도 중심 좌표에 대한 주소 정보를 표시하도록 이벤트를 등록합니다
-		kakao.maps.event.addListener(map, 'idle', function() {
-		    searchAddrFromCoords(map.getCenter(), displayCenterInfo);
-		});
-		
-		function searchAddrFromCoords(coords, callback) {
-		    // 좌표로 행정동 주소 정보를 요청합니다
-		    geocoder.coord2RegionCode(coords.getLng(), coords.getLat(), callback);         
-		}
-		
-		function searchDetailAddrFromCoords(coords, callback) {
-		    // 좌표로 법정동 상세 주소 정보를 요청합니다
-		    geocoder.coord2Address(coords.getLng(), coords.getLat(), callback);
-		}
-		
-		// 지도 좌측상단에 지도 중심좌표에 대한 주소정보를 표출하는 함수입니다
-		function displayCenterInfo(result, status) {
-		    if (status === kakao.maps.services.Status.OK) {
-		        var infoDiv = document.getElementById('centerAddr');
-		
-		        for(var i = 0; i < result.length; i++) {
-		            // 행정동의 region_type 값은 'H' 이므로
-		            if (result[i].region_type === 'H') {
-		                infoDiv.innerHTML = result[i].address_name;
-		                break;
-		            }
-		        }
-		    }    
-		}
-	    
-		
-		$("#region").on("change", function(){
-			if($("#region").val() == ""){
-				
-				var moveLatLon = new kakao.maps.LatLng(37.56682, 126.97865);
-			    
-			    // 지도 중심을 이동 시킵니다
-			    map.setCenter(moveLatLon);
-				
-			} else if($("#region").val() == 201){ // 수도권
-				
-				var moveLatLon = new kakao.maps.LatLng(37.56682, 126.97865);
-			    
-			    // 지도 중심을 이동 시킵니다
-			    map.setCenter(moveLatLon);
-			    map.setLevel(11);
-			} else if ($("#region").val() == 202) { //강원도
-				
-				var moveLatLon = new kakao.maps.LatLng(37.82123424116001, 128.1627713690872);
-			    
-			    // 지도 중심을 이동 시킵니다
-			    map.setCenter(moveLatLon);
-			    map.setLevel(11);
-			    
-			} else if ($("#region").val() == 203) { // 경상도
-				
-				var moveLatLon = new kakao.maps.LatLng(35.51268586543139, 128.4597516331637);
-			    
-			    // 지도 중심을 이동 시킵니다
-			    map.setCenter(moveLatLon);
-			    map.setLevel(11);
-				
-			} else if ($("#region").val() == 204) { // 전라도
-				
-				var moveLatLon = new kakao.maps.LatLng(35.376595816315245, 127.1811226210432);
-			    
-			    // 지도 중심을 이동 시킵니다
-			    map.setCenter(moveLatLon);
-			    map.setLevel(11);
-			} else if ($("#region").val() == 205) { //충청도
-				
-				var moveLatLon = new kakao.maps.LatLng(36.555802145981865, 127.20849894912541);
-			    
-			    // 지도 중심을 이동 시킵니다
-			    map.setCenter(moveLatLon);
-			    map.setLevel(11);
-			} else if ($("#region").val() == 206) { //제주도
-				
-				var moveLatLon = new kakao.maps.LatLng(33.39454354909461, 126.59045954260189);
-			    
-			    // 지도 중심을 이동 시킵니다
-			    map.setCenter(moveLatLon);
-			    // 지도 레벨을 설정합니다
-			    map.setLevel(10);
-			    
-			    // 지도 레벨을 표시합니다
-			    displayLevel(); 
-			}
-		});	
-	   
-		</script>
 		<script>
 			// 툴바생략
 			 var toolbar = [
@@ -622,16 +495,18 @@
 		            height : 600,
 		            minHeight : null,
 		            maxHeight : null,
-		            focus : true,
+		            focus : false, 
 		            lang : 'ko-KR',
 		            toolbar : toolbar
 		            //콜백 함수
 		           
 		         };
 		        $('.summerNote').summernote(setting);
+		        
 		</script>
 		<script>
 		var goUrlList = "/post/postUserList";					/* #-> */
+		var goUrlView = "/post/postUserView"
 		var goUrlInsert = "/post/postUserInsert";				/* #-> */
 		var goUrlUpdate = "/post/postUserUpdate";				/* #-> */
 		
@@ -639,16 +514,30 @@
 		
 		var form = $("form[name=PRMForm]"); 
 		
+		goView = function(seqValue){
+			seq.val(seqValue);
+			form.attr("action", goUrlView).submit();
+		}
 		
-		$("#regModBtn").on("click", function(){
-			if(seq.val() == "0" || seq.val() == ""){
-				form.attr("action", goUrlInsert).submit();
-			} else{
-				form.attr("action", goUrlUpdate).submit();	
-			}
+		
+		$("#regBtn").on("click", function(){
+			form.attr("action", goUrlInsert).submit();
+				
+		});
+		
+		$("#modBtn").on("click", function(){
+			form.attr("action", goUrlUpdate).submit();	
 		});
 		
 		$('#content').summernote('editor.insertText', "${board_data.BOARD_CONTENT}")
+		
+		$("#cancelBtn").on("click", function(){
+			location.href="/post/postUserList";
+		});
+		
+		$("#returnBtn").on("click", function(){
+			form.attr("action", goUrlView).submit();
+		});
 		
 		
 		upload = function(objName, seq, allowedMaxTotalFileNumber, allowedExtdiv, allowedEachFileSize, allowedTotalFileSize, uiType) {
@@ -876,7 +765,192 @@
 		}
 		
 	</script>
+	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=fbcf9729cf4cb4a9f70ddf30309fa210&libraries=services"></script>
+	<!-- <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=fbcf9729cf4cb4a9f70ddf30309fa210"></script> -->
+	<script>
+	<c:choose>
+		<c:when test="${item.lng eq null || item.lat eq null}">
+			var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+		    mapOption = {
+	        center: new kakao.maps.LatLng(37.56682, 126.97865), // 지도의 중심좌표
+	        level: 10, // 지도의 확대 레벨
+	        mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
+	    	}; 
+			var map = new kakao.maps.Map(mapContainer, mapOption);
+			var marker = new kakao.maps.Marker({
+			    position: new kakao.maps.LatLng(37.56682, 126.97865), // 마커의 좌표
+			    map: map // 마커를 표시할 지도 객체
+			});
 		
+		</c:when>
+		<c:otherwise>
+			var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+		    mapOption = {
+	        center: new kakao.maps.LatLng(${item.lat}, ${item.lng}), // 지도의 중심좌표
+	        level: 3, // 지도의 확대 레벨
+	        mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
+	 	   }; 
+			
+			var map = new kakao.maps.Map(mapContainer, mapOption);
+			
+			var marker = new kakao.maps.Marker({
+			    position: new kakao.maps.LatLng(${item.lat}, ${item.lng}), // 마커의 좌표
+			    map: map // 마커를 표시할 지도 객체
+			});
+		</c:otherwise>
+	</c:choose>
+
+	// 지도를 생성한다 
+	 
+	
+	/* $("#mapBtn").on("click", function(){
+		map.relayout();
+	}); */
+	
+    //마커를 미리 생성
+    /* var marker = new kakao.maps.Marker({
+	    position: new kakao.maps.LatLng(37.56682, 126.97865), // 마커의 좌표
+	    map: map // 마커를 표시할 지도 객체
+	});
+    
+   
+    
+ // 지도 클릭 이벤트를 등록한다 (좌클릭 : click, 우클릭 : rightclick, 더블클릭 : dblclick)
+	kakao.maps.event.addListener(map, 'click', function (mouseEvent) {
+		var latlng = mouseEvent.latLng; 
+		
+		document.getElementById("lng").value = latlng.getLng()// 위도 
+        document.getElementById("lat").value = latlng.getLat(); // 경도
+		marker.setPosition(latlng);
+		
+	});	 */
+ 
+	
+	 
+  	//주소-좌표 변환 객체를 생성
+    var geocoder = new daum.maps.services.Geocoder();
+
+//	searchAddrFromCoords(map.getCenter(), displayCenterInfo);
+	
+	// 지도를 클릭했을 때 클릭 위치 좌표에 대한 주소정보를 표시하도록 이벤트를 등록합니다
+	kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
+	    searchDetailAddrFromCoords(mouseEvent.latLng, function(result, status) {
+	        if (status === kakao.maps.services.Status.OK) {
+	        	var latlng = mouseEvent.latLng; 
+	            /* var detailAddr = !!result[0].road_address ? '<div>도로명주소 : ' + result[0].road_address.address_name + '</div>' : ''; */
+	           /*  detailAddr += '<div>지번 주소 : ' + result[0].address.address_name + '</div>';
+	            
+	            var content = '<div class="bAddr">' +
+	                            '<span class="title">법정동 주소정보</span>' + 
+	                            detailAddr + 
+	                        '</div>'; */
+                document.getElementById("lng").value = latlng.getLng()// 위도 
+                document.getElementById("lat").value = latlng.getLat(); // 경도
+                document.getElementById("roadAddress").value = result[0].road_address.address_name;// 도로명 주소 
+                document.getElementById("jibunAddress").value = result[0].address.address_name; // 지번 주소
+	            // 마커를 클릭한 위치에 표시합니다 
+	            marker.setPosition(mouseEvent.latLng);
+	            marker.setMap(map);
+	
+	            // 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다
+	            /* infowindow.setContent(content); */
+	            /* infowindow.open(map, marker); */
+	        }   
+	    });
+	});
+	
+	// 중심 좌표나 확대 수준이 변경됐을 때 지도 중심 좌표에 대한 주소 정보를 표시하도록 이벤트를 등록합니다
+	/* kakao.maps.event.addListener(map, 'idle', function() {
+	    searchAddrFromCoords(map.getCenter(), displayCenterInfo);
+	}); */
+	
+	function searchAddrFromCoords(coords, callback) {
+	    // 좌표로 행정동 주소 정보를 요청합니다
+	    geocoder.coord2RegionCode(coords.getLng(), coords.getLat(), callback);         
+	}
+	
+	function searchDetailAddrFromCoords(coords, callback) {
+	    // 좌표로 법정동 상세 주소 정보를 요청합니다
+	    geocoder.coord2Address(coords.getLng(), coords.getLat(), callback);
+	}
+	
+	/* // 지도 좌측상단에 지도 중심좌표에 대한 주소정보를 표출하는 함수입니다
+	function displayCenterInfo(result, status) {
+	    if (status === kakao.maps.services.Status.OK) {
+	        var infoDiv = document.getElementById('centerAddr');
+	
+	        for(var i = 0; i < result.length; i++) {
+	            // 행정동의 region_type 값은 'H' 이므로
+	            if (result[i].region_type === 'H') {
+	                infoDiv.innerHTML = result[i].address_name;
+	                break;
+	            }
+	        }
+	    }    
+	} */
+    
+	
+	$("#region").on("change", function(){
+		if($("#region").val() == ""){
+			
+			var moveLatLon = new kakao.maps.LatLng(37.56682, 126.97865);
+		    
+		    // 지도 중심을 이동 시킵니다
+		    map.setCenter(moveLatLon);
+			
+		} else if($("#region").val() == 201){ // 수도권
+			
+			var moveLatLon = new kakao.maps.LatLng(37.56682, 126.97865);
+		    
+		    // 지도 중심을 이동 시킵니다
+		    map.setCenter(moveLatLon);
+		    map.setLevel(11);
+		} else if ($("#region").val() == 202) { //강원도
+			
+			var moveLatLon = new kakao.maps.LatLng(37.82123424116001, 128.1627713690872);
+		    
+		    // 지도 중심을 이동 시킵니다
+		    map.setCenter(moveLatLon);
+		    map.setLevel(11);
+		    
+		} else if ($("#region").val() == 203) { // 경상도
+			
+			var moveLatLon = new kakao.maps.LatLng(35.51268586543139, 128.4597516331637);
+		    
+		    // 지도 중심을 이동 시킵니다
+		    map.setCenter(moveLatLon);
+		    map.setLevel(11);
+			
+		} else if ($("#region").val() == 204) { // 전라도
+			
+			var moveLatLon = new kakao.maps.LatLng(35.376595816315245, 127.1811226210432);
+		    
+		    // 지도 중심을 이동 시킵니다
+		    map.setCenter(moveLatLon);
+		    map.setLevel(11);
+		} else if ($("#region").val() == 205) { //충청도
+			
+			var moveLatLon = new kakao.maps.LatLng(36.555802145981865, 127.20849894912541);
+		    
+		    // 지도 중심을 이동 시킵니다
+		    map.setCenter(moveLatLon);
+		    map.setLevel(11);
+		} else if ($("#region").val() == 206) { //제주도
+			
+			var moveLatLon = new kakao.maps.LatLng(33.39454354909461, 126.59045954260189);
+		    
+		    // 지도 중심을 이동 시킵니다
+		    map.setCenter(moveLatLon);
+		    // 지도 레벨을 설정합니다
+		    map.setLevel(10);
+		    
+		    // 지도 레벨을 표시합니다
+		    displayLevel(); 
+		}
+	});	
+   
+	</script>	
 		
 		<!-- JS here -->
 		

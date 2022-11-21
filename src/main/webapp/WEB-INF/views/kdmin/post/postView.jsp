@@ -123,6 +123,12 @@
 												</div>
 												<div class="row mb-4">
 													<div class="col-md-12">
+														<label for="memberNickName" class="form-label">닉네임</label>
+														<input type="text" class="form-control" id="memberNickName" value="<c:out value="${item.memberNickName }"/>" readonly>
+													</div>
+												</div>
+												<div class="row mb-4">
+													<div class="col-md-12">
 														<label for="delNy" class="form-label">삭제 여부</label>
 														<select class="form-select" id="delNy" name="delNy">
 															<option value="">삭제 여부</option>
@@ -154,12 +160,6 @@
 				                						<option value="205" <c:if test="${item.region eq 205 }">selected</c:if>>충청도</option>
 				                						<option value="206" <c:if test="${item.region eq 206 }">selected</c:if>>제주도</option>
 														</select>
-													</div>
-												</div>
-												<div class="row mb-4">
-													<div class="col-md-12">
-														<label for="memberNickName" class="form-label">닉네임</label>
-														<input type="text" class="form-control" id="memberNickName" value="<c:out value="${item.memberNickName }"/>" readonly>
 													</div>
 												</div>
 											</div>
