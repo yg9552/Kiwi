@@ -285,6 +285,14 @@
 	<!-- Room E -->
 	
 	<!-- 찬구 S -->
+	<select id="countUserPurchaseHistory" resultType="Integer">
+		SELECT
+			COUNT(*)
+		FROM nxPurchaseHistory a
+		WHERE 1=1
+			AND memberSeq = #{memberSeq}
+	</select>
+	
 	<select id="selectUserPurchaseHistoryList" resultMap="resultMapObj">
 		<include refid="Base.selectListUpperForMysql" />
 			SELECT 
@@ -343,6 +351,14 @@
 		WHERE 1=1
 	    AND a.nxPurchaseHistorySeq = #{nxPurchaseHistorySeq}
 	</select>
+	
+	<update id="CancelPurchaseHistory">
+		UPDATE nxPurchaseHistory
+		SET
+			reservationStatus = 4
+		WHERE
+			nxPurchaseHistorySeq = #{nxPurchaseHistorySeq}
+	</update>
 	
 	<!-- 찬구 E -->
 </mapper>	

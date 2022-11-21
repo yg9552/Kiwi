@@ -129,11 +129,11 @@
     	   			form.attr("action", goUrlInst).submit();
     	   		}
 	    	});
-        	
+        	/* 
         	$(document).on("keyup", "#phoneNum", function() { 
         		$(this).val( $(this).val().replace(/[^0-9]/g, "").replace(/(^02|^0505|^1[0-9]{3}|^0[0-9]{2})([0-9]+)?([0-9]{4})$/,"$1-$2-$3").replace("--", "-") );
         	});
-        	
+        	 */
         	validationInst = function() {
         		if(!checkId('id',2,0,"ID를 입력해 주세요")) return false;
         		if(!checkOnlyKoreanEnglishNumber('nickname',2,0,"닉네임을 입력해 주세요")) return false;
@@ -141,7 +141,7 @@
         		if(!checkNull('passwordCheck',2 ,"비밀번호를 확인해 주세요.")) return false;
         		if(!checkNull('name',2 ,"성명을 입력해 주세요.")) return false;
         		if(!checkNull('dob',2,"생일을 입력해주세요")) return false;
-        		if(!checkNull('phoneNum',2,"휴대전화 번호를 입력해주세요")) return false;
+        		if(!checkOnlyNumber('phoneNum',2,0,0,0,0,"휴대전화 번호를 입력해주세요")) return false;
         		if(!checkEmail('email',2,0,"이메일 주소를 입력해 주세요")) return false;
         	}
         	
@@ -191,9 +191,7 @@
         		} 
         	});
         	$("#phoneNum").on("focusout", function(){
-        		if(!checkNull('phoneNum',2,"휴대전화 번호를 입력해주세요")) {
-        			return false;
-        		} 
+        		if(!checkOnlyNumber('phoneNum',2,0,0,0,0,"휴대전화 번호(숫자만)를 입력해주세요")) return false;
         	});
         	$("#email").on("focusout", function(){
         		if(!checkEmail('email',2,0,"이메일 주소를 올바르게 입력해 주세요")) {

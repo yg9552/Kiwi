@@ -102,6 +102,14 @@ public class MemberController {
 		return "user/mypage/mypageReservationView";
 	}
 	
+	@RequestMapping(value="/nextrip/CancelPurchaseHistory")
+	public String CancelPurchaseHistory(@ModelAttribute("vo") AccommodationVo vo, Accommodation dto, RedirectAttributes redirectAttributes) throws Exception {
+		service2.CancelPurchaseHistory(dto);
+		redirectAttributes.addFlashAttribute("vo", vo);
+		
+		return "redirect:/nextrip/myReservation";
+	}
+	
 	/* 마이페이지 E */
 	
 	@RequestMapping(value="/nextrip/login")

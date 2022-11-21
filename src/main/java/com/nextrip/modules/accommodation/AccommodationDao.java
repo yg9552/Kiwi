@@ -53,11 +53,17 @@ public class AccommodationDao {
 	public int updatePurchaseHistory(Accommodation dto) {
 		return sqlSession.update(namespace + ".updatePurchaseHistory", dto);
 	}
+	public int countUserPurchaseHistory(AccommodationVo vo) {
+		return sqlSession.selectOne(namespace+".countUserPurchaseHistory", vo);
+	}
 	public List<Accommodation> selectUserPurchaseHistoryList(AccommodationVo vo) {
 		return sqlSession.selectList(namespace+".selectUserPurchaseHistoryList", vo);
 	}
 	public Accommodation getOnePurchaseHistory(AccommodationVo vo) {
 		return sqlSession.selectOne(namespace+".getOnePurchaseHistory", vo);
+	}
+	public int CancelPurchaseHistory(Accommodation dto) {
+		return sqlSession.update(namespace+".CancelPurchaseHistory", dto);
 	}
 	
 	//Room

@@ -165,6 +165,16 @@ for(int i=0; i<multipartFiles.length; i++) {
 	public Accommodation getOnePurchaseHistory(AccommodationVo vo) throws Exception {
 		return dao.getOnePurchaseHistory(vo);
 	}
+
+	@Override
+	public int CancelPurchaseHistory(Accommodation dto) throws Exception {
+		return dao.CancelPurchaseHistory(dto);
+	}
+
+	@Override
+	public int countUserPurchaseHistory(AccommodationVo vo) throws Exception {
+		return dao.countUserPurchaseHistory(vo);
+	}
 	
 
 }

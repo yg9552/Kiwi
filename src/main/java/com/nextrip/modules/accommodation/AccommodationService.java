@@ -21,8 +21,10 @@ public interface AccommodationService {
 	public int selectOneCountPurchaseHistory(AccommodationVo vo) throws Exception;
 	public int insertPurchaseHistory(Accommodation dto) throws Exception;
 	public int updatePurchaseHistory(Accommodation dto) throws Exception;
+	public int countUserPurchaseHistory(AccommodationVo vo) throws Exception;
 	public List<Accommodation> selectUserPurchaseHistoryList(AccommodationVo vo) throws Exception;
 	public Accommodation getOnePurchaseHistory(AccommodationVo vo) throws Exception;
+	public int CancelPurchaseHistory(Accommodation dto) throws Exception;
 	
 	//Room
 	public List<Accommodation> selectListRoom(AccommodationVo vo) throws Exception;

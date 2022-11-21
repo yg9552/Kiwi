@@ -108,6 +108,9 @@
 			    				</c:forEach>
 			    			</c:otherwise>
 			    		</c:choose>
+			    		<!-- userPagination s -->
+						<%@include file="../../common/userPagination.jsp"%>
+						<!-- userPagination e -->
 		    		</form>
 				</div>
 	       	</div>
