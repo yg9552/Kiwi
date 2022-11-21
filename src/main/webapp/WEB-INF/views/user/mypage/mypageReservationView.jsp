@@ -52,8 +52,9 @@
 	       	<div class="col-9">
 	       		<p>예매내역</p>
 	       		<form method="post" name="myForm">
-	       			<input type="hidden" name="nxPurchaseHistorySeq" id="nxPurchaseHistorySeq" value=""/>
+	       			<input type="hidden" name="nxPurchaseHistorySeq" id="nxPurchaseHistorySeq" value="<c:out value="${item.nxPurchaseHistorySeq }"/>"/>
 	       			<input type="hidden" name="nxAccommodationSeq" id="nxAccommodationSeq" value="<c:out value="${item.nxAccommodationSeq }"/>"/>
+	       			<input type="hidden" id="thisPage" name="thisPage" value="<c:out value="${vo.thisPage }" default="1"/>">
 		       		<button type="button" class="genric-btn success circle small float-end" onclick="location.href='/nextrip/myReservation'">뒤로가기</button>
 		       		<p style="font-size: 14px;">예약 상세보기</p>
 		       		<!-- <div style="border:solid; border-width: 1px; border-color:#EEEEEE;">
@@ -80,6 +81,13 @@
 				    							<button class="genric-btn success circle small float-end" type="button" onclick="goPurchase(<c:out value="${item.nxPurchaseHistorySeq }"/>)">결제</button>
 				    						</td>
 				    					</tr>
+				    			</c:when>
+				    			<c:when test="${item.reservationStatus eq 4 }">
+			    					<tr>
+			    						<td colspan="3">
+			    							예매가 취소되었습니다.
+			    						</td>
+			    					</tr>
 				    			</c:when>
 				    			<c:otherwise>
 				    				<tr>
@@ -156,7 +164,7 @@
 							  </div>
 							  <div class="modal-footer">
 							    <button type="button" class="genric-btn default" data-bs-dismiss="modal">뒤로가기</button>
-							    <button type="button" class="genric-btn danger radius" data-bs-toggle="modal" data-bs-target="#Cancel_modal_leave">예매취소</button>
+							    <button type="button" class="genric-btn danger radius" id="btnCancel" data-bs-toggle="modal" data-bs-target="#Cancel_modal_leave">예매취소</button>
 							  </div>
 							</div>
 						</div>
@@ -182,8 +190,9 @@
 		</div>
 	</div>
 	<script type="text/javascript">
-		var goUrlPurchase = "/nextrip/region/accommodation/accommodationPurchase"
-	
+		var goUrlPurchase = "/nextrip/region/accommodation/accommodationPurchase";
+		var goUrlCancel = "/nextrip/CancelPurchaseHistory";
+		
 		var nxPurchaseHistorySeq = $("input:hidden[name=nxPurchaseHistorySeq]");
 		var nxAccommodationSeq = $("input:hidden[name=nxAccommodationSeq]");
 	
@@ -194,6 +203,10 @@
 	    	nxPurchaseHistorySeq.val(keyValue);
 			form.attr("action", goUrlPurchase).submit();
 		}
+		
+		$("#btnCancel").on("click",function(){
+			form.attr("action",goUrlCancel).submit();
+		});
 	
 	</script>
 </body>

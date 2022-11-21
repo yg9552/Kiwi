@@ -174,6 +174,47 @@ public void setParamsPaging(int totalRows) {
 		System.out.println("getStartRnumForMysql(): " + getStartRnumForMysql());
 		
 	}
+
+//	vo.setUserPaging
+	public void setUserPaging(int totalRows) {
+			
+		//		setThisPage(3);
+		
+		setTotalRows(totalRows);
+		
+		if (getTotalRows() == 0) {
+			setTotalPages(1);
+		} else {
+			setTotalPages(getTotalRows() / 3);
+		}
+		
+		if (getTotalRows() % 3 > 0) {
+			setTotalPages(getTotalPages() + 1);
+		}
+		
+		if (getTotalPages() < getThisPage()) {
+			setThisPage(getTotalPages());
+		}
+		
+		setStartPage(((getThisPage() - 1) / getPageNumToShow()) * getPageNumToShow() + 1);
+		
+		setEndPage(getStartPage() + getPageNumToShow() - 1);
+		
+		if (getEndPage() > getTotalPages()) {
+			setEndPage(getTotalPages());
+		}
+		
+		setEndRnumForOracle((3 * getThisPage()));
+		setStartRnumForOracle((getEndRnumForOracle() - 3) + 1);
+		if (getStartRnumForOracle() < 1) setStartRnumForOracle(1);
+		
+		if (thisPage == 1) {
+			setStartRnumForMysql(0);
+		} else {
+			setStartRnumForMysql((3 * (getThisPage()-1)));
+		}
+	
+	}
 //search
 
 public String getShValue() {

@@ -67,6 +67,7 @@ public class MemberController {
 		String rtSeq = (String) httpSession.getAttribute("sessSeq");
 		vo.setMemberSeq(rtSeq);
 		
+		vo.setUserPaging(service2.countUserPurchaseHistory(vo));
 		List<Accommodation> list = service2.selectUserPurchaseHistoryList(vo);
 		model.addAttribute("list", list);
 		
@@ -109,6 +110,13 @@ public class MemberController {
 		
 		return "redirect:/nextrip/myReservation";
 	}
+	
+	@RequestMapping(value="/nextrip/mypagePostRecord")
+	public String mypagePostRecord() throws Exception {
+		
+		return "user/mypage/mypagePostRecord";
+	}
+	
 	
 	/* 마이페이지 E */
 	

@@ -61,7 +61,9 @@
 	       		</div>
 	       		<div class="my-3">
 	       			<form method="post" name="formList">
+	       				<input type="hidden" name="nxAccommodationSeq" value="<c:out value="${vo.nxAccommodationSeq}"/>">		<!-- #-> -->
 	       				<input type="hidden" name="nxPurchaseHistorySeq" id="nxPurchaseHistorySeq" value=""/>
+	       				<input type="hidden" id="thisPage" name="thisPage" value="<c:out value="${vo.thisPage }" default="1"/>">
 		       			<c:choose>
 			    			<c:when test="${fn:length(list) eq 0 }">
 			    					<div style="border: solid; border-width: 1px; border-color:#EEEEEE;">
@@ -95,8 +97,12 @@
 													<c:if test="${list.reservationStatus eq 1 }">결제 대기</c:if>
 													<c:if test="${list.reservationStatus eq 2 }">결제 완료</c:if>
 													<c:if test="${list.reservationStatus eq 3 }">리뷰 작성</c:if>
+													<c:if test="${list.reservationStatus eq 4 }">예약 취소</c:if>
 												</div>
-					       						<span style="float: right; font-size: 12px;">숙박 상세보기 > </span><span style="clear: both;"></span>
+					       						<a href="javascript:goAccommodationView(<c:out value="${list.nxAccommodationSeq }"/>)">
+					       							<span style="float: right; font-size: 12px; color: black;">숙박 상세보기 > </span>
+					       						</a>
+					       						<span style="clear: both;"></span>
 					       						<p>&nbsp;<c:out value="${list.hotelName }"/> <c:out value="${list.dateGap }"/>박<c:out value="${list.dateGap + 1}"/>일</p>
 					       						<p style="font-size: 13px;">일정: <fmt:formatDate value="${list.checkInDate }" pattern="yyyy-MM-dd"/> ~ <fmt:formatDate value="${list.checkOutDate }" pattern="yyyy-MM-dd"/></p>
 						       				</div>
@@ -116,17 +122,32 @@
 	       	</div>
 		</div>
 	</div>
+	<!-- userFooter s -->
+		<%@include file="../../common/userFooter.jsp"%>
+  	<!-- userFooter e -->
 	<script type="text/javascript">
 		var goUrlReservationView = "/nextrip/mypageReservationView";
+		var goUrlAccommodationView ="/nextrip/region/accommodation/accommodationView"
+		var goUrlList="/nextrip/myReservation"
 		
 		var nxPurchaseHistorySeq = $("input:hidden[name=nxPurchaseHistorySeq]");
 
+		var seq = $("input:hidden[name=nxAccommodationSeq]");
 		var form = $("form[name=formList]");
 		
 		goReservationView = function(keyValue) {
 	    	/* if(keyValue != 0) seq.val(btoa(keyValue)); */
 	    	nxPurchaseHistorySeq.val(keyValue);
 			form.attr("action", goUrlReservationView).submit();
+		}
+		goAccommodationView = function(keyValue) {
+			seq.val(keyValue);
+			form.attr("action", goUrlAccommodationView).submit();
+		}
+		
+		goList = function(thisPage){
+			$("input:hidden[name=thisPage]").val(thisPage);
+				form.attr("action", goUrlList).submit();
 		}
 	
 	</script>

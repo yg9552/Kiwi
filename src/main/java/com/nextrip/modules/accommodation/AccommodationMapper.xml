@@ -319,7 +319,8 @@
 				AND memberSeq = #{memberSeq}
 	    	ORDER BY a.nxPurchaseHistorySeq DESC
 	    	<include refid="Base.orderByLimitForMysql" />
-		<include refid="Base.selectListLowerForMysql" />
+		) aa
+		limit 3 offset #{startRnumForMysql}
 	</select>
 	
 	<select id="getOnePurchaseHistory" resultMap="resultMapObj">

@@ -15,7 +15,7 @@
 	            </a>
 	        </li>
 	        <li>
-	            <a href="./mypagePostRecord.html" class="d-flex">
+	            <a href="/nextrip/mypagePostRecord" class="d-flex">
 	                <p>내가 쓴 글</p>
 	            </a>
 	        </li>
