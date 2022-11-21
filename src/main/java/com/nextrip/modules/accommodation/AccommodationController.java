@@ -23,9 +23,10 @@ public class AccommodationController {
 	AccommodationServiceImpl service;
 	
 	@RequestMapping(value = "accommodationList")
-	public String acmdList(@ModelAttribute("vo") AccommodationVo vo, Model model) throws Exception {
+	public String acmdList(@ModelAttribute("vo") AccommodationVo vo, Model model, @ModelAttribute("vorv") AccommodationVo vorv) throws Exception {
 		
 		vo.setParamsPaging(service.selectOneCount(vo));
+		vorv.setParamsPaging(service.selectOneCountReview(vorv));
 		List<Accommodation> list = service.selectList(vo);
 		model.addAttribute("list", list);
 		List<Accommodation> listR = service.selectListRoom(vo);

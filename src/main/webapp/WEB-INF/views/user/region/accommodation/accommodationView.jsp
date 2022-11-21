@@ -82,7 +82,7 @@
                         	<li><a href="#"><i class="fa-solid fa-location-dot"></i> <c:out value="${listregion.name }"/></a></li>
                         </c:if>
                      </c:forEach>
-                        <li><a href="#"><i class="fa fa-comments"></i> 후기 3건 </a></li>
+                        <li><a href="#simple-list-item-1"><i class="fa fa-comments"></i> 후기 <c:out value="${vo.totalRows }" />건 </a></li>
                      </ul>
                      <p class="excert">
                         <c:out value="${item.hotelIntroduce }" />
@@ -108,46 +108,33 @@
                      </div>
                   </div>
                </div>
-               <div class="comments-area">
+               <div class="comments-area" data-spy="scroll" data-target="#simple-list-example" id="simple-list-item-1">
                   <h4 style="float: left;">후기글</h4>
                   <h4 style="float: right;"><c:out value="${vo.totalRows }" />건</h4>
                   <div class="comment-list" style="clear: both;">
                      <div class="single-comment justify-content-between d-flex">
                         <div class="user justify-content-between d-flex">
                            <div class="desc">
-                           <c:forEach items="${listReview }" var="listReview" varStatus="statusReview">
-                           		<p class="comment">
-                           			<c:out value="${listReview.generalReview }" />
-                              	</p>
-                              	<div class="d-flex justify-content-between">
-                                 <div class="d-flex align-items-center">
-                                    <h5>
-                                       <a><c:out value="${listReview.nickname }" /> </a>
-                                    </h5>
-                                    <p class="date"><fmt:formatDate value="${listReview.regDateTime }" pattern="yyyy-MM-dd HH:mm:ss"/> </p>
-                                 </div>
-                              </div>
-                           </c:forEach>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="comment-list" style="clear: both;">
-                     <div class="single-comment justify-content-between d-flex">
-                        <div class="user justify-content-between d-flex">
-                           <div class="desc">
-                              <p class="comment">
-                                 Multiply sea night grass fourth day sea lesser rule open subdue female fill which them
-                                 Blessed, give fill lesser bearing multiply sea night grass fourth day sea lesser
-                              </p>
-                              <div class="d-flex justify-content-between">
-                                 <div class="d-flex align-items-center">
-                                    <h5>
-                                       <a href="#">Emilly Blunt</a>
-                                    </h5>
-                                    <p class="date">December 4, 2017 at 3:12 pm </p>
-                                 </div>
-                              </div>
+                           <c:choose>
+                           		<c:when test="${fn:length(listReview) eq 0 }">
+                           			<p class="comment">후기가 없습니다!</p>
+                         		</c:when>
+                         		<c:otherwise>
+                         			<c:forEach items="${listReview }" var="listReview" varStatus="statusReview">
+		                           		<p class="comment">
+		                           			<c:out value="${listReview.generalReview }" />
+		                              	</p>
+		                              	<div class="d-flex justify-content-between">
+		                                 <div class="d-flex align-items-center">
+		                                    <h5>
+		                                       <a><c:out value="${listReview.nickname }" /> </a>
+		                                    </h5>
+		                                    <p class="date"><fmt:formatDate value="${listReview.regDateTime }" pattern="yyyy-MM-dd HH:mm:ss"/> </p>
+		                                 </div>
+		                              </div>
+		                           </c:forEach>
+                         		</c:otherwise>
+                           </c:choose>
                            </div>
                         </div>
                      </div>

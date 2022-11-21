@@ -182,9 +182,9 @@
 	                                </a>
 	                                <ul class="blog-info-link">
 	                                	<c:forEach items="${listregion}" var="listregion" varStatus="statuslistregion">
-	                                		<c:if test="${list.region eq listregion.replaceCode }"><li><a href="#"><i class="fa-solid fa-location-dot"></i><c:out value="${listregion.name }"/></a></li></c:if>
+	                                		<c:if test="${list.region eq listregion.replaceCode }"><li><a><i class="fa-solid fa-location-dot"></i><c:out value="${listregion.name }"/></a></li></c:if>
 		                        		</c:forEach>
-				                        <li><a href="#"><i class="fa fa-comments"></i> 후기 3건 </a></li>
+				                        <li><a><i class="fa fa-comments"></i> 후기 <c:if test="${list.nxAccommodationSeq eq vorv.nxAccommodationSeq }"><c:out value="${vorv.totalRows }" /></c:if>건 </a></li>
 				                    </ul>
 				                    <c:forEach items="${listR }" var="listR" varStatus="statuslistR">
 				                    	<c:if test="${listR.nxAccommodationSeq eq list.nxAccommodationSeq && listR.roomType eq 1 }"><h5 class="mt-2 text-danger">1박 <fmt:formatNumber value="${listR.price }" pattern="#,###" /> 원 ~</h5></c:if>

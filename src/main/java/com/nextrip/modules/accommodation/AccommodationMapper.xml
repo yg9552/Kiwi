@@ -303,6 +303,7 @@
 			left join member b on a.memberSeq = b.memberSeq
 			WHERE 1=1
 			<if test="memberSeq != null and !memberSeq.equals('')">AND a.memberSeq = #{memberSeq}</if>
+			<if test="nxAccommodationSeq != null and !nxAccommodationSeq.equals('')">AND a.nxAccommodationSeq = #{nxAccommodationSeq}</if>
 			ORDER BY nxAccommodationReviewSeq DESC
 			<include refid="Base.orderByLimitForMysql" />
 	    <include refid="Base.selectListLowerForMysql" />
@@ -329,6 +330,8 @@
 		SELECT COUNT(*)
 		FROM nxAccommodationReview
 		WHERE 1=1
+		<if test="memberSeq != null and !memberSeq.equals('')">AND memberSeq = #{memberSeq}</if>
+		<if test="nxAccommodationSeq != null and !nxAccommodationSeq.equals('')">AND nxAccommodationSeq = #{nxAccommodationSeq}</if>
 	</select>
 	
 	<insert id="insertReview">
