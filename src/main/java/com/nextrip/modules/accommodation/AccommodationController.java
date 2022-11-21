@@ -74,9 +74,13 @@ public class AccommodationController {
 	
 	@RequestMapping(value = "accommodationView")
 	public String accommodationView(@ModelAttribute("vo") AccommodationVo vo, Model model, RoomVo voR) throws Exception {
+		vo.setParamsPaging(service.selectOneCountReview(vo));
+		
 		Accommodation item = service.selectOne(vo);
 		List<Accommodation> listR = service.selectListRoom(vo);
+		List<Accommodation> listReview = service.selectListReview(vo);
 		model.addAttribute("item", item);
+		model.addAttribute("listReview" ,listReview);
 		model.addAttribute("listR", listR);
 		model.addAttribute("listUploaded", service.selectListUploaded(vo));
 		return "user/region/accommodation/accommodationView";
@@ -133,6 +137,14 @@ public class AccommodationController {
 			returnMap.put("price", result.getPrice());
 		}
 		return returnMap;
+	}
+	
+	@RequestMapping(value = "reviewInst")
+	public String insertReview(@ModelAttribute("vo") AccommodationVo vo, Accommodation dto, RedirectAttributes redirectAttributes) throws Exception {
+		service.insertReview(dto);
+		vo.setNxAccommodationReviewSeq(dto.getNxAccommodationReviewSeq());
+		redirectAttributes.addFlashAttribute("vo", vo);
+		return "redirect:/nextrip/region/accommodation/accommodationPurchase";
 	}
 }
 

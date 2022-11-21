@@ -443,6 +443,8 @@
 		    map.setBounds(bounds);
 		}
 
+	
+		
 		for (var i = 0; i < positions.length; i ++) {
 		    // 마커를 생성합니다
 		    var marker = new kakao.maps.Marker({
@@ -454,6 +456,15 @@
 		    var infowindow = new kakao.maps.InfoWindow({
 		        content: positions[i].content // 인포윈도우에 표시할 내용
 		    });
+		    
+		    /* 
+		    kakao.maps.event.addListener(marker, 'click', function() {
+			      // 마커 위에 인포윈도우를 표시합니다
+			    <c:forEach items="${list }" var="list" varStatus="status">
+			    location.href = 'javascript:goView(<c:out value="${list.nxAccommodationSeq }"/>)';
+			    </c:forEach>
+			});
+		     */
 
 		    // 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
 		    // 이벤트 리스너로는 클로저를 만들어 등록합니다 

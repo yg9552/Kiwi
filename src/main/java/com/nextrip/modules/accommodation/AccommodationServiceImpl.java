@@ -175,6 +175,30 @@ for(int i=0; i<multipartFiles.length; i++) {
 	public int countUserPurchaseHistory(AccommodationVo vo) throws Exception {
 		return dao.countUserPurchaseHistory(vo);
 	}
+
+	@Override
+	public List<Accommodation> selectListReview(AccommodationVo vo) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.selectListReview(vo);
+	}
+
+	@Override
+	public Accommodation selectOneReivew(AccommodationVo vo) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.selectOneReview(vo);
+	}
+
+	@Override
+	public int selectOneCountReview(AccommodationVo vo) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.selectOneCountReview(vo);
+	}
+
+	@Override
+	public int insertReview(Accommodation dto) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.insertReview(dto);
+	}
 	
 
 }

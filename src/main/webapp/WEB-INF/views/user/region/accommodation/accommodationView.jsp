@@ -110,23 +110,24 @@
                </div>
                <div class="comments-area">
                   <h4 style="float: left;">후기글</h4>
-                  <h4 style="float: right;">5건</h4>
+                  <h4 style="float: right;"><c:out value="${vo.totalRows }" />건</h4>
                   <div class="comment-list" style="clear: both;">
                      <div class="single-comment justify-content-between d-flex">
                         <div class="user justify-content-between d-flex">
                            <div class="desc">
-                              <p class="comment">
-                                 Multiply sea night grass fourth day sea lesser rule open subdue female fill which them
-                                 Blessed, give fill lesser bearing multiply sea night grass fourth day sea lesser
-                              </p>
-                              <div class="d-flex justify-content-between">
+                           <c:forEach items="${listReview }" var="listReview" varStatus="statusReview">
+                           		<p class="comment">
+                           			<c:out value="${listReview.generalReview }" />
+                              	</p>
+                              	<div class="d-flex justify-content-between">
                                  <div class="d-flex align-items-center">
                                     <h5>
-                                       <a href="#">Emilly Blunt</a>
+                                       <a><c:out value="${listReview.nickname }" /> </a>
                                     </h5>
-                                    <p class="date">December 4, 2017 at 3:12 pm </p>
+                                    <p class="date"><fmt:formatDate value="${listReview.regDateTime }" pattern="yyyy-MM-dd HH:mm:ss"/> </p>
                                  </div>
                               </div>
+                           </c:forEach>
                            </div>
                         </div>
                      </div>
@@ -497,7 +498,7 @@
     	}
         
         $("#btnFindRoad").on("click", function() {
-    		window.open('https://map.kakao.com/link/to/<c:out value="${item.hotelName }" />,<c:out value="${item.lat }" />,<c:out value="${item.lng }" />','target="blank"',"width: 1920px ,height: 937px");
+    		window.open('https://map.kakao.com/link/to/<c:out value="${item.hotelName }" />,<c:out value="${item.lat }" />,<c:out value="${item.lng }" />','_blank',"width=1920 ,height=937");
     	});
 		</script>
 		<!-- <script>

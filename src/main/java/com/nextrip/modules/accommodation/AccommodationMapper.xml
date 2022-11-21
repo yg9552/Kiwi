@@ -284,6 +284,81 @@
 	</select>
 	<!-- Room E -->
 	
+	<!-- Review S -->
+	<select id="selectListReview" resultMap="resultMapObj">
+		<include refid="Base.selectListUpperForMysql" />
+			SELECT
+			    a.nxAccommodationReviewSeq
+			    ,a.memberSeq
+			    ,a.nxAccommodationSeq
+			    ,a.starRate
+			    ,a.generalReview
+			    ,a.goodPointReview
+			    ,a.badPointReview
+			    ,a.regDateTime
+			    ,a.modDateTime
+			    ,a.delNy
+			    ,b.nickname
+			FROM nxAccommodationReview a
+			left join member b on a.memberSeq = b.memberSeq
+			WHERE 1=1
+			<if test="memberSeq != null and !memberSeq.equals('')">AND a.memberSeq = #{memberSeq}</if>
+			ORDER BY nxAccommodationReviewSeq DESC
+			<include refid="Base.orderByLimitForMysql" />
+	    <include refid="Base.selectListLowerForMysql" />
+	</select>
+	
+	<select id="selectOneReview">
+		SELECT
+		    nxAccommodationReviewSeq
+		    ,memberSeq
+		    ,nxAccommodationSeq
+		    ,starRate
+		    ,generalReview
+		    ,goodPointReview
+		    ,badPointReview
+		    ,regDateTime
+		    ,modDateTime
+		    ,delNy
+		FROM nxAccommodationReview
+		WHERE 1=1
+		AND nxAccommodationReviewSeq = #{nxAccommodationReviewSeq}
+	</select>
+	
+	<select id="selectOneCountReview" resultType="Integer">
+		SELECT COUNT(*)
+		FROM nxAccommodationReview
+		WHERE 1=1
+	</select>
+	
+	<insert id="insertReview">
+		INSERT INTO nxAccommodationReview(
+			,memberSeq
+			,nxAccommodationSeq
+			,starRate
+			,generalReview
+			,goodPointReview
+			,badPointReview
+			,regDateTime
+			,modDateTime
+			delNy
+			)
+		VALUES(
+			{memberSeq }
+			,{nxAccommodationSeq }
+			,{starRate }
+			,{generalReview }
+			,{goodPointReview }
+			,{badPointReview }
+			,0
+			)
+		<selectKey resultType="String" keyProperty="nxAccommodationReviewSeq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>			
+	</insert>
+	
+	<!-- Review E -->
+	
 	<!-- 찬구 S -->
 	<select id="countUserPurchaseHistory" resultType="Integer">
 		SELECT

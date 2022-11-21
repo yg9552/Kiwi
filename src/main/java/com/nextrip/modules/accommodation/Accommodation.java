@@ -63,6 +63,15 @@ public class Accommodation extends Base {
 	private Integer roomType;
 	private Integer price;
 	
+	//Review
+	private String nxAccommodationReviewSeq;
+	private Integer starRate;
+	private String generalReview;
+	private String goodPointReview;
+	private String badPointReview;
+	private String nickname;
+	
+	
 	public String getNxAccommodationSeq() {
 		return nxAccommodationSeq;
 	}
@@ -326,7 +335,45 @@ public class Accommodation extends Base {
 		this.codeSeq = codeSeq;
 	}
 	
+	//Review
+	public String getNxAccommodationReviewSeq() {
+		return nxAccommodationReviewSeq;
+	}
+	public void setNxAccommodationReviewSeq(String nxAccommodationReviewSeq) {
+		this.nxAccommodationReviewSeq = nxAccommodationReviewSeq;
+	}
+	public Integer getStarRate() {
+		return starRate;
+	}
+	public void setStarRate(Integer starRate) {
+		this.starRate = starRate;
+	}
+	public String getGeneralReview() {
+		return generalReview;
+	}
+	public void setGeneralReview(String generalReview) {
+		this.generalReview = generalReview;
+	}
+	public String getGoodPointReview() {
+		return goodPointReview;
+	}
+	public void setGoodPointReview(String goodPointReview) {
+		this.goodPointReview = goodPointReview;
+	}
+	public String getBadPointReview() {
+		return badPointReview;
+	}
+	public void setBadPointReview(String badPointReview) {
+		this.badPointReview = badPointReview;
+	}
+	public String getNickname() {
+		return nickname;
+	}
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
 	
-
+	
+	
 
 }

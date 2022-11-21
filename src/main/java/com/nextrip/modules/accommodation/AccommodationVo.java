@@ -11,6 +11,7 @@ public class AccommodationVo extends BaseVo{
 	private String nxRoomSeq;
 	private String memberSeq;
 	private String region;
+	private String nxAccommodationReviewSeq;
 	
 	public String getShValue() {
 		return shValue;
@@ -59,6 +60,12 @@ public class AccommodationVo extends BaseVo{
 	}
 	public void setRegion(String region) {
 		this.region = region;
+	}
+	public String getNxAccommodationReviewSeq() {
+		return nxAccommodationReviewSeq;
+	}
+	public void setNxAccommodationReviewSeq(String nxAccommodationReviewSeq) {
+		this.nxAccommodationReviewSeq = nxAccommodationReviewSeq;
 	}
 	
 	

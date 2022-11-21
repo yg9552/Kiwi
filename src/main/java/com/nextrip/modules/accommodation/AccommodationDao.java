@@ -82,4 +82,18 @@ public class AccommodationDao {
 	public Accommodation selectRoomPrice(Accommodation dto) {
 		return sqlSession.selectOne(namespace + ".selectRoomPrice", dto);
 	}
+	
+	//Review
+	public List<Accommodation> selectListReview(AccommodationVo vo) {
+		return sqlSession.selectList(namespace + ".selectListReview", vo);
+	}
+	public Accommodation selectOneReview(AccommodationVo vo) {
+		return sqlSession.selectOne(namespace + ".selectOneReview", vo);
+	}
+	public int selectOneCountReview(AccommodationVo vo) {
+		return sqlSession.selectOne(namespace + ".selectOneCountReview", vo);
+	}
+	public int insertReview(Accommodation dto) {
+		return sqlSession.insert(namespace + ".insertReview", dto);
+	}
 }

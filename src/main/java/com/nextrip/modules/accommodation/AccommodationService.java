@@ -32,4 +32,10 @@ public interface AccommodationService {
 	public int selectOneCountRoom(AccommodationVo vo) throws Exception;
 	public int insertRoom(Accommodation dto) throws Exception;
 	public Accommodation selectRoomPrice(Accommodation dto) throws Exception;
+	
+	//Review
+	public List<Accommodation> selectListReview(AccommodationVo vo) throws Exception;
+	public Accommodation selectOneReivew(AccommodationVo vo) throws Exception;
+	public int selectOneCountReview(AccommodationVo vo) throws Exception;
+	public int insertReview(Accommodation dto) throws Exception;
 }
