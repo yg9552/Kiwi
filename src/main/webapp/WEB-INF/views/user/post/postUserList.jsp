@@ -231,7 +231,7 @@
                                 	</select>
 					          	</div>
 					          	<div class="col-lg-2 offset-3">
-                                	<select class="form-select">
+                                	<select class="form-select" id="shOption" name="shOption">
                                 		<option>검색 구분</option>
                                 		<option value="1" <c:if test="${vo.shOption eq 1}">selected</c:if>>제목</option>
                                 		<option value="2" <c:if test="${vo.shOption eq 2}">selected</c:if>>지역 이름</option>

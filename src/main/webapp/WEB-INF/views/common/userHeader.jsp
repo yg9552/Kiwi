@@ -134,7 +134,7 @@
 		                                            	<ul class="submenu">
 		                                            		<li><a href="/nextrip/memberModification">회원정보 수정</a></li>
 		                                                    <li><a href="/nextrip/myReservation">예약 내역</a></li>
-		                                                    <li><a href="#">내가 쓴 글</a></li>
+		                                                    <li><a href="/nextrip/mypagePostRecord">내가 쓴 글</a></li>
 		                                                    <li><a href="#">채팅</a></li>
 		                                                </ul>
 		                                            </li>

@@ -63,5 +63,11 @@ public class PostDao {
 	public int postDelete(PostVo vo) {
 		return sqlSession.delete(namespace + ".postDelete", vo);
 	}
+	public List<Post> selectMyPostList(PostVo vo) {
+		return sqlSession.selectList(namespace+".selectMyPostList", vo);
+	}
+	public int countMyPostList(PostVo vo) {
+		return sqlSession.selectOne(namespace+".countMyPostList", vo);
+	}
 	
 }

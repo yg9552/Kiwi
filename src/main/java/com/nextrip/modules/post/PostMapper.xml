@@ -200,5 +200,45 @@ where 1=1
 		AND	nxPostSeq = #{nxPostSeq}
 
 </delete>
+
+<!-- 찬구 S -->
+<select id="countMyPostList" resultType="Integer">
+	SELECT
+		COUNT(*)
+	FROM nxPost a
+	WHERE 1=1
+		AND a.memberSeq=#{memberSeq}
+</select>
+
+<select id="selectMyPostList" resultMap="resultMapObj">
+	<include refid="Base.selectListUpperForMysql" />
+	select
+		a.nxPostSeq
+		,a.memberSeq
+		,a.region
+		,a.postType
+		,a.title
+		,a.delNy
+		,a.regDateTime
+		,a.modDateTime
+		,b.name as memberName
+		,b.nickname as memberNickName
+		FROM nxPost a
+		JOIN member b on a.memberSeq = b.memberSeq
+		WHERE 1=1
+			AND a.memberSeq=#{memberSeq}
+			AND a.delNy = 0
+			<if test="shPostType != null and !shPostType.equals('')">AND a.postType = #{shPostType}</if>
+			<if test="shRegion != null and !shRegion.equals('')">AND a.region = #{shRegion}</if>
+			<choose>
+				<when test="shOption == 1">AND a.title LIKE CONCAT('%',#{shValue},'%')</when>
+				<when test="shOption == 2">AND a.addressTitle LIKE CONCAT('%',#{shValue},'%')</when>
+				<when test="shOption == 3">AND memberNickName LIKE CONCAT('%',#{shValue},'%')</when>
+			</choose>
+		ORDER BY nxPostSeq DESC
+	<include refid="Base.selectListLowerForMysql" />
+</select>
+
+<!-- 찬구 E -->
 	
 </mapper>	

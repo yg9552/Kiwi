@@ -19,6 +19,9 @@ import com.nextrip.common.constants.Constants;
 import com.nextrip.modules.accommodation.Accommodation;
 import com.nextrip.modules.accommodation.AccommodationServiceImpl;
 import com.nextrip.modules.accommodation.AccommodationVo;
+import com.nextrip.modules.post.Post;
+import com.nextrip.modules.post.PostServiceImpl;
+import com.nextrip.modules.post.PostVo;
 
 @Controller
 @RequestMapping
@@ -29,6 +32,9 @@ public class MemberController {
 	
 	@Autowired
 	AccommodationServiceImpl service2;
+	
+	@Autowired
+	PostServiceImpl service3;
 	
 	@RequestMapping(value="/nextrip/main")
 	public String main() throws Exception {
@@ -67,7 +73,8 @@ public class MemberController {
 		String rtSeq = (String) httpSession.getAttribute("sessSeq");
 		vo.setMemberSeq(rtSeq);
 		
-		vo.setUserPaging(service2.countUserPurchaseHistory(vo));
+		vo.setRowNumToShow(3);
+		vo.setParamsPaging(service2.countUserPurchaseHistory(vo));
 		List<Accommodation> list = service2.selectUserPurchaseHistoryList(vo);
 		model.addAttribute("list", list);
 		
@@ -112,7 +119,14 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value="/nextrip/mypagePostRecord")
-	public String mypagePostRecord() throws Exception {
+	public String mypagePostRecord(@ModelAttribute("vo") PostVo vo, Model model, HttpSession httpSession) throws Exception {
+		String rtSeq = (String) httpSession.getAttribute("sessSeq");
+		vo.setMemberSeq(rtSeq);
+		
+		vo.setParamsPaging(service3.countMyPostList(vo));
+		
+		List<Post> result = service3.selectMyPostList(vo);
+		model.addAttribute("list", result);
 		
 		return "user/mypage/mypagePostRecord";
 	}
