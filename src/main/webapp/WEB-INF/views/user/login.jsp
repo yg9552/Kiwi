@@ -64,8 +64,9 @@
 	<script type="text/javascript">
         var goUrlMain = "/nextrip/main";
        	
-       	$("#btnLogin").on("click", function(){
-			$.ajax({
+        function loginAjax() {
+        	
+        	$.ajax({
 				async: true 
 				,cache: false
 				,type: "post"
@@ -84,30 +85,16 @@
 					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
 				}
 			});
+        	
+        }
+        
+       	$("#btnLogin").on("click", function(){
+       		loginAjax();
   		});
        	
        	function enterLogin() {
-	        if (window.event.keyCode == 13) {
-	            // 엔터키가 눌렸을 때 실행할 내용
-				$.ajax({
-					async: true 
-					,cache: false
-					,type: "post"
-					/* ,dataType:"json" */
-					,url: "/nextrip/loginproc"
-					/* ,data : $("#formLogin").serialize() */
-					,data : { "id" : $("#id").val(), "password" : $("#password").val() }
-					,success: function(response) {
-						if(response.rt == "success") {
-								$(location).attr("href",goUrlMain);
-						} else {
-							alert("일치하는 계정이 없습니다.");
-						}
-					}
-					,error : function(jqXHR, textStatus, errorThrown){
-						alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
-					}
-				});
+	        if (window.event.keyCode == 13) { // 엔터키가 눌렸을 때 실행할 내용
+				loginAjax();
 	        }
 		}
 	</script>

@@ -269,7 +269,7 @@
 	
 	var goUrlList = "/post/postList";
 	var goUrlView = "/post/postView";
-	
+	var goUrlExcel = "/post/excelDownload";
 	var form = $("form[name=PLForm]"); 
 	var seq = $("input:hidden[name=nxPostSeq]");
 	
@@ -290,6 +290,10 @@
 	
 	$("#regBtn").on("click", function(){
 		goView(0);
+	});
+	
+	$("#excelBtn").click(function() {
+		form.attr("action", goUrlExcel).submit();
 	});
 	
 	$("#shBtn").on("click", function(){

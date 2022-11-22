@@ -65,7 +65,7 @@ public class CodeServiceImpl implements CodeService {
 		public static String selectOneCachedCode(int code) throws Exception {
 			String rt = "";
 			for(Code codeRow : Code.cachedCodeArrayList) {
-				if (codeRow.getCodeSeq().equals(Integer.toString(code))) {
+				if (codeRow.getReplaceCode().equals(Integer.toString(code))) {
 					rt = codeRow.getName();
 				} else {
 					// by pass
