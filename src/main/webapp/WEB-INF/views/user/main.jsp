@@ -16,22 +16,36 @@
 		<link rel="shortcut icon" type="image/x-icon" href="/resources/template/gotrip-master/assets/img/favicon.ico">
 
 		<!-- CSS here -->
-            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-			<link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/bootstrap.min.css">
-			<link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/owl.carousel.min.css">
-			<link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/flaticon.css">
-			<link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/slicknav.css">
-			<link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/animate.min.css">
-			<link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/magnific-popup.css">
-			<link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/fontawesome-all.min.css">
-			<link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/themify-icons.css">
-			<link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/slick.css">
-			<link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/nice-select.css">
-			<link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/style.css">
-			<script src="https://kit.fontawesome.com/dca973ab96.js" crossorigin="anonymous"></script>
-			<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+		<link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/owl.carousel.min.css">
+		<link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/flaticon.css">
+		<link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/slicknav.css">
+		<link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/animate.min.css">
+		<link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/magnific-popup.css">
+		<link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/fontawesome-all.min.css">
+		<link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/themify-icons.css">
+		<link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/slick.css">
+		<link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/nice-select.css">
+		<link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/style.css">
+		<script src="https://kit.fontawesome.com/dca973ab96.js" crossorigin="anonymous"></script>
+		<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+		<style>
+		#info-box {
+		    display:none;
+		    position: absolute;
+		    top: 0px;
+		    left: 0px;
+		    z-index: 1;
+		    background-color: #ffffff;
+		    font-family: arial;
+		  }
+		  path:hover{
+		    cursor:pointer;
+		  }
+		</style>		
    </head>
 
    <body>
@@ -110,7 +124,9 @@
         <!-- Blog Area End -->
         <!-- Svg Area Start -->
         <!-- viewbox="-60 0 0 1600 2000" -->
-        <div id="info-box" style="padding-left:470px; background-image: url('../../gotrip-master/assets/img/service/alpsBackGround.jpg');">
+        <div id="info-box"></div>
+        <!-- background-image: url('/resources/image/sunset.jpg'); -->
+        <div style="padding-left:470px; background-color: #9DBAD1;">
 	        <svg width="1000" viewBox="-140 100 800 800">
 	        	<svg
 				   version="1.1"
@@ -324,22 +340,109 @@
        	goRegionView2 = function(keyValue) {
     		seqRegion2.val(keyValue);
     		formRegion2.attr("action", goUrlRegionView).submit();
-    	}
+    	};
        	
-       	$('Metropolitan').hover(function(){
-            $(this).text('수도권');
-        });
        	
        	[].forEach.call(document.querySelectorAll('path.land'), function(item) {
        		item.addEventListener('mouseenter', function() {
+       			  var str ="";
        		      $('#info-box').css('display','block');
        		      document.getElementById('info-box').innerHTML=this.getAttribute("title")
+       		    if(document.getElementById('info-box').innerHTML=="수도권"){
+       		    	str += '<div class="card" style="width: 18rem;">';
+	   				str += '<img src="..." class="card-img-top" alt="...">';
+	   				str += '<div class="card-body">';
+	   				str += '<h5 class="card-title">수도권</h5>';
+	   				str += '<p class="card-text">Some quick example text to build on the card title and make up the bulk of the cards content.</p>';
+	   				str += '</div>';
+	   				str += '</div>';	   				
+	   				document.getElementById("info-box").innerHTML = str;
+	   			} else if(document.getElementById('info-box').innerHTML=="경상도"){
+	   				str += '<div class="card" style="width: 18rem;">';
+	   				str += '<img src="..." class="card-img-top" alt="...">';
+	   				str += '<div class="card-body">';
+	   				str += '<h5 class="card-title">경상도</h5>';
+	   				str += '<p class="card-text">Some quick example text to build on the card title and make up the bulk of the cards content.</p>';
+	   				str += '</div>';
+	   				str += '</div>';
+	   				document.getElementById("info-box").innerHTML = str;
+	   			} else if(document.getElementById('info-box').innerHTML=="충청도"){
+	   				str += '<div class="card" style="width: 18rem;">';
+	   				str += '<img src="..." class="card-img-top" alt="...">';
+	   				str += '<div class="card-body">';
+	   				str += '<h5 class="card-title">충청도</h5>';
+	   				str += '<p class="card-text">Some quick example text to build on the card title and make up the bulk of the cards content.</p>';
+	   				str += '</div>';
+	   				str += '</div>';	   				
+	   				document.getElementById("info-box").innerHTML = str;
+	   			} else if(document.getElementById('info-box').innerHTML=="경상도"){
+	   				str += '<div class="card" style="width: 18rem;">';
+	   				str += '<img src="..." class="card-img-top" alt="...">';
+	   				str += '<div class="card-body">';
+	   				str += '<h5 class="card-title">경상도</h5>';
+	   				str += '<p class="card-text">Some quick example text to build on the card title and make up the bulk of the cards content.</p>';
+	   				str += '</div>';
+	   				str += '</div>';	   				
+	   				document.getElementById("info-box").innerHTML = str;
+	   			} else if(document.getElementById('info-box').innerHTML=="강원도"){
+	   				str += '<div class="card" style="width: 18rem;">';
+	   				str += '<img src="..." class="card-img-top" alt="...">';
+	   				str += '<div class="card-body">';
+	   				str += '<h5 class="card-title">강원도</h5>';
+	   				str += '<p class="card-text">Some quick example text to build on the card title and make up the bulk of the cards content.</p>';
+	   				str += '</div>';
+	   				str += '</div>';	   				
+	   				document.getElementById("info-box").innerHTML = str;
+	   			} else if(document.getElementById('info-box').innerHTML=="전라도"){
+	   				str += '<div class="card" style="width: 18rem;">';
+	   				str += '<img src="..." class="card-img-top" alt="...">';
+	   				str += '<div class="card-body">';
+	   				str += '<h5 class="card-title">전라도</h5>';
+	   				str += '<p class="card-text">Some quick example text to build on the card title and make up the bulk of the cards content.</p>';
+	   				str += '</div>';
+	   				str += '</div>';	   				
+	   				document.getElementById("info-box").innerHTML = str;
+	   			} else if(document.getElementById('info-box').innerHTML=="제주도"){
+	   				str += '<div class="card" style="width: 18rem;">';
+	   				str += '<img src="..." class="card-img-top" alt="...">';
+	   				str += '<div class="card-body">';
+	   				str += '<h5 class="card-title">제주도</h5>';
+	   				str += '<p class="card-text">Some quick example text to build on the card title and make up the bulk of the cards content.</p>';
+	   				str += '</div>';
+	   				str += '</div>';	   				
+	   				document.getElementById("info-box").innerHTML = str;
+	   			} else {
+	   				
+	   			}
        		});
        		item.addEventListener('mouseleave', function(){
        		  $('#info-box').css('display','none');
        		});
-       		}) 
-
+       		})
+       		$(document).mousemove(function(e) {
+       		$('#info-box').css('top',e.pageY-100);
+       		$('#info-box').css('left',e.pageX+($('#info-box').width())/2+150);
+       		}).mouseover();
+       	
+		/* $("#info-box").html().on("change", function(){
+			if(document.getElementById('info-box').innerHTML=="수도권"){
+   				alert("수도권");
+   			} else if(document.getElementById('info-box').innerHTML=="경상도"){
+   				alert("경상도");
+   			} else if(document.getElementById('info-box').innerHTML=="충청도"){
+   				alert("충청도");
+   			} else if(document.getElementById('info-box').innerHTML=="경상도"){
+   				alert("경상도");
+   			} else if(document.getElementById('info-box').innerHTML=="강원도"){
+   				alert("강원도");
+   			} else if(document.getElementById('info-box').innerHTML=="전라도"){
+   				alert("전라도");
+   			} else if(document.getElementById('info-box').innerHTML=="제주도"){
+   				alert("제주도");
+   			} else {
+   				
+   			} 
+		}); */
       </script>
        	
     </script>
