@@ -28,13 +28,13 @@
 		<form method="post" name="myForm">
 			<div class="row justify-content-center pt-5">
 				<div class="form-floating mb-3" style="width:340px;">
-				  <input type="text" class="form-control" id="id" placeholder="id">
+				  <input type="text" class="form-control" id="id" placeholder="id" value="user">
 				  <label for="id" style="text-align:left;">아이디</label>
 				</div>
 			</div>
 			<div class="row justify-content-center pb-3">
 				<div class="form-floating" style="width:340px;">
-				  <input type="password" class="form-control" id="password" placeholder="Password" onkeyup="enterLogin();">
+				  <input type="password" class="form-control" id="password" placeholder="Password" value="1234" onkeyup="enterLogin();">
 				  <label for="password" style="text-align:left;">비밀번호</label>
 				</div>
 			</div>
