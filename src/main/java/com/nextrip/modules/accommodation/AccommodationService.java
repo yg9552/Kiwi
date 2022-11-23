@@ -26,6 +26,7 @@ public interface AccommodationService {
 	public Accommodation getOnePurchaseHistory(AccommodationVo vo) throws Exception;
 	public int CancelPurchaseHistory(Accommodation dto) throws Exception;
 	public int reservationConfirm(Accommodation dto) throws Exception;
+	public int reviewConfirm(Accommodation dto) throws Exception;
 	
 	//Room
 	public List<Accommodation> selectListRoom(AccommodationVo vo) throws Exception;

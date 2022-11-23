@@ -68,6 +68,9 @@ public class AccommodationDao {
 	public int reservationConfirm(Accommodation dto) {
 		return sqlSession.update(namespace+".reservationConfirm", dto);
 	}
+	public int reviewConfirm(Accommodation dto) {
+		return sqlSession.update(namespace+".reviewConfirm", dto);
+	}
 	
 	//Room
 	public List<Accommodation> selectListRoom(AccommodationVo vo) {

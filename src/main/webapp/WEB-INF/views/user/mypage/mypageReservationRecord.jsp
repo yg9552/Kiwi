@@ -9,7 +9,6 @@
 
 <!DOCTYPE HTML>
 <html  class="no-js" lang="zxx">
-<html>
 <head>
 	<meta charset="uTF-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -63,6 +62,7 @@
 	       			<form method="post" name="formList">
 	       				<input type="hidden" name="nxAccommodationSeq" value="<c:out value="${vo.nxAccommodationSeq}"/>">		<!-- #-> -->
 	       				<input type="hidden" name="nxPurchaseHistorySeq" id="nxPurchaseHistorySeq" value=""/>
+	       				<input type="hidden" name="nxAccommodationReviewSeq" id="nxAccommodationReviewSeq" value=""/>
 	       				<input type="hidden" id="thisPage" name="thisPage" value="<c:out value="${vo.thisPage }" default="1"/>">
 		       			<c:choose>
 			    			<c:when test="${fn:length(list) eq 0 }">
@@ -98,6 +98,7 @@
 													<c:if test="${list.reservationStatus eq 2 }">결제 완료</c:if>
 													<c:if test="${list.reservationStatus eq 3 }">예약 확정</c:if>
 													<c:if test="${list.reservationStatus eq 4 }">예약 취소</c:if>
+													<c:if test="${list.reservationStatus eq 5 }">예약 확정+</c:if>
 												</div>
 					       						<a href="javascript:goAccommodationView(<c:out value="${list.nxAccommodationSeq }"/>)">
 					       							<span style="float: right; font-size: 12px; color: black;">숙박 상세보기 > </span>
@@ -107,10 +108,10 @@
 					       						<p style="font-size: 13px;">일정: <fmt:formatDate value="${list.checkInDate }" pattern="yyyy-MM-dd"/> ~ <fmt:formatDate value="${list.checkOutDate }" pattern="yyyy-MM-dd"/></p>
 						       				</div>
 					       					<c:choose>
-					       						<c:when test="${list.reservationStatus eq 3  }">
+					       						<c:when test="${list.reservationStatus eq 3 }">
 					       						<div class="col-3" style="align-items: center;">
 					       							<button type="button" class="genric-btn info radius mt-5" onclick="goReservationView(<c:out value="${list.nxPurchaseHistorySeq }"/>)">예약 상세보기</button><br>
-				       								<button type="button" class="genric-btn success radius mt-1" onclick="goReservationView(<c:out value="${list.nxPurchaseHistorySeq }"/>)">리뷰 작성하기</button>
+				       								<button type="button" class="genric-btn success radius mt-1" onclick="goReviewForm(<c:out value="${list.nxPurchaseHistorySeq }"/>)">후기 작성하기</button>
 			       								</div>
 					       						</c:when>
 					       						<c:otherwise>
@@ -139,6 +140,7 @@
 		var goUrlReservationView = "/nextrip/mypageReservationView";
 		var goUrlAccommodationView ="/nextrip/region/accommodation/accommodationView"
 		var goUrlList="/nextrip/myReservation"
+		var goUrlReview="/nextrip/region/accommodation/reviewForm"
 		
 		var nxPurchaseHistorySeq = $("input:hidden[name=nxPurchaseHistorySeq]");
 
@@ -153,6 +155,10 @@
 		goAccommodationView = function(keyValue) {
 			seq.val(keyValue);
 			form.attr("action", goUrlAccommodationView).submit();
+		}
+		goReviewForm = function(keyValue) {
+			nxPurchaseHistorySeq.val(keyValue);
+			form.attr("action", goUrlReview).submit();
 		}
 		
 		goList = function(thisPage){

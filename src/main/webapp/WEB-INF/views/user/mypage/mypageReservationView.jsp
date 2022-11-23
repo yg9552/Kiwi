@@ -147,9 +147,20 @@
 		       		</div>
 		       		<div class="row mt-5" style="position: relative;">
 						<div class="col-12">
-							<button type="button" class="genric-btn danger-border" data-bs-toggle="modal" data-bs-target="#reservationCancel_modal">예약취소</button>
-							<button type="button" class="genric-btn info-border" data-bs-toggle="modal" data-bs-target="#reservationConfirm_modal">예약확정</button>
-							<button type="button" class="genric-btn success radius float-end" style="width: 120px;">인쇄하기</button>
+							<c:choose>
+								<c:when test="${item.reservationStatus eq 1 }">
+									<button type="button" class="genric-btn danger-border" data-bs-toggle="modal" data-bs-target="#reservationCancel_modal">예약취소</button>
+									<button type="button" class="genric-btn success radius float-end" style="width: 120px;">인쇄하기</button>
+								</c:when>
+								<c:when test="${item.reservationStatus eq 2 }">
+									<button type="button" class="genric-btn danger-border" data-bs-toggle="modal" data-bs-target="#reservationCancel_modal">예약취소</button>
+									<button type="button" class="genric-btn info-border" data-bs-toggle="modal" data-bs-target="#reservationConfirm_modal">예약확정</button>
+									<button type="button" class="genric-btn success radius float-end" style="width: 120px;">인쇄하기</button>
+								</c:when>
+								<c:otherwise>
+									<button type="button" class="genric-btn success radius float-end" style="width: 120px;">인쇄하기</button>
+								</c:otherwise>
+							</c:choose>
 							<div style="clear: both;"></div>
 						</div>
 					</div>
@@ -187,35 +198,34 @@
 						</div>
 					</div>
 					
-					<div class="modal fade" tabindex="-1" id="reservationConfirm_modal">
+					<div class="modal fade" tabindex="-1" id="reservationConfirm_modal" data-bs-backdrop="static">
 						<div class="modal-dialog">
 							<div class="modal-content">
 							  <div class="modal-header">
 							    <h5 class="modal-title">예약 확정</h5>
 							    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 							  </div>
-							  <div class="modal-body">
-							    <p>예약이 확정됩니다<br> 정말 확정하시겠습니까?</p>
+							  <div class="modal-body text-center">
+							    <p>예약이 확정되면<br><span class="text-danger">취소가 불가능합니다</span><br>확정하시겠습니까?</p>
 							  </div>
 							  <div class="modal-footer">
 							    <button type="button" class="genric-btn default" data-bs-dismiss="modal">뒤로가기</button>
-							    <button type="button" class="genric-btn info radius" id="btnConfirm" data-bs-toggle="modal" data-bs-target="#Confirm_modal_leave">예약확정</button>
+							    <button type="button" class="genric-btn info radius" data-bs-toggle="modal" data-bs-target="#Confirm_modal_leave">예약확정</button>
 							  </div>
 							</div>
 						</div>
 					</div>
-					<div class="modal fade" tabindex="-1" id="Confirm_modal_leave">
+					<div class="modal fade" tabindex="-1" id="Confirm_modal_leave" data-bs-backdrop="static">
 						<div class="modal-dialog">
 							<div class="modal-content">
 							  <div class="modal-header">
 							    <h5 class="modal-title">예약 확정</h5>
-							    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 							  </div>
 							  <div class="modal-body">
 							    <p>확정되었습니다.</p>
 							  </div>
 							  <div class="modal-footer">
-							    <button type="button" class="genric-btn default" data-bs-dismiss="modal">확인</button>
+							    <button type="button" class="genric-btn info" data-bs-dismiss="modal"  id="btnConfirm">확인</button>
 							  </div>
 							</div>
 						</div>

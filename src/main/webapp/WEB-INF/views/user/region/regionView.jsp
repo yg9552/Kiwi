@@ -82,7 +82,7 @@
                             </ul>
                             <br>
                             <h4 class="widget_title"><a href="/nextrip/region/accommodation/accommodationList">숙박상품</a></h4>
-                            <h4 class="widget_title"><a href="#">여행지소개</a></h4>
+                            <h4 class="widget_title"><a href="http://www.utic.go.kr/guide/cctvOpenData.do?key=x0EBH864Y0V2mqOqKKaUwp0QU5dyfMOKQEArrih2XRg1DGJ4li9Rq0LVb2bU">여행지소개</a></h4>
                         </aside>
                             
                     </div>
@@ -98,7 +98,19 @@
 		                        </aside>
 		                        <aside class="single_sidebar_widget post_category_widget">
 		                            <h4 class="widget_title">CCTV</h4>
-		                            <p id="cctvurl"></p>
+		                            <c:choose>
+		                            	<c:when test="${itemC.replaceCode eq 201 }">
+		                            		<embed src="http://www.utic.go.kr/view/map/openDataCctvStream.jsp?key=x0EBH864Y0V2mqOqKKaUwp0QU5dyfMOKQEArrih2XRg1DGJ4li9Rq0LVb2bU&cctvid=E910145&cctvName=%255B%25EA%25B2%25BD%25EB%25B6%2580%25EC%2584%25A0%255D%25EC%2584%259C%25EC%25B4%2588&kind=Z3&cctvip=null&cctvch=null&id=99/h5m1fEJcpyDarNr32fkMZv7HEYgpTK5bbV5LjrGqxI4+5iaNiU7ER7phmVXAz3qeD039K19g970G8TWP25NctdITK/D54U+SNoVmLYFAJKY=&cctvpasswd=null&cctvport=null" width="300px" height="300px">
+		                            	</c:when>
+		                            	<c:when test="${itemC.replaceCode eq 202 }">
+		                            		<embed src="http://www.utic.go.kr/view/map/openDataCctvStream.jsp?key=x0EBH864Y0V2mqOqKKaUwp0QU5dyfMOKQEArrih2XRg1DGJ4li9Rq0LVb2bU&cctvid=E900716&cctvName=%255B%25EA%25B5%25AD%25EB%258F%258444%25ED%2598%25B8%25EC%2584%25A0%255D%25ED%2595%259C%25EA%25B3%2584%25EB%25A0%25B9%25EC%25A0%2595%25EC%2583%2581&kind=Z2&cctvip=null&cctvch=null&id=4499/5TADwymi7jNTPKxU+D5Owg4mGCaR4ZO3kZ6ZFVtwAsa3dTT2ED2TA5DSdCYvZymJgxXf2jty+31Ql+GGM20gw69Gbd1wwx877JsL47j0mdc=&cctvpasswd=null&cctvport=null" width="300px" height="300px">
+		                            	</c:when>
+		                            	<c:when test="${itemC.replaceCode eq 203 }">
+		                            		<embed src="http://www.utic.go.kr/view/map/openDataCctvStream.jsp?key=x0EBH864Y0V2mqOqKKaUwp0QU5dyfMOKQEArrih2XRg1DGJ4li9Rq0LVb2bU&cctvid=L230053&cctvName=%25EB%258B%25A4%25EB%258C%2580%25ED%258F%25AC%25ED%2595%25B4%25EC%2588%2598%25EC%259A%2595%25EC%259E%25A5%25EC%259E%2585%25EA%25B5%25AC&kind=I&cctvip=226&cctvch=105&id=null&cctvpasswd=null&cctvport=null" width="300px" height="300px">
+		                            	</c:when>
+		                            </c:choose>
+		                            <!-- <iframe src="http://www.utic.go.kr/view/map/openDataCctvStream.jsp?key=x0EBH864Y0V2mqOqKKaUwp0QU5dyfMOKQEArrih2XRg1DGJ4li9Rq0LVb2bU&cctvid=E912353&cctvName=%255B%25EC%259D%25B8%25EC%25B2%259C%25EA%25B5%25AD%25EC%25A0%259C%25EA%25B3%25B5%25ED%2595%25AD%25EC%2584%25A0%255D%25EC%2584%259C%25EC%259A%25B836.0K&kind=Z3&cctvip=null&cctvch=null&id=5719/hydAI4AYj42M1bUcz8tTW+XbjqEZX3ijCkgfSXBsq6NSd8EuzBaRvrAoj5ncrqI0p3ibOX4YDPjl8QWM1/YkR30M5ZeTBjNqCgNeGTSQUek=&cctvpasswd=null&cctvport=null" width=560 height=315 frameborder=0></iframe> -->
+		                            <!-- <iframe src="http://www.utic.go.kr/view/map/openDataCctvStream.jsp?key=x0EBH864Y0V2mqOqKKaUwp0QU5dyfMOKQEArrih2XRg1DGJ4li9Rq0LVb2bU&cctvid=E912791&cctvName=%255B%25EC%25A4%2591%25EB%25B6%2580%25EC%2584%25A0%255D%25EC%259D%25BC%25EC%25A3%25BD%25EC%2589%25BC%25ED%2584%25B0(%25ED%2595%2598%25EB%2582%25A8)&kind=Z3&cctvip=null&cctvch=null&id=2968//9xG+n+MVV5ulM+G4uyVBxnGhJtWtaPgaUuacTtBfMcMuBBMBDpFkRMDz1LONOUmvPSPiO+zxX9Z51MdFN1GMVBqNRadNljblLN0MsjL7NM=&cctvpasswd=null&cctvport=null" width=560 height=315 frameborder=0></iframe> -->
 		                        </aside>
 		                    </div>
                 		</div>

@@ -121,7 +121,7 @@ public class AccommodationController {
 	public String updatePurchaseHistory(@ModelAttribute("vo") AccommodationVo vo, Accommodation dto, RedirectAttributes redirectAttributes) throws Exception {
 		service.updatePurchaseHistory(dto);
 		redirectAttributes.addFlashAttribute("vo", vo);
-		return "redirect:/nextrip/region/accommodation/accommodationList";
+		return "redirect:/nextrip/myReservation";
 	}
 	
 	@ResponseBody
@@ -140,12 +140,20 @@ public class AccommodationController {
 		return returnMap;
 	}
 	
+	@RequestMapping(value = "reviewForm")
+	public String revierForm(@ModelAttribute("vo") AccommodationVo vo, Model model) throws Exception {
+		Accommodation item = service.getOnePurchaseHistory(vo);
+		model.addAttribute("item" ,item);
+		return "user/region/accommodation/accommodationReviewForm";
+	}
+	
 	@RequestMapping(value = "reviewInst")
 	public String insertReview(@ModelAttribute("vo") AccommodationVo vo, Accommodation dto, RedirectAttributes redirectAttributes) throws Exception {
 		service.insertReview(dto);
+		service.reviewConfirm(dto);
 		vo.setNxAccommodationReviewSeq(dto.getNxAccommodationReviewSeq());
 		redirectAttributes.addFlashAttribute("vo", vo);
-		return "redirect:/nextrip/region/accommodation/accommodationPurchase";
+		return "redirect:/nextrip/myReservation";
 	}
 	
 }
