@@ -54,6 +54,7 @@ public class PostController {
 	
 	@RequestMapping(value="postUserView")
 	public String postUserView(Post dto, @ModelAttribute("vo") PostVo vo, Model model)throws Exception{
+			service.postViewCount(dto);
 			Post item = service.postSelectOne(vo);
 			model.addAttribute("item", item);
 		

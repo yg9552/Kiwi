@@ -22,6 +22,7 @@ public class Post extends Base {
 	private String lng;
 	private String lat;
 	private Integer delNy;
+	private Integer viewCount;
 	private Date regDateTime;
 	private Date modDateTime;
 	
@@ -178,6 +179,15 @@ public class Post extends Base {
 
 	public void setDelNy(Integer delNy) {
 		this.delNy = delNy;
+	}
+	
+	public Integer getViewCount() {
+		return viewCount;
+	}
+
+
+	public void setViewCount(Integer viewCount) {
+		this.viewCount = viewCount;
 	}
 
 

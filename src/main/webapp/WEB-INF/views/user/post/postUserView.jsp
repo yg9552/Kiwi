@@ -170,7 +170,7 @@
 	                			<div style="float:right">
 		                			<span style="margin-right: 10px;"><span>작성일: </span><span id="regDateTime" name="regDateTime"><fmt:formatDate value="${item.regDateTime }" pattern="yyyy-MM-dd"/></span></span>
 		                			<span style="margin-right: 10px;"><span>작성자: </span><span id="memberNickName" name="memberNickName"><c:out value="${item.memberNickName }"/></span></span>
-		                			<span style="margin-right: 10px;"><span>조회수: </span><span>1</span></span>
+		                			<span style="margin-right: 10px;"><span>조회수: </span><span id="viewCount" name="viewCount"><c:out value="${item.viewCount }"/></span></span>
 		                		</div>
 	                		</div>
 	                		<div style="background-color: #f0f0f0; padding: 20px; border-top: 1px solid #e8e8e8; border-bottom: 2px solid #e8e8e8;">

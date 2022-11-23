@@ -63,11 +63,18 @@ public class PostDao {
 	public int postDelete(PostVo vo) {
 		return sqlSession.delete(namespace + ".postDelete", vo);
 	}
+	
+	public int postViewCount(Post dto) {
+		return sqlSession.update(namespace + ".postViewCount", dto);
+	}
+	
+	/* 찬구 s */
 	public List<Post> selectMyPostList(PostVo vo) {
 		return sqlSession.selectList(namespace+".selectMyPostList", vo);
 	}
 	public int countMyPostList(PostVo vo) {
 		return sqlSession.selectOne(namespace+".countMyPostList", vo);
 	}
+	/* 찬구 e */
 	
 }

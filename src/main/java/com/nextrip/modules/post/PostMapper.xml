@@ -39,6 +39,7 @@
 		,a.delNy
 		,a.regDateTime
 		,a.modDateTime
+		,a.viewCount
 		,b.name as memberName
 		,b.nickname as memberNickName
 		<include refid="selectCommon" />
@@ -95,6 +96,7 @@ where 1=1
 		,a.addressTitle
 		,a.title
 		,a.regDateTime
+		,a.viewCount
 		,b.nickName as memberNickName
 	<include refid="userSelectCommon" />
 	ORDER BY nxPostSeq DESC
@@ -201,6 +203,15 @@ where 1=1
 
 </delete>
 
+<update id="postViewCount">
+	UPDATE
+		nxPost
+	SET
+		viewCount = viewCount + 1
+	WHERE 1=1
+		AND	nxPostSeq = #{nxPostSeq}
+</update>
+
 <!-- 찬구 S -->
 <select id="countMyPostList" resultType="Integer">
 	SELECT
@@ -221,6 +232,7 @@ where 1=1
 		,a.delNy
 		,a.regDateTime
 		,a.modDateTime
+		,a.viewCount
 		,b.name as memberName
 		,b.nickname as memberNickName
 		FROM nxPost a

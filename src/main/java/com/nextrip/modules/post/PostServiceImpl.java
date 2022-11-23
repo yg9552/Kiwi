@@ -175,6 +175,13 @@ public class PostServiceImpl implements PostService{
 	public int postDelete(PostVo vo) throws Exception{
 		return dao.postDelete(vo);
 	}
+	
+	@Override
+	public int postViewCount(Post dto) throws Exception{
+		return dao.postViewCount(dto);
+	}
+	
+	/* 찬구 s */
 
 	@Override
 	public List<Post> selectMyPostList(PostVo vo) throws Exception {
@@ -185,5 +192,7 @@ public class PostServiceImpl implements PostService{
 	public int countMyPostList(PostVo vo) throws Exception {
 		return dao.countMyPostList(vo);
 	}
+	
+	/*찬구 e*/
 	
 }

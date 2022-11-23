@@ -254,6 +254,7 @@
 						      <th scope="col" style="width: 375px;">제목</th>
 						      <th scope="col col-lg-1">작성자</th>
 						      <th scope="col col-lg-1">작성일</th>
+						      <th scope="col col-lg-1">조회수</th>
 						    </tr>
 						  </thead>
 						  <tbody>
@@ -280,6 +281,7 @@
 									        <td onclick="location.href='javascript:goView(<c:out value="${list.nxPostSeq }"/>)'" style="cursor: pointer;"><c:out value="${list.title }"/></td>
 									        <td><c:out value="${list.memberNickName }"/></td>
 									        <td><fmt:formatDate value="${list.regDateTime }" pattern="yyyy-MM-dd"/></td>
+									        <td><c:out value="${list.viewCount }"/></td>
 							        	</tr>
 									</c:forEach>
 								</c:otherwise>

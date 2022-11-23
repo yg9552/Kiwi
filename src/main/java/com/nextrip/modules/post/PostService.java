@@ -24,6 +24,7 @@ public interface PostService {
 	public int postUpdate(Post dto) throws Exception;
 	public int postUelete(Post dto) throws Exception;
 	public int postDelete(PostVo vo) throws Exception;
+	public int postViewCount(Post dto) throws Exception;
 	
 	public List<Post> selectMyPostList(PostVo vo) throws Exception;
 	public int countMyPostList(PostVo vo) throws Exception;
