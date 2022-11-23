@@ -147,6 +147,7 @@ public class AccommodationController {
 		redirectAttributes.addFlashAttribute("vo", vo);
 		return "redirect:/nextrip/region/accommodation/accommodationPurchase";
 	}
+	
 }
 
 

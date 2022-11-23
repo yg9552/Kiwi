@@ -65,6 +65,9 @@ public class AccommodationDao {
 	public int CancelPurchaseHistory(Accommodation dto) {
 		return sqlSession.update(namespace+".CancelPurchaseHistory", dto);
 	}
+	public int reservationConfirm(Accommodation dto) {
+		return sqlSession.update(namespace+".reservationConfirm", dto);
+	}
 	
 	//Room
 	public List<Accommodation> selectListRoom(AccommodationVo vo) {

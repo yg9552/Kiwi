@@ -306,10 +306,17 @@
  
          console.log(e);
          // e.date를 찍어보면 Thu Jun 27 2019 00:00:00 GMT+0900 (한국 표준시) 위와 같은 형태로 보인다.
+         var date1 = new Date($("#checkInDate").val());
+         var date2 = new Date($("#checkOutDate").val());
+         
+         if (date2 - date1 < 0){
+       	  	$("#checkInDate").val("");
+        	alert("체크아웃 날짜가 체크인 날짜보다 이전일수 없습니다"); return false;
+         }
       });
 	$('#checkOutDate').datepicker({
    	  format: 'yyyy-mm-dd', //데이터 포맷 형식(yyyy : 년 mm : 월 dd : 일 )
-   	  startDate: '-0d', //달력에서 선택 할 수 있는 가장 빠른 날짜. 이전으로는 선택 불가능 ( d : 일 m : 달 y : 년 w : 주)
+   	  startDate: '+1d', //달력에서 선택 할 수 있는 가장 빠른 날짜. 이전으로는 선택 불가능 ( d : 일 m : 달 y : 년 w : 주)
          endDate: '+10y', //달력에서 선택 할 수 있는 가장 느린 날짜. 이후로 선택 불가 ( d : 일 m : 달 y : 년 w : 주)
          autoclose: true, //사용자가 날짜를 클릭하면 자동 캘린더가 닫히는 옵션
          calendarWeeks: false, //캘린더 옆에 몇 주차인지 보여주는 옵션 기본값 false 보여주려면 true
@@ -344,7 +351,15 @@
  
          console.log(e);
          // e.date를 찍어보면 Thu Jun 27 2019 00:00:00 GMT+0900 (한국 표준시) 위와 같은 형태로 보인다.
+         var date1 = new Date($("#checkInDate").val());
+         var date2 = new Date($("#checkOutDate").val());
+         
+         if (date2 - date1 < 0){
+       	  	$("#checkOutDate").val("");
+        	alert("체크아웃 날짜가 체크인 날짜보다 이전일수 없습니다"); return false;
+         }
       });
+      
       
       $("#nxRoomSeq").on("change", function(){
     	  $.ajax({
@@ -487,6 +502,14 @@
         $("#btnFindRoad").on("click", function() {
     		window.open('https://map.kakao.com/link/to/<c:out value="${item.hotelName }" />,<c:out value="${item.lat }" />,<c:out value="${item.lng }" />','_blank',"width=1920 ,height=937");
     	});
+        
+        var date1 = new Date('#checkInDate');
+        var date2 = new Date('#checkOutDate');
+
+        console.log(date1 > date2);
+        console.log(date1 >= date2);
+        console.log(date1 < date2);
+        console.log(date1 <= date2);
 		</script>
 		<!-- <script>
 		function chageLangSelect(){

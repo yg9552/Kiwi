@@ -148,6 +148,7 @@
 		       		<div class="row mt-5" style="position: relative;">
 						<div class="col-12">
 							<button type="button" class="genric-btn danger-border" data-bs-toggle="modal" data-bs-target="#reservationCancel_modal">예약취소</button>
+							<button type="button" class="genric-btn info-border" data-bs-toggle="modal" data-bs-target="#reservationConfirm_modal">예약확정</button>
 							<button type="button" class="genric-btn success radius float-end" style="width: 120px;">인쇄하기</button>
 							<div style="clear: both;"></div>
 						</div>
@@ -164,7 +165,7 @@
 							  </div>
 							  <div class="modal-footer">
 							    <button type="button" class="genric-btn default" data-bs-dismiss="modal">뒤로가기</button>
-							    <button type="button" class="genric-btn danger radius" id="btnCancel" data-bs-toggle="modal" data-bs-target="#Cancel_modal_leave">예매취소</button>
+							    <button type="button" class="genric-btn danger radius" id="btnCancel" data-bs-toggle="modal" data-bs-target="#Cancel_modal_leave">예약취소</button>
 							  </div>
 							</div>
 						</div>
@@ -185,6 +186,40 @@
 							</div>
 						</div>
 					</div>
+					
+					<div class="modal fade" tabindex="-1" id="reservationConfirm_modal">
+						<div class="modal-dialog">
+							<div class="modal-content">
+							  <div class="modal-header">
+							    <h5 class="modal-title">예약 확정</h5>
+							    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+							  </div>
+							  <div class="modal-body">
+							    <p>예약이 확정됩니다<br> 정말 확정하시겠습니까?</p>
+							  </div>
+							  <div class="modal-footer">
+							    <button type="button" class="genric-btn default" data-bs-dismiss="modal">뒤로가기</button>
+							    <button type="button" class="genric-btn info radius" id="btnConfirm" data-bs-toggle="modal" data-bs-target="#Confirm_modal_leave">예약확정</button>
+							  </div>
+							</div>
+						</div>
+					</div>
+					<div class="modal fade" tabindex="-1" id="Confirm_modal_leave">
+						<div class="modal-dialog">
+							<div class="modal-content">
+							  <div class="modal-header">
+							    <h5 class="modal-title">예약 확정</h5>
+							    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+							  </div>
+							  <div class="modal-body">
+							    <p>확정되었습니다.</p>
+							  </div>
+							  <div class="modal-footer">
+							    <button type="button" class="genric-btn default" data-bs-dismiss="modal">확인</button>
+							  </div>
+							</div>
+						</div>
+					</div>
 				</form>
 	       	</div>
 		</div>
@@ -192,6 +227,7 @@
 	<script type="text/javascript">
 		var goUrlPurchase = "/nextrip/region/accommodation/accommodationPurchase";
 		var goUrlCancel = "/nextrip/CancelPurchaseHistory";
+		var goUrlConfirm = "/nextrip/reservationConfirm";
 		
 		var nxPurchaseHistorySeq = $("input:hidden[name=nxPurchaseHistorySeq]");
 		var nxAccommodationSeq = $("input:hidden[name=nxAccommodationSeq]");
@@ -206,6 +242,10 @@
 		
 		$("#btnCancel").on("click",function(){
 			form.attr("action",goUrlCancel).submit();
+		});
+		
+		$("#btnConfirm").on("click",function(){
+			form.attr("action",goUrlConfirm).submit();
 		});
 	
 	</script>

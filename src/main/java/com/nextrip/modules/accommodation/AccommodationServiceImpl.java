@@ -199,6 +199,12 @@ for(int i=0; i<multipartFiles.length; i++) {
 		// TODO Auto-generated method stub
 		return dao.insertReview(dto);
 	}
+
+	@Override
+	public int reservationConfirm(Accommodation dto) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.reservationConfirm(dto);
+	}
 	
 
 }

@@ -96,7 +96,7 @@
 					       						<div class="" style="font-weight: bold;">
 													<c:if test="${list.reservationStatus eq 1 }">결제 대기</c:if>
 													<c:if test="${list.reservationStatus eq 2 }">결제 완료</c:if>
-													<c:if test="${list.reservationStatus eq 3 }">리뷰 작성</c:if>
+													<c:if test="${list.reservationStatus eq 3 }">예약 확정</c:if>
 													<c:if test="${list.reservationStatus eq 4 }">예약 취소</c:if>
 												</div>
 					       						<a href="javascript:goAccommodationView(<c:out value="${list.nxAccommodationSeq }"/>)">
@@ -106,9 +106,19 @@
 					       						<p>&nbsp;<c:out value="${list.hotelName }"/> <c:out value="${list.dateGap }"/>박<c:out value="${list.dateGap + 1}"/>일</p>
 					       						<p style="font-size: 13px;">일정: <fmt:formatDate value="${list.checkInDate }" pattern="yyyy-MM-dd"/> ~ <fmt:formatDate value="${list.checkOutDate }" pattern="yyyy-MM-dd"/></p>
 						       				</div>
-						       				<div class="col-3" style="display:flex; align-items: center;">
-					       						<button type="button" class="genric-btn info radius" onclick="goReservationView(<c:out value="${list.nxPurchaseHistorySeq }"/>)">예약 상세보기</button>
-						       				</div>
+					       					<c:choose>
+					       						<c:when test="${list.reservationStatus eq 3  }">
+					       						<div class="col-3" style="align-items: center;">
+					       							<button type="button" class="genric-btn info radius mt-5" onclick="goReservationView(<c:out value="${list.nxPurchaseHistorySeq }"/>)">예약 상세보기</button><br>
+				       								<button type="button" class="genric-btn success radius mt-1" onclick="goReservationView(<c:out value="${list.nxPurchaseHistorySeq }"/>)">리뷰 작성하기</button>
+			       								</div>
+					       						</c:when>
+					       						<c:otherwise>
+						       						<div class="col-3" style="display: flex; align-items: center;">
+						       							<button type="button" class="genric-btn info radius" onclick="goReservationView(<c:out value="${list.nxPurchaseHistorySeq }"/>)">예약 상세보기</button><br>
+					       							</div>
+					       						</c:otherwise>
+					       					</c:choose>
 					       				</div>
 					       			</div>
 			    				</c:forEach>

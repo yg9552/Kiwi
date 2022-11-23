@@ -430,6 +430,14 @@
 	    AND a.nxPurchaseHistorySeq = #{nxPurchaseHistorySeq}
 	</select>
 	
+	<update id="reservationConfirm">
+		UPDATE nxPurchaseHistory
+		SET
+			reservationStatus = 3
+		WHERE
+			nxPurchaseHistorySeq = #{nxPurchaseHistorySeq}
+	</update>
+	
 	<update id="CancelPurchaseHistory">
 		UPDATE nxPurchaseHistory
 		SET

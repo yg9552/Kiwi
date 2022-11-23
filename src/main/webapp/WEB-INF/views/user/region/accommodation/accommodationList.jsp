@@ -184,11 +184,12 @@
 	                                	<c:forEach items="${listregion}" var="listregion" varStatus="statuslistregion">
 	                                		<c:if test="${list.region eq listregion.replaceCode }"><li><a><i class="fa-solid fa-location-dot"></i><c:out value="${listregion.name }"/></a></li></c:if>
 		                        		</c:forEach>
-				                        <li><a><i class="fa fa-comments"></i> 후기 <c:if test="${list.nxAccommodationSeq eq vorv.nxAccommodationSeq }"><c:out value="${vorv.totalRows }" /></c:if>건 </a></li>
+				                        <%-- <li><a><i class="fa fa-comments"></i> 후기 <c:if test="${list.nxAccommodationSeq eq vorv.nxAccommodationSeq }"><c:out value="${vorv.totalRows }" /></c:if>건 </a></li> --%>
+				                        <li><a><c:forEach items="${listR }" var="listR" varStatus="statuslistR"> <c:if test="${listR.nxAccommodationSeq eq list.nxAccommodationSeq && listR.roomType eq 1 }">1박 <fmt:formatNumber value="${listR.price }" pattern="#,###" /> 원 ~</c:if></c:forEach> </a></li>
 				                    </ul>
-				                    <c:forEach items="${listR }" var="listR" varStatus="statuslistR">
+				                    <%-- <c:forEach items="${listR }" var="listR" varStatus="statuslistR">
 				                    	<c:if test="${listR.nxAccommodationSeq eq list.nxAccommodationSeq && listR.roomType eq 1 }"><h5 class="mt-2 text-danger">1박 <fmt:formatNumber value="${listR.price }" pattern="#,###" /> 원 ~</h5></c:if>
-				                    </c:forEach>
+				                    </c:forEach> --%>
 	                            </div>
 	                        </article>
                         </c:forEach>
@@ -254,10 +255,6 @@
         
         var seq = $("input:hidden[name=nxAccommodationSeq]");
 		var form = $("form[name=formList]");
-		
-		$("#btnSh").on("click", function(){
-	   		form.attr("action", goUrlList).submit();
-    	});
 		
 		$("#201").on("click", function(){
 			document.getElementById('kangwon').disabled = true;

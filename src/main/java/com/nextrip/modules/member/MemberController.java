@@ -117,6 +117,13 @@ public class MemberController {
 		
 		return "redirect:/nextrip/myReservation";
 	}
+
+	@RequestMapping(value = "/nextrip/reservationConfirm")
+	public String reservationConfirm(@ModelAttribute("vo") AccommodationVo vo, Accommodation dto, RedirectAttributes redirectAttributes) throws Exception {
+		service2.reservationConfirm(dto);
+		redirectAttributes.addFlashAttribute("vo", vo);
+		return "redirect:/nextrip/myReservation";
+	}
 	
 	@RequestMapping(value="/nextrip/mypagePostRecord")
 	public String mypagePostRecord(@ModelAttribute("vo") PostVo vo, Model model, HttpSession httpSession) throws Exception {
