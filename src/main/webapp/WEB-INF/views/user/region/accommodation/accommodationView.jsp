@@ -511,6 +511,7 @@
         console.log(date1 < date2);
         console.log(date1 <= date2);
 		</script>
+		
 		<!-- <script>
 		function chageLangSelect(){
 		    var langSelect = document.getElementById("nxRoomSeq");
