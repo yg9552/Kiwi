@@ -325,7 +325,6 @@
 		<!-- Svg Area Start -->
 	</form>
     </main>
-    
 		
     <!-- userFooter s -->
 		<%@include file="../common/userFooter.jsp"%>
@@ -350,64 +349,68 @@
        		      document.getElementById('info-box').innerHTML=this.getAttribute("title")
        		    if(document.getElementById('info-box').innerHTML=="수도권"){
        		    	str += '<div class="card" style="width: 18rem;">';
-	   				str += '<img src="..." class="card-img-top" alt="...">';
+       		    	/* str += '<div class="carousel slide card-img-top" data-bs-ride="carousel">';
+       		    	str += '<div class="carousel-inner">';
+       		    	str += '<div class="carousel-item active" data-bs-interval="1000">';
+       		    	str += '<img src="/resources/image/main/seoul1.jpg" style="width: 18rem; height:180px;" class="d-block w-10" alt="">';
+       		    	str += '</div>';
+       		    	str += '<div class="carousel-item" data-bs-interval="1000">';
+       		    	str += '<img src="/resources/image/main/seoul2.jpg" style="width: 18rem; height:120px;" class="d-block w-10" alt="">';
+       		    	str += '</div>'; 
+       		    	str += '<div class="carousel-item" data-bs-interval="1000">';
+       		    	str += '<img src="/resources/image/main/seoul3.jpg" style="width: 18rem; height:120px;" class="d-block w-10" alt="">';
+       		    	str += '</div>';
+       		    	str += '</div>';
+       		    	str += '</div>'; */
+	   				str += '<img src="/resources/image/main/seoul1.jpg" class="card-img-top" alt="">';
 	   				str += '<div class="card-body">';
 	   				str += '<h5 class="card-title">수도권</h5>';
-	   				str += '<p class="card-text">Some quick example text to build on the card title and make up the bulk of the cards content.</p>';
+//	   				str += '<p class="card-text">Some quick example text to build on the card title and make up the bulk of the cards content.</p>';
 	   				str += '</div>';
 	   				str += '</div>';	   				
 	   				document.getElementById("info-box").innerHTML = str;
 	   			} else if(document.getElementById('info-box').innerHTML=="경상도"){
 	   				str += '<div class="card" style="width: 18rem;">';
-	   				str += '<img src="..." class="card-img-top" alt="...">';
+	   				str += '<img src="/resources/image/main/busan2.jpg" class="card-img-top" alt="">';
 	   				str += '<div class="card-body">';
 	   				str += '<h5 class="card-title">경상도</h5>';
-	   				str += '<p class="card-text">Some quick example text to build on the card title and make up the bulk of the cards content.</p>';
+//	   				str += '<p class="card-text">Some quick example text to build on the card title and make up the bulk of the cards content.</p>';
 	   				str += '</div>';
 	   				str += '</div>';
 	   				document.getElementById("info-box").innerHTML = str;
 	   			} else if(document.getElementById('info-box').innerHTML=="충청도"){
 	   				str += '<div class="card" style="width: 18rem;">';
-	   				str += '<img src="..." class="card-img-top" alt="...">';
+	   				str += '<img src="/resources/image/main/chungcheong1.jpg" class="card-img-top" alt="...">';
 	   				str += '<div class="card-body">';
 	   				str += '<h5 class="card-title">충청도</h5>';
-	   				str += '<p class="card-text">Some quick example text to build on the card title and make up the bulk of the cards content.</p>';
-	   				str += '</div>';
-	   				str += '</div>';	   				
-	   				document.getElementById("info-box").innerHTML = str;
-	   			} else if(document.getElementById('info-box').innerHTML=="경상도"){
-	   				str += '<div class="card" style="width: 18rem;">';
-	   				str += '<img src="..." class="card-img-top" alt="...">';
-	   				str += '<div class="card-body">';
-	   				str += '<h5 class="card-title">경상도</h5>';
-	   				str += '<p class="card-text">Some quick example text to build on the card title and make up the bulk of the cards content.</p>';
+//	   				str += '<p class="card-text">Some quick example text to build on the card title and make up the bulk of the cards content.</p>';
 	   				str += '</div>';
 	   				str += '</div>';	   				
 	   				document.getElementById("info-box").innerHTML = str;
 	   			} else if(document.getElementById('info-box').innerHTML=="강원도"){
 	   				str += '<div class="card" style="width: 18rem;">';
-	   				str += '<img src="..." class="card-img-top" alt="...">';
+	   				str += '<img src="/resources/image/main/gangwon1.jpg" class="card-img-top" alt="...">';
 	   				str += '<div class="card-body">';
 	   				str += '<h5 class="card-title">강원도</h5>';
-	   				str += '<p class="card-text">Some quick example text to build on the card title and make up the bulk of the cards content.</p>';
+//	   				str += '<p class="card-text">Some quick example text to build on the card title and make up the bulk of the cards content.</p>';
 	   				str += '</div>';
 	   				str += '</div>';	   				
 	   				document.getElementById("info-box").innerHTML = str;
 	   			} else if(document.getElementById('info-box').innerHTML=="전라도"){
 	   				str += '<div class="card" style="width: 18rem;">';
-	   				str += '<img src="..." class="card-img-top" alt="...">';
+	   				str += '<img src="/resources/image/main/jeonla1.jpg" class="card-img-top" alt="...">';
 	   				str += '<div class="card-body">';
 	   				str += '<h5 class="card-title">전라도</h5>';
-	   				str += '<p class="card-text">Some quick example text to build on the card title and make up the bulk of the cards content.</p>';
+//	   				str += '<p class="card-text">Some quick example text to build on the card title and make up the bulk of the cards content.</p>';
 	   				str += '</div>';
 	   				str += '</div>';	   				
 	   				document.getElementById("info-box").innerHTML = str;
 	   			} else if(document.getElementById('info-box').innerHTML=="제주도"){
 	   				str += '<div class="card" style="width: 18rem;">';
-	   				str += '<img src="..." class="card-img-top" alt="...">';
+	   				str += '<img src="/resources/image/main/jeju1.jpg" class="card-img-top" alt="...">';
 	   				str += '<div class="card-body">';
 	   				str += '<h5 class="card-title">제주도</h5>';
-	   				str += '<p class="card-text">Some quick example text to build on the card title and make up the bulk of the cards content.</p>';
+//	   				str += '<p class="card-text">Some quick example text to build on the card title and make up the bulk of the cards content.</p>';
 	   				str += '</div>';
 	   				str += '</div>';	   				
 	   				document.getElementById("info-box").innerHTML = str;
@@ -423,7 +426,7 @@
        		$('#info-box').css('top',e.pageY-100);
        		$('#info-box').css('left',e.pageX+($('#info-box').width())/2+150);
        		}).mouseover();
-       	
+       	       	
 		/* $("#info-box").html().on("change", function(){
 			if(document.getElementById('info-box').innerHTML=="수도권"){
    				alert("수도권");
