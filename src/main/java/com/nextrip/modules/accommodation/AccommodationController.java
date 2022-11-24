@@ -143,7 +143,10 @@ public class AccommodationController {
 	@RequestMapping(value = "reviewForm")
 	public String revierForm(@ModelAttribute("vo") AccommodationVo vo, Model model) throws Exception {
 		Accommodation item = service.getOnePurchaseHistory(vo);
+		List<Accommodation> listR = service.selectListRoom(vo);
 		model.addAttribute("item" ,item);
+		model.addAttribute("listUploaded", service.selectListUploaded(vo));
+		model.addAttribute("listR", listR);
 		return "user/region/accommodation/accommodationReviewForm";
 	}
 	

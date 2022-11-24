@@ -42,40 +42,57 @@
         </div>
      </div>
      <!-- slider Area End-->
-     <div class="comment-form container">
-        <h4>후기작성</h4>
-        <form class="form-contact comment_form" name="form" id="commentForm">
-        <input type="hidden" name="memberSeq" value='<c:out value="${item.memberSeq }" />'>
-        <input type="hidden" name="nxAccommodationSeq" value='<c:out value="${item.nxAccommodationSeq }" />'>
-        <input type="hidden" name="nxPurchaseHistorySeq" value='<c:out value="${item.nxPurchaseHistorySeq }" />'>
-           <div class="row">
-              <div class="col-12">
-                 <div class="form-group">
-                    <textarea class="form-control w-100" name="generalReview" id="comment" cols="30" rows="9"
-                       placeholder="Write Comment"></textarea>
-                 </div>
-              </div>
-              <div class="col-sm-6">
-                 <div class="form-group">
-                    <input class="form-control" name="name" id="name" type="text" placeholder="Name">
-                 </div>
-              </div>
-              <div class="col-sm-6">
-                 <div class="form-group">
-                    <input class="form-control" name="email" id="email" type="email" placeholder="Email">
-                 </div>
-              </div>
-              <div class="col-12">
-                 <div class="form-group">
-                    <input class="form-control" name="website" id="website" type="text" placeholder="Website">
-                 </div>
-              </div>
-           </div>
-           <div class="form-group">
-              <button type="button" class="button button-contactForm btn_1 boxed-btn" id="btnSave">등록하기</button>
-           </div>
-        </form>
-     </div>
+     <section class="blog_area single-post-area section-padding">
+      <div class="container">
+         <div class="row">
+            <div class="col-12 col-lg-8 posts-list">
+               <div class="single-post">
+                  <div class="blog_details">
+                     <h2>후기작성</h2>
+                     <ul class="blog-info-link mt-3 mb-4">
+                     	<li><a href="#"><i class="fa-solid fa-hotel"></i> <c:out value="${item.hotelName }" /> </a></li>
+                        <li><a href="#"><i class="fa-solid fa-calendar"></i> <fmt:formatDate value="${item.checkInDate }" pattern="yyyy-MM-dd"/> ~ <fmt:formatDate value="${item.checkOutDate }" pattern="yyyy-MM-dd"/> </a></li>
+                        <li><a href="#"><i class="fa-solid fa-bed"></i> <c:out value="${item.roomName }" /> </a></li>
+                     </ul>
+                     <div class="">
+				        <form class="form-contact comment_form" name="form" id="commentForm">
+				        <input type="hidden" name="memberSeq" value='<c:out value="${item.memberSeq }" />'>
+				        <input type="hidden" name="nxAccommodationSeq" value='<c:out value="${item.nxAccommodationSeq }" />'>
+				        <input type="hidden" name="nxPurchaseHistorySeq" value='<c:out value="${item.nxPurchaseHistorySeq }" />'>
+				           <div class="row">
+				              <div class="col-12">
+				                 <div class="form-group">
+				                    <textarea class="form-control w-100" name="generalReview" id="comment" cols="30" rows="9"
+				                       placeholder="멋진 후기를 남겨주세요!"></textarea>
+				                 </div>
+				              </div>
+				           </div>
+				           <div class="form-group row">
+				           	<div class="col">
+				           		<button type="button" class="button button-contactForm btn_1 boxed-btn" id="btnList">뒤로가기</button>
+				           	</div>
+				           	<div class="col-auto">
+				           		<button type="button" class="button button-contactForm btn_1 boxed-btn col-auto" id="btnSave">등록하기</button>
+				           	</div>
+				           </div>
+				        </form>
+				     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="d-none d-lg-block col-lg-4">
+            	<div class="feature-img">
+               		<c:forEach items="${listUploaded}" var="listUploaded" varStatus="statusUploaded">
+                		<c:if test="${listUploaded.type eq 2 && listUploaded.sort eq 0 && listUploaded.pseq eq item.nxAccommodationSeq}">
+                   			<img class="img-fluid" src="<c:out value="${listUploaded.path }"/><c:out value="${listUploaded.uuidName }"/>" alt="" style="height: 280px;">
+                		</c:if>
+              		</c:forEach>	
+                </div>
+            </div>
+         </div>
+      </div>
+	 </section>
+   
     <!-- userFooter s -->
 		<%@include file="../../../common/userFooter.jsp"%>
   	<!-- userFooter e -->
@@ -120,11 +137,15 @@
         
         <script type="text/javascript">
         var goUrlInst = "/nextrip/region/accommodation/reviewInst";
+        var goUrlList="/nextrip/myReservation"
         
         var form = $("form[name=form]");
         
         $("#btnSave").on("click", function(){
    	   		form.attr("action", goUrlInst).submit();
+    	});
+        $("#btnList").on("click", function(){
+        	$(location).attr('href',goUrlList);
     	});
         </script>
 
