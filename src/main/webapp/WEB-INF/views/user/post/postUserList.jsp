@@ -33,7 +33,7 @@
 	<link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/style.css">
 	<script src="https://kit.fontawesome.com/dca973ab96.js" crossorigin="anonymous"></script>
 	<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	<style>
 		.state{
 			    display: block;
@@ -147,7 +147,7 @@
 				     <!-- slider Area End-->
 				     <div style="height: 50px;"></div>
                 	<!-- Blog Area Start -->
-                	<form method="post" id="PUBForm" name="PUBForm">
+                	<form method="post" id="PBLForm" name="PBLForm">
 	                	<input type="hidden" name="nxPostSeq">
 			        	<input type="hidden" name="memberSeq" value="${sessSeq }">
 				        <div class="home-blog-area section-padding2" style="padding: 0px;">
@@ -161,90 +161,42 @@
 				                    </div>
 				                </div>
 				                <div class="row">
-				                	<c:forEach items="${list}" var="list" varStatus="status">
-										<c:set var="listCodeRegion" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
-									  	<c:set var="listCodePostDiv" value="${CodeServiceImpl.selectListCachedCode('4')}"/>
+				                	<c:forEach items="${best}" var="best" varStatus="status">
+										<c:set var="bestCodeRegion" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
+									  	<c:set var="bestCodePostDiv" value="${CodeServiceImpl.selectListCachedCode('4')}"/>
 										<div class="col-xl-4 col-lg-4 col-md-4">
-				                        <div class="home-blog-single mb-30">
-				                            <div class="blog-img-cap">
-				                                <div class="blog-img">
-				                                	<c:choose>
-				                                		<c:when test="${best.path eq null}">
-				                                			<img src="/resources/image/post/binPhoto.jpg" alt="">
-				                                		</c:when>
-				                                		<c:otherwise>
-				                                    		<img src="<c:out value="${best.path }"/><c:out value="${best.uuidName }"/>" alt="">
-			                                    		</c:otherwise>
-				                                	</c:choose>
-				                                </div>
-				                                <div class="">
-				                                    <p> |   
-				                                    	<c:forEach items="${listCodeRegion}" var="listCodeRegion" varStatus="statusRegion">
-															<c:if test="${best.region eq listCodeRegion.replaceCode}"><span class="state"><c:out value="${listCodeRegion.name }"/></span></c:if>
-														</c:forEach>
-													</p>
-				                                    <h3>
-				                                    	<a href="">
-															<c:forEach items="${listCodePostDiv}" var="listCodePostDiv" varStatus="statusPostDiv">
-																<c:if test="${list.postType eq listCodePostDiv.replaceCode}"><span class="state"><c:out value="${listCodePostDiv.name }"/></span></c:if>
+					                        <div class="home-blog-single mb-30">
+					                            <div class="blog-img-cap">
+					                                <div class="blog-img">
+					                                	<c:choose>
+					                                		<c:when test="${best.path eq null}">
+					                                			<img src="/resources/image/post/binPhoto.jpg" width="260px" height="195px" style="cursor: pointer; object-fit:contain; background-color: #f0f0f0;" alt="" 
+					                                			onclick="location.href='javascript:goBest(<c:out value="${best.nxPostSeq }"/>)'">
+					                                		</c:when>
+					                                		<c:otherwise>
+					                                    		<img src="<c:out value="${best.path }"/><c:out value="${best.uuidName }"/>" width="260px" height="195px" style="cursor: pointer; background-color: #f0f0f0; object-fit:contain;" alt=""
+					                                    		onclick="location.href='javascript:goBest(<c:out value="${best.nxPostSeq }"/>)'">
+				                                    		</c:otherwise>
+					                                	</c:choose>
+					                                </div>
+					                                <div>
+					                                    <p> 	   
+					                                    	<c:forEach items="${bestCodeRegion}" var="bestCodeRegion" varStatus="statusBestRegion">
+																<c:if test="${best.region eq bestCodeRegion.replaceCode}"><span><c:out value="${bestCodeRegion.name }"/></span></c:if>
 															</c:forEach>
+															/
+															<c:forEach items="${bestCodePostDiv}" var="bestCodePostDiv" varStatus="statusBestPostDiv">
+																<c:if test="${best.postType eq bestCodePostDiv.replaceCode}"><span class=""><c:out value="${bestCodePostDiv.name }"/></span></c:if>
+															</c:forEach>
+														</p>
+				                                    	<a onclick="location.href='javascript:goBest(<c:out value="${best.nxPostSeq }"/>)'" style="cursor: pointer;">
+															<p style="width:260px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><b><c:out value="${best.title }"/></b></p>
 														</a>
-													</h3>
-				                                    <a href="" class="more-btn">지역 가기 »</a>
-				                                </div>
-				                            </div>
-				                        </div>
-				                    </div>
+					                                </div>
+					                            </div>
+					                        </div>
+					                    </div>
 									</c:forEach>
-				                    <div class="col-xl-4 col-lg-4 col-md-4">
-				                        <div class="home-blog-single mb-30">
-				                            <div class="blog-img-cap">
-				                                <div class="blog-img">
-				                                    <img src="/resources/template/gotrip-master/assets/img/blog/home-blog1.jpg" alt="">
-				                                </div>
-				                                <div class="">
-				                                    <p> |   Traveling</p>
-				                                    <h3><a href="single-blog.html">
-														<c:forEach items="${listCodePostDiv}" var="listCodePostDiv" varStatus="statusPostDiv">
-															<c:if test="${list.postType eq listCodePostDiv.replaceCode}"><span class="state"><c:out value="${listCodePostDiv.name }"/></span></c:if>
-														</c:forEach>
-													</a></h3>
-				                                    <a href="#" class="more-btn">지역 가기 »</a>
-				                                </div>
-				                            </div>
-				                        </div>
-				                    </div>
-				                    <div class="col-xl-4 col-lg-4 col-md-4">
-				                        <div class="home-blog-single mb-30">
-				                            <div class="blog-img-cap">
-				                                <div class="blog-img">
-				                                    <img src="/resources/template/gotrip-master/assets/img/blog/home-blog1.jpg" alt="">
-				                                </div>
-				                                <div class="">
-				                                    <p> |   Traveling</p>
-				                                    <h3><a href="single-blog.html">제주</a></h3>
-				                                    <a href="#" class="more-btn">지역 가기 »</a>
-				                                </div>
-				                            </div>
-				                        </div>
-				                    </div>
-				                    <div class="col-xl-4 col-lg-4 col-md-4">
-				                        <div class="home-blog-single mb-30">
-				                            <div class="blog-img-cap">
-				                                <div class="blog-img">
-				                                    <img src="/resources/template/gotrip-master/assets/img/blog/home-blog2.jpg" alt="">
-				                                </div>
-				                                <div class="">
-				                                    <p> |   <c:forEach items="${listCodeRegion}" var="listCodeRegion" varStatus="statusRegion">
-																<c:if test="${best.region eq listCodeRegion.replaceCode}"><span class="state"><c:out value="${listCodeRegion.name }"/></span></c:if>
-															</c:forEach>
-													</p>
-				                                    <h3><a href="single-blog.html">부산</a></h3>
-				                                    <a href="#" class="more-btn">지역 가기 »</a>
-				                                </div>
-				                            </div>
-				                        </div>
-				                    </div>
 				                </div>
 				            </div>
 				        </div>
@@ -325,7 +277,11 @@
 													<c:if test="${list.region eq listCodeRegion.replaceCode}"><span class="state"><c:out value="${listCodeRegion.name }"/></span></c:if>
 												</c:forEach>
 											</td>
-									        <td onclick="location.href='javascript:goView(<c:out value="${list.nxPostSeq }"/>)'" style="cursor: pointer;"><c:out value="${list.title }"/></td>
+									        <td onclick="location.href='javascript:goView(<c:out value="${list.nxPostSeq }"/>)'" style="cursor: pointer;">
+									        	<p style="cursor: pointer; width:350px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin: 0px;">
+									        		<c:out value="${list.title }"/>
+									        	</p>
+									        </td>
 									        <td><c:out value="${list.memberNickName }"/></td>
 									        <td><fmt:formatDate value="${list.regDateTime }" pattern="yyyy-MM-dd"/></td>
 									        <td><c:out value="${list.viewCount }"/></td>
@@ -459,13 +415,13 @@
 	
 	</script>
 	<!-- All JS Custom Plugins Link Here here -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 	<script>
 	var goUrlList = "/post/postUserList";
 	var goUrlView = "/post/postUserView";
 	var goUrlRegMod = "/post/postRegMod";
 	
 	var form = $("form[name=PLForm]"); 
+	var bForm = $("form[name=PBLForm]");
 	var seq = $("input:hidden[name=nxPostSeq]");
 	
 	goList = function(thisPage){
@@ -476,6 +432,11 @@
 	goView = function(seqValue){
 		seq.val(seqValue);
 		form.attr("action", goUrlView).submit();
+	}
+	
+	goBest = function(seqValue){
+		seq.val(seqValue);
+		bForm.attr("action", goUrlView).submit();
 	}
 	
 	goRegMod = function(seqValue){

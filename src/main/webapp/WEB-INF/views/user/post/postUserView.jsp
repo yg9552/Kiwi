@@ -175,7 +175,16 @@
 		                		</div>
 	                		</div>
 	                		<div style="background-color: #f0f0f0; padding: 20px; border-top: 1px solid #e8e8e8; border-bottom: 2px solid #e8e8e8;">
-	                			<a style="display:block;"><img src="<c:out value="${item.path }"/><c:out value="${item.uuidName }"/>" width="200px" height="144px" style="float: left; object-fit:contain;"></a>
+	                			<a style="display:block;">
+	                				<c:choose>
+                                		<c:when test="${item.path eq null}">
+                                			<img src="/resources/image/post/binPhoto.jpg" width="200px" height="144px" style="float: left; object-fit:contain;">
+                                		</c:when>
+                                		<c:otherwise>
+                                    		<img src="<c:out value="${item.path }"/><c:out value="${item.uuidName }"/>" width="200px" height="144px" style="float: left; object-fit:contain;">
+                                   		</c:otherwise>
+                                	</c:choose>
+	                			</a>
 	                			<div style="display:block; height: 144px;">
 	                				<span style="margin-left: 15px;">
 	                					<span>후기 종류:
@@ -196,19 +205,26 @@
 	                			${item.content }
 	                		</div>
 	                		<c:choose>
-	                			<c:when test="${like.memberSeq eq null}">
-	                				<div id="likeBtnDiv" name="likeBtnDiv" class="row" style="margin-top: 30px;">
-			                			<button type="button" class="genric-btn info col-lg-2 offset-5"  id="likeBtn" name="likeBtn">
-			                				<i class="fa-regular fa-thumbs-up"></i> 좋아요 ${likeCount}
-		                				</button>
-			                		</div>
-								</c:when>
-								<c:otherwise>
-			                		<div class="row" style="margin-top: 30px;">
-		                				<button type="button" class="genric-btn info col-lg-2 offset-5" id="likedBtn" name="likedBtn">
-			                				<i class="fa-solid fa-thumbs-up"></i> 좋아요 ${likeCount}
-		                				</button>
-			                		</div>
+	                			<c:when test="${sessSeq eq null }">
+		                			
+			                	</c:when>
+			                	<c:otherwise>
+			                		<c:choose>
+				                		<c:when test="${like.memberSeq eq null}">
+			                				<div id="likeBtnDiv" name="likeBtnDiv" class="row" style="margin-top: 30px;">
+					                			<button type="button" class="genric-btn info col-lg-2 offset-5"  id="likeBtn" name="likeBtn">
+					                				<i class="fa-regular fa-thumbs-up"></i> 좋아요 ${likeCount}
+				                				</button>
+					                		</div>
+										</c:when>
+										<c:otherwise>
+					                		<div class="row" style="margin-top: 30px;">
+				                				<button type="button" class="genric-btn info col-lg-2 offset-5" id="likedBtn" name="likedBtn">
+					                				<i class="fa-solid fa-thumbs-up"></i> 좋아요 ${likeCount}
+				                				</button>
+					                		</div>
+					                	</c:otherwise>
+				                	</c:choose>
 			                	</c:otherwise>
 		                	</c:choose>
 	                		<c:choose>
@@ -223,7 +239,7 @@
 								</c:when>
 								<c:otherwise>
 			                		<div style="margin-top: 30px;">
-			                			<button type="button" class="genric-btn info" style="float: right;" id="listBtn" name="listBtn">목록</button>
+			                			<button type="button" class="genric-btn info" style="float: left;" id="listBtn" name="listBtn">목록</button>
 			                		</div>
 			                	</c:otherwise>
 		                	</c:choose>
