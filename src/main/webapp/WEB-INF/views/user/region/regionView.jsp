@@ -92,21 +92,24 @@
                 		<div class="col-lg-5">
                 			<div class="blog_right_sidebar">
 		                        <aside class="single_sidebar_widget post_category_widget">
-		                            <h4 class="widget_title">날씨</h4>
-		                            <p id="description"></p>
-		                            <p id="temperature"></p>
-		                        </aside>
-		                        <aside class="single_sidebar_widget post_category_widget">
 		                            <h4 class="widget_title">CCTV</h4>
 		                            <c:choose>
 		                            	<c:when test="${itemC.replaceCode eq 201 }">
-		                            		<embed src="http://www.utic.go.kr/view/map/openDataCctvStream.jsp?key=x0EBH864Y0V2mqOqKKaUwp0QU5dyfMOKQEArrih2XRg1DGJ4li9Rq0LVb2bU&cctvid=E910145&cctvName=%255B%25EA%25B2%25BD%25EB%25B6%2580%25EC%2584%25A0%255D%25EC%2584%259C%25EC%25B4%2588&kind=Z3&cctvip=null&cctvch=null&id=99/h5m1fEJcpyDarNr32fkMZv7HEYgpTK5bbV5LjrGqxI4+5iaNiU7ER7phmVXAz3qeD039K19g970G8TWP25NctdITK/D54U+SNoVmLYFAJKY=&cctvpasswd=null&cctvport=null" width="300px" height="300px">
+		                            		<embed src="http://www.utic.go.kr/view/map/openDataCctvStream.jsp?key=x0EBH864Y0V2mqOqKKaUwp0QU5dyfMOKQEArrih2XRg1DGJ4li9Rq0LVb2bU&cctvid=L010047&cctvName=%25EC%2584%25B8%25EC%25A2%2585%25EB%25A1%259C&kind=Seoul&cctvip=null&cctvch=51&id=47&cctvpasswd=null&cctvport=null" width="300px" height="300px">
 		                            	</c:when>
 		                            	<c:when test="${itemC.replaceCode eq 202 }">
-		                            		<embed src="http://www.utic.go.kr/view/map/openDataCctvStream.jsp?key=x0EBH864Y0V2mqOqKKaUwp0QU5dyfMOKQEArrih2XRg1DGJ4li9Rq0LVb2bU&cctvid=E900716&cctvName=%255B%25EA%25B5%25AD%25EB%258F%258444%25ED%2598%25B8%25EC%2584%25A0%255D%25ED%2595%259C%25EA%25B3%2584%25EB%25A0%25B9%25EC%25A0%2595%25EC%2583%2581&kind=Z2&cctvip=null&cctvch=null&id=4499/5TADwymi7jNTPKxU+D5Owg4mGCaR4ZO3kZ6ZFVtwAsa3dTT2ED2TA5DSdCYvZymJgxXf2jty+31Ql+GGM20gw69Gbd1wwx877JsL47j0mdc=&cctvpasswd=null&cctvport=null" width="300px" height="300px">
+		                            		<embed src="http://www.utic.go.kr/view/map/openDataCctvStream.jsp?key=x0EBH864Y0V2mqOqKKaUwp0QU5dyfMOKQEArrih2XRg1DGJ4li9Rq0LVb2bU&cctvid=E901019&cctvName=%255B%25EA%25B5%25AD%25EB%258F%25847%25ED%2598%25B8%25EC%2584%25A0%255D%25EC%2598%25A4%25EC%2585%2598%25EB%25B7%25B0C.C%25EC%2595%259E%25EC%2582%25BC%25EA%25B1%25B0%25EB%25A6%25AC&kind=Z2&cctvip=null&cctvch=null&id=4475/zjpNw7RPFsqEZOqdWflNRm8yGrS0JT+fQ5wdzhErNwLkblOf0FNEduMqrfguvO6Jf/kKWQ2ss8gf2LFLE6aw62gOq6/Pxou5Msm6t0+xWu8=&cctvpasswd=null&cctvport=null" width="300px" height="300px">
 		                            	</c:when>
 		                            	<c:when test="${itemC.replaceCode eq 203 }">
 		                            		<embed src="http://www.utic.go.kr/view/map/openDataCctvStream.jsp?key=x0EBH864Y0V2mqOqKKaUwp0QU5dyfMOKQEArrih2XRg1DGJ4li9Rq0LVb2bU&cctvid=L230053&cctvName=%25EB%258B%25A4%25EB%258C%2580%25ED%258F%25AC%25ED%2595%25B4%25EC%2588%2598%25EC%259A%2595%25EC%259E%25A5%25EC%259E%2585%25EA%25B5%25AC&kind=I&cctvip=226&cctvch=105&id=null&cctvpasswd=null&cctvport=null" width="300px" height="300px">
+		                            	</c:when>
+		                            	<c:when test="${itemC.replaceCode eq 204 }">
+		                            		<embed src="http://www.utic.go.kr/view/map/openDataCctvStream.jsp?key=x0EBH864Y0V2mqOqKKaUwp0QU5dyfMOKQEArrih2XRg1DGJ4li9Rq0LVb2bU&cctvid=E913650&cctvName=%255B%25ED%2598%25B8%25EB%2582%25A8%25EC%2584%25A0%255D%25ED%259B%2584%25EC%25A0%25952%25EA%25B5%2590&kind=Z3&cctvip=null&cctvch=null&id=8424/Z0UZJxZuZtwE/dVsG4hBAygulqYaHBvL98cfxYbubQI2gxPj1t1DiG1ggHO0VFZrJ6NcSWu/EAPvHy0WgysdWOBTzKflibWDoXYBHt5MI6s=&cctvpasswd=null&cctvport=null" width="300px" height="300px">
+		                            	</c:when>
+		                            	<c:when test="${itemC.replaceCode eq 205 }">
+		                            		<embed src="http://www.utic.go.kr/view/map/openDataCctvStream.jsp?key=x0EBH864Y0V2mqOqKKaUwp0QU5dyfMOKQEArrih2XRg1DGJ4li9Rq0LVb2bU&cctvid=E07010&cctvName=%25EB%2582%25A8%25EC%2584%25A0%25EA%25B3%25B5%25EC%259B%2590%25EB%2584%25A4%25EA%25B1%25B0%25EB%25A6%25AC&kind=E&cctvip=119&cctvch=null&id=CCTV48&cctvpasswd=null&cctvport=null" height="300px">
+		                            	</c:when>
+		                            	<c:when test="${itemC.replaceCode eq 206 }">
 		                            	</c:when>
 		                            </c:choose>
 		                            <!-- <iframe src="http://www.utic.go.kr/view/map/openDataCctvStream.jsp?key=x0EBH864Y0V2mqOqKKaUwp0QU5dyfMOKQEArrih2XRg1DGJ4li9Rq0LVb2bU&cctvid=E912353&cctvName=%255B%25EC%259D%25B8%25EC%25B2%259C%25EA%25B5%25AD%25EC%25A0%259C%25EA%25B3%25B5%25ED%2595%25AD%25EC%2584%25A0%255D%25EC%2584%259C%25EC%259A%25B836.0K&kind=Z3&cctvip=null&cctvch=null&id=5719/hydAI4AYj42M1bUcz8tTW+XbjqEZX3ijCkgfSXBsq6NSd8EuzBaRvrAoj5ncrqI0p3ibOX4YDPjl8QWM1/YkR30M5ZeTBjNqCgNeGTSQUek=&cctvpasswd=null&cctvport=null" width=560 height=315 frameborder=0></iframe> -->
@@ -116,14 +119,23 @@
                 		</div>
                 		<div class="col-12 col-lg" style="width: 200px; height: 300px;">
                 			<div class="slider-wrap feature-img">
-							  <div><img src="/resources/template/html/image/bamboo.jpg" alt="" style="width: 525px; height: 500px;"></div>
-							  <div><img src="/resources/template/gotrip-master/assets/img/hero/scenery-g6805d4812_1920.jpg" alt="" style="width: 525px; height: 300px;"></div>
-							  <div><img src="/resources/template/gotrip-master/assets/img/hero/scenery-g6805d4812_1920.jpg" alt=""></div>
-							  <div><img src="/resources/template/gotrip-master/assets/img/hero/scenery-g6805d4812_1920.jpg" alt=""></div>
+							  <div><img src="/resources/template/html/image/bamboo.jpg" alt="" style="height: 300px;"></div>
+							  <div><img src="/resources/template/gotrip-master/assets/img/hero/scenery-g6805d4812_1920.jpg" alt="" style="height: 300px;"></div>
 							</div>
                 		</div>
                 	</div>
-                    <div class="row" style="margin-top: 200px;">
+                	<div class="row">
+                		<div class="col-lg-12">
+                			<div class="blog_right_sidebar">
+		                        <aside class="single_sidebar_widget post_category_widget">
+		                            <h4 class="widget_title">날씨</h4>
+		                            <p id="description"></p>
+		                            <p id="temperature"></p>
+		                        </aside>
+		                    </div>
+                		</div>
+                	</div>
+                    <div class="row">
                     	<div class="col">
                     		<div class="blog_right_sidebar">
 		                        <aside class="single_sidebar_widget post_category_widget">
