@@ -149,6 +149,7 @@
                 	<!-- Blog Area Start -->
                 	<form method="post" id="PUVForm" name="PUVForm">
 	                	<input type="hidden" id="nxPostSeq" name="nxPostSeq" value="${item.nxPostSeq }">
+	                	<input type="hidden" id="memberSeq" name="memberSeq" value="${sessSeq}">
                 		<div>
 	                		<h2 id="title" name="title"><c:out value="${item.title }"/></h2>
 	                		<div style="height: 20px;"></div>
@@ -194,6 +195,22 @@
 	                		<div class="content" id="content" name="content" style="padding: 20px;border-bottom: 1px solid #f0f0f0;">
 	                			${item.content }
 	                		</div>
+	                		<c:choose>
+	                			<c:when test="${like.memberSeq eq null}">
+	                				<div id="likeBtnDiv" name="likeBtnDiv" class="row" style="margin-top: 30px;">
+			                			<button type="button" class="genric-btn info col-lg-2 offset-5"  id="likeBtn" name="likeBtn">
+			                				<i class="fa-regular fa-thumbs-up"></i> 좋아요 ${likeCount}
+		                				</button>
+			                		</div>
+								</c:when>
+								<c:otherwise>
+			                		<div class="row" style="margin-top: 30px;">
+		                				<button type="button" class="genric-btn info col-lg-2 offset-5" id="likedBtn" name="likedBtn">
+			                				<i class="fa-solid fa-thumbs-up"></i> 좋아요 ${likeCount}
+		                				</button>
+			                		</div>
+			                	</c:otherwise>
+		                	</c:choose>
 	                		<c:choose>
 								<c:when test="${item.memberSeq eq sessSeq}"> <!-- length(list)가 0이면 이걸 하고 -->
 									<div style="margin-top: 30px;">
@@ -367,6 +384,42 @@
     		window.open('https://map.kakao.com/link/to/<c:out value="${item.addressTitle }" />,<c:out value="${item.lat }" />,<c:out value="${item.lng }" />','target="blank"',"width=1920 ,height=1080");
     	});
 		
+		function overlap(){
+			alert("추천은 1인당 한번씩만 할 수 있습니다.");
+		};
+		
+		$("#likedBtn").on("click", function(){
+			overlap();
+		});
+		
+		
+		$("#likeBtn").on("click", function(){
+			/* if(validation() == false) return false; */
+			$.ajax({
+				async: true 
+				,cache: false
+				,type: "post"
+				/* ,dataType:"json" */
+				,url: "/post/postLike"
+				/* ,data : $("#formLogin").serialize() */
+				,data : { "nxPostSeq" : $("#nxPostSeq").val(), "memberSeq" : $("#memberSeq").val() }/* , "autoLogin" : $("#autoLogin").is(":checked")}*/
+				,success: function(response) {
+					if(response.rt == "success") {
+						var str = "";
+						$("#likeBtnDiv").empty();
+		   				str += '<button type="button" class="genric-btn info col-lg-2 offset-5" id="likedBtn" name="likedBtn" onclick="overlap();">';
+		   				str += '<i class="fa-solid fa-thumbs-up"></i> 좋아요 ' + response.likedCount;
+		   				str += '</button>';	   		
+		   				document.getElementById("likeBtnDiv").innerHTML = str;
+					} else {
+						
+					}
+				}
+				,error : function(jqXHR, textStatus, errorThrown){
+					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+				}
+			});
+		});
 		
 		</script>	
 		<!-- All JS Custom Plugins Link Here here -->

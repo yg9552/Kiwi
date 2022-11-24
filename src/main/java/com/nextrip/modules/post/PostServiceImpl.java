@@ -181,6 +181,20 @@ public class PostServiceImpl implements PostService{
 		return dao.postViewCount(dto);
 	}
 	
+	/* 추천 s */
+	
+	public int postLikeCount(PostVo vo) throws Exception{
+		return dao.postLikeCount(vo);
+	}
+	public Post postLikeList(PostVo vo) throws Exception{
+		return dao.postLikeList(vo);
+	}
+	public int postLikeInsert(Post dto) throws Exception{
+		return dao.postLikeInsert(dto);
+	}
+	
+	/* 추천 e */
+	
 	/* 찬구 s */
 
 	@Override

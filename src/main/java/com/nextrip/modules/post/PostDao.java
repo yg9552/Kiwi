@@ -68,6 +68,21 @@ public class PostDao {
 		return sqlSession.update(namespace + ".postViewCount", dto);
 	}
 	
+/* 추천 s */
+	
+	public int postLikeCount(PostVo vo) throws Exception{
+		return sqlSession.selectOne(namespace + ".postLikeCount", vo);
+	}
+	public Post postLikeList(PostVo vo)throws Exception{
+		return sqlSession.selectOne(namespace + ".postLikeList", vo);
+	}
+	
+	public int postLikeInsert(Post dto) throws Exception{
+		return sqlSession.insert(namespace + ".postLikeInsert", dto);
+	}
+	
+	/* 추천 e */
+	
 	/* 찬구 s */
 	public List<Post> selectMyPostList(PostVo vo) {
 		return sqlSession.selectList(namespace+".selectMyPostList", vo);

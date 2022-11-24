@@ -6,6 +6,7 @@ public class PostVo extends BaseVo {
 	
 	private String nxPostSeq;
 	private String memberSeq;
+	private Integer likeCount;
 	
 	
 	public String getNxPostSeq() {
@@ -20,8 +21,12 @@ public class PostVo extends BaseVo {
 	public void setMemberSeq(String memberSeq) {
 		this.memberSeq = memberSeq;
 	}
-	
-    
+	public Integer getLikeCount() {
+		return likeCount;
+	}
+	public void setLikeCount(Integer likeCount) {
+		this.likeCount = likeCount;
+	}
 	
     
     

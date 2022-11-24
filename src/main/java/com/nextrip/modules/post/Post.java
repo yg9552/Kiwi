@@ -30,6 +30,8 @@ public class Post extends Base {
 	//join
 	private String memberName;
 	private String memberNickName;
+	private String nxPostLikeSeq;
+	private Integer likeCount;
 	
 	//upload
 	
@@ -37,6 +39,8 @@ public class Post extends Base {
 	private Integer uploadImageMaxNumber;
 	private String[] uploadImageDeleteSeq;
 	private String[] uploadImageDeletePathFile;	
+
+	
 
 	
 	private String servletContext;
@@ -278,6 +282,26 @@ public class Post extends Base {
 
 	public void setServletContext(String servletContext) {
 		this.servletContext = servletContext;
+	}
+
+
+	public Integer getLikeCount() {
+		return likeCount;
+	}
+
+
+	public void setLikeCount(Integer likeCount) {
+		this.likeCount = likeCount;
+	}
+
+
+	public String getNxPostLikeSeq() {
+		return nxPostLikeSeq;
+	}
+
+
+	public void setNxPostLikeSeq(String nxPostLikeSeq) {
+		this.nxPostLikeSeq = nxPostLikeSeq;
 	}
 	
 	

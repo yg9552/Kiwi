@@ -26,6 +26,14 @@ public interface PostService {
 	public int postDelete(PostVo vo) throws Exception;
 	public int postViewCount(Post dto) throws Exception;
 	
+	/* 추천 s */
+	
+	public int postLikeCount(PostVo vo) throws Exception;
+	public Post postLikeList(PostVo vo) throws Exception;
+	public int postLikeInsert(Post dto) throws Exception;
+	
+	/* 추천 e */
+	
 	public List<Post> selectMyPostList(PostVo vo) throws Exception;
 	public int countMyPostList(PostVo vo) throws Exception;
 	

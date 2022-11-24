@@ -1,7 +1,9 @@
 package com.nextrip.modules.post;
 
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -18,6 +20,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.nextrip.common.util.UtilDateTime;
@@ -55,6 +58,10 @@ public class PostController {
 	@RequestMapping(value="postUserView")
 	public String postUserView(Post dto, @ModelAttribute("vo") PostVo vo, Model model)throws Exception{
 			service.postViewCount(dto);
+			Post like = service.postLikeList(vo);
+			model.addAttribute("like", like);
+			int likeCount = service.postLikeCount(vo);
+			model.addAttribute("likeCount", likeCount);
 			Post item = service.postSelectOne(vo);
 			model.addAttribute("item", item);
 		
@@ -239,6 +246,26 @@ public class PostController {
 	        workbook.close();
 		}
     }
+	
+	//ajax
+	
+	@ResponseBody
+	@RequestMapping(value = "postLike")
+	public Map<String, Object> checkPassword(Post dto, PostVo vo) throws Exception {
+
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		
+		int result = service.postLikeInsert(dto);
+		int likedCount = service.postLikeCount(vo);
+
+		if (result == 0) {
+			returnMap.put("rt", "fail");
+		} else {
+			returnMap.put("rt", "success");
+			returnMap.put("likedCount", likedCount);
+		}
+		return returnMap;
+	}
 	
 
 }

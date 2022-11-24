@@ -208,6 +208,7 @@
 			        	<input type="hidden" id="thisPage" name="thisPage" value="<c:out value="${vo.thisPage }" default="1"/>">
 						<input type="hidden" id="rowNumToShow" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
 			        	<input type="hidden" id="nxPostSeq" name="nxPostSeq">
+			        	<input type="hidden" id="memberSeq" name="memberSeq" value="${sessSeq }">
 				        <table class="table" style="text-align: center;">
 				          <caption class="caption-top">
 					          <div class="row">

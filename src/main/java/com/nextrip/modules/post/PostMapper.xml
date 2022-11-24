@@ -212,6 +212,42 @@ where 1=1
 		AND	nxPostSeq = #{nxPostSeq}
 </update>
 
+<!-- 추천 S -->
+
+<select id="postLikeCount" resultType="Integer">
+	select
+		count(*) as likeCount
+	from nxPostLike
+	where 1=1
+	AND nxPostSeq = #{nxPostSeq}
+</select>
+
+<select id="postLikeList" resultMap="resultMapObj">
+	select
+		memberSeq
+	from nxPostLike
+	where 1=1
+	AND nxPostSeq = #{nxPostSeq}
+	AND memberSeq = #{memberSeq}
+</select>
+
+<insert id="postLikeInsert">
+	INSERT INTO nxPostLike (
+			nxPostSeq
+			,memberSeq
+		)
+		VALUES (
+			#{nxPostSeq}
+			,#{memberSeq}
+		)
+		<selectKey resultType="String" keyProperty="nxPostLikeSeq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+</insert>
+
+
+<!-- 추천 S -->
+
 <!-- 찬구 S -->
 <select id="countMyPostList" resultType="Integer">
 	SELECT
