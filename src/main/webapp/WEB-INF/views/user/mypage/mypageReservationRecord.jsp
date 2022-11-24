@@ -17,7 +17,6 @@
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="manifest" href="site.webmanifest">
-	<link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 
 	<%@include file="../../common/templateCSS.jsp"%>
@@ -55,7 +54,7 @@
 	       			<ul class="caution p-4">
 	       				<li>예약상세보기를 클릭하면 자세한 정보를 확인 할 수 있습니다.</li>
 	       				<li>환불은 일정 시작 7일전 100% 환불, 3일전 50%환불, 1일전 환불 불가이며, 자세한 절차는 알아서</li>
-	       				<li></li>
+	       				<li>예약 확정시 취소는 문의를 통해 진행하실 수 있습니다.</li>
 	       			</ul>
 	       		</div>
 	       		<div class="my-3">

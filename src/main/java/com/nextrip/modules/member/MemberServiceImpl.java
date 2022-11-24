@@ -44,6 +44,16 @@ public class MemberServiceImpl implements MemberService {
 		dto.setPassword(UtilSecurity.encryptSha256(dto.getPassword()));
 		return dao.userReg(dto);
 	}
+	@Override
+	public int passwordCheck(MemberVo vo) throws Exception {
+		vo.setPassword(UtilSecurity.encryptSha256(vo.getPassword()));
+		return dao.passwordCheck(vo);
+	}
+	@Override
+	public int passwordUpdt(Member dto) throws Exception {
+		dto.setNewPass(UtilSecurity.encryptSha256(dto.getNewPass()));
+		return dao.passwordUpdt(dto);
+	}
 
 
 }

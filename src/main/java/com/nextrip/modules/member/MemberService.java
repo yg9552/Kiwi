@@ -8,6 +8,8 @@ public interface MemberService {
 	public Member selectOneMember(MemberVo vo) throws Exception;
 	public int memberUpdt(Member dto) throws Exception;
 	public int memberVele(Member dto) throws Exception;
+	public int passwordCheck(MemberVo vo) throws Exception;
+	public int passwordUpdt(Member dto) throws Exception;
 	
 	public Member checkId(Member dto) throws Exception;
 	public Member login(MemberVo vo) throws Exception;

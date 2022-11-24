@@ -68,6 +68,28 @@ public class MemberController {
 		return "user/mypage/mypageMemberModification";
 	}
 	
+	@RequestMapping(value="/nextrip/newPassword")
+	public String newPassword(MemberVo vo,HttpSession httpSession) throws Exception {
+		
+		
+		return "user/mypage/mypageNewPassword";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/nextrip/passwordUpdt")
+	public Map<String,Object> passwordUpdt(Member dto, MemberVo vo, RedirectAttributes redirectAttributes) throws Exception {
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		int result = service.passwordCheck(vo);
+		if(result==1) {
+			service.passwordUpdt(dto);
+			returnMap.put("rt", "success");
+		} else {
+			returnMap.put("rt", "fail");
+		}
+		
+		return returnMap;
+	}
+	
 	@RequestMapping(value="/nextrip/myReservation")
 	public String selectMyReservationList(Model model,@ModelAttribute("vo") AccommodationVo vo, HttpSession httpSession) throws Exception {
 		String rtSeq = (String) httpSession.getAttribute("sessSeq");

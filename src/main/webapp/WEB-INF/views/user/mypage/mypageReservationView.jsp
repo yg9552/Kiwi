@@ -44,7 +44,7 @@
 </style>
 <body>
 	<%@include file="../../common/userHeader.jsp"%>
-    <div class="container">
+    <div class="container my-5">
     	<div class="row">
     		<div class="col-3">
 				<%@include file="../../common/mypageSideMenu.jsp"%>
@@ -234,6 +234,9 @@
 	       	</div>
 		</div>
 	</div>
+	<!-- userFooter s -->
+		<%@include file="../../common/userFooter.jsp"%>
+  	<!-- userFooter e -->
 	<script type="text/javascript">
 		var goUrlPurchase = "/nextrip/region/accommodation/accommodationPurchase";
 		var goUrlCancel = "/nextrip/CancelPurchaseHistory";

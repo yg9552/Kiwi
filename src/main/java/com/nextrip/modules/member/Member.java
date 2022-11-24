@@ -6,6 +6,7 @@ public class Member {
 	private String id;
 	private String password;
 	private String passwordCheck;
+	private String newPass;
 	private String nickname;
 	private String name;
 	private String dob;
@@ -114,6 +115,12 @@ public class Member {
 	}
 	public void setModDateTime(String modDateTime) {
 		this.modDateTime = modDateTime;
+	}
+	public String getNewPass() {
+		return newPass;
+	}
+	public void setNewPass(String newPass) {
+		this.newPass = newPass;
 	}
 	
 	

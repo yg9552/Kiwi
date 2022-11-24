@@ -86,6 +86,26 @@
 			AND memberSeq=#{memberSeq}
 	</update>
 	
+	<!-- 비밀번호 변경 S -->
+	<select id="passwordCheck" resultType="Integer">
+		SELECT
+			count(*)
+		FROM member
+		WHERE 1=1
+			AND memberSeq=#{memberSeq}
+			AND password=#{password}
+	</select>
+	
+	<update id="passwordUpdt">
+		UPDATE member
+		SET
+			password=#{newPass}
+		WHERE 1=1
+			AND memberSeq=#{memberSeq}
+			AND delNy=0
+	</update>
+	<!-- 비밀번호 변경 E -->
+	
 	<select id="getIdList" resultMap="resultMapObj">
 		SELECT
 			memberSeq

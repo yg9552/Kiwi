@@ -39,14 +39,14 @@
 </style>
 <body>
 	<%@include file="../../common/userHeader.jsp"%>
-    <div class="container">
+    <div class="container my-5">
     	<div class="row">
     		<div class="col-3">
 				<%@include file="../../common/mypageSideMenu.jsp"%>
 	       	</div>
 	       	<div class="col-9">
 	       		<p>개인정보 수정</p>
-	       		<form method="post" name="myForm" autocomplete="off">
+	       		<form method="post" id="myForm" name="myForm" autocomplete="off">
 		       		<div>
 					    <table class="table">
 					        <colgroup>
@@ -60,7 +60,7 @@
 					                <th>아이디</th>
 					                <td><input type="text" class="form-control" disabled="disabled" value='<c:out value="${item.id }"/>' style="border: none;"></td>
 					                <th>비밀번호</th>
-					                <td><button type="button" class="genric-btn info">비밀번호변경</button></td>
+					                <td><button type="button" class="genric-btn info" onclick="goNewPassword(<c:out value="${item.memberSeq}"/>)">비밀번호변경</button></td>
 					            </tr>
 		                        <tr>
 									<th>한글이름</th>
@@ -133,11 +133,15 @@
 	       	</div>
 		</div>
 	</div>
+	<!-- userFooter s -->
+		<%@include file="../../common/userFooter.jsp"%>
+  	<!-- userFooter e -->
 	
 	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 	 <script type="text/javascript">
 	 	var goUrlUpdt = "/nextrip/memberUpdt";
 	 	var goUrlVele = "/nextrip/memberVele";
+	 	var goUrlNewPassword = "/nextrip/newPassword";
 	 	
 	 	var form = $("form[name=myForm]");
 	 	
@@ -152,6 +156,11 @@
 				dateFormat: "yy-mm-dd"
 			});
 		} );
+        
+        goNewPassword = function(keyValue) {
+        	form.attr("action",goUrlNewPassword).submit();
+        }
+        
         $(document).on("keyup", "#phoneNum", function() { 
     		$(this).val( $(this).val().replace(/[^0-9]/g, "").replace(/(^02|^0505|^1[0-9]{3}|^0[0-9]{2})([0-9]+)?([0-9]{4})$/,"$1-$2-$3").replace("--", "-") );
     	});
