@@ -72,6 +72,8 @@ public class PostController {
 	public String postUserList(@ModelAttribute("vo") PostVo vo, Model model)throws Exception{
 		
 		vo.setParamsPaging(service.postSelectListCount(vo));
+		List<Post> best = service.bestLikePost(vo);
+		model.addAttribute("best",best);
 		List<Post> list = service.postSelectList(vo);
 		model.addAttribute("list", list);
 		

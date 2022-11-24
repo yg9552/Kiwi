@@ -193,6 +193,10 @@ public class PostServiceImpl implements PostService{
 		return dao.postLikeInsert(dto);
 	}
 	
+	public List<Post> bestLikePost(PostVo vo) throws Exception{
+		return dao.bestLikePost(vo);
+	}
+	
 	/* 추천 e */
 	
 	/* 찬구 s */

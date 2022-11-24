@@ -245,7 +245,29 @@ where 1=1
 		</selectKey>
 </insert>
 
-
+<select id="bestLikePost" resultMap="resultMapObj">
+select
+	a.nxPostSeq
+	,a.region
+	,a.postType
+	,a.title
+    ,b.path
+    ,b.uuidName
+    ,(
+		select
+			count(nxPostLikeSeq)
+		from nxPostLike c
+        where 1=1
+        and c.nxPostSeq = a.nxPostSeq
+    ) as likeCount
+    from nxPost a
+    left join postUploaded b on a.nxPostSeq = b.pSeq
+    where 1=1
+    and a.delNy = 0
+    order by likeCount desc, a.nxPostSeq asc
+    limit 3
+    ;
+</select>
 <!-- 추천 S -->
 
 <!-- 찬구 S -->

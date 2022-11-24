@@ -31,7 +31,7 @@ public interface PostService {
 	public int postLikeCount(PostVo vo) throws Exception;
 	public Post postLikeList(PostVo vo) throws Exception;
 	public int postLikeInsert(Post dto) throws Exception;
-	
+	public List<Post> bestLikePost(PostVo vo) throws Exception;
 	/* 추천 e */
 	
 	public List<Post> selectMyPostList(PostVo vo) throws Exception;

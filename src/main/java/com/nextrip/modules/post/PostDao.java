@@ -81,6 +81,10 @@ public class PostDao {
 		return sqlSession.insert(namespace + ".postLikeInsert", dto);
 	}
 	
+	public List<Post> bestLikePost(PostVo vo) throws Exception{
+		return sqlSession.selectList(namespace + ".bestLikePost", vo);
+	}
+	
 	/* 추천 e */
 	
 	/* 찬구 s */

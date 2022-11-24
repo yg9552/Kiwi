@@ -147,68 +147,114 @@
 				     <!-- slider Area End-->
 				     <div style="height: 50px;"></div>
                 	<!-- Blog Area Start -->
-			        <div class="home-blog-area section-padding2" style="padding: 0px;">
-			            <div class="container">
-			                <!-- Section Tittle -->
-			                <div class="row">
-			                    <div class="col-lg-12">
-			                        <div class=" text-center">
-			                            <h4 style="float: left;font-weight: bolder;">이달의 베스트 여행후기</h2>
-			                        </div>
-			                    </div>
-			                </div>
-			                <div class="row">
-			                    <div class="col-xl-4 col-lg-4 col-md-4">
-			                        <div class="home-blog-single mb-30">
-			                            <div class="blog-img-cap">
-			                                <div class="blog-img">
-			                                    <img src="/resources/template/gotrip-master/assets/img/blog/home-blog1.jpg" alt="">
-			                                </div>
-			                                <div class="">
-			                                    <p> |   Traveling</p>
-			                                    <h3><a href="single-blog.html">서울</a></h3>
-			                                    <a href="#" class="more-btn">지역 가기 »</a>
-			                                </div>
-			                            </div>
-			                        </div>
-			                    </div>
-			                    <div class="col-xl-4 col-lg-4 col-md-4">
-			                        <div class="home-blog-single mb-30">
-			                            <div class="blog-img-cap">
-			                                <div class="blog-img">
-			                                    <img src="/resources/template/gotrip-master/assets/img/blog/home-blog1.jpg" alt="">
-			                                </div>
-			                                <div class="">
-			                                    <p> |   Traveling</p>
-			                                    <h3><a href="single-blog.html">제주</a></h3>
-			                                    <a href="#" class="more-btn">지역 가기 »</a>
-			                                </div>
-			                            </div>
-			                        </div>
-			                    </div>
-			                    <div class="col-xl-4 col-lg-4 col-md-4">
-			                        <div class="home-blog-single mb-30">
-			                            <div class="blog-img-cap">
-			                                <div class="blog-img">
-			                                    <img src="/resources/template/gotrip-master/assets/img/blog/home-blog2.jpg" alt="">
-			                                </div>
-			                                <div class="">
-			                                    <p> |   Traveling</p>
-			                                    <h3><a href="single-blog.html">부산</a></h3>
-			                                    <a href="#" class="more-btn">지역 가기 »</a>
-			                                </div>
-			                            </div>
-			                        </div>
-			                    </div>
-			                </div>
-			            </div>
-			        </div>
+                	<form method="post" id="PUBForm" name="PUBForm">
+	                	<input type="hidden" name="nxPostSeq">
+			        	<input type="hidden" name="memberSeq" value="${sessSeq }">
+				        <div class="home-blog-area section-padding2" style="padding: 0px;">
+				            <div class="container">
+				                <!-- Section Tittle -->
+				                <div class="row">
+				                    <div class="col-lg-12">
+				                        <div class=" text-center">
+				                            <h4 style="float: left;font-weight: bolder;">이달의 베스트 여행후기</h2>
+				                        </div>
+				                    </div>
+				                </div>
+				                <div class="row">
+				                	<c:forEach items="${list}" var="list" varStatus="status">
+										<c:set var="listCodeRegion" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
+									  	<c:set var="listCodePostDiv" value="${CodeServiceImpl.selectListCachedCode('4')}"/>
+										<div class="col-xl-4 col-lg-4 col-md-4">
+				                        <div class="home-blog-single mb-30">
+				                            <div class="blog-img-cap">
+				                                <div class="blog-img">
+				                                	<c:choose>
+				                                		<c:when test="${best.path eq null}">
+				                                			<img src="/resources/image/post/binPhoto.jpg" alt="">
+				                                		</c:when>
+				                                		<c:otherwise>
+				                                    		<img src="<c:out value="${best.path }"/><c:out value="${best.uuidName }"/>" alt="">
+			                                    		</c:otherwise>
+				                                	</c:choose>
+				                                </div>
+				                                <div class="">
+				                                    <p> |   
+				                                    	<c:forEach items="${listCodeRegion}" var="listCodeRegion" varStatus="statusRegion">
+															<c:if test="${best.region eq listCodeRegion.replaceCode}"><span class="state"><c:out value="${listCodeRegion.name }"/></span></c:if>
+														</c:forEach>
+													</p>
+				                                    <h3>
+				                                    	<a href="">
+															<c:forEach items="${listCodePostDiv}" var="listCodePostDiv" varStatus="statusPostDiv">
+																<c:if test="${list.postType eq listCodePostDiv.replaceCode}"><span class="state"><c:out value="${listCodePostDiv.name }"/></span></c:if>
+															</c:forEach>
+														</a>
+													</h3>
+				                                    <a href="" class="more-btn">지역 가기 »</a>
+				                                </div>
+				                            </div>
+				                        </div>
+				                    </div>
+									</c:forEach>
+				                    <div class="col-xl-4 col-lg-4 col-md-4">
+				                        <div class="home-blog-single mb-30">
+				                            <div class="blog-img-cap">
+				                                <div class="blog-img">
+				                                    <img src="/resources/template/gotrip-master/assets/img/blog/home-blog1.jpg" alt="">
+				                                </div>
+				                                <div class="">
+				                                    <p> |   Traveling</p>
+				                                    <h3><a href="single-blog.html">
+														<c:forEach items="${listCodePostDiv}" var="listCodePostDiv" varStatus="statusPostDiv">
+															<c:if test="${list.postType eq listCodePostDiv.replaceCode}"><span class="state"><c:out value="${listCodePostDiv.name }"/></span></c:if>
+														</c:forEach>
+													</a></h3>
+				                                    <a href="#" class="more-btn">지역 가기 »</a>
+				                                </div>
+				                            </div>
+				                        </div>
+				                    </div>
+				                    <div class="col-xl-4 col-lg-4 col-md-4">
+				                        <div class="home-blog-single mb-30">
+				                            <div class="blog-img-cap">
+				                                <div class="blog-img">
+				                                    <img src="/resources/template/gotrip-master/assets/img/blog/home-blog1.jpg" alt="">
+				                                </div>
+				                                <div class="">
+				                                    <p> |   Traveling</p>
+				                                    <h3><a href="single-blog.html">제주</a></h3>
+				                                    <a href="#" class="more-btn">지역 가기 »</a>
+				                                </div>
+				                            </div>
+				                        </div>
+				                    </div>
+				                    <div class="col-xl-4 col-lg-4 col-md-4">
+				                        <div class="home-blog-single mb-30">
+				                            <div class="blog-img-cap">
+				                                <div class="blog-img">
+				                                    <img src="/resources/template/gotrip-master/assets/img/blog/home-blog2.jpg" alt="">
+				                                </div>
+				                                <div class="">
+				                                    <p> |   <c:forEach items="${listCodeRegion}" var="listCodeRegion" varStatus="statusRegion">
+																<c:if test="${best.region eq listCodeRegion.replaceCode}"><span class="state"><c:out value="${listCodeRegion.name }"/></span></c:if>
+															</c:forEach>
+													</p>
+				                                    <h3><a href="single-blog.html">부산</a></h3>
+				                                    <a href="#" class="more-btn">지역 가기 »</a>
+				                                </div>
+				                            </div>
+				                        </div>
+				                    </div>
+				                </div>
+				            </div>
+				        </div>
+			        </form>
 				        <!-- Blog Area End -->
 			        <form method="post" id="PLForm" name="PLForm">
 			        	<input type="hidden" id="thisPage" name="thisPage" value="<c:out value="${vo.thisPage }" default="1"/>">
 						<input type="hidden" id="rowNumToShow" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
-			        	<input type="hidden" id="nxPostSeq" name="nxPostSeq">
-			        	<input type="hidden" id="memberSeq" name="memberSeq" value="${sessSeq }">
+			        	<input type="hidden" name="nxPostSeq">
+			        	<input type="hidden" name="memberSeq" value="${sessSeq }">
 				        <table class="table" style="text-align: center;">
 				          <caption class="caption-top">
 					          <div class="row">
