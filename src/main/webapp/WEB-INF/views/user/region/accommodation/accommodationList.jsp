@@ -323,7 +323,7 @@
 			var level = map.getLevel();
 		    
 		    // 지도를 1레벨 내립니다 (지도가 확대됩니다)
-		    map.setLevel(level - 4);
+		    map.setLevel(10);
 		    
 		    // 지도 레벨을 표시합니다
 		    displayLevel();
@@ -340,7 +340,7 @@
 			var level = map.getLevel();
 		    
 		    // 지도를 1레벨 내립니다 (지도가 확대됩니다)
-		    map.setLevel(level - 6);
+		    map.setLevel(10);
 		    
 		    // 지도 레벨을 표시합니다
 		    displayLevel();
@@ -357,7 +357,7 @@
 			var level = map.getLevel();
 		    
 		    // 지도를 1레벨 내립니다 (지도가 확대됩니다)
-		    map.setLevel(level - 5);
+		    map.setLevel(10);
 		    
 		    // 지도 레벨을 표시합니다
 		    displayLevel();
@@ -374,7 +374,7 @@
 			var level = map.getLevel();
 		    
 		    // 지도를 1레벨 내립니다 (지도가 확대됩니다)
-		    map.setLevel(level - 1);
+		    map.setLevel(10);
 		    
 		    // 지도 레벨을 표시합니다
 		    displayLevel();
@@ -391,7 +391,7 @@
 			var level = map.getLevel();
 		    
 		    // 지도를 1레벨 내립니다 (지도가 확대됩니다)
-		    map.setLevel(level - 2);
+		    map.setLevel(10);
 		    
 		    // 지도 레벨을 표시합니다
 		    displayLevel();
@@ -408,7 +408,7 @@
 			var level = map.getLevel();
 		    
 		    // 지도를 1레벨 내립니다 (지도가 확대됩니다)
-		    map.setLevel(level - 3);
+		    map.setLevel(9);
 		    
 		    // 지도 레벨을 표시합니다
 		    displayLevel();
