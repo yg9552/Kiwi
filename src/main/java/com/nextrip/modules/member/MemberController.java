@@ -160,8 +160,16 @@ public class MemberController {
 		return "user/mypage/mypagePostRecord";
 	}
 	
-	
 	/* 마이페이지 E */
+	
+	@RequestMapping(value = "/nextrip/purchaseHistoryListK")
+	public String purchaseHistoryList(@ModelAttribute("vo") AccommodationVo vo, Model model) throws Exception {
+		
+		vo.setParamsPaging(service2.selectOneCountPurchaseHistory(vo));
+		List<Accommodation> list = service2.selectListPurchaseHistory(vo);
+		model.addAttribute("list", list);
+		return "kdmin/region/accommodation/purchaseHistoryListK";
+	}
 	
 	@RequestMapping(value="/nextrip/login")
 	public String login() throws Exception {

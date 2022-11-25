@@ -36,5 +36,11 @@ public class CommonController {
 		model.addAttribute("listUploaded", serviceAcmd.selectListUploaded(voAcmd));
 		return "user/region/regionView";
 	}
+	
+	@RequestMapping("dashboard")
+	public String dashboard() throws Exception {
+		
+		return "common/dashboard";
+	}
 
 }

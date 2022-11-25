@@ -100,15 +100,6 @@ public class AccommodationController {
 		return "user/region/accommodation/accommodationPurchase";
 	}
 	
-	@RequestMapping(value = "purchaseHistoryList")
-	public String purchaseHistoryList(@ModelAttribute("vo") AccommodationVo vo, Model model) throws Exception {
-		
-		vo.setParamsPaging(service.selectOneCount(vo));
-		List<Accommodation> list = service.selectList(vo);
-		model.addAttribute("list", list);
-		return "kdmin/region/accommodation/purchaseHistoryListK";
-	}
-	
 	@RequestMapping(value = "purchaseHistoryInst")
 	public String insertPurchaseHistory(@ModelAttribute("vo") AccommodationVo vo, Accommodation dto, RedirectAttributes redirectAttributes) throws Exception {
 		service.insertPurchaseHistory(dto);
