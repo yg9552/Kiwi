@@ -59,7 +59,7 @@
         <!-- *Vo.jsp s -->
 			<%@include file="accommodationVo.jsp"%>		<!-- #-> -->
 	    <!-- *Vo.jsp e -->
-        <div class="support-company-area support-padding fix">
+        <div class="support-company-area fix mt-5">
             <div class="container-fluid">
             	<button class="button rounded primary-bg text-white btn_1 w-100 boxed-btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
 			    	지역 검색
@@ -374,7 +374,7 @@
 			var level = map.getLevel();
 		    
 		    // 지도를 1레벨 내립니다 (지도가 확대됩니다)
-		    map.setLevel(10);
+		    map.setLevel(11);
 		    
 		    // 지도 레벨을 표시합니다
 		    displayLevel();
