@@ -57,7 +57,7 @@
     <!-- Blog Area Start -->
     	<form name="formRegion2">
     	<input type="hidden" name="replaceCode">
-        <div class="home-blog-area section-padding2" style="padding: 0px;">
+        <div class="home-blog-area section-padding2" style="padding: 0px; margin-top: 80px; margin-bottom: 50px;">
             <div class="container">
                 <!-- Section Tittle -->
                 <div class="row">
