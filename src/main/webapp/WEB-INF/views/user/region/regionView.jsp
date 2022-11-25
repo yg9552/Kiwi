@@ -93,7 +93,7 @@
                 			<div class="blog_right_sidebar">
 		                        <aside class="single_sidebar_widget post_category_widget">
 		                            <h4 class="widget_title">CCTV</h4>
-		                            <c:choose>
+		                            <%-- <c:choose>
 		                            	<c:when test="${itemC.replaceCode eq 201 }">
 		                            		<embed src="http://www.utic.go.kr/view/map/openDataCctvStream.jsp?key=x0EBH864Y0V2mqOqKKaUwp0QU5dyfMOKQEArrih2XRg1DGJ4li9Rq0LVb2bU&cctvid=L010047&cctvName=%25EC%2584%25B8%25EC%25A2%2585%25EB%25A1%259C&kind=Seoul&cctvip=null&cctvch=51&id=47&cctvpasswd=null&cctvport=null" width="300px" height="300px">
 		                            	</c:when>
@@ -111,7 +111,7 @@
 		                            	</c:when>
 		                            	<c:when test="${itemC.replaceCode eq 206 }">
 		                            	</c:when>
-		                            </c:choose>
+		                            </c:choose> --%>
 		                            <!-- <iframe src="http://www.utic.go.kr/view/map/openDataCctvStream.jsp?key=x0EBH864Y0V2mqOqKKaUwp0QU5dyfMOKQEArrih2XRg1DGJ4li9Rq0LVb2bU&cctvid=E912353&cctvName=%255B%25EC%259D%25B8%25EC%25B2%259C%25EA%25B5%25AD%25EC%25A0%259C%25EA%25B3%25B5%25ED%2595%25AD%25EC%2584%25A0%255D%25EC%2584%259C%25EC%259A%25B836.0K&kind=Z3&cctvip=null&cctvch=null&id=5719/hydAI4AYj42M1bUcz8tTW+XbjqEZX3ijCkgfSXBsq6NSd8EuzBaRvrAoj5ncrqI0p3ibOX4YDPjl8QWM1/YkR30M5ZeTBjNqCgNeGTSQUek=&cctvpasswd=null&cctvport=null" width=560 height=315 frameborder=0></iframe> -->
 		                            <!-- <iframe src="http://www.utic.go.kr/view/map/openDataCctvStream.jsp?key=x0EBH864Y0V2mqOqKKaUwp0QU5dyfMOKQEArrih2XRg1DGJ4li9Rq0LVb2bU&cctvid=E912791&cctvName=%255B%25EC%25A4%2591%25EB%25B6%2580%25EC%2584%25A0%255D%25EC%259D%25BC%25EC%25A3%25BD%25EC%2589%25BC%25ED%2584%25B0(%25ED%2595%2598%25EB%2582%25A8)&kind=Z3&cctvip=null&cctvch=null&id=2968//9xG+n+MVV5ulM+G4uyVBxnGhJtWtaPgaUuacTtBfMcMuBBMBDpFkRMDz1LONOUmvPSPiO+zxX9Z51MdFN1GMVBqNRadNljblLN0MsjL7NM=&cctvpasswd=null&cctvport=null" width=560 height=315 frameborder=0></iframe> -->
 		                        </aside>
