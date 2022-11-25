@@ -410,3 +410,4 @@
        <script src="/resources/template/gotrip-master/assets/js/main.js"></script>
 
 </body>
+</html>
