@@ -48,8 +48,6 @@ public class PostController {
 			
 			Post item = service.selectOne(vo);
 			model.addAttribute("postListUploaded", service.postListUploaded(vo));
-			item.setLng(item.getLng() == null ?  Integer.toString(127) : item.getLng());
-			item.setLat(item.getLat() == null ? Integer.toString(37) : item.getLat());
 			model.addAttribute("item", item);
 		}
 		return "kdmin/post/postView";

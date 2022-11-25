@@ -353,9 +353,8 @@
 	<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=fbcf9729cf4cb4a9f70ddf30309fa210&libraries=services"></script>
 	<!-- <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=fbcf9729cf4cb4a9f70ddf30309fa210"></script> -->
 	<script>
-	
 	<c:choose>
-		<c:when test="${item.lng eq null && item.lat eq null}">
+		<c:when test="${item.lng eq null || item.lat eq null}">
 			var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 		    mapOption = {
 	        center: new kakao.maps.LatLng(37.56682, 126.97865), // 지도의 중심좌표
