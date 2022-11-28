@@ -51,12 +51,7 @@
 															</c:forEach>
 		                                                </ul>
 		                                            </li>
-		                                            <li><a href="#">여행지소개</a>
-		                                            	<ul class="submenu">
-		                                                    <li><a href="/post/postUserList">게시판</a></li>
-		                                                    <li><a href="#">글쓰기</a></li>
-		                                                </ul>
-		                                            </li>
+		                                            <li><a href="/post/postUserList">여행지소개</a></li>
 		                                            <li><a href="/nextrip/region/accommodation/accommodationList">숙박</a>
 		                                        </ul>
 		                                    </nav>
