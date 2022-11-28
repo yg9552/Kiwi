@@ -284,6 +284,21 @@
 	</select>
 	<!-- Room E -->
 	
+	<!-- Facility S -->
+	<select id="selectListFacility" resultMap="resultMapObj">
+		SELECT 
+		  nxFacilitySeq
+		  ,facilityName
+		  ,nxAccommodationSeq
+		  ,facilityIcon
+		FROM nxFacility
+		WHERE 1=1
+		<if test="nxAccommodationSeq != null and !nxAccommodationSeq.equals('')">AND nxAccommodationSeq = #{nxAccommodationSeq}</if>
+    	ORDER BY nxFacilitySeq ASC
+	</select>
+	
+	<!-- Facility E -->
+	
 	<!-- Review S -->
 	<select id="selectListReview" resultMap="resultMapObj">
 		<include refid="Base.selectListUpperForMysql" />

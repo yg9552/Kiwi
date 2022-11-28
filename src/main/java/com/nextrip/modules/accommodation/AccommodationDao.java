@@ -88,6 +88,11 @@ public class AccommodationDao {
 	public Accommodation selectRoomPrice(Accommodation dto) {
 		return sqlSession.selectOne(namespace + ".selectRoomPrice", dto);
 	}
+	//Facility
+	public List<Accommodation> selectListFacility(AccommodationVo vo) {
+		return sqlSession.selectList(namespace + ".selectListFacility", vo);
+	}
+	
 	
 	//Review
 	public List<Accommodation> selectListReview(AccommodationVo vo) {

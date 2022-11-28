@@ -35,6 +35,9 @@ public interface AccommodationService {
 	public int insertRoom(Accommodation dto) throws Exception;
 	public Accommodation selectRoomPrice(Accommodation dto) throws Exception;
 	
+	//Facility
+	public List<Accommodation> selectListFacility(AccommodationVo vo) throws Exception;
+	
 	//Review
 	public List<Accommodation> selectListReview(AccommodationVo vo) throws Exception;
 	public Accommodation selectOneReivew(AccommodationVo vo) throws Exception;

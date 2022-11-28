@@ -80,9 +80,11 @@ public class AccommodationController {
 		Accommodation item = service.selectOne(vo);
 		List<Accommodation> listR = service.selectListRoom(vo);
 		List<Accommodation> listReview = service.selectListReview(vo);
+		List<Accommodation> listF = service.selectListFacility(vo);
 		model.addAttribute("item", item);
 		model.addAttribute("listReview" ,listReview);
 		model.addAttribute("listR", listR);
+		model.addAttribute("listF", listF);
 		model.addAttribute("listUploaded", service.selectListUploaded(vo));
 		return "user/region/accommodation/accommodationView";
 	}

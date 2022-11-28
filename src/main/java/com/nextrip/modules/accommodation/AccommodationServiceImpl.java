@@ -211,6 +211,12 @@ for(int i=0; i<multipartFiles.length; i++) {
 		// TODO Auto-generated method stub
 		return dao.reviewConfirm(dto);
 	}
+
+	@Override
+	public List<Accommodation> selectListFacility(AccommodationVo vo) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.selectListFacility(vo);
+	}
 	
 
 }

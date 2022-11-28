@@ -59,14 +59,13 @@
     <div class="container">
     	<div class="row">
 			<%@include file="../../common/mypageSideMenu.jsp"%>
-	       	<div class="col-9">
-	       		<p>예매내역</p>
-	       		<div style="border:solid; border-width: 1px; border-color:#EEEEEE;">
-	       			<h5>잠깐 읽어보세요</h5>
+	       	<div class="col-12 col-lg-9">
+	       		<div style="border:solid; border-width: 1px; border-color:#EEEEEE; padding: 10px;">
+	       			<h5>취소/환불 정책</h5>
 	       			<ul class="caution p-4">
 	       				<li>예약상세보기를 클릭하면 자세한 정보를 확인 할 수 있습니다.</li>
-	       				<li>환불은 일정 시작 7일전 100% 환불, 3일전 50%환불, 1일전 환불 불가이며, 자세한 절차는 알아서</li>
-	       				<li>예약 확정시 취소는 문의를 통해 진행하실 수 있습니다.</li>
+	       				<li>환불은 일정 시작 7일전 100% 환불, 3일전 50%환불, 1일전 환불 불가이며, 자세한 문의는 고객센터를 통해 진행해주세요.</li>
+	       				<li>예약 확정시 취소는 고객센터를 통해 진행하실 수 있습니다.</li>
 	       			</ul>
 	       		</div>
 	       		<div class="my-3">
@@ -88,7 +87,7 @@
 			    			<c:otherwise>
 			    				<c:set var="listCodeRegion" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
 			    				<c:forEach items="${list}" var="list" varStatus="status">
-			    					<div class="my-3" style="border: solid; border-width: 1px; border-color:#EEEEEE;">
+			    					<div class="my-3 p-2" style="border: solid; border-width: 1px; border-color:#EEEEEE;">
 					       				<div class="row">
 						       				<div class="col-9">
 						       					<h6>예약일: <fmt:formatDate value="${list.regDateTime }" pattern="yyyy-MM-dd"/></h6>
@@ -120,13 +119,13 @@
 						       				</div>
 					       					<c:choose>
 					       						<c:when test="${list.reservationStatus eq 3 }">
-					       						<div class="col-3" style="align-items: center;">
+					       						<div class="col-12 col-md-3" style="align-items: center;">
 					       							<button type="button" class="genric-btn info radius mt-5" onclick="goReservationView(<c:out value="${list.nxPurchaseHistorySeq }"/>)">예약 상세보기</button><br>
 				       								<button type="button" class="genric-btn success radius mt-1" onclick="goReviewForm(<c:out value="${list.nxPurchaseHistorySeq }"/>)">후기 작성하기</button>
 			       								</div>
 					       						</c:when>
 					       						<c:otherwise>
-						       						<div class="col-3" style="display: flex; align-items: center;">
+						       						<div class="col-12 col-md-3" style="display: flex; align-items: center;">
 						       							<button type="button" class="genric-btn info radius" onclick="goReservationView(<c:out value="${list.nxPurchaseHistorySeq }"/>)">예약 상세보기</button><br>
 					       							</div>
 					       						</c:otherwise>

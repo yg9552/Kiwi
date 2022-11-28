@@ -63,6 +63,11 @@ public class Accommodation extends Base {
 	private Integer roomType;
 	private Integer price;
 	
+	//facility
+	private String nxFacilitySeq;
+	private String facilityName;
+	private String facilityIcon;
+	
 	//Review
 	private String nxAccommodationReviewSeq;
 	private Integer starRate;
@@ -371,6 +376,24 @@ public class Accommodation extends Base {
 	}
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
+	}
+	public String getNxFacilitySeq() {
+		return nxFacilitySeq;
+	}
+	public void setNxFacilitySeq(String nxFacilitySeq) {
+		this.nxFacilitySeq = nxFacilitySeq;
+	}
+	public String getFacilityName() {
+		return facilityName;
+	}
+	public void setFacilityName(String facilityName) {
+		this.facilityName = facilityName;
+	}
+	public String getFacilityIcon() {
+		return facilityIcon;
+	}
+	public void setFacilityIcon(String facilityIcon) {
+		this.facilityIcon = facilityIcon;
 	}
 	
 	

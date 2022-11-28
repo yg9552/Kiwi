@@ -77,7 +77,7 @@
                   <div class="blog_details">
                      <h2><c:out value="${item.hotelName }" /></h2>
                      <ul class="blog-info-link mt-3 mb-4 p-0">
-                     <c:forEach items="${listregion}" var="listregion" varStatus="statusDeliinfo">
+                     <c:forEach items="${listregion}" var="listregion" varStatus="statuslistregion">
                      	<c:if test="${item.region eq listregion.replaceCode}">
                         	<li><a href="#"><i class="fa-solid fa-location-dot"></i> <c:out value="${listregion.name }"/></a></li>
                         </c:if>
@@ -92,18 +92,11 @@
                      	<span class="text-primary"><i class="fa-regular fa-clock"></i>체크인 : <c:out value="${item.checkin }" /> </span>
                      	<span class="text-primary"> · 체크아웃 : <c:out value="${item.checkout }" /> </span>
                         <div class="quotes text-center">
-                           <div class="col d-inline">
-                           	<i class="fa-solid fa-person-swimming fa-2x mt-3 mr-3"><p class="mt-2">수영장</p></i>
-                           </div>
-                           <div class="col d-inline">
-                           	<i class="fa-solid fa-utensils fa-2x mt-3 mr-3"><p class="mt-2">레스토랑</p></i>
-                           </div>
-                           <div class="col d-inline">
-                           	<i class="fa-solid fa-square-parking fa-2x mt-3 mr-3"><p class="mt-2">주차장</p></i>
-                           </div>
-                           <div class="col d-inline">
-                           	<i class="fa-solid  fa-bell-concierge fa-2x mt-3 mr-3"><p class="mt-2">룸서비스</p></i>
-                           </div>
+	                        <c:forEach items="${listF }" var="listF" varStatus="statuslistF">
+	                        	<div class="col d-inline">
+	                        		<i class="fa-solid <c:out value="${listF.facilityIcon }"/> fa-2x mt-3 mr-3"><p class="mt-2"> <c:out value="${listF.facilityName }"/> </p></i>
+	                        	</div>
+	                        </c:forEach>
                         </div>
                      </div>
                   </div>
