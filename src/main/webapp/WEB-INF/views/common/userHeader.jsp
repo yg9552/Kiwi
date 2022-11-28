@@ -112,7 +112,7 @@
 		                                <div class="main-menu f-right d-none d-lg-block">
 		                                    <nav>               
 		                                        <ul id="navigation">                                                                                                                                     
-		                                            <li id="btnLogout">로그아웃</li>
+		                                            <li id="btnLogout"><a>로그아웃</a></li>
 		                                            <li><a href="#">지역</a>
 		                                            <input type="hidden" name="replaceCode">
 		                                            	<ul class="submenu">
@@ -122,11 +122,11 @@
 															</c:forEach>
 		                                                </ul>
 		                                            </li>
-		                                            <li><a href="#">여행지소개</a>
-		                                            	<ul class="submenu">
+		                                            <li><a href="/post/postUserList">여행지소개</a>
+		                                            	<!-- <ul class="submenu">
 		                                                    <li><a href="/post/postUserList">게시판</a></li>
 		                                                    <li><a href="#">글쓰기</a></li>
-		                                                </ul>
+		                                                </ul> -->
 		                                            </li>
 		                                            <li><a href="/nextrip/region/accommodation/accommodationList">숙박</a>
 		                                            </li>
