@@ -69,22 +69,34 @@
 	                                <div class="blog-img">
 	                                	<c:choose>
 	                                		<c:when test="${most.region eq 201 }">
-	                                			<img src="/resources/image/main/seoul1.jpg" style="height: 252px;" alt="">
+	                                			<a href="javascript:goRegionView2(<c:out value="${most.region }"/>)">
+	                                				<img src="/resources/image/main/seoul1.jpg" style="height: 252px;" alt="">
+	                                			</a>
 	                                		</c:when>
 	                                		<c:when test="${most.region eq 202 }">
-	                                			<img src="/resources/image/main/busan2.jpg" style="height: 252px;" alt="">
+	                                			<a href="javascript:goRegionView2(<c:out value="${most.region }"/>)">
+	                                				<img src="/resources/image/main/busan2.jpg" style="height: 252px;" alt="">
+	                                			</a>
 	                                		</c:when>
 	                                		<c:when test="${most.region eq 203 }">
-	                                			<img src="/resources/image/main/chungcheong1.jpg" style="height: 252px;" alt="">
+	                                			<a href="javascript:goRegionView2(<c:out value="${most.region }"/>)">
+	                                				<img src="/resources/image/main/chungcheong1.jpg" style="height: 252px;" alt="">
+	                                			</a>
 	                                		</c:when>
 	                                		<c:when test="${most.region eq 204 }">
-	                                			<img src="/resources/image/main/gangwon1.jpg" style="height: 252px;" alt="">
+	                                			<a href="javascript:goRegionView2(<c:out value="${most.region }"/>)">
+	                                				<img src="/resources/image/main/gangwon1.jpg" style="height: 252px;" alt="">
+	                                			</a>
 	                                		</c:when>
 	                                		<c:when test="${most.region eq 205 }">
-	                                			<img src="/resources/image/main/jeonla1.jpg" style="height: 252px;" alt="">
+	                                			<a href="javascript:goRegionView2(<c:out value="${most.region }"/>)">
+	                                				<img src="/resources/image/main/jeonla1.jpg" style="height: 252px;" alt="">
+	                                			</a>
 	                                		</c:when>
 	                                		<c:when test="${most.region eq 206 }">
-	                                			<img src="/resources/image/main/jeju1.jpg" style="height: 252px;" alt="">
+	                                			<a href="javascript:goRegionView2(<c:out value="${most.region }"/>)">
+	                                				<img src="/resources/image/main/jeju1.jpg" style="height: 252px;" alt="">
+	                                			</a>
 	                                		</c:when>
 	                                		<c:otherwise>
 	                                		</c:otherwise>
