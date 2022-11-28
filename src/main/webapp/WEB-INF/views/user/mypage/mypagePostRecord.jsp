@@ -92,8 +92,9 @@
 	                                	<select class="form-select" id="shOption" name="shOption">
 	                                		<option value="">검색 구분</option>
 	                                		<option value="1" <c:if test="${vo.shOption eq 1}">selected</c:if>>제목</option>
-	                                		<option value="2" <c:if test="${vo.shOption eq 2}">selected</c:if>>지역 이름</option>
-	                                		<option value="3" <c:if test="${vo.shOption eq 3}">selected</c:if>>글쓴이</option>
+	                                		<option value="2" <c:if test="${vo.shOption eq 2}">selected</c:if>>내용</option>
+	                                		<option value="3" <c:if test="${vo.shOption eq 3}">selected</c:if>>지역 이름</option>
+	                                		<option value="4" <c:if test="${vo.shOption eq 4}">selected</c:if>>글쓴이</option>
 	                                	</select> 
 	                                </div>
 						          	<div class="input-group col-lg-3">

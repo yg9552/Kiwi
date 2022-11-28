@@ -330,8 +330,9 @@ select
 			<if test="shRegion != null and !shRegion.equals('')">AND a.region = #{shRegion}</if>
 			<choose>
 				<when test="shOption == 1">AND a.title LIKE CONCAT('%',#{shValue},'%')</when>
-				<when test="shOption == 2">AND a.addressTitle LIKE CONCAT('%',#{shValue},'%')</when>
-				<when test="shOption == 3">AND memberNickName LIKE CONCAT('%',#{shValue},'%')</when>
+				<when test="shOption == 2">AND a.content LIKE CONCAT('%',#{shValue},'%')</when>
+				<when test="shOption == 3">AND a.addressTitle LIKE CONCAT('%',#{shValue},'%')</when>
+				<when test="shOption == 4">AND memberNickName LIKE CONCAT('%',#{shValue},'%')</when>
 			</choose>
 		ORDER BY nxPostSeq DESC
 	<include refid="Base.selectListLowerForMysql" />

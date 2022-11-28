@@ -55,8 +55,9 @@
     <main>
     
     <!-- Blog Area Start -->
-    	<form name="formRegion2">
+    	<form name="formRegion2" method="post">
     	<input type="hidden" name="replaceCode">
+    	<input type="hidden" name="region">
         <div class="home-blog-area section-padding2" style="padding: 0px; margin-top: 80px; margin-bottom: 50px;">
             <div class="container">
                 <!-- Section Tittle -->
@@ -362,10 +363,11 @@
     	
     	var goUrlRegionView = "/nextrip/regionView";			/* #-> */
        	var seqRegion2 = $("input:hidden[name=replaceCode]");
-       	
+       	var regionVal2 = $("input:hidden[name=region]");
        	var formRegion2 = $("form[name=formRegion2]");
        	
        	goRegionView2 = function(keyValue) {
+       		regionVal2.val(keyValue);
     		seqRegion2.val(keyValue);
     		formRegion2.attr("action", goUrlRegionView).submit();
     	};

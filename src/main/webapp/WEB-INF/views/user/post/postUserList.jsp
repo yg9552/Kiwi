@@ -111,7 +111,7 @@
 					                                <div class="blog-img">
 					                                	<c:choose>
 					                                		<c:when test="${best.path eq null}">
-					                                			<img src="/resources/image/post/binPhoto.jpg" width="260px" height="195px" style="cursor: pointer; object-fit:contain; background-color: #f0f0f0;" alt="" 
+					                                			<img src="/resources/image/post/theBinImage.png" width="260px" height="195px" style="cursor: pointer; object-fit:contain; background-color: #f0f0f0;" alt="" 
 					                                			onclick="location.href='javascript:goBest(<c:out value="${best.nxPostSeq }"/>)'">
 					                                		</c:when>
 					                                		<c:otherwise>

@@ -60,6 +60,9 @@
      <!-- slider Area End-->
     <!--================Blog Area =================-->
     <form name="formRegion2" method="post">
+    <input type="hidden" name="region">
+    <input type="hidden" name="nxPostSeq">
+    <input type="hidden" name="memberSeq" value="${sessSeq }">
     <section class="blog_area section-padding">
         <div class="container">
             <div class="row">
@@ -181,54 +184,32 @@
 		                        <aside class="single_sidebar_widget post_category_widget">
 		                            <h4 class="widget_title">추천 여행지</h4>
 		                            <div class="autoplay">
-									  <div>
-									  	<a href="#">
-										  	<img src="/resources/template/gotrip-master/assets/img/blog/gwanghwamun-g62f7ac45f_1920.jpg" alt="" style="width: 150px; height: 150px;">
-										</a>
-									  	<ul class="blog-info-link">
-					                        <li><a href="#" class="text-dark">경복궁</a></li>
-					                    </ul>
-								  	  </div>
-									  <div>
+		                            	<c:forEach items="${bestPost }" var="bestPost" varStatus="statusbestPost">
+	                            			<div>
+							  					<a href="javascript:goPost(<c:out value="${bestPost.nxPostSeq }"/>)">
+							  						<c:choose>
+							  						<c:when test="${bestPost.path eq null}">
+							  							<img src="/resources/image/post/theBinImage.png" alt="" style="width: 150px; height: 150px; object-fit:contain;">
+							  						</c:when>
+							  						<c:otherwise>
+										  				<img src="<c:out value="${bestPost.path }"/><c:out value="${bestPost.uuidName }"/>" alt="" style="width: 150px; height: 150px; object-fit:contain;">
+													</c:otherwise>
+													</c:choose>
+												</a>
+									  			<ul class="blog-info-link">
+					         						<li><a href="javascript:goPost(<c:out value="${bestPost.nxPostSeq }"/>)" class="text-dark"><c:out value="${bestPost.addressTitle }"/></a></li>
+					                   			</ul>
+								  	 		</div>
+		                            	</c:forEach>
+									 
+									  <!-- <div>
 									  	<a href="#">
 										  	<img src="/resources/template/gotrip-master/assets/img/blog/tower.jpg" alt="" style="width: 150px; height: 150px;">
 										</a>
 									  	<ul class="blog-info-link">
 					                        <li><a href="#">남산 타워</a></li>
 					                    </ul>
-								  	  </div>
-									  <div>
-									  	<a href="#">
-										  	<img src="/resources/template/gotrip-master/assets/img/blog/gwanghwamun-g62f7ac45f_1920.jpg" alt="" style="width: 150px; height: 150px;">
-										</a>
-									  	<ul class="blog-info-link">
-					                        <li><a href="#">경복궁</a></li>
-					                    </ul>
-								  	  </div>
-									  <div>
-									  	<a href="#">
-										  	<img src="/resources/template/gotrip-master/assets/img/blog/tower.jpg" alt="" style="width: 150px; height: 150px;">
-										</a>
-									  	<ul class="blog-info-link">
-					                        <li><a href="#">경복궁</a></li>
-					                    </ul>
-								  	  </div>
-									  <div>
-									  	<a href="#">
-										  	<img src="/resources/template/gotrip-master/assets/img/blog/gwanghwamun-g62f7ac45f_1920.jpg" alt="" style="width: 150px; height: 150px;">
-										</a>
-									  	<ul class="blog-info-link">
-					                        <li><a href="#">경복궁</a></li>
-					                    </ul>
-								  	  </div>
-									  <div>
-									  	<a href="#">
-										  	<img src="/resources/template/gotrip-master/assets/img/blog/tower.jpg" alt="" style="width: 150px; height: 150px;">
-										</a>
-									  	<ul class="blog-info-link">
-					                        <li><a href="#">경복궁</a></li>
-					                    </ul>
-								  	  </div>
+								  	  </div> -->
 									</div>
 		                        </aside>
 	                        </div>
@@ -283,14 +264,22 @@
         <script src="/resources/template/gotrip-master/assets/js/main.js"></script>
         <script type="text/javascript">
         var goUrlRegionView = "/nextrip/regionView";			/* #-> */
+        var goUrlPostView = "/post/postUserView"
        	var seqRegion2 = $("input:hidden[name=replaceCode]");
-       	
+       	var regionVal2 = $("input:hidden[name=region]");
        	var formRegion2 = $("form[name=formRegion2]");
+       	var nxPostSeqVal = $("input:hidden[name=nxPostSeq]");
        	
        	goRegionView2 = function(keyValue) {
+       		regionVal2.val(keyValue);
     		seqRegion2.val(keyValue);
     		formRegion2.attr("action", goUrlRegionView).submit();
     	}
+       	
+       	goPost = function(keyValue) {
+       		nxPostSeqVal.val(keyValue);
+       		formRegion2.attr("action", goUrlPostView).submit();
+       	}
         
         $(function(){
             $('.slider-wrap').slick({
