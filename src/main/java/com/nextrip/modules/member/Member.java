@@ -20,6 +20,12 @@ public class Member {
 	private String regDateTime;
 	private String modDateTime;
 	
+	//휘재 s
+	private String region; 
+	private String postCount;
+	
+	//휘재 e
+	
 	public String getPasswordCheck() {
 		return passwordCheck;
 	}
@@ -122,6 +128,21 @@ public class Member {
 	public void setNewPass(String newPass) {
 		this.newPass = newPass;
 	}
+	public String getRegion() {
+		return region;
+	}
+	public void setRegion(String region) {
+		this.region = region;
+	}
+	
+	//휘재 s
+	public String getPostCount() {
+		return postCount;
+	}
+	public void setPostCount(String postCount) {
+		this.postCount = postCount;
+	}
+	//휘재 e
 	
 	
 }

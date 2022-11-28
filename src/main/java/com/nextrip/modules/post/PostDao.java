@@ -87,6 +87,10 @@ public class PostDao {
 	
 	/* 추천 e */
 	
+	public List<Post> bestRegionPost(PostVo vo) throws Exception{
+		return sqlSession.selectList(namespace + ".bestRegionPost", vo);
+	}
+	
 	/* 찬구 s */
 	public List<Post> selectMyPostList(PostVo vo) {
 		return sqlSession.selectList(namespace+".selectMyPostList", vo);

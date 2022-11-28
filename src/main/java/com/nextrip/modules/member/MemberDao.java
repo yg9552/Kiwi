@@ -32,5 +32,11 @@ public class MemberDao {
 	public int idOverlapCheck(Member dto) {return sqlSession.selectOne(namespace+".idOverlapCheck", dto);}
 	public int userReg(Member dto) {return sqlSession.insert(namespace+".userReg", dto);}
 	
+	//휘재 s
+	public List<Member> mostPostRegion(MemberVo vo) throws Exception{
+		return sqlSession.selectList(namespace + ".mostPostRegion", vo);
+	}
+	//휘재 e
+
 	
 }

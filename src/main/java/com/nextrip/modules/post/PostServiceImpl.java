@@ -199,6 +199,11 @@ public class PostServiceImpl implements PostService{
 	
 	/* 추천 e */
 	
+	@Override
+	public List<Post> bestRegionPost(PostVo vo) throws Exception{
+		return dao.bestRegionPost(vo);
+	}
+	
 	/* 찬구 s */
 
 	@Override

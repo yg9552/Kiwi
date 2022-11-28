@@ -134,8 +134,9 @@ where 1=1
 	<if test="shRegion != null and !shRegion.equals('')">AND a.region = #{shRegion}</if>
 	<choose>
 		<when test="shOption == 1">AND a.title LIKE CONCAT('%',#{shValue},'%')</when>
-		<when test="shOption == 2">AND a.addressTitle LIKE CONCAT('%',#{shValue},'%')</when>
-		<when test="shOption == 3">AND memberNickName LIKE CONCAT('%',#{shValue},'%')</when>
+		<when test="shOption == 2">AND a.content LIKE CONCAT('%',#{shValue},'%')</when>
+		<when test="shOption == 3">AND a.addressTitle LIKE CONCAT('%',#{shValue},'%')</when>
+		<when test="shOption == 4">AND memberNickName LIKE CONCAT('%',#{shValue},'%')</when>
 	</choose>
 </sql>
 
@@ -270,6 +271,33 @@ select
 </select>
 <!-- 추천 S -->
 
+<!-- region view s -->
+
+
+<select id="bestRegionPost" resultMap="resultMapObj">
+	select
+		a.nxPostSeq
+		,a.region
+		,a.addresstitle
+	    ,b.path
+	    ,b.uuidName
+	    ,(
+			select
+				count(nxPostLikeSeq)
+			from nxPostLike b
+	        where 1=1
+	        and b.nxPostSeq = a.nxPostSeq
+	    ) as likeCount
+    from nxPost a
+    left join postUploaded b on a.nxPostSeq = b.pSeq
+    where 1=1
+    and a.delNy = 0
+    and a.region = #{region}
+    order by likeCount desc, a.nxPostSeq asc
+    limit 6
+</select>
+
+<!-- region view e -->
 <!-- 찬구 S -->
 <select id="countMyPostList" resultType="Integer">
 	SELECT

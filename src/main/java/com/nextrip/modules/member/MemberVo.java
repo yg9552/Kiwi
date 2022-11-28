@@ -31,6 +31,12 @@ public class MemberVo extends BaseVo{
 	private int startRnumForMysql = 0;							// 쿼리 시작 row
 	
 	
+// 휘재 s
+	private String region;
+	private String postCount;
+	
+// 휘재 e
+	
 	public String getShValue() {
 		return shValue;
 	}
@@ -173,4 +179,19 @@ public class MemberVo extends BaseVo{
 		}
 
 	}
+	//휘재 s
+	public String getRegion() {
+		return region;
+	}
+	public void setRegion(String region) {
+		this.region = region;
+	}
+	public String getPostCount() {
+		return postCount;
+	}
+	public void setPostCount(String postCount) {
+		this.postCount = postCount;
+	}
+	//휘재 e
+	
 }

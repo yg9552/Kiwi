@@ -37,7 +37,9 @@ public class MemberController {
 	PostServiceImpl service3;
 	
 	@RequestMapping(value="/nextrip/main")
-	public String main() throws Exception {
+	public String main(MemberVo vo, Model model) throws Exception {
+		List<Member> most = service.mostPostRegion(vo);
+		model.addAttribute("most", most);
 		
 		return "user/main";
 	}

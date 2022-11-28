@@ -34,6 +34,8 @@ public interface PostService {
 	public List<Post> bestLikePost(PostVo vo) throws Exception;
 	/* 추천 e */
 	
+	public List<Post> bestRegionPost(PostVo vo) throws Exception;
+	
 	public List<Post> selectMyPostList(PostVo vo) throws Exception;
 	public int countMyPostList(PostVo vo) throws Exception;
 	

@@ -55,5 +55,13 @@ public class MemberServiceImpl implements MemberService {
 		return dao.passwordUpdt(dto);
 	}
 
+	//휘재 s
+	@Override
+	public List<Member> mostPostRegion(MemberVo vo) throws Exception{
+		return dao.mostPostRegion(vo);
+	}
+
+	//휘재 e
+
 
 }

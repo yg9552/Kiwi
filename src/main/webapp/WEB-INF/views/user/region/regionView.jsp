@@ -63,7 +63,7 @@
     <section class="blog_area section-padding">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 mb-5 mb-lg-0 d-none d-lg-block">
+                <%-- <div class="col-lg-3 mb-5 mb-lg-0 d-none d-lg-block">
                 	<div class="blog_right_sidebar">
                         <aside class="single_sidebar_widget post_category_widget">
                             <h4 class="widget_title">여행지역</h4>
@@ -86,7 +86,10 @@
                         </aside>
                             
                     </div>
-                </div>
+                </div> --%>
+                <!-- usersideBar s -->
+            	<%@include file="../../common/userSidebar.jsp" %>
+            	<!-- usersideBar e -->
                 <div class="col-lg-9">
                 	<div class="row">
                 		<div class="col-lg-5">

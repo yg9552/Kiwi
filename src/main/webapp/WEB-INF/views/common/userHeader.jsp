@@ -19,6 +19,7 @@
     </div>
     <!-- Preloader End -->
     <form name="formRegion" method="post">
+    <input type="hidden" name="region">
     <c:choose>
     	<c:when test="${sessSeq eq null}">
     		<header>
@@ -179,11 +180,12 @@
    	var goUrlMain = "/nextrip/main";
    	var goUrlRegionView = "/nextrip/regionView";			/* #-> */
    	var seqRegion = $("input:hidden[name=replaceCode]");
-   	
+   	var regionVal = $("input:hidden[name=region]");
    	var formRegion = $("form[name=formRegion]");
    
    	
     goRegionView = function(keyValue) {
+    	regionVal.val(keyValue);
 		seqRegion.val(keyValue);
 		formRegion.attr("action", goUrlRegionView).submit();
 	}

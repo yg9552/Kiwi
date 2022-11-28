@@ -177,4 +177,23 @@
 	
 	<!-- 회원가입 E -->
 	
+	<!-- 휘재 s -->
+	<select id="mostPostRegion" resultMap="resultMapObj">
+	select
+		a.region
+	    ,(
+			select
+	        count(b.nxPostSeq)
+	        from nxPost b
+	        where 1=1
+	        and b.region = a.region
+	        ) as postCount
+	from nxPost a
+	where 1=1
+	group by region
+	limit 3
+	</select>
+	
+	<!-- 휘재 e -->
+	
 </mapper>	
