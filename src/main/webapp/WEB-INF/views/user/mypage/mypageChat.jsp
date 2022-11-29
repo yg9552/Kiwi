@@ -51,58 +51,56 @@
 			<%@include file="../../common/mypageSideMenu.jsp"%>
 		<!-- mypageSideMenu e -->	       	
 	       	<div class="col-9">
-		        <div class="page-content">
-		        	<form id="mainForm" method="POST">
-		        		<input type="hidden" id="selectedRoom">
-			        	<div class="row justify-content-center h-100">
-			                <div class="col-md-4 col-xl-3 chat">
-			                    <div class="card mb-sm-3 mb-md-0 contacts_card">
-			                        <div class="card-header">
-			                            <div class="input-group">
-											<input type="text" placeholder="add ChatUser Seq..." id="cuMemberSeq" name="cuMemberSeq" class="form-control search">
-			                                <span class="input-group-text search_btn" onclick="addChat()"><i class="fa-solid fa-plus"></i></span>
-			                            </div>
-			                        </div>
-			                        <div class="card-body contacts_body">
-			                            <ui class="contacts" id="chatList">
-			                            	<c:forEach items="${list }" var="list" varStatus="status">
-												<li class="room" id="${list.chatSeq}" onclick="selectChatRoom(${list.chatSeq})">
-				                                    <div class="d-flex bd-highlight">
-				                                        <div class="img_cont">
-														<!-- 아래 path 와 uuidname 도 본인의 dto field에 맞게 수정 -->
-				                                            <%-- <img src="<c:if test = "${list.upPath ne null}">${list.upPath}${list.upUuidName}</c:if>" class="rounded-circle user_img"> --%>
-				                                        </div>
-				                                        <div class="chat_product_info">
-														<!-- 아래 mmNickName  도 본인의 dto field에 맞게 수정 -->
-				                                            <span class="status"><c:out value="${list.nickname }"/></span>
-				                                 			<p>TEST TEXT FIELD</p>
-				                                        </div>
-				                                    </div>
-				                                </li>
-			                            	</c:forEach>
-			                            </ui>
-			                        </div>
-			                        <div class="card-footer"></div>
-			                    </div>
-			                </div>
-			                <div class="col-md-8 col-xl-6 chat">
-			                    <div class="card">	                       
-			                        <div id="chatBox" class="card-body msg_card_body">
-															<!-- 채팅 메세지 박스 -->
-			                        </div>
-			                        <div class="card-footer">
-			                            <div class="input-group">
-			                                <span class="input-group-text attach_btn"><i class="fas fa-paperclip"></i></span>
-			                                <textarea id="chatMessage" class="form-control type_msg"
-			                                    placeholder="Type your message..."></textarea>
-			                                <span class="input-group-text send_btn" id="sendBtn"><i class="fas fa-location-arrow"></i></span>
-			                            </div>
-			                        </div>
-			                    </div>
-			                </div>
-			            </div>
-		            </form>
-		        </div>
+	        	<form id="mainForm" method="POST">
+	        		<input type="hidden" id="selectedRoom">
+		        	<div class="row h-100" style="width:1100px;">
+		                <div class="col-md-4 col-xl-3 chat">
+		                    <div class="card mb-sm-3 mb-md-0 contacts_card">
+		                        <div class="card-header">
+		                            <div class="input-group">
+										<input type="text" placeholder="회원 번호를 넣어주세요" id="cuMemberSeq" name="cuMemberSeq" class="form-control search">
+		                                <span class="input-group-text search_btn" onclick="addChat()"><i class="fa-solid fa-plus"></i></span>
+		                            </div>
+		                        </div>
+		                        <div class="card-body contacts_body">
+		                            <ui class="contacts" id="chatList">
+		                            	<c:forEach items="${list }" var="list" varStatus="status">
+											<li class="room" id="${list.chatSeq}" onclick="selectChatRoom(${list.chatSeq})">
+			                                    <div class="d-flex bd-highlight">
+			                                        <div class="img_cont">
+													<!-- 아래 path 와 uuidname 도 본인의 dto field에 맞게 수정 -->
+			                                            <%-- <img src="<c:if test = "${list.upPath ne null}">${list.upPath}${list.upUuidName}</c:if>" class="rounded-circle user_img"> --%>
+			                                        </div>
+			                                        <div class="chat_product_info">
+													<!-- 아래 mmNickName  도 본인의 dto field에 맞게 수정 -->
+			                                            <span class="status"><c:out value="${list.nickname }"/></span>
+			                                 			<p>TEST TEXT FIELD</p>
+			                                        </div>
+			                                    </div>
+			                                </li>
+		                            	</c:forEach>
+		                            </ui>
+		                        </div>
+		                        <div class="card-footer"></div>
+		                    </div>
+		                </div>
+		                <div class="col-md-8 col-xl-6 chat">
+		                    <div class="card">	                       
+		                        <div id="chatBox" class="card-body msg_card_body">
+														<!-- 채팅 메세지 박스 -->
+		                        </div>
+		                        <div class="card-footer">
+		                            <div class="input-group">
+		                                <span class="input-group-text attach_btn"><i class="fas fa-paperclip"></i></span>
+		                                <textarea id="chatMessage" class="form-control type_msg"
+		                                    placeholder="Type your message..."></textarea>
+		                                <span class="input-group-text send_btn" id="sendBtn"><i class="fas fa-location-arrow"></i></span>
+		                            </div>
+		                        </div>
+		                    </div>
+		                </div>
+		            </div>
+	            </form>
 	       	</div>
 		</div>
 	</div>
