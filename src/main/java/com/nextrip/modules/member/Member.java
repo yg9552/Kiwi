@@ -19,6 +19,7 @@ public class Member {
 	private Integer lgResultNy;
 	private String regDateTime;
 	private String modDateTime;
+	private String token;
 	
 	//휘재 s
 	private String region; 
@@ -135,6 +136,13 @@ public class Member {
 		this.region = region;
 	}
 	
+	
+	public String getToken() {
+		return token;
+	}
+	public void setToken(String token) {
+		this.token = token;
+	}
 	//휘재 s
 	public String getPostCount() {
 		return postCount;

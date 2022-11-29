@@ -126,6 +126,15 @@
 			AND delNy=0
 	</select>
 	
+	<select id="snsLoginCheck" resultMap="resultMapObj">
+		SELECT
+			*
+		FROM member a
+		WHERE 1=1
+		AND a.email = #{email}
+		AND a.nickname = #{nickname}
+	</select>
+	
 	<select id="login" resultMap="resultMapObj">
 		SELECT
 			memberSeq
@@ -137,7 +146,34 @@
 			AND password = #{password}
 			AND delNy = 0
 	</select>
+	
+	<insert id="kakaoInst">
+		INSERT INTO member(
+			name
+			,nickname
+			,email
+			,delNy
+			,adminNy
+			,token
+			,dob
+			,phoneNum
+			)
+		VALUES(
+			#{name }
+			,#{nickname }
+			,#{email }
+			,0
+			,0
+			,#{token }
+			,#{dob }
+			,#{phoneNum }
+			)
+		<selectKey resultType="String" keyProperty="memberSeq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
 	<!-- 로그인 E -->
+	
 	<!-- 회원가입 S -->
 	<select id="idOverlapCheck" resultType="Integer">
 		SELECT

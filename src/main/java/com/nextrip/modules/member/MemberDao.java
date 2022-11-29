@@ -26,12 +26,12 @@ public class MemberDao {
 	
 	
 	public Member checkId(Member dto) {return sqlSession.selectOne(namespace+".checkId", dto);}
-	
+	public Member snsLoginCheck(Member dto) { return sqlSession.selectOne(namespace + ".snsLoginCheck", dto); }
 	public Member login(MemberVo vo) {return sqlSession.selectOne(namespace+".login", vo);}
 	
 	public int idOverlapCheck(Member dto) {return sqlSession.selectOne(namespace+".idOverlapCheck", dto);}
 	public int userReg(Member dto) {return sqlSession.insert(namespace+".userReg", dto);}
-	
+	public int kakaoInst(Member dto) { return sqlSession.insert(namespace + ".kakaoInst", dto); }
 	//휘재 s
 	public List<Member> mostPostRegion(MemberVo vo) throws Exception{
 		return sqlSession.selectList(namespace + ".mostPostRegion", vo);

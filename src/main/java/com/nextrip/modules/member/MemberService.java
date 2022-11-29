@@ -12,10 +12,11 @@ public interface MemberService {
 	public int passwordUpdt(Member dto) throws Exception;
 	
 	public Member checkId(Member dto) throws Exception;
+	public Member snsLoginCheck(Member dto) throws Exception;
 	public Member login(MemberVo vo) throws Exception;
 	public int idOverlapCheck(Member dto) throws Exception;
 	public int userReg(Member dto) throws Exception;
-	
+	public int kakaoInst(Member dto) throws Exception;
 	
 	//휘재 s
 	public List<Member> mostPostRegion(MemberVo vo) throws Exception;

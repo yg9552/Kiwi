@@ -54,7 +54,18 @@ public class MemberServiceImpl implements MemberService {
 		dto.setNewPass(UtilSecurity.encryptSha256(dto.getNewPass()));
 		return dao.passwordUpdt(dto);
 	}
+	
 
+	@Override
+	public Member snsLoginCheck(Member dto) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.snsLoginCheck(dto);
+	}
+	@Override
+	public int kakaoInst(Member dto) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.kakaoInst(dto);
+	}
 	//휘재 s
 	@Override
 	public List<Member> mostPostRegion(MemberVo vo) throws Exception{

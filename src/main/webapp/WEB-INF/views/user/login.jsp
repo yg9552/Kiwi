@@ -19,6 +19,7 @@
 	<link rel="manifest" href="site.webmanifest">
 	<link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 	<%@include file="../common/templateCSS.jsp"%>
 	<%@include file="../common/templateScript.jsp"%>
 </head>
@@ -50,7 +51,7 @@
 				</div>
 			</div>
 			<div class="row justify-content-center mb-2">
-				<a href=""><img alt="" src="/resources/common/kakao_login_large_narrow.png" style="width: 320px;"></a>
+				<a type="button" id="btnKakao"><img alt="" src="/resources/common/kakao_login_large_narrow.png" style="width: 320px;"></a>
 			</div>
 			<div class="row justify-content-center mb-2">
 				<span><a href=""><input type="button" class="btn" value="Facebook으로 로그인" style="background-color:#1877F2; color:white; width:320px;"></a></span>
@@ -60,6 +61,15 @@
 			</div>
 		</form>
 	</div>
+	
+	<form name="form">
+		<input type="hidden" name="name"/>
+		<input type="hidden" name="nickname"/>
+		<input type="hidden" name="phoneNum"/>
+		<input type="hidden" name="email"/>
+		<input type="hidden" name="dob"/>
+		<input type="hidden" name="token"/>
+	</form>
 
 	<script type="text/javascript">
         var goUrlMain = "/nextrip/main";
@@ -97,6 +107,72 @@
 				loginAjax();
 	        }
 		}
+       	
+       	Kakao.init('9324b5405b9481a01004906f5a2c2484'); // test 용
+    	console.log(Kakao.isInitialized());
+    	
+    	$("#btnKakao").on("click", function() {
+    		/* Kakao.Auth.authorize({
+   		      redirectUri: 'http://localhost:8080/member/kakaoCallback',
+   		    }); */
+    		
+    		Kakao.Auth.login({
+   		      success: function (response) {
+   		        Kakao.API.request({
+   		          url: '/v2/user/me',
+   		          success: function (response) {
+   		        	  
+   		        	  var accessToken = Kakao.Auth.getAccessToken();
+   		        	  Kakao.Auth.setAccessToken(accessToken);
+
+   		        	  var account = response.kakao_account;
+   		        	  
+   		        	  console.log(response)
+   		        	  console.log("email : " + account.email);
+   		        	  console.log("name : " + account.name);
+   		        	  console.log("nickname : " + account.profile.nickname);
+   		        	  console.log("picture : " + account.birthday);
+   		        	  console.log("picture : " + account.birthday.substring(0,2) + "-" + account.birthday.substring(2,account.birthday.length));
+  	        	  
+	  	        	  $("input[name=name]").val("카카오로그인");
+	  	        	  $("input[name=nickname]").val(account.profile.nickname);
+	  	        	  $("input[name=phoneNum]").val(account.profile.phone_number);
+	  	        	  $("input[name=email]").val(account.email);
+	  	        	  $("input[name=token]").val(accessToken);
+	  	        	  
+	  	        	  
+	  	        	 /*  $("form[name=form]").attr("action", "/member/kakaoLoginProc").submit(); */
+					
+	  	        	  $.ajax({
+						async: true
+						,cache: false
+						,type:"POST"
+						,url: "/nextrip/kakaoLoginProc"
+						,data: {"name": $("input[name=name]").val(), "nickname": $("input[name=nickname]").val(), "phoneNum": $("input[name=phoneNum]").val(), "email": $("input[name=email]").val(), "token": $("input[name=token]").val()}
+						,success : function(response) {
+							if (response.rt == "fail") {
+								alert("아이디와 비밀번호를 다시 확인 후 시도해 주세요.");
+								return false;
+							} else {
+								window.location.href = "/nextrip/main";
+							}
+						},
+						error : function(jqXHR, status, error) {
+							alert("알 수 없는 에러 [ " + error + " ]");
+						}
+					});
+   		          },
+   		          fail: function (error) {
+   		            console.log(error)
+   		          },
+   		        })
+   		      },
+   		      fail: function (error) {
+   		        console.log(error)
+   		      },
+   		    })
+		});
+       	
 	</script>
 </body>
 </html>
