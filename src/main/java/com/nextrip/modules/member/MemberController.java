@@ -178,6 +178,11 @@ public class MemberController {
 		return "user/login";
 	}
 	
+	@RequestMapping(value="/nextrip/kdminLogin")
+	public String kdminLogin() throws Exception {
+		return "kdmin/kdminLogin";
+	}
+	
 	@ResponseBody
 	@RequestMapping(value="/nextrip/loginproc")
 	public Map<String, Object> loginproc(Member dto,@ModelAttribute("vo") MemberVo vo, HttpSession httpSession) throws Exception{

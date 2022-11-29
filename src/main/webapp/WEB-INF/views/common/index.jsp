@@ -69,7 +69,7 @@
         <!-- slider Area End-->
         <script type="text/javascript">
         var userUrl = "/nextrip/main";
-        var kdminUrl = "/nextrip/dashboard";
+        var kdminUrl = "/nextrip/kdminLogin";
         
         $("#user").on("click", function(){
         	$(location).attr("href", userUrl)

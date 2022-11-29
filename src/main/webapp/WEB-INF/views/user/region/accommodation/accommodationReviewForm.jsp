@@ -63,7 +63,7 @@
 				              <div class="col-12">
 				                 <div class="form-group">
 				                    <textarea class="form-control w-100" name="generalReview" id="comment" cols="30" rows="9"
-				                       placeholder="멋진 후기를 남겨주세요!"></textarea>
+				                       placeholder="멋진 후기를 남겨주세요! 더 자세한 내용을 작성하고 싶으시면 여행지후기에 남겨주세요!"></textarea>
 				                 </div>
 				              </div>
 				           </div>

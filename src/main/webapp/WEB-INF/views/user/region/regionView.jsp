@@ -95,6 +95,15 @@
             	<!-- usersideBar e -->
                 <div class="col-lg-9">
                 	<div class="row">
+                		<div class="d-lg-none col-lg-12">
+                			<div class="blog_right_sidebar">
+		                        <aside class="single_sidebar_widget post_category_widget">
+		                            <h4 class="widget_title">날씨</h4>
+		                            <p id="description"></p>
+		                            <p id="temperature"></p>
+		                        </aside>
+		                    </div>
+                		</div>
                 		<div class="col-lg-5">
                 			<div class="blog_right_sidebar">
 		                        <aside class="single_sidebar_widget post_category_widget">
@@ -131,7 +140,7 @@
                 		</div>
                 	</div>
                 	<div class="row">
-                		<div class="col-lg-12">
+                		<div class="d-none col-lg-12 d-lg-block">
                 			<div class="blog_right_sidebar">
 		                        <aside class="single_sidebar_widget post_category_widget">
 		                            <h4 class="widget_title">날씨</h4>
