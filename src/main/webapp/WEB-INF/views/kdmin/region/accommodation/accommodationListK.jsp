@@ -91,10 +91,10 @@
            		<div class="card-body">
            			<div class="row">
             			<div class="mb-3 col-lg-2">
-                     	   <select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example">
-                      	   <option selected>삭제여부</option>
-                           <option value="1">N</option>
-                           <option value="2">Y</option>
+                     	   <select class="form-select" id="shDelNy" name="shDelNy" aria-label="Default select example">
+                      	   <option value="" <c:if test="${empty vo.shDelNy}">selected</c:if>>삭제여부</option>
+                           <option value="0" <c:if test="${vo.shDelNy eq 0}">selected</c:if>>N</option>
+                           <option value="1" <c:if test="${vo.shDelNy eq 1}">selected</c:if>>Y</option>
                          </select>
                        </div>
                        <div class="mb-3 col-lg-2">
@@ -115,7 +115,8 @@
                       <div class="row">
                        <div class="mb-3 col-lg-2">
 	                       <select class="form-select" id="shOption" aria-label="Default select example" name="shOption">
-		                       <option value="1">지역</option>
+		                       <option value="" <c:if test="${empty vo.shOption}">selected</c:if>>선택</option>
+		                       <option value="1" <c:if test="${vo.shOption eq 1}">selected</c:if>>지역</option>
 		                       <option value="2">Y</option>
 	                       </select>
                        </div>
