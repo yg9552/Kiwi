@@ -22,7 +22,7 @@
 	            </a>
 	        </li>
 	        <li>
-	            <a href="./mypageChat.html" class="d-flex">
+	            <a href="/nextrip/mypageChat" class="d-flex">
 	                <p>채팅</p>
 	            </a>
 	        </li>
