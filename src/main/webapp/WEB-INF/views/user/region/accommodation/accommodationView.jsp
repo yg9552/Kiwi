@@ -36,6 +36,7 @@
         <link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
    		<script defer type="text/javascript" src="/resources/xdmin/js/validationXdmin.js"></script>
+   		<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
    </head>
 
    <body>
@@ -83,6 +84,7 @@
                         </c:if>
                      </c:forEach>
                         <li><a href="#simple-list-item-1"><i class="fa fa-comments"></i> 후기 <c:out value="${vo.totalRows }" />건 </a></li>
+                        <li class="kakaotalk"><a id="btnKakao" onclick="fns_send('kakaotalk');" class="kakaotalk" target="_self" title="카카오톡 새창열림"><span class="skip">카카오톡</span></a></li>
                      </ul>
                      <p class="excert">
                         <c:out value="${item.hotelIntroduce }" />
@@ -377,8 +379,8 @@
    			}
   			});
       });
+      
    </script>
-  
 	<!-- JS here -->
 	
 		<!-- All JS Custom Plugins Link Here here -->
