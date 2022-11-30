@@ -21,115 +21,135 @@
         var nb22 = document.getElementsByClassName('NB22');
         var nb23 = document.getElementsByClassName('NB23');
         
-        
-
         for(var i = 0; i<nb01.length; i++){
-        	nb01[i].classList.add('fa-solid','fa-sun');
+        	//nb01[i].classList.add('fa-solid','fa-sun');
         	//document.getElementsByClassName('NB01')[i].classList.remove('NB01');
         	nb01[i].innerText='';
+        	nb01[i].append(document.createElement("img"));
         	//alert("x["+i+"] 번째 초기화완료");
         }
         for(var i = 0; i<nb02.length; i++){
-        	nb02[i].classList.add('fa-solid','fa-cloud-sun');
+        	//nb02[i].classList.add('fa-solid','fa-cloud-sun');
         	nb02[i].innerText='';
+        	nb02[i].append(document.createElement("img"));
         }
         
         for(var i = 0; i<nb03.length; i++){
-        	nb03[i].classList.add('fa-solid','fa-cloud-sun');
+        	//nb03[i].classList.add('fa-solid','fa-cloud-sun');
         	nb03[i].innerText='';
+        	nb03[i].append(document.createElement("img"));
         }
         
         for(var i = 0; i<nb04.length; i++){
-        	nb04[i].classList.add('fa-solid','fa-cloud');
+        	//nb04[i].classList.add('fa-solid','fa-cloud');
         	nb04[i].innerText='';
+        	nb04[i].append(document.createElement("img"));
         }
         
         for(var i = 0; i<nb01_N.length; i++){
-        	nb01_N[i].classList.add('fa-solid','fa-moon');
+        	//nb01_N[i].classList.add('fa-solid','fa-moon');
         	nb01_N[i].innerText='';
+        	nb01_N[i].append(document.createElement("img"));
         }
         
         for(var i = 0; i<nb02_N.length; i++){
-        	nb02_N[i].classList.add('fa-solid','fa-cloud-moon');
+        	//nb02_N[i].classList.add('fa-solid','fa-cloud-moon');
         	nb02_N[i].innerText='';
+        	nb02_N[i].append(document.createElement("img"));
         }
         
         for(var i = 0; i<nb03_N.length; i++){
-        	nb03_N[i].classList.add('fa-solid','fa-cloud-moon');
+        	//nb03_N[i].classList.add('fa-solid','fa-cloud-moon');
         	nb03_N[i].innerText='';
+        	nb03_N[i].append(document.createElement("img"));
         }
         
         for(var i = 0; i<nb04_N.length; i++){
-        	nb04_N[i].classList.add('fa-solid','fa-cloud');
+        	//nb04_N[i].classList.add('fa-solid','fa-cloud');
         	nb04_N[i].innerText='';
+        	nb04_N[i].append(document.createElement("img"));
         }
         
         for(var i = 0; i<nb07.length; i++){
-        	nb07[i].classList.add('fa-solid','fa-umbrella');
+        	//nb07[i].classList.add('fa-solid','fa-umbrella');
         	nb07[i].innerText='';
+        	nb07[i].append(document.createElement("img"));
         }
         
         for(var i = 0; i<nb08.length; i++){
-        	nb08[i].classList.add('fa-solid','fa-cloud-showers-heavy');
+        	//nb08[i].classList.add('fa-solid','fa-cloud-showers-heavy');
         	nb08[i].innerText='';
+        	nb08[i].append(document.createElement("img"));
         }
         
         for(var i = 0; i<nb11.length; i++){
-        	nb11[i].classList.add('fa-solid','fa-snowflake');
+        	//nb11[i].classList.add('fa-solid','fa-snowflake');
         	nb11[i].innerText='';
+        	nb11[i].append(document.createElement("img"));
         }
         
         for(var i = 0; i<nb12.length; i++){
-        	nb12[i].classList.add('fa-solid','fa-cloud-showers-heavy');
+        	//nb12[i].classList.add('fa-solid','fa-cloud-showers-heavy');
         	nb12[i].innerText='';
+        	nb12[i].append(document.createElement("img"));
         }
         
         for(var i = 0; i<nb13.length; i++){
-        	nb13[i].classList.add('fa-solid','fa-snowflake');
+        	//nb13[i].classList.add('fa-solid','fa-snowflake');
         	nb13[i].innerText='';
+        	nb13[i].append(document.createElement("img"));
         }
         
         for(var i = 0; i<nb14.length; i++){
-        	nb14[i].classList.add('fa-solid','fa-cloud-bolt');
+        	//nb14[i].classList.add('fa-solid','fa-cloud-bolt');
         	nb14[i].innerText='';
+        	nb14[i].append(document.createElement("img"));
         }
         
         for(var i = 0; i<nb15.length; i++){
-        	nb15[i].classList.add('fa-solid','fa-smog');
+        	//nb15[i].classList.add('fa-solid','fa-smog');
         	nb15[i].innerText='';
+        	nb15[i].append(document.createElement("img"));
         }
         
         for(var i = 0; i<nb16.length; i++){
-        	nb16[i].classList.add('fa-solid','fa-industry');
+        	//nb16[i].classList.add('fa-solid','fa-industry');
         	nb16[i].innerText='';
+        	nb16[i].append(document.createElement("img"));
         }
         
         for(var i = 0; i<nb17.length; i++){
-        	nb17[i].classList.add('fa-solid','fa-smog');
+        	//nb17[i].classList.add('fa-solid','fa-smog');
         	nb17[i].innerText='';
+        	nb17[i].append(document.createElement("img"));
         }
         
         for(var i = 0; i<nb18.length; i++){
-        	nb18[i].classList.add('fa-solid','fa-smog');
+        	//nb18[i].classList.add('fa-solid','fa-smog');
         	nb18[i].innerText='';
+        	nb18[i].append(document.createElement("img"));
         }
         
         for(var i = 0; i<nb20.length; i++){
-        	nb20[i].classList.add('fa-solid','fa-snowflake');
+        	//nb20[i].classList.add('fa-solid','fa-snowflake');
         	nb20[i].innerText='';
+        	nb20[i].append(document.createElement("img"));
         }
         
         for(var i = 0; i<nb21.length; i++){
-        	nb21[i].classList.add('fa-solid','fa-cloud-sun-rain');
+        	//nb21[i].classList.add('fa-solid','fa-cloud-sun-rain');
         	nb21[i].innerText='';
+        	nb21[i].append(document.createElement("img"));
         }
         
         for(var i = 0; i<nb22.length; i++){
-        	nb22[i].classList.add('fa-solid','fa-snowflake');
+        	//nb22[i].classList.add('fa-solid','fa-snowflake');
         	nb22[i].innerText='';
+        	nb22[i].append(document.createElement("img"));
         }
         
         for(var i = 0; i<nb23.length; i++){
-        	nb23[i].classList.add('fa-solid','fa-cloud-sun-rain');
+        	//nb23[i].classList.add('fa-solid','fa-cloud-sun-rain');
         	nb23[i].innerText='';
+        	nb23[i].append(document.createElement("img"));
         }

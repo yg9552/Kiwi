@@ -56,7 +56,7 @@ public class CommonController {
 		Elements parsingDivs = document.body().select("table").select(".table-zebra"); // class가 parsingDiv인 element 찾기
 		Elements parsingBody = parsingDivs.select("tr");
 		Elements parsingHead = parsingDivs.select("thead");
-		System.out.println(parsingHead);
+		model.addAttribute("thead",parsingHead);
 		System.out.println("서울");
 		Element seoulW = parsingBody.get(2);
 		model.addAttribute("seoulW", seoulW);
