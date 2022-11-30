@@ -109,9 +109,10 @@
 							      <th scope="col col-lg-1">번호</th>
 							      <th scope="col col-lg-1">구분</th>
 							      <th scope="col col-lg-1">지역</th>
-							      <th scope="col" style="width: 400px;">제목</th>
+							      <th scope="col" style="width: 375px;">제목</th>
 							      <th scope="col col-lg-1">작성자</th>
 							      <th scope="col col-lg-1">작성일</th>
+							      <th scope="col col-lg-1">조회수</th>
 							    </tr>
 							  </thead>
 							  <tbody>
@@ -139,9 +140,14 @@
 													<c:if test="${list.region eq listRegion.replaceCode}"><c:out value="${listRegion.name }"/></c:if>
 												</c:forEach>
 										      </td>
-										      <td onclick="location.href='javascript:goView(<c:out value="${list.nxPostSeq }"/>)'" style="cursor: pointer;"><c:out value="${list.title }"/></td>
+										      <td onclick="location.href='javascript:goView(<c:out value="${list.nxPostSeq }"/>)'" style="cursor: pointer;">
+									        	<p style="cursor: pointer; width:350px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin: 0px;">
+									        		<c:out value="${list.title }"/>
+									        	</p>
+									       	  </td>
 										      <td><c:out value="${sessNickname }"/></td>
 										      <td><c:out value="${list.modDateTime }"/></td>
+										      <td><c:out value="${list.viewCount }"/></td>
 										    </tr>
 									  	</c:forEach>
 									</c:otherwise>

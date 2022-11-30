@@ -99,8 +99,11 @@
                 			<div class="blog_right_sidebar">
 		                        <aside class="single_sidebar_widget post_category_widget">
 		                            <h4 class="widget_title">날씨</h4>
-		                            <p id="description"></p>
-		                            <p id="temperature"></p>
+		                            <table>
+		                            	<c:out value="${seoulW }" escapeXml="false"></c:out>
+		                            </table>
+		                            <!-- <p id="description"></p>
+		                            <p id="temperature"></p> -->
 		                        </aside>
 		                    </div>
                 		</div>

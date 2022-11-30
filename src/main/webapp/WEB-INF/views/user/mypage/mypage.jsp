@@ -57,7 +57,13 @@
 		.caution > li {
 			list-style-type:square ;
 		}
-		.wic.NB01 { background-image:url(/resources/image/sunset.jpg);}
+/* 		.wic.NB01 { background-image:url(/resources/image/sunset.jpg);} */
+		td > i {
+			font-size: 40px;
+		}
+		td > span {
+			display: block;
+		}
 	</style>
 </head>
 <%@include file="../../common/userHeader.jsp"%>
@@ -102,8 +108,8 @@
 		    						<td></td>
 		    						<td><c:out value="${list.email }"></c:out></td>
 		    						<td><c:out value="${list.id }"></c:out></td>
-		    						<td>		<i class="NB01"></i></td>
-		    						<td>		    	<i class="fa-solid fa-sun"></i></td>
+		    						<td>		<!-- <i class="NB01"> --></i></td>
+		    						<td>		    	<!-- <i class="fa-solid fa-sun"></i> --></td>
 		    						<td></td>
 		    						<td><c:out value="${list.name }"></c:out></td>
 		    						<td><c:out value="${list.delNy }"></c:out> </td>
@@ -114,8 +120,15 @@
 		    	</table>
 		    </div>
 		</div>
+		
+		<div class="weatherBox container">
+			<table>
+				<c:out value="${seoulW }" escapeXml="false"></c:out>
+			</table>
+		
+		</div>
 		<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/-JhoMGoAfFc?autoplay=1&mute=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
-		<%
+		<%-- <%
 		
 		        // 파싱할 사이트를 적어준다(해당 사이트에 대한 태그를 다 긁어옴)
 		
@@ -125,8 +138,9 @@
 		        //System.out.println(doc2.data());
 				//out.println(doc2.body());		
 		        //System.out.println(doc2.body());
+		        System.out.println("jsp Script 시작");
 		   		out.println(doc2.body().select("table").select(".table-zebra"));
-		
+		/* 
 		    	for(int i=1; i<24; i++) {
 		        	if(i<10){
 		        		//System.out.println('<i class="NB0'+i+'"></i>');
@@ -135,18 +149,20 @@
 		        		//out.println('<i class="NB'+i+'"></i>');
 		        	}
 		        	
-		        }
+		        } 
+		*/
 		
 		        // list 속성안에 li 요소 데이터들을 긁어온다
 		
 		        Elements posts = doc2.body().getElementsByClass("table-zebra");
 		
-		        //System.out.println(doc2.getElementsByClass("list"));
+		       	out.println(doc2.getElementsByClass("list"));
 		
 		        Elements file = posts.select("tr");
 		
-		        //System.out.println(posts.select("tr"));
-		        
+		        System.out.println(posts.select("tr"));
+				
+		        System.out.println("-----------------");
 		        
 		
 		        // li 요소 데이터들 반복적으로 츨력(li 요소 끝날때까지 즉, li개수만큼 반복문)
@@ -156,8 +172,39 @@
 		        // 구성요소.text() : 구성요소 값을 반환(태그는 포함되지 않음)
 		
 		        // 구성요소.attr("속성이름") : 구성요소에 "속성이름"에 대한 값을 반환
-		
+		        
+		        
 		        for(Element e : file){
+					//if(e.select()[0] == 1) {
+					//	System.out.println("타이틀");
+					//}
+		        	//System.out.println("Title : " + e.select("td").text());
+		        	
+		        	//out.println("Title : " + e.select("td:eq(0)").text());
+		        	
+		        	out.println(e.select("td:eq(0)"));
+		
+		        	//System.out.println("Link : " + e.select(".tit a").attr("href"));
+		
+		                // 사이트 링크가 이상하게 올라가있는 관계로 문자열을 다듬어야 한다
+		
+		                // substring을 사용해 원하는 문자열만큼 자르고 앞에 주소부분을 붙여주면 끝
+		
+		               // System.out.println("Link : http://www.playdb.co.kr/magazine/" + e.select(".tit a").attr("href").substring(2, 70));
+		            System.out.println(e.select("td:eq(0)")); 
+		                
+					System.out.println("Image : " + e.select("td:eq(1) .wic").text());
+		           	//out.println("<p>"+ e.select("td:eq(1) .wic").text() +"</p>");
+		           	//out.println("<p>"+ e.select("td:eq(1)")+"</p>");
+		        	//System.out.println("Image : " + e.select(".thumb img").attr("src"));
+		
+		        	System.out.println("강수확률 : " + e.select("td:eq(1) span").text());
+		
+		        	System.out.println();
+		
+		        }
+		
+		       /*  for(Element e : file){
 		
 		        	//System.out.println("Title : " + e.select("td").text());
 		        	System.out.println("Title : " + e.select("td:eq(0)").text());
@@ -180,11 +227,11 @@
 		
 		        	System.out.println();
 		
-		        }
+		        } */
 		
-		%>
+		%> --%>
 	</div>
-    
+    <script defer type="text/javascript" src="/resources/common/js/weatherIcon.js"></script>
         <script type="text/javascript">
         	var goUrlMain = "/nextrip/login";
         
@@ -208,13 +255,6 @@
 	    	});
         </script>
         <script type="text/javascript">
-        //alert(document.getElementsByClassName('NB01').length);
-        for(var i = 0; i<document.getElementsByClassName('NB01').length;i++){
-        	document.getElementsByClassName('NB01')[i].classList.add('fa-solid','fa-sun');
-        	document.getElementsByClassName('NB01')[i].classList.remove('NB01');
-        	
-        }
-        //document.getElementsByClassName("NB01").classList.replace("NB01", "fa-solid fa-sun");
         
         </script>
         

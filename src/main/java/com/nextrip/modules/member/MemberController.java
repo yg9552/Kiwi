@@ -7,6 +7,11 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.jsoup.Connection;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -55,6 +60,42 @@ public class MemberController {
 		
 		List<Member> list = service.selectMemberList(vo);
 		model.addAttribute("list", list);
+		
+		String URL = "https://www.weather.go.kr/w/weather/forecast/mid-term.do?stnId1=108";
+		Connection conn = Jsoup.connect(URL);
+		
+		Document document = conn.get();
+		
+		Elements parsingDivs = document.body().select("table").select(".table-zebra"); // class가 parsingDiv인 element 찾기
+		Elements parsingBody = parsingDivs.select("tr");
+		Elements parsingHead = parsingDivs.select("thead");
+		System.out.println(parsingHead);
+		System.out.println("서울");
+		Element seoulW = parsingBody.get(2);
+		model.addAttribute("seoulW", seoulW);
+		System.out.println("강원도");
+		Element gangW = parsingBody.get(3);
+		model.addAttribute("gangW", gangW);
+		System.out.println("대전");
+		Element daeW = parsingBody.get(5);
+		model.addAttribute("daeW", daeW);
+		System.out.println("광주");
+		Element gwangW = parsingBody.get(7);
+		model.addAttribute("gwangW", gwangW);
+		System.out.println("부산");
+		Element buW = parsingBody.get(9);
+		model.addAttribute("buW", buW);
+		System.out.println("제주도");
+		Element jejuW = parsingBody.get(11);
+		model.addAttribute("jejuW", jejuW);
+		//Element parsingTitle = parsingDiv.getElementById("parsingTitle"); // id가 parsingTitle인 element 찾기
+		//Element partsingContents = parsingDiv.getElementById("partsingContents"); // id가 parsingContents인 element 찾기
+		
+		//String title = parsingTitle.getElementsByTag("h3").get(0).text(); // 첫 번째 h3태그의 text값 찾기
+		//String contents = partsingContents.getElementsByTag("p").get(0).text(); // 첫 번째 p태그의 text값 찾기
+		
+		//System.out.println("파싱한 제목: " + title);
+		//System.out.println("파싱한 내용: " + contents);
 		
 		return "user/mypage/mypage";
 	}
