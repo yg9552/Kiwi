@@ -53,116 +53,84 @@
     	 <%@include file="../common/userHeader.jsp"%>
      <!-- userHeader e -->
     <main>
-    
-    <!-- Blog Area Start -->
-    	<form name="formRegion2" method="post">
-    	<input type="hidden" name="replaceCode">
-    	<input type="hidden" name="region">
-        <div class="home-blog-area section-padding2" style="padding: 0px; margin-top: 80px; margin-bottom: 50px;">
-            <div class="container">
-                <!-- Section Tittle -->
-                <div class="row">
-                	<c:forEach items="${most}" var="most" varStatus="statusMost">
-	                    <div class="col-xl-4 col-lg-4 col-md-4">
-	                        <div class="home-blog-single mb-30">
-	                            <div class="blog-img-cap">
-	                                <div class="blog-img">
-	                                	<c:choose>
-	                                		<c:when test="${most.region eq 201 }">
-	                                			<a href="javascript:goRegionView2(<c:out value="${most.region }"/>)">
-	                                				<img src="/resources/image/main/seoul1.jpg" style="height: 252px;" alt="">
-	                                			</a>
-	                                		</c:when>
-	                                		<c:when test="${most.region eq 202 }">
-	                                			<a href="javascript:goRegionView2(<c:out value="${most.region }"/>)">
-	                                				<img src="/resources/image/main/busan2.jpg" style="height: 252px;" alt="">
-	                                			</a>
-	                                		</c:when>
-	                                		<c:when test="${most.region eq 203 }">
-	                                			<a href="javascript:goRegionView2(<c:out value="${most.region }"/>)">
-	                                				<img src="/resources/image/main/chungcheong1.jpg" style="height: 252px;" alt="">
-	                                			</a>
-	                                		</c:when>
-	                                		<c:when test="${most.region eq 204 }">
-	                                			<a href="javascript:goRegionView2(<c:out value="${most.region }"/>)">
-	                                				<img src="/resources/image/main/gangwon1.jpg" style="height: 252px;" alt="">
-	                                			</a>
-	                                		</c:when>
-	                                		<c:when test="${most.region eq 205 }">
-	                                			<a href="javascript:goRegionView2(<c:out value="${most.region }"/>)">
-	                                				<img src="/resources/image/main/jeonla1.jpg" style="height: 252px;" alt="">
-	                                			</a>
-	                                		</c:when>
-	                                		<c:when test="${most.region eq 206 }">
-	                                			<a href="javascript:goRegionView2(<c:out value="${most.region }"/>)">
-	                                				<img src="/resources/image/main/jeju1.jpg" style="height: 252px;" alt="">
-	                                			</a>
-	                                		</c:when>
-	                                		<c:otherwise>
-	                                		</c:otherwise>
-	                                	</c:choose>
-	                                </div>
-	                                <div class="blog-cap" style="margin-top: -25px;">
-	                                    <p></p>
-	                                    <c:set var="listregion" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
-	                                    <h3>
-	                                    	<a href="javascript:goRegionView2(<c:out value="${most.region }"/>)">
-		                                    	<c:forEach items="${listregion}" var="listregion" varStatus="statusDeliinfo">
-		                                    		<c:if test="${most.region eq listregion.replaceCode}"><c:out value="${listregion.name}"/></c:if>
-	                                    		</c:forEach>
-	                                    	</a>
-	                                    </h3>
-	                                    <a href="javascript:goRegionView2(<c:out value="${most.region }"/>)" class="more-btn">지역 가기 »</a>
-	                                </div>
-	                            </div>
-	                            <div class="blog-date text-center" style="padding: 15px 29.98px; margin-top: 0px;">
-	                                <span><c:out value="${statusMost.index+1 }"/></span>
-	                                <p>Now</p>
-	                            </div>
-	                        </div>
-	                    </div>
-                    </c:forEach>
-                    <%-- <div class="col-xl-4 col-lg-4 col-md-4">
-                        <div class="home-blog-single mb-30">
-                            <div class="blog-img-cap">
-                                <div class="blog-img">
-                                    <img src="../../gotrip-master/assets/img/blog/home-blog1.jpg" alt="">
-                                </div>
-                                <div class="blog-cap">
-                                    <p> |   Traveling</p>
-                                    <c:set var="listregion" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
-                                    <h3><a href="javascript:goRegionView2(<c:forEach items="${listregion}" var="listregion" varStatus="statusDeliinfo"><c:if test="${206 eq listregion.replaceCode}"><c:out value="${listregion.replaceCode }"/></c:if></c:forEach>)">제주</a></h3>
-                                    <a href="#" class="more-btn">지역 가기 »</a>
-                                </div>
-                            </div>
-                            <div class="blog-date text-center">
-                                <span>2</span>
-                                <p>Now</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-4 col-md-4">
-                        <div class="home-blog-single mb-30">
-                            <div class="blog-img-cap">
-                                <div class="blog-img">
-                                    <img src="../../gotrip-master/assets/img/blog/home-blog2.jpg" alt="">
-                                </div>
-                                <div class="blog-cap">
-                                    <p> |   Traveling</p>
-                                    <c:set var="listregion" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
-                                    <h3><a href="javascript:goRegionView2(<c:forEach items="${listregion}" var="listregion" varStatus="statusDeliinfo"><c:if test="${203 eq listregion.replaceCode}"><c:out value="${listregion.replaceCode }"/></c:if></c:forEach>)">부산</a></h3>
-                                    <a href="#" class="more-btn">지역 가기 »</a>
-                                </div>
-                            </div>
-                            <div class="blog-date text-center">
-                                <span>3</span>
-                                <p>Now</p>
-                            </div>
-                        </div>
-                    </div> --%>
+    <form name="formRegion2" method="post">
+   	<input type="hidden" name="replaceCode">
+   	<input type="hidden" name="region">
+    <div class="slider-area">
+        <!-- Mobile Menu -->
+        <div class="slider-active">
+        	<!-- Blog Area Start -->
+            <div class="single-slider hero-overly slider-height2 d-flex align-items-center" data-background="/resources/image/sunset.jpg">
+                <div class="container">
+                	<div class="home-blog-area section-padding2" style="padding: 0px; margin-top: 80px; margin-bottom: 50px;">
+		                <!-- Section Tittle -->
+		                <div class="row">
+		                	<c:forEach items="${most}" var="most" varStatus="statusMost">
+			                    <div class="col-xl-4 col-lg-4 col-md-4">
+			                        <div class="home-blog-single mb-30">
+			                            <div class="blog-img-cap">
+			                                <div class="blog-img">
+			                                	<c:choose>
+			                                		<c:when test="${most.region eq 201 }">
+			                                			<a href="javascript:goRegionView2(<c:out value="${most.region }"/>)">
+			                                				<img src="/resources/image/main/seoul1.jpg" style="height: 252px;" alt="">
+			                                			</a>
+			                                		</c:when>
+			                                		<c:when test="${most.region eq 202 }">
+			                                			<a href="javascript:goRegionView2(<c:out value="${most.region }"/>)">
+			                                				<img src="/resources/image/main/busan2.jpg" style="height: 252px;" alt="">
+			                                			</a>
+			                                		</c:when>
+			                                		<c:when test="${most.region eq 203 }">
+			                                			<a href="javascript:goRegionView2(<c:out value="${most.region }"/>)">
+			                                				<img src="/resources/image/main/chungcheong1.jpg" style="height: 252px;" alt="">
+			                                			</a>
+			                                		</c:when>
+			                                		<c:when test="${most.region eq 204 }">
+			                                			<a href="javascript:goRegionView2(<c:out value="${most.region }"/>)">
+			                                				<img src="/resources/image/main/gangwon1.jpg" style="height: 252px;" alt="">
+			                                			</a>
+			                                		</c:when>
+			                                		<c:when test="${most.region eq 205 }">
+			                                			<a href="javascript:goRegionView2(<c:out value="${most.region }"/>)">
+			                                				<img src="/resources/image/main/jeonla1.jpg" style="height: 252px;" alt="">
+			                                			</a>
+			                                		</c:when>
+			                                		<c:when test="${most.region eq 206 }">
+			                                			<a href="javascript:goRegionView2(<c:out value="${most.region }"/>)">
+			                                				<img src="/resources/image/main/jeju1.jpg" style="height: 252px;" alt="">
+			                                			</a>
+			                                		</c:when>
+			                                		<c:otherwise>
+			                                		</c:otherwise>
+			                                	</c:choose>
+			                                </div>
+			                                <div class="blog-cap" style="margin-top: -25px;">
+			                                    <p></p>
+			                                    <c:set var="listregion" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
+			                                    <h3>
+			                                    	<a href="javascript:goRegionView2(<c:out value="${most.region }"/>)">
+				                                    	<c:forEach items="${listregion}" var="listregion" varStatus="statusDeliinfo">
+				                                    		<c:if test="${most.region eq listregion.replaceCode}"><c:out value="${listregion.name}"/></c:if>
+			                                    		</c:forEach>
+			                                    	</a>
+			                                    </h3>
+			                                    <a href="javascript:goRegionView2(<c:out value="${most.region }"/>)" class="more-btn">지역 가기 »</a>
+			                                </div>
+			                            </div>
+			                            <div class="blog-date text-center" style="padding: 15px 29.98px; margin-top: 0px;">
+			                                <span><c:out value="${statusMost.index+1 }"/></span>
+			                                <p>Now</p>
+			                            </div>
+			                        </div>
+			                    </div>
+		                    </c:forEach>
+		                </div>
+        			</div>
                 </div>
             </div>
         </div>
+    </div>
         <!-- Blog Area End -->
         <!-- Svg Area Start -->
         <!-- viewbox="-60 0 0 1600 2000" -->

@@ -516,7 +516,7 @@
                 title: '<c:out value="${item.hotelName }" />',
                 description: '<c:out value="${item.hotelIntroduce }" />',
                 imageUrl:
-                  '이미지 도메인',
+                  '/resources/common/btnG_완성형3.png',
                 link: {
                   mobileWebUrl: 'http://localhost:8080/nextrip/region/accommodation/accommodationView?nxAccommodationSeq=${item.nxAccommodationSeq }',
                   webUrl: 'http://localhost:8080/nextrip/region/accommodation/accommodationView?nxAccommodationSeq=${item.nxAccommodationSeq }',

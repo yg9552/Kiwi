@@ -54,6 +54,16 @@ public class MemberController {
 		return "common/index";
 	}
 	
+	@RequestMapping(value = "/nextrip/memberList")
+	public String memberList(MemberVo vo, Model model) throws Exception {
+		
+		vo.setParamsPaging(service.selectOneCount(vo));
+		List<Member> list = service.selectMemberList(vo);
+		model.addAttribute("list", list);
+		
+		return "kdmin/member/memberList";
+	}
+	
 	/* 마이페이지 S */
 	@RequestMapping(value="/nextrip/mypage")
 	public String selectMemberList(Model model,@ModelAttribute("vo") MemberVo vo) throws Exception {

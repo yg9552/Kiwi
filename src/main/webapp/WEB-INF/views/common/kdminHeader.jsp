@@ -37,7 +37,7 @@
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
-                  <a href="auth-login-basic.html" class="menu-link">
+                  <a href="/nextrip/memberList" class="menu-link">
                     <div data-i18n="Basic">회원목록</div>
                   </a>
                 </li>
@@ -96,12 +96,12 @@
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
-                  <a href="/codeGroup/codeGroupList" class="menu-link">
+                  <a href="/nextrip/codeGroupList" class="menu-link">
                     <div data-i18n="Account">코드그룹</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="/code/codeList" class="menu-link">
+                  <a href="/nextrip/codeList" class="menu-link">
                     <div data-i18n="Notifications">코드</div>
                   </a>
                 </li>

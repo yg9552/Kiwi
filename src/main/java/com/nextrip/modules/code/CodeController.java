@@ -12,7 +12,7 @@ import com.nextrip.modules.codeGroup.CodeGroupServiceImpl;
 
 
 @Controller
-@RequestMapping(value = "/code/")
+@RequestMapping(value = "/nextrip/")
 public class CodeController {
 
 	@Autowired

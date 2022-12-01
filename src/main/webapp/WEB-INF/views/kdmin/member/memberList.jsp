@@ -41,7 +41,7 @@
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/resources/template/sneat/assets/img/favicon/favicon.ico" />
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -74,72 +74,77 @@
 
   <body>
   <!-- userHeader s -->
-	<%@include file="../../../common/kdminHeader.jsp"%>
+	<%@include file="../../common/kdminHeader.jsp"%>
   <!-- userHeader e -->
     
           <!-- Content wrapper -->
           <div class="content-wrapper">
             <!-- Content -->
-			<form name="formList" method="post">
-			<input type="hidden" name="mainkey">
-            <input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage }" default="1" />">
-            <input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow }" />">
-            <input type="hidden" name="checkboxSeqArray">
-            <input type="hidden" name="nxAccommodationSeq" value="<c:out value="${vo.nxAccommodationSeq }"/>">
-            <div class="container-xxl flex-grow-1 container-p-y">
-              <h4 class="fw-bold py-3 mb-4">숙박상품</h4>
 
+            <div class="container-xxl flex-grow-1 container-p-y">
+              <h4 class="fw-bold py-3 mb-4">회원</h4>
+              
               <!-- Hoverable Table rows -->
-              <div class="card">
-              	<h5 class="card-header">숙박상품 검색</h5>
+              <form name="formList" method="post">
+              <input type="hidden" name="mainkey">
+	          <input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage }" default="1" />">
+	          <input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow }" />">
+	          <input type="hidden" name="checkboxSeqArray">
+	          <input type="hidden" name="memberSeq" value="<c:out value="${vo.memberSeq }"/>">
+              <div class="card mb-3">
+              	<h5 class="card-header">회원 검색</h5>
            		<div class="card-body">
            			<div class="row">
-            			<div class="mb-3 col-lg-2">
-                     	   <select class="form-select" id="shDelNy" name="shDelNy" aria-label="Default select example">
-                      	   <option value="" <c:if test="${empty vo.shDelNy}">selected</c:if>>삭제여부</option>
-                           <option value="0" <c:if test="${vo.shDelNy eq 0}">selected</c:if>>N</option>
-                           <option value="1" <c:if test="${vo.shDelNy eq 1}">selected</c:if>>Y</option>
-                         </select>
-                       </div>
+           				<div class="mb-3 col-lg-2">
+                     	   	<select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example">
+	                      	   <option selected>삭제여부</option>
+	                           <option value="0">N</option>
+	                           <option value="1">Y</option>
+                         	</select>
+                        </div>
                        <div class="mb-3 col-lg-2">
-                     	   <select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example">
-                      	   <option selected>등록일</option>
-                           <option value="1">N</option>
-                           <option value="2">Y</option>
-                         </select>
+                     	   	<select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example">
+	                      	   <option selected>등록일</option>
+	                           <option value="1">N</option>
+	                           <option value="2">Y</option>
+                         	</select>
                        </div>
                        <div class="mb-3 col-lg-2">
                            <input class="form-control" type="date" value="2021-06-18" id="html5-date-input" />
                        </div>
                        <div class="mb-3 col-lg-2">
                           <input class="form-control" type="date" value="2021-06-18" id="html5-date-input" />
-                      </div>
-                       
-                      </div>
-                      <div class="row">
-                       <div class="mb-3 col-lg-2">
-	                       <select class="form-select" id="shOption" aria-label="Default select example" name="shOption">
-		                       <option value="" <c:if test="${empty vo.shOption}">selected</c:if>>선택</option>
-		                       <option value="1" <c:if test="${vo.shOption eq 1}">selected</c:if>>지역</option>
+                       </div>
+                    </div>
+                   	<div class="row">
+                      <div class="mb-3 col-lg-2">
+	                       <select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example">
+		                       <option selected>검색조건</option>
+		                       <option value="1">N</option>
 		                       <option value="2">Y</option>
 	                       </select>
-                       </div>
-                       <div class="mb-3 col-lg-2">
-							<input class="form-control" name="shValue" type="search" value="<c:out value="${vo.shValue }"/>" id="shValue" />
-                       </div>
-                       <div class="mb-3 col-lg-2">
-	                       	<button type="submit" class="btn btn-primary" style="margin-right: 15px;"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></button>
-	                       	<button type="button" class="btn btn-warning"><i class="fa-solid fa-rotate-left"></i></button>
-                       </div>
                       </div>
+                      <div class="mb-3 col-lg-2">
+						<input class="form-control" type="text" value="" id="html5-text-input" />
+                      </div>
+                      <div class="mb-3 col-lg-2">
+                       	<button type="button" class="btn btn-primary" style="margin-right: 15px;"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></button>
+                       	<button type="button" class="btn btn-warning"><i class="fa-solid fa-rotate-left"></i></button>
+                      </div>
+                    </div>	
            		</div>
-                <h5 class="card-header">숙박상품 리스트</h5>
+                <h5 class="card-header">회원 목록</h5>
                 <div class="table-responsive text-nowrap text-center">
                   <table class="table table-hover">
                     <thead>
                       <tr>
                         <th>#</th>
-                        <th>숙소명</th>
+                        <th>닉네임</th>
+                        <th>아이디</th>
+                        <th>이름</th>
+                        <th>생일</th>
+                        <th>전화번호</th>
+                        <th>이메일</th>
                         <th>작성시간</th>
                         <th>수정시간</th>
                         <th>삭제여부</th>
@@ -149,7 +154,7 @@
                     <c:choose>
                         	<c:when test="${fn:length(list) eq 0}">
                         		<tr>
-                        			<td colspan="5">
+                        			<td colspan="10">
                         				There is no date!
                         			</td>
                         		</tr>
@@ -157,8 +162,13 @@
 							<c:otherwise>
 	                        	<c:forEach items="${list}" var="list" varStatus="status">
 		                          <tr>
-		                            <td> <c:out value="${list.nxAccommodationSeq }"/> </td>
-		                            <td> <a href="javascript:goForm(<c:out value="${list.nxAccommodationSeq }"/>)"> <c:out value="${list.hotelName }"/></a> </td>
+		                            <td> <c:out value="${list.memberSeq }"/> </td>
+		                            <td> <a href="javascript:goView(<c:out value="${list.memberSeq }"/>)"> <c:out value="${list.nickname }"/></a> </td>
+		                            <td> <c:out value="${list.id }"/> </td>
+		                            <td> <c:out value="${list.name }"/> </td>
+		                            <td> <fmt:formatDate pattern="yyyy-MM-dd" value="${list.dob}"/> </td>
+		                            <td> <c:out value="${list.phoneNum }"/> </td>
+		                            <td> <c:out value="${list.email }"/> </td>
 		                            <td> <fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${list.regDateTime}"/> </td>
 		                            <td> <fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${list.modDateTime}"/> </td>
 		                            <td> 
@@ -175,17 +185,13 @@
                   </table>
                 </div>
               </div>
+              <!-- kdmin pagination s -->
+              	<%@include file="../../common/kdminPagination.jsp"%>
+			  <!-- kdmin pagination e -->
+              </form>
               <!--/ Hoverable Table rows -->
-			  <div class="mt-2 row">
-                <div class="col">
-                	<button type="button" class="btn btn-primary me-2" id="btnForm">등록하기</button>
-                </div>
-                <div class="col-auto">
-                	<button type="button" class="btn btn-danger deactivate-account">삭제하기</button>
-                </div>
-              </div>
+
             </div>
-            </form>
             <!-- / Content -->
 
             <!-- Footer -->
@@ -232,27 +238,7 @@
       <div class="layout-overlay layout-menu-toggle"></div>
     </div>
     <!-- / Layout wrapper -->
-	<script type="text/javascript">
-	var goUrlForm = "/nextrip/region/accommodation/accommodationForm";		/* #-> */
-	var goUrlList = "/nextrip/region/accommodation/accommodationListK";		/* #-> */
-	
-	var seq = $("input:hidden[name=nxAccommodationSeq]");				/* #-> */
-	var form = $("form[name=formList]");
-	
-	goForm = function(keyValue) {
-    	/* if(key != 0) seq.val(btoa(key)); */
-    	seq.val(keyValue);
-		form.attr("action", goUrlForm).submit();
-	}
-  	goList = function(thisPage) {
-  		$("input:hidden[name=thisPage]").val(thisPage);
-  		form.attr("action", goUrlList).submit();
-  	}
-  	
-    $('#btnForm').on("click", function() {
-		goForm(0);                
-	});
-    </script>
+
 
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
@@ -273,5 +259,29 @@
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <script type="text/javascript">
+    var goUrlForm = "/nextrip/region/accommodation/accommodationForm";		/* #-> */
+	var goUrlList = "/nextrip/memberList";		/* #-> */
+	
+	var seq = $("input:hidden[name=memberSeq]");				/* #-> */
+	var form = $("form[name=formList]");
+	
+	goForm = function(keyValue) {
+    	/* if(key != 0) seq.val(btoa(key)); */
+    	seq.val(keyValue);
+		form.attr("action", goUrlForm).submit();
+	}
+	
+	goList = function(thisPage){
+		$("input:hidden[name=thisPage]").val(thisPage);
+		form.attr("action", goUrlList).submit();
+	}
+	
+    $('#btnForm').on("click", function() {
+		goForm(0);                
+	});
+    
+    
+    </script>
   </body>
 </html>

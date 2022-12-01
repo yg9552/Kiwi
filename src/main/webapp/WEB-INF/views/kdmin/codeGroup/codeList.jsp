@@ -85,7 +85,13 @@
               <h4 class="fw-bold py-3 mb-4">코드</h4>
               
               <!-- Hoverable Table rows -->
-              <div class="card">
+              <form name="formList" method="post">
+              <input type="hidden" name="mainkey">
+	          <input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage }" default="1" />">
+	          <input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow }" />">
+	          <input type="hidden" name="checkboxSeqArray">
+	          <input type="hidden" name="codeSeq" value="<c:out value="${vo.codeSeq }"/>">
+              <div class="card mb-3">
               	<h5 class="card-header">코드 검색</h5>
            		<div class="card-body">
            			<div class="row">
@@ -173,6 +179,10 @@
                   </table>
                 </div>
               </div>
+              <!-- kdmin pagination s -->
+              	<%@include file="../../common/kdminPagination.jsp"%>
+			  <!-- kdmin pagination e -->
+              </form>
               <!--/ Hoverable Table rows -->
 
             </div>
@@ -243,5 +253,29 @@
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <script type="text/javascript">
+    var goUrlForm = "/nextrip/region/accommodation/accommodationForm";		/* #-> */
+	var goUrlList = "/nextrip/codeList";		/* #-> */
+	
+	var seq = $("input:hidden[name=codeSeq]");				/* #-> */
+	var form = $("form[name=formList]");
+	
+	goForm = function(keyValue) {
+    	/* if(key != 0) seq.val(btoa(key)); */
+    	seq.val(keyValue);
+		form.attr("action", goUrlForm).submit();
+	}
+	
+	goList = function(thisPage){
+		$("input:hidden[name=thisPage]").val(thisPage);
+		form.attr("action", goUrlList).submit();
+	}
+	
+    $('#btnForm').on("click", function() {
+		goForm(0);                
+	});
+    
+    
+    </script>
   </body>
 </html>
