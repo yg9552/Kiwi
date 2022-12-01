@@ -184,6 +184,7 @@ where 1=1
 		,jibunAddress = #{jibunAddress}
 		,lng = #{lng}
 		,lat = #{lat}
+		,delNy = #{delNy}
 	WHERE 1=1
 		AND	nxPostSeq = #{nxPostSeq}
 </update>

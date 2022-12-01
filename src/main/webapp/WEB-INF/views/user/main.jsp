@@ -206,53 +206,51 @@
 				       id="style2">
 							.land
 							{
+								fill: #93bf85;
 								fill-opacity: 1;
 								stroke:white;
 								stroke-opacity: 1;
 								stroke-width:0.5;
 							}
 							
-							#Metropolitan {
+							/* #Metropolitan {
 								fill: #F8BA81;
-							}
+							} */
 							#Metropolitan:hover{
 								fill: #e9ab72;
 							}
 							
-							#Gangwon {
+							/* #Gangwon {
 								fill: #F2987D;
-							}
+							} */
 							#Gangwon:hover{
 								fill: #e3896e;
 							}
 							
-							#Chungcheong {
+							/* #Chungcheong {
 								fill: #8EC8A0;
-							}
+							} */
 							#Chungcheong:hover {
-								fill: #7fb991;
+								fill: #FCC6F7;
 							}
 							
-							#Gyeongsang {
+							/* #Gyeongsang {
 								fill: #E8BF29;
-							}
-							
+							} */
 							#Gyeongsang:hover {
 								fill: #d9b01a;
 							}
 							
-							#Jeolla {
+							/* #Jeolla {
 								fill: #009DE0;
-							}
-							
+							} */
 							#Jeolla:hover {
 								fill: #008ed1;
 							}
 							
-							#Jeju {
+							/* #Jeju {
 								fill: #8284AB;
-							}
-							
+							} */
 							#Jeju:hover {
 								fill: #73759c;
 							}

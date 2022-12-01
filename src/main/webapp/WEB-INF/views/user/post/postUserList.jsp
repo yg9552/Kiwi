@@ -181,7 +181,7 @@
                                 </div>
 					          	<div class="input-group col-lg-3">
 	                                <div class="input-group mb-3">
-									  <input type="text" class="form-control" placeholder="검색" id="shValue" name="shValue">
+									  <input type="text" class="form-control" placeholder="검색" id="shValue" name="shValue" value="<c:out value="${vo.shValue}"/>">
 									  <button type="button" id="shBtn" name="shBtn" style="background-color: navy;"><i class="fa-solid fa-magnifying-glass"></i></button>
 									</div>
                                 </div>
@@ -232,9 +232,15 @@
 								</c:otherwise>
 							</c:choose>
 						  </tbody>
-						  <caption style="caption-side: bottom;">
-						  	<button type="button" class="genric-btn success" id="regBtn" name="regBtn" style="float:right;">글 쓰기</button>
-						  </caption>
+						  <c:choose>
+						  	<c:when test="${sessSeq eq null }">
+						  	</c:when>
+						  	<c:otherwise>
+						  		<caption style="caption-side: bottom;">
+									<button type="button" class="genric-btn success" id="regBtn" name="regBtn" style="float:right;">글 쓰기</button>
+								</caption>
+						  	</c:otherwise>
+						  </c:choose>
 						</table>
 						<!-- userPagination s -->
 							<%@include file="../../common/userPagination.jsp"%>

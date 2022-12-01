@@ -89,6 +89,9 @@
 				     <div style="height: 50px;"></div>
                 	<!-- Blog Area Start -->
                 	<form method="post" id="PUVForm" name="PUVForm">
+                		<!-- *Vo.jsp s -->
+						<%@include file="postUserVo.jsp"%>
+						<!-- *Vo.jsp e -->
 	                	<input type="hidden" id="nxPostSeq" name="nxPostSeq" value="${item.nxPostSeq }">
 	                	<input type="hidden" id="memberSeq" name="memberSeq" value="${sessSeq}">
                 		<div>
@@ -249,12 +252,12 @@
 			form.attr("action", goUrlUelete).submit();
 		});
 		
-		$("#shBtn").on("click", function(){
+		$("#listBtn").on("click", function(){
 	   		form.attr("action", goUrlList).submit();
 		}); 
-		$("#listBtn").on("click", function(){
+		/* $("#listBtn").on("click", function(){
 			location.href = "/post/postUserList";	
-		});
+		}); */
 		
 		$("#btnFindRoad").on("click", function() {
     		window.open('https://map.kakao.com/link/to/<c:out value="${item.addressTitle }" />,<c:out value="${item.lat }" />,<c:out value="${item.lng }" />','target="blank"',"width=1920 ,height=1080");
