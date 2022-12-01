@@ -33,147 +33,11 @@
   <link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/nice-select.css">
   <link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/style.css">
   <link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/responsive.css">
+  <link rel="stylesheet" href="/resources/common/regionViewStyle.css">
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
 </head>
-<style type="text/css">
-	td{
-		text-align:center;
-		border:1px solid #0F52BA20;
-	}
-	th {
-		background-color:#F7F8F9;
-		height: 45px;
-		text-align: center;
-	}
-	.table th {
-		background-color: #f0f0f0;
-		vertical-align: middle;
-	}
-	td > i {
-		font-size: 40px;
-	}
-	td > span {
-		display: block;
-	}
-	thead > tr:first-child > th:first-child {
-		display: none;
-	}
-	tbody > tr > td:first-child {
-		display: none;
-	}
-	.NB01 > img {
-		background: url('/resources/image/weatherIcon.png') no-repeat -70px -2px;
-		width: 54px;
-		height: 54px;
-	}
-	.NB02 > img {
-		background: url('/resources/image/weatherIcon.png') no-repeat 0 -72px;
-		width: 57px;
-		height: 50px;
-	}
-	.NB03 > img {
-		background: url('/resources/image/weatherIcon.png') no-repeat -136px -6px;
-		width: 57px;
-		height: 50px;
-	}
-	.NB04 > img {
-		background: url('/resources/image/weatherIcon.png') no-repeat 0 -145px;
-		width: 57px;
-		height: 50px;
-	}
-	.NB01_N > img {
-		background: url('/resources/image/weatherIcon.png') no-repeat -209px -209px;
-		width: 54px;
-		height: 54px;
-	}
-	.NB02_N > img {
-		background: url('/resources/image/weatherIcon.png') no-repeat -68px -73px;
-		width: 57px;
-		height: 50px;
-	}
-	.NB03_N > img {
-		background: url('/resources/image/weatherIcon.png') no-repeat -137px -73px;
-		width: 57px;
-		height: 50px;
-	}
-	.NB04_N > img {
-		background: url('/resources/image/weatherIcon.png') no-repeat 0 -145px;
-		width: 57px;
-		height: 50px;
-	}
-	.NB07 > img {
-		background: url('/resources/image/weatherIcon.png') no-repeat -70px -140px;
-		width: 54px;
-		height: 54px;
-	}
-	.NB08 > img {
-		background: url('/resources/image/weatherIcon.png') no-repeat -206px -3px;
-		width: 57px;
-		height: 50px;
-	}
-	.NB11 > img {
-		background: url('/resources/image/weatherIcon.png') no-repeat -2px -206px;
-		width: 57px;
-		height: 50px;
-	}
-	.NB12 > img {
-		background: url('/resources/image/weatherIcon.png') no-repeat -2px -275px;
-		width: 57px;
-		height: 50px;
-	}
-	.NB13 > img {
-		background: url('/resources/image/weatherIcon.png') no-repeat -2px -275px;
-		width: 54px;
-		height: 54px;
-	}
-	.NB14 > img {
-		background: url('/resources/image/weatherIcon.png') no-repeat -274px -68px;
-		width: 57px;
-		height: 50px;
-	}
-	.NB15 > img {
-		background: url('/resources/image/weatherIcon.png') no-repeat -273px -11px;
-		width: 57px;
-		height: 50px;
-	}
-	.NB16 > img {
-		background: url('/resources/image/weatherIcon.png') no-repeat -274px -216px;
-		width: 57px;
-		height: 50px;
-	}
-	.NB17 > img {
-		background: url('/resources/image/weatherIcon.png') no-repeat -273px -11px;
-		width: 54px;
-		height: 54px;
-	}
-	.NB18 > img {
-		background: url('/resources/image/weatherIcon.png') no-repeat -273px -11px;
-		width: 57px;
-		height: 50px;
-	}
-	.NB20 > img {
-		background: url('/resources/image/weatherIcon.png') no-repeat -340px -72px;
-		width: 57px;
-		height: 50px;
-	}
-	.NB21 > img {
-		background: url('/resources/image/weatherIcon.png') no-repeat -340px -140px;
-		width: 57px;
-		height: 50px;
-	}
-	.NB22 > img {
-		background: url('/resources/image/weatherIcon.png') no-repeat -340px -72px;
-		width: 57px;
-		height: 50px;
-	}
-	.NB23 > img {
-		background: url('/resources/image/weatherIcon.png') no-repeat -340px -140px;
-		width: 57px;
-		height: 50px;
-	}
-</style>
 
 <body>
     <!-- userHeader s -->
@@ -236,6 +100,7 @@
                 			<div class="blog_right_sidebar">
 		                        <aside class="single_sidebar_widget post_category_widget">
 		                            <h4 class="widget_title">날씨</h4>
+		                            <div class="table-responsive-md">
 		                            <c:choose>
 		                            	<c:when test="${itemC.replaceCode eq 201 }">
 		                            		<table class="justify-content-center text-center" style="margin: 0 auto;" >
@@ -274,6 +139,7 @@
 				                            </table>
 		                            	</c:when>
 		                            </c:choose>
+		                            </div>
 		                            <!-- <p id="description"></p>
 		                            <p id="temperature"></p> -->
 		                        </aside>

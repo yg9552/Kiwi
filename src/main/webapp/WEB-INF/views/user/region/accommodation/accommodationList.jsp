@@ -165,7 +165,7 @@
 				  </div>
 				</div>
                 <div class="row mt-3">
-                    <div class="col-lg-3">
+                    <div class="col-lg-3 overflow-auto">
                         <c:forEach items="${list }" var="list" varStatus="status">
                         	<c:set var="listregion" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
 	                        <article class="blog_item">
