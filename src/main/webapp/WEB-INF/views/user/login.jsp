@@ -40,7 +40,7 @@
 				</div>
 			</div>
 			<div class="row mb-3">
-				<span><input type="button" class="btn" id="btnLogin" value="로그인" style="background-color:#014B85; color:white; width:320px;"></span>
+				<span><input type="button" class="btn" id="btnLogin" value="로그인" style="background-color:#014B85; color:white; width:320px; font-size: 18px;"></span>
 			</div>
 			<div class="container pb-5 row justify-content-center" style="font-size:14px; color:#737C88">
 				<div class="col-3">
@@ -51,13 +51,13 @@
 				</div>
 			</div>
 			<div class="row justify-content-center mb-2">
-				<a type="button" id="btnKakao"><img alt="" src="/resources/common/kakao_login_large_narrow.png" style="width: 320px;"></a>
+				<a type="button" id="btnKakao" style="background: #fee500 url('/resources/common/kakao_login_large_narrow2.png') no-repeat center center; height: 54px; width: 320px; border-radius: 5px;"></a>
+			</div>
+			<div class="row justify-content-center mb-2">
+				<a type="button" id="btnKakao" style="background: #03c75a url('/resources/common/btnG_완성형3.png') no-repeat center center; height: 54px; width: 320px; border-radius: 5px;"></a>
 			</div>
 			<div class="row justify-content-center mb-2">
 				<span><a href="/nextrip/kdminLogin"><input type="button" class="btn" value="Facebook으로 로그인" style="background-color:#1877F2; color:white; width:320px;"></a></span>
-			</div>
-			<div class="row justify-content-center mb-2">
-				<span><a href=""><input type="button" class="btn" value="네이버로 로그인" style="background-color:#28D111; color:white; width:320px;"></a></span>
 			</div>
 		</form>
 	</div>

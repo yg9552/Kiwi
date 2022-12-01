@@ -36,7 +36,7 @@
         <link rel="stylesheet" href="/resources/template/gotrip-master/assets/css/style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
    		<script defer type="text/javascript" src="/resources/xdmin/js/validationXdmin.js"></script>
-   		<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+   		<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
    </head>
 
    <body>
@@ -84,7 +84,7 @@
                         </c:if>
                      </c:forEach>
                         <li><a href="#simple-list-item-1"><i class="fa fa-comments"></i> 후기 <c:out value="${vo.totalRows }" />건 </a></li>
-                        <li class="kakaotalk"><a id="btnKakao" onclick="fns_send('kakaotalk');" class="kakaotalk" target="_self" title="카카오톡 새창열림"><span class="skip">카카오톡</span></a></li>
+                        <li class="kakaotalk"><a id="kakaotalk-sharing-btn" onclick="sendLink();" style="cursor: pointer;">카카오톡 공유</a></li>
                      </ul>
                      <p class="excert">
                         <c:out value="${item.hotelIntroduce }" />
@@ -505,6 +505,46 @@
         console.log(date1 >= date2);
         console.log(date1 < date2);
         console.log(date1 <= date2);
+        
+        Kakao.init('9324b5405b9481a01004906f5a2c2484');
+        console.log(Kakao.isInitialized());
+        
+        function sendLink() {
+            Kakao.Link.sendDefault({
+              objectType: 'feed',
+              content: {
+                title: '<c:out value="${item.hotelName }" />',
+                description: '<c:out value="${item.hotelIntroduce }" />',
+                imageUrl:
+                  '이미지 도메인',
+                link: {
+                  mobileWebUrl: 'http://localhost:8080/nextrip/region/accommodation/accommodationView?nxAccommodationSeq=${item.nxAccommodationSeq }',
+                  webUrl: 'http://localhost:8080/nextrip/region/accommodation/accommodationView?nxAccommodationSeq=${item.nxAccommodationSeq }',
+                },
+              },
+              social: {
+                likeCount: 286,  //좋아요 수
+                commentCount: <c:out value="${vo.totalRows }" />,  //댓글 수
+                sharedCount: 845,  //공유 수
+              },
+              buttons: [
+                {
+                  title: '웹으로 보기',  //첫 번째 버튼 
+                  link: {
+                    mobileWebUrl: 'http://localhost:8080/nextrip/region/accommodation/accommodationView?nxAccommodationSeq=${item.nxAccommodationSeq }',  //버튼 클릭 시 이동 링크
+                    webUrl: 'http://localhost:8080/nextrip/region/accommodation/accommodationView?nxAccommodationSeq=${item.nxAccommodationSeq }',
+                  },
+                },
+                {
+                  title: '앱으로 보기',  //두 번째 버튼
+                  link: {
+                    mobileWebUrl: 'http://localhost:8080/nextrip/region/accommodation/accommodationView?nxAccommodationSeq=${item.nxAccommodationSeq }',
+                    webUrl: 'http://localhost:8080/nextrip/region/accommodation/accommodationView?nxAccommodationSeq=${item.nxAccommodationSeq }',
+                  },
+                },
+              ],
+            })
+          }
 		</script>
 		
 		<!-- <script>
