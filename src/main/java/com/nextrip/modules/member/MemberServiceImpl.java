@@ -40,6 +40,9 @@ public class MemberServiceImpl implements MemberService {
 	public int idOverlapCheck(Member dto) throws Exception {return dao.idOverlapCheck(dto);}
 
 	@Override
+	public int emailOverlapCheck(Member dto) throws Exception {return dao.emailOverlapCheck(dto);}
+	
+	@Override
 	public int userReg(Member dto) throws Exception {
 		dto.setPassword(UtilSecurity.encryptSha256(dto.getPassword()));
 		return dao.userReg(dto);

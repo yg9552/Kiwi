@@ -46,19 +46,19 @@
 		<div>
 			<form method="post" id="myForm" name="myForm" autocomplete="off">
 				<input type="hidden" id="idAllowedNy" name="idAllowedNy" value="0">
-			    <table class="table">
+			    <table class="table" style="table-layout: fixed;" >
 			        <colgroup>
-			            <col style="width:160px;">
+			            <col style="width:130px;">
 			            <col style="width:auto;">
-			            <col style="width:150px;">
+			            <col style="width:130px;">
 			            <col style="width:auto;">
 			    	</colgroup>
 		            <tbody>
 			            <tr>
 			                <th>아이디</th>
-			                <td><input type="text" class="form-control" id="id" name="id" value="" style="border: none;"><div class="invalid-feedback" id="idFeedback"></div></td>
-			                <th>닉네임</th>
-			                <td><input type="text" class="form-control" id="nickname" name="nickname" value="" style="border: none;"><div class="invalid-feedback" id="nicknameFeedback"></td>
+			                <td style="width:auto;"><input type="text" class="form-control" id="id" name="id" value="" style="border: none;"><div class="invalid-feedback" id="idFeedback"></div></td>
+			                <th style="width:130px;">닉네임</th>
+			                <td style="width:auto;"><input type="text" class="form-control" id="nickname" name="nickname" value="" style="border: none;"><div class="invalid-feedback" id="nicknameFeedback"></td>
 			            </tr>
 			            <tr>
 			                <th>비밀번호</th>
@@ -66,7 +66,33 @@
 			                <th>비밀번호 확인</th>
 			                <td><input type="password" class="form-control" id="passwordCheck" name="passwordCheck" value="" style="border: none;"><div class="invalid-feedback" id="passwordCheckFeedback"></td>
 			            </tr>
-		                <tr>
+			            <tr>
+		                	<th>성명</th>
+		                	<td>
+								<input type="text" class="form-control" id="name" name="name" value="" style="border: none;">
+								<div class="invalid-feedback" id="nameFeedback">
+							</td>
+							<th>생년월일</th>
+	                    	<td>
+	                        	<input type="text" class="form-control" id="dob" name="dob" value="" style="border: none;">
+	                        	<div class="invalid-feedback" id="dobFeedback">
+		                	</td>
+	                    </tr>
+			            <tr>
+			                <th>휴대전화</th>
+			                <td colspan="3">
+			                    <input class="form-control" id="phoneNum" name="phoneNum" placeholder="휴대폰 번호를 입력해주세요." style="margin:0 10px 0 0; border: none;" type="text" value="">
+			                    <div class="invalid-feedback" id="phoneNumFeedback">
+			                </td>
+			            </tr>
+			            <tr>
+			            	<th>이메일</th>
+			                <td colspan="3">
+			                    <input class="form-control" id="email" name="email" placeholder="이메일을 입력해주세요." style="border:none;" type="text" value="" autocomplete="off">
+			                    <div class="invalid-feedback" id="emailFeedback">
+			                </td>
+			            </tr>
+		                <!-- <tr>
 		                	<th>성명</th>
 		                	<td colspan="3">
 								<input type="text" class="form-control" id="name" name="name" value="" style="border: none;">
@@ -93,7 +119,7 @@
 			                    <input class="form-control" id="email" name="email" maxlength="50" placeholder="이메일을 입력해주세요." style="border:none; width:450px;" type="text" value="" autocomplete="off">
 			                    <div class="invalid-feedback" id="emailFeedback">
 			                </td>
-			            </tr>
+			            </tr> -->
 			        </tbody>
 			    </table>
 		    </form>
@@ -193,11 +219,6 @@
         	$("#phoneNum").on("focusout", function(){
         		if(!checkOnlyNumber('phoneNum',2,0,0,0,0,"휴대전화 번호(숫자만)를 입력해주세요")) return false;
         	});
-        	$("#email").on("focusout", function(){
-        		if(!checkEmail('email',2,0,"이메일 주소를 올바르게 입력해 주세요")) {
-        			return false;
-        		} 
-        	});
         	
         	$("#id").on("focusout", function(){
         		if(!checkId('id',2,0,"영대소문자,숫자,특수문자(-_.),4~20자리만 입력 가능합니다")) {
@@ -233,6 +254,46 @@
         						document.getElementById("idFeedback").innerText = "사용 불가능 합니다";
         						
         						document.getElementById("idAllowedNy").value = 0;
+        					}
+        				}
+        				,error : function(jqXHR, textStatus, errorThrown){
+        					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+        				}
+        			});
+        		}
+        	});
+        	
+        	$("#email").on("focusout", function(){
+        		if(!checkEmail('email',2,0,"이메일 주소를 올바르게 입력해 주세요")) {
+        			document.getElementById("emailFeedback").classList.remove('valid-feedback');
+        			document.getElementById("emailFeedback").classList.add('invalid-feedback');
+        			return false;
+        		} else {
+        			$.ajax({
+        				async: true 
+        				,cache: false
+        				,type: "post"
+        				/* ,dataType:"json" */
+        				,url: "/nextrip/emailOverlapCheck"
+        				/* ,data : $("#formLogin").serialize() */
+        				,data : { "email" : $("#email").val() }
+        				,success: function(response) {
+        					if(response.rt == "success") {
+        						document.getElementById("email").classList.add('is-valid');
+        						document.getElementById("email").classList.remove('is-invalid');
+        	
+        						document.getElementById("emailFeedback").classList.remove('invalid-feedback');
+        						document.getElementById("emailFeedback").classList.add('valid-feedback');
+        						document.getElementById("emailFeedback").innerText = "사용 가능 합니다.";
+        						
+        					} else {
+        						document.getElementById("email").classList.add('is-invalid');
+        						document.getElementById("email").classList.remove('is-valid');
+        						
+        						document.getElementById("emailFeedback").classList.remove('valid-feedback');
+        						document.getElementById("emailFeedback").classList.add('invalid-feedback');
+        						document.getElementById("emailFeedback").innerText = "사용 불가능 합니다";
+        						
         					}
         				}
         				,error : function(jqXHR, textStatus, errorThrown){

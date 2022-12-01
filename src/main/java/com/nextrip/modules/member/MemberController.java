@@ -283,6 +283,21 @@ public class MemberController {
 		return returnMap;
 	}
 	
+	@ResponseBody
+	@RequestMapping(value="/nextrip/emailOverlapCheck")
+	public Map<String, Object> emailOverlapCheck(Member dto) throws Exception {
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		int result = service.emailOverlapCheck(dto);
+		
+		if (result > 0) {
+			returnMap.put("rt", "fail");
+		} else {
+			returnMap.put("rt", "success");
+		}
+		
+		return returnMap;
+	}
+	
 	@RequestMapping(value="/nextrip/userReg")
 	public String userReg(Member dto) throws Exception{
 		System.out.println("controller 입성");

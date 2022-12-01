@@ -15,6 +15,7 @@ public interface MemberService {
 	public Member snsLoginCheck(Member dto) throws Exception;
 	public Member login(MemberVo vo) throws Exception;
 	public int idOverlapCheck(Member dto) throws Exception;
+	public int emailOverlapCheck(Member dto) throws Exception;
 	public int userReg(Member dto) throws Exception;
 	public int kakaoInst(Member dto) throws Exception;
 	
