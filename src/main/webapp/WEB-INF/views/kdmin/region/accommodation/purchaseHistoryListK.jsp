@@ -81,9 +81,11 @@
           <div class="content-wrapper">
             <!-- Content -->
 			<form name="formList" method="post">
-			<input type="hidden" name="nxPurchaseHistorySeq">
-			<input type="hidden" id="thisPage" name="thisPage" value="<c:out value="${vo.thisPage }" default="1"/>">
-			<input type="hidden" id="rowNumToShow" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
+			<input type="hidden" name="mainkey">
+            <input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage }" default="1" />">
+            <input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow }" />">
+            <input type="hidden" name="checkboxSeqArray">
+            <input type="hidden" name="nxPurchaseHistorySeq" value="<c:out value="${vo.nxPurchaseHistorySeq }"/>">
             <div class="container-xxl flex-grow-1 container-p-y">
               <h4 class="fw-bold py-3 mb-4">예약내역</h4>
 
@@ -162,7 +164,7 @@
 							<c:otherwise>
 	                        	<c:forEach items="${list}" var="list" varStatus="status">
 		                          <tr>
-		                            <td> <c:out value="${list.nxPurchaseHistorySeq }"/> </td>
+		                            <td> <c:out value="${vo.totalRows - ((vo.thisPage - 1) * vo.rowNumToShow + status.index) }"/> </td>
 		                            <td> <c:out value="${list.nxAccommodationSeq }"/> </td>
 		                            <td> <c:out value="${list.reservationName }"/> </td>
 		                            <td> <c:out value="${list.reservationPhoneNum }"/> </td>

@@ -120,6 +120,7 @@
                 		<input type="hidden" id="jibunAddress" name="jibunAddress" value="<c:out value="${item.jibunAddress }" />">
                 		<input type="hidden" id="lng" name="lng" value="<c:out value="${item.lng }" />">
                 		<input type="hidden" id="lat" name="lat" value="<c:out value="${item.lat }" />">
+                		<input type="hidden" id="delNy" name="delNy" value="<c:out value="${item.delNy }" />">
 	                	<div>
 	                		<table class="table table-bordered text-center">
 	                			<tr>

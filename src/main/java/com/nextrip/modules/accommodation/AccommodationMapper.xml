@@ -173,7 +173,8 @@
 	
 	<select id="selectOneCountPurchaseHistory" resultType="Integer">
 		SELECT COUNT(*)
-		<include refid="selectCommon" />
+		FROM nxPurchaseHistory a
+		WHERE 1=1
 	</select>
 	
 	<insert id="insertPurchaseHistory">

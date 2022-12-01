@@ -1,5 +1,7 @@
 package com.nextrip.modules.member;
 
+import java.util.Date;
+
 public class Member {
 	
 	private String memberSeq;
@@ -9,7 +11,7 @@ public class Member {
 	private String newPass;
 	private String nickname;
 	private String name;
-	private String dob;
+	private Date dob;
 	private String phoneNum;
 	private String email;
 	private String emailFront;
@@ -17,8 +19,8 @@ public class Member {
 	private Integer adminNy;
 	private Integer delNy;
 	private Integer lgResultNy;
-	private String regDateTime;
-	private String modDateTime;
+	private Date regDateTime;
+	private Date modDateTime;
 	private String token;
 	
 	//휘재 s
@@ -63,10 +65,10 @@ public class Member {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getDob() {
+	public Date getDob() {
 		return dob;
 	}
-	public void setDob(String dob) {
+	public void setDob(Date dob) {
 		this.dob = dob;
 	}
 	public String getPhoneNum() {
@@ -111,16 +113,16 @@ public class Member {
 	public void setLgResultNy(Integer lgResultNy) {
 		this.lgResultNy = lgResultNy;
 	}
-	public String getRegDateTime() {
+	public Date getRegDateTime() {
 		return regDateTime;
 	}
-	public void setRegDateTime(String regDateTime) {
+	public void setRegDateTime(Date regDateTime) {
 		this.regDateTime = regDateTime;
 	}
-	public String getModDateTime() {
+	public Date getModDateTime() {
 		return modDateTime;
 	}
-	public void setModDateTime(String modDateTime) {
+	public void setModDateTime(Date modDateTime) {
 		this.modDateTime = modDateTime;
 	}
 	public String getNewPass() {
