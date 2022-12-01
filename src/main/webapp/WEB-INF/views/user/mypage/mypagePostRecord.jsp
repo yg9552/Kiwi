@@ -98,7 +98,7 @@
 	                                </div>
 						          	<div class="input-group col-lg-3">
 		                                <div class="input-group mb-3">
-										  <input type="text" class="form-control" placeholder="검색" id="shValue" name="shValue">
+										  <input type="text" class="form-control" placeholder="검색" id="shValue" name="shValue" value="${vo.shValue }">
 										  <button type="button" id="shBtn" name="shBtn" style="background-color: navy;"><i class="fa-solid fa-magnifying-glass"></i></button>
 										</div>
 	                                </div>

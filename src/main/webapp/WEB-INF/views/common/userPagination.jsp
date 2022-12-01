@@ -14,7 +14,7 @@
 				<c:choose>
 					<c:when test="${i.index eq vo.thisPage}">
 			                <li class="page-item">
-			                	<a class="page-link" href="javascript:goList(${i.index})">
+			                	<a class="page-link active" style="background-color: #FBF9FF;" href="javascript:goList(${i.index})">
 			                		${i.index}
 		                		</a>
 			                </li>

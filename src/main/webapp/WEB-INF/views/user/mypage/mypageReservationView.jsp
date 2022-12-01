@@ -65,7 +65,7 @@
 	       			<input type="hidden" name="nxPurchaseHistorySeq" id="nxPurchaseHistorySeq" value="<c:out value="${item.nxPurchaseHistorySeq }"/>"/>
 	       			<input type="hidden" name="nxAccommodationSeq" id="nxAccommodationSeq" value="<c:out value="${item.nxAccommodationSeq }"/>"/>
 	       			<input type="hidden" id="thisPage" name="thisPage" value="<c:out value="${vo.thisPage }" default="1"/>">
-		       		<button type="button" class="genric-btn success circle small float-end" onclick="location.href='/nextrip/myReservation'">뒤로가기</button>
+		       		<button type="button" class="genric-btn success circle small float-end" id="btnToList">뒤로가기</button>
 		       		<p style="font-size: 14px;">예약 상세보기</p>
 		       		<!-- <div style="border:solid; border-width: 1px; border-color:#EEEEEE;">
 		       			<h5>잠깐 읽어보세요</h5>
@@ -241,21 +241,63 @@
 						</div>
 					</div>
 				</form>
+				<form method="post" id="formVo" name="formVo">
+					<input type="hidden" id="thisPage" name="thisPage" value="<c:out value="${vo.thisPage }" default="1"/>">
+					<%-- <input type="hidden" id="rowNumToShow" name="rowNumToShow" value="<c:out value="3"> --%>
+				</form>
 	       	</div>
 		</div>
 	</div>
 	<!-- userFooter s -->
 		<%@include file="../../common/userFooter.jsp"%>
   	<!-- userFooter e -->
+  	
+  	<script src="/resources/template/gotrip-master/assets/js/vendor/modernizr-3.5.0.min.js"></script>
+	
+	<!-- Jquery, Popper, Bootstrap -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+	<script src="/resources/template/gotrip-master/assets/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="/resources/template/gotrip-master/assets/js/popper.min.js"></script>
+    <script src="/resources/template/gotrip-master/assets/js/bootstrap.min.js"></script>
+    <!-- Jquery Mobile Menu -->
+    <script src="/resources/template/gotrip-master/assets/js/jquery.slicknav.min.js"></script>
+
+	<!-- Jquery Slick , Owl-Carousel Plugins -->
+    <script src="/resources/template/gotrip-master/assets/js/owl.carousel.min.js"></script>
+    <script src="/resources/template/gotrip-master/assets/js/slick.min.js"></script>
+	<!-- One Page, Animated-HeadLin -->
+    <script src="/resources/template/gotrip-master/assets/js/wow.min.js"></script>
+	<script src="/resources/template/gotrip-master/assets/js/animated.headline.js"></script>
+    <script src="/resources/template/gotrip-master/assets/js/jquery.magnific-popup.js"></script>
+
+	<!-- Scrollup, nice-select, sticky -->
+    <script src="/resources/template/gotrip-master/assets/js/jquery.scrollUp.min.js"></script>
+    <script src="/resources/template/gotrip-master/assets/js/jquery.nice-select.min.js"></script>
+	<script src="/resources/template/gotrip-master/assets/js/jquery.sticky.js"></script>
+       
+    <!-- contact js -->
+    <script src="/resources/template/gotrip-master/assets/js/contact.js"></script>
+    <script src="/resources/template/gotrip-master/assets/js/jquery.form.js"></script>
+    <script src="/resources/template/gotrip-master/assets/js/jquery.validate.min.js"></script>
+    <script src="/resources/template/gotrip-master/assets/js/mail-script.js"></script>
+    <script src="/resources/template/gotrip-master/assets/js/jquery.ajaxchimp.min.js"></script>
+       
+	<!-- Jquery Plugins, main Jquery -->	
+    <script src="/resources/template/gotrip-master/assets/js/plugins.js"></script>
+    <script src="/resources/template/gotrip-master/assets/js/main.js"></script>
+       
 	<script type="text/javascript">
 		var goUrlPurchase = "/nextrip/region/accommodation/accommodationPurchase";
 		var goUrlCancel = "/nextrip/CancelPurchaseHistory";
 		var goUrlConfirm = "/nextrip/reservationConfirm";
+		var goUrlReservationList = "/nextrip/myReservation";
 		
 		var nxPurchaseHistorySeq = $("input:hidden[name=nxPurchaseHistorySeq]");
 		var nxAccommodationSeq = $("input:hidden[name=nxAccommodationSeq]");
 	
 		var form = $("form[name=myForm]");
+		var formVo = $("form[name=formVo]");
 		
 		goPurchase = function(keyValue) {
 	    	/* if(keyValue != 0) seq.val(btoa(keyValue)); */
@@ -270,41 +312,12 @@
 		$("#btnConfirm").on("click",function(){
 			form.attr("action",goUrlConfirm).submit();
 		});
+		
+		$("#btnToList").on("click",function(){
+			formVo.attr("action",goUrlReservationList).submit();
+		});
 	
 	</script>
-	<script src="/resources/template/gotrip-master/assets/js/vendor/modernizr-3.5.0.min.js"></script>
 	
-	<!-- Jquery, Popper, Bootstrap -->
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-	<script src="/resources/template/gotrip-master/assets/js/vendor/jquery-1.12.4.min.js"></script>
-       <script src="/resources/template/gotrip-master/assets/js/popper.min.js"></script>
-       <script src="/resources/template/gotrip-master/assets/js/bootstrap.min.js"></script>
-    <!-- Jquery Mobile Menu -->
-       <script src="/resources/template/gotrip-master/assets/js/jquery.slicknav.min.js"></script>
-
-	<!-- Jquery Slick , Owl-Carousel Plugins -->
-       <script src="/resources/template/gotrip-master/assets/js/owl.carousel.min.js"></script>
-       <script src="/resources/template/gotrip-master/assets/js/slick.min.js"></script>
-	<!-- One Page, Animated-HeadLin -->
-       <script src="/resources/template/gotrip-master/assets/js/wow.min.js"></script>
-	<script src="/resources/template/gotrip-master/assets/js/animated.headline.js"></script>
-       <script src="/resources/template/gotrip-master/assets/js/jquery.magnific-popup.js"></script>
-
-	<!-- Scrollup, nice-select, sticky -->
-       <script src="/resources/template/gotrip-master/assets/js/jquery.scrollUp.min.js"></script>
-       <script src="/resources/template/gotrip-master/assets/js/jquery.nice-select.min.js"></script>
-	<script src="/resources/template/gotrip-master/assets/js/jquery.sticky.js"></script>
-       
-       <!-- contact js -->
-       <script src="/resources/template/gotrip-master/assets/js/contact.js"></script>
-       <script src="/resources/template/gotrip-master/assets/js/jquery.form.js"></script>
-       <script src="/resources/template/gotrip-master/assets/js/jquery.validate.min.js"></script>
-       <script src="/resources/template/gotrip-master/assets/js/mail-script.js"></script>
-       <script src="/resources/template/gotrip-master/assets/js/jquery.ajaxchimp.min.js"></script>
-       
-	<!-- Jquery Plugins, main Jquery -->	
-       <script src="/resources/template/gotrip-master/assets/js/plugins.js"></script>
-       <script src="/resources/template/gotrip-master/assets/js/main.js"></script>
 </body>
 </html>
