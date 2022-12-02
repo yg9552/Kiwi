@@ -50,9 +50,7 @@
             <div class="slider-wrap">
 			  <c:forEach items="${listUploaded}" var="listUploaded" varStatus="statusUploaded">
 			  	<div>
-           			<c:if test="${listUploaded.type eq 1}">
               			<img src="<c:out value="${listUploaded.path }"/><c:out value="${listUploaded.uuidName }"/>" alt="" style="width: 480px; height: 432px;">
-           			</c:if>
 				</div>
 			  </c:forEach>
 	        </div>

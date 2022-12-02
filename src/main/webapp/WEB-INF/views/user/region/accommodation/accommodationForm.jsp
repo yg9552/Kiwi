@@ -348,6 +348,7 @@
 	$("#btnList").on("click", function(){
 		formVo.attr("action", goUrlList).submit();
 	});
+	
     
 	//본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
 	function sample4_execDaumPostcode() {
@@ -441,7 +442,7 @@
 	         }
 	    }).open();
 	}
-	/* 
+	/*
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = {
         center: new kakao.maps.LatLng(<c:out value="${item.lat}" />, <c:out value="${item.lng}" />), // 지도의 중심좌표
