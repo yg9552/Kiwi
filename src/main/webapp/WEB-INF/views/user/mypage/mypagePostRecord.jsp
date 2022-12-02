@@ -140,13 +140,10 @@
 													<c:if test="${list.region eq listRegion.replaceCode}"><c:out value="${listRegion.name }"/></c:if>
 												</c:forEach>
 										      </td>
-										      <%-- <td onclick='javascript:goView(<c:out value="${list.nxPostSeq }"/>)' style="cursor: pointer;"> --%>
-										      <td>
-										      	<a href="/post/postUserView">
-										        	<p style="cursor: pointer; width:350px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin: 0px;">
-										        		<c:out value="${list.title }"/>
-										        	</p>
-									        	</a>
+										      <td onclick='javascript:goView(<c:out value="${list.nxPostSeq }"/>)' style="cursor: pointer;">
+									        	<p style="cursor: pointer; width:350px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin: 0px;">
+									        		<c:out value="${list.title }"/>
+									        	</p>
 									       	  </td>
 										      <td><c:out value="${sessNickname }"/></td>
 										      <td><c:out value="${list.modDateTime }"/></td>
