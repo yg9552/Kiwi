@@ -116,14 +116,14 @@
 	import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
 	
   //Firebase 프로젝트에서 추출한 정보 입력
-	const firebaseConfig = {
+ 	const firebaseConfig = {
     apiKey: "AIzaSyALhWHfhJG9lnqFYseiOTOx37PoTM8c1wM",
     authDomain: "nextrip-47fe2.firebaseapp.com",
     projectId: "nextrip-47fe2",
     storageBucket: "nextrip-47fe2.appspot.com",
     messagingSenderId: "118376443895",
     appId: "1:118376443895:web:2e5b8114691d62246988f2"
- 	 };
+  };
 	// Initialize Firebase
 	const app = initializeApp(firebaseConfig);
 
