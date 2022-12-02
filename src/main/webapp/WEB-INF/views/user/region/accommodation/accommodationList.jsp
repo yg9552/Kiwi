@@ -414,7 +414,13 @@
 		    displayLevel();
 		}
 		
+		var bounds = new kakao.maps.LatLngBounds();
 		
+		function setBounds() {
+		    // LatLngBounds 객체에 추가된 좌표들을 기준으로 지도의 범위를 재설정합니다
+		    // 이때 지도의 중심좌표와 레벨이 변경될 수 있습니다
+		    map.setBounds(bounds);
+		}
 		
 		// 지도에 확대 축소 컨트롤을 생성한다
 		var zoomControl = new kakao.maps.ZoomControl();
@@ -426,21 +432,11 @@
 		var positions = [
 			<c:forEach items="${list }" var="list" varStatus="status">
 			{
-		        content: '<div><c:out value="${list.hotelName }" /></div>', 
+		        content: '<a style="color: #000;" href="javascript:goView(<c:out value="${list.nxAccommodationSeq }"/>)"><div><c:out value="${list.hotelName }" /></div></a>', 
 		        latlng: new kakao.maps.LatLng(<c:out value="${list.lat }" />, <c:out value="${list.lng }" />)
 		    },
 		    </c:forEach>
 		];
-		
-		var bounds = new kakao.maps.LatLngBounds();
-		
-		function setBounds() {
-		    // LatLngBounds 객체에 추가된 좌표들을 기준으로 지도의 범위를 재설정합니다
-		    // 이때 지도의 중심좌표와 레벨이 변경될 수 있습니다
-		    map.setBounds(bounds);
-		}
-
-	
 		
 		for (var i = 0; i < positions.length; i ++) {
 		    // 마커를 생성합니다
@@ -451,24 +447,26 @@
 
 		    // 마커에 표시할 인포윈도우를 생성합니다 
 		    var infowindow = new kakao.maps.InfoWindow({
-		        content: positions[i].content // 인포윈도우에 표시할 내용
+		        content: positions[i].content, // 인포윈도우에 표시할 내용
+		        removable: true
 		    });
-		    
-		    /* 
-		    kakao.maps.event.addListener(marker, 'click', function() {
-			      // 마커 위에 인포윈도우를 표시합니다
-			    <c:forEach items="${list }" var="list" varStatus="status">
-			    location.href = 'javascript:goView(<c:out value="${list.nxAccommodationSeq }"/>)';
-			    </c:forEach>
-			});
-		     */
 
 		    // 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
 		    // 이벤트 리스너로는 클로저를 만들어 등록합니다 
 		    // for문에서 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
+		    kakao.maps.event.addListener(marker, 'click', makeClickListener(map, marker, infowindow));
+		    function makeClickListener(map, marker, infowindow) {
+		        return function() {
+		        infowindow.open(map, marker);
+		        };
+		    }
+		    /* 
 		    kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
 		    kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
-		    
+		    kakao.maps.event.addListener(marker, 'click', function() {
+		        alert('marker click!');
+		    });
+		     */
 		}
 
 		// 인포윈도우를 표시하는 클로저를 만드는 함수입니다 
@@ -484,36 +482,6 @@
 		        infowindow.close();
 		    };
 		}
-
-		/* 아래와 같이도 할 수 있습니다 */
-		/*
-		for (var i = 0; i < positions.length; i ++) {
-		    // 마커를 생성합니다
-		    var marker = new kakao.maps.Marker({
-		        map: map, // 마커를 표시할 지도
-		        position: positions[i].latlng // 마커의 위치
-		    });
-
-		    // 마커에 표시할 인포윈도우를 생성합니다 
-		    var infowindow = new kakao.maps.InfoWindow({
-		        content: positions[i].content // 인포윈도우에 표시할 내용
-		    });
-
-		    // 마커에 이벤트를 등록하는 함수 만들고 즉시 호출하여 클로저를 만듭니다
-		    // 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
-		    (function(marker, infowindow) {
-		        // 마커에 mouseover 이벤트를 등록하고 마우스 오버 시 인포윈도우를 표시합니다 
-		        kakao.maps.event.addListener(marker, 'mouseover', function() {
-		            infowindow.open(map, marker);
-		        });
-
-		        // 마커에 mouseout 이벤트를 등록하고 마우스 아웃 시 인포윈도우를 닫습니다
-		        kakao.maps.event.addListener(marker, 'mouseout', function() {
-		            infowindow.close();
-		        });
-		    })(marker, infowindow);
-		}
-		*/
 	    </script>
     </body>
 </html>
