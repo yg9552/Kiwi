@@ -229,6 +229,13 @@ public class MemberController {
 		return "user/login";
 	}
 	
+	@RequestMapping(value="/nextrip/findAccount")
+	public String findAccount() throws Exception {
+		
+		return "user/findAccount" ;
+	}
+	
+	
 	@RequestMapping(value="/nextrip/kdminLogin")
 	public String kdminLogin() throws Exception {
 		return "kdmin/kdminLogin";

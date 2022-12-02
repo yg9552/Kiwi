@@ -44,7 +44,7 @@
 			</div>
 			<div class="container pb-5 row justify-content-center" style="font-size:14px; color:#737C88">
 				<div class="col-3">
-					<p>비밀번호 재설정</p>
+					<a href="/nextrip/findAccount"><p>계정 정보 찾기</p></a>
 				</div>
 				<div class="col-2">
 					<a href="/nextrip/memberRegistration"><p>회원가입</p></a>

@@ -65,7 +65,7 @@
 	       				<div class="my-3 row justify-content-center">
 						  <!-- <label for=""password"" class="col-3 col-form-label">기존 비밀번호</label> -->
 						  <div class="col-6">
-						    <input type="password" class="form-control" id="password" placeholder="기존 비밀번호">
+						    <input type="password" class="form-control" id="password" placeholder="현재 비밀번호">
 						  </div>
 						</div>
 						<div class="my-3 row justify-content-center">
@@ -75,7 +75,7 @@
 						</div>
 						<div class="my-3 row justify-content-center">
 						  <div class="col-6">
-						    <input type="password" class="form-control" id="newPassCheck" placeholder="새 비밀번호 확인">
+						    <input type="password" class="form-control" id="newPassCheck" placeholder="새 비밀번호 확인"><div class="invalid-feedback" id="newPassCheckFeedback"></div>
 						  </div>
 						</div>
 						<div class="row mt-5 justify-content-center">
@@ -93,36 +93,6 @@
 		<%@include file="../../common/userFooter.jsp"%>
   	<!-- userFooter e -->
 	
-	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-	 <script type="text/javascript">
-	 	var goUrlUpdt = "/nextrip/memberUpdt";
-	 	var goUrlVele = "/nextrip/memberVele";
-	 	var goUrlMypage ="/nextrip/memberModification";
-	 	
-	 	var form = $("form[name=myForm]");
-	 	
-	 	$("#btnUpdtPass").on("click",function(){
-	 		$.ajax({
-	 			async: true 
-				,cache: false
-				,type: "post"
-				/* ,dataType:"json" */
-				,url: "/nextrip/passwordUpdt"
-					,data : { "memberSeq" : $("#memberSeq").val() ,"password" : $("#password").val(),"newPass" : $("#newPass").val() }
-				,success: function(response) {
-					if(response.rt == "success") {
-	 					alert('비밀번호 변경이 완료되었습니다.');
-						form.attr("action",goUrlMypage).submit();
-					} else {
-						alert('현재 비밀번호가 올바르지 않습니다.');
-					}
-				}
-				,error : function(jqXHR, textStatus, errorThrown){
-					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
-				}
-	 		});
-	 	});
-	</script>
 	<script src="/resources/template/gotrip-master/assets/js/vendor/modernizr-3.5.0.min.js"></script>
 	
 	<!-- Jquery, Popper, Bootstrap -->
@@ -157,5 +127,62 @@
 	<!-- Jquery Plugins, main Jquery -->	
        <script src="/resources/template/gotrip-master/assets/js/plugins.js"></script>
        <script src="/resources/template/gotrip-master/assets/js/main.js"></script>
+       
+	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+	<script defer type="text/javascript" src="/resources/xdmin/js/validationXdmin.js"></script>
+	 <script type="text/javascript">
+	 	var goUrlUpdt = "/nextrip/memberUpdt";
+	 	var goUrlVele = "/nextrip/memberVele";
+	 	var goUrlMypage ="/nextrip/memberModification";
+	 	
+	 	var form = $("form[name=myForm]");
+	 	
+	 	$("#newPassCheck").on("focusout", function(){
+			if($("#newPassCheck").val() != null && $("#newPassCheck").val() != ""  && $("#newPassCheck").val() == $("#newPass").val()){
+				document.getElementById("newPassCheck").classList.remove('is-invalid');
+				document.getElementById("newPassCheck").classList.add('is-valid');
+				
+				document.getElementById("newPassCheckFeedback").classList.remove('invalid-feedback');
+				document.getElementById("newPassCheckFeedback").classList.add('valid-feedback');
+				document.getElementById("newPassCheckFeedback").innerText = "비밀번호가 일치합니다.";
+			} else {
+				document.getElementById("newPassCheck").classList.remove('is-valid');
+				document.getElementById("newPassCheck").classList.add('is-invalid');
+				
+				document.getElementById("newPassCheckFeedback").classList.remove('valid-feedback');
+				document.getElementById("newPassCheckFeedback").classList.add('invalid-feedback');
+				document.getElementById("newPassCheckFeedback").innerText = "비밀번호가 일치하지 않습니다.";
+				return false;
+			}
+			
+		});
+	 	
+	 	$("#btnUpdtPass").on("click",function(){
+	 		if(!checkNull('newPass',2 ,"새 비밀번호를 설정해 주세요.")) return false;
+    		if(!checkNull('newPassCheck',2 ,"새 비밀번호를 확인해 주세요.")) return false;
+    		else {
+    			$.ajax({
+    	 			async: true 
+    				,cache: false
+    				,type: "post"
+    				/* ,dataType:"json" */
+    				,url: "/nextrip/passwordUpdt"
+    					,data : { "memberSeq" : $("#memberSeq").val() ,"password" : $("#password").val(),"newPass" : $("#newPass").val() }
+    				,success: function(response) {
+    					if(response.rt == "success") {
+    	 					alert('비밀번호 변경이 완료되었습니다.');
+    						form.attr("action",goUrlMypage).submit();
+    					} else {
+    						alert('현재 비밀번호가 올바르지 않습니다.');
+    					}
+    				}
+    				,error : function(jqXHR, textStatus, errorThrown){
+    					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+    				}
+    	 		});
+    		}
+	 	});
+	</script>
+	
 </body>
 </html>
