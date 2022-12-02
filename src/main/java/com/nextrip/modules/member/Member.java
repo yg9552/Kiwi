@@ -1,6 +1,6 @@
 package com.nextrip.modules.member;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Member {
 	

@@ -211,11 +211,13 @@
         			return false;
         		} 
         	});
-        	$("#dob").on("focusout", function(){
+        	
+        	$("#dob").on("change", function(){
         		if(!checkNull('dob',2 ,"생일을 선택해 주세요.")) {
         			return false;
         		} 
         	});
+        	
         	$("#phoneNum").on("focusout", function(){
         		if(!checkOnlyNumber('phoneNum',2,0,0,0,0,"휴대전화 번호(숫자만)를 입력해주세요")) return false;
         	});

@@ -60,7 +60,7 @@
         <!-- Mobile Menu -->
         <div class="slider-active">
         	<!-- Blog Area Start -->
-            <div class="single-slider hero-overly slider-height2 d-flex align-items-center" data-background="/resources/image/sunset.jpg">
+            <div class="single-slider hero-overly slider-height d-flex align-items-center" style="background-image: url('/resources/image/sunset.jpg');">
                 <div class="container">
                 	<div class="home-blog-area section-padding2" style="padding: 0px; margin-top: 80px; margin-bottom: 50px;">
 		                <!-- Section Tittle -->
@@ -137,7 +137,7 @@
         <div id="info-box"></div>
         <!-- background-image: url('/resources/image/sunset.jpg'); -->
 <!--         <div style="padding-left:470px; background-color: #9DBAD1;"> -->
-	        <svg viewBox="-280 100 1000 1000" style="background-color: #9DBAD1;">
+	        <svg viewBox="-280 100 1000 1000" class="svgBack" style="background-image:url('/resources/image/underwater-g7ea12de58_1920.jpg'); background-size:cover;">
 	        	<svg
 				   version="1.1"
 				   id="mapSvg"

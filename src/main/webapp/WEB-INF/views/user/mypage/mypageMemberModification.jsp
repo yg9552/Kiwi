@@ -103,7 +103,7 @@
 		                        <tr>
 		                            <th>생년월일</th>
 		                            <td colspan="3">
-		                            	<input type="text" class="form-control" id="dob" name="dob" value="<c:out value="${item.dob }"/>" style="border: none;">
+		                            	<input type="text" class="form-control" id="dob" name="dob" value="<fmt:formatDate pattern="yyyy-MM-dd" value="${item.dob}"/>" style="border: none;">
 				                    </td>
 						      	</tr>
 					            <tr>
@@ -200,7 +200,6 @@
     <script src="/resources/template/gotrip-master/assets/js/contact.js"></script>
     <script src="/resources/template/gotrip-master/assets/js/jquery.form.js"></script>
     <script src="/resources/template/gotrip-master/assets/js/jquery.validate.min.js"></script>
-    <script src="/resources/template/gotrip-master/assets/js/mail-script.js"></script>
     <script src="/resources/template/gotrip-master/assets/js/jquery.ajaxchimp.min.js"></script>
        
 	<!-- Jquery Plugins, main Jquery -->	

@@ -119,7 +119,7 @@
 							  	<c:choose>
 					    			<c:when test="${fn:length(list) eq 0 }">
 					    				<tr>
-					    					<td colspan="6"> 작성한 게시글이 존재하지 않습니다.</td>
+					    					<td colspan="7"> 작성한 게시글이 존재하지 않습니다.</td>
 					    				</tr>
 					    			</c:when>
 					    			<c:otherwise>
@@ -140,10 +140,13 @@
 													<c:if test="${list.region eq listRegion.replaceCode}"><c:out value="${listRegion.name }"/></c:if>
 												</c:forEach>
 										      </td>
-										      <td onclick="location.href='javascript:goView(<c:out value="${list.nxPostSeq }"/>)'" style="cursor: pointer;">
-									        	<p style="cursor: pointer; width:350px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin: 0px;">
-									        		<c:out value="${list.title }"/>
-									        	</p>
+										      <%-- <td onclick='javascript:goView(<c:out value="${list.nxPostSeq }"/>)' style="cursor: pointer;"> --%>
+										      <td>
+										      	<a href="/post/postUserView">
+										        	<p style="cursor: pointer; width:350px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin: 0px;">
+										        		<c:out value="${list.title }"/>
+										        	</p>
+									        	</a>
 									       	  </td>
 										      <td><c:out value="${sessNickname }"/></td>
 										      <td><c:out value="${list.modDateTime }"/></td>
