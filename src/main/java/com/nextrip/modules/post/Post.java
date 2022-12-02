@@ -39,6 +39,16 @@ public class Post extends Base {
 	private Integer uploadImageMaxNumber;
 	private String[] uploadImageDeleteSeq;
 	private String[] uploadImageDeletePathFile;	
+	
+	//chat
+	private Integer chatSeq;
+	private Integer chatDelNy;
+	private Integer cuMemberSeq;
+	private String chatCreateDate;
+	
+	//채팅 맴버 정보 추출을 위한 필드
+	//아래 필드도 본인의 DB테이블에 맞게 변경해주세요
+	private String nickname;   //유저 이름 or 닉네임
 
 	
 
@@ -303,6 +313,60 @@ public class Post extends Base {
 	public void setNxPostLikeSeq(String nxPostLikeSeq) {
 		this.nxPostLikeSeq = nxPostLikeSeq;
 	}
+	
+	//chat
+
+
+	public Integer getChatSeq() {
+		return chatSeq;
+	}
+
+
+	public void setChatSeq(Integer chatSeq) {
+		this.chatSeq = chatSeq;
+	}
+
+
+	public Integer getChatDelNy() {
+		return chatDelNy;
+	}
+
+
+	public void setChatDelNy(Integer chatDelNy) {
+		this.chatDelNy = chatDelNy;
+	}
+
+
+	public Integer getCuMemberSeq() {
+		return cuMemberSeq;
+	}
+
+
+	public void setCuMemberSeq(Integer cuMemberSeq) {
+		this.cuMemberSeq = cuMemberSeq;
+	}
+
+
+	public String getChatCreateDate() {
+		return chatCreateDate;
+	}
+
+
+	public void setChatCreateDate(String chatCreateDate) {
+		this.chatCreateDate = chatCreateDate;
+	}
+
+
+	public String getNickname() {
+		return nickname;
+	}
+
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+	
+
 	
 	
 
