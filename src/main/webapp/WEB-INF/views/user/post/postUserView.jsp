@@ -278,7 +278,7 @@
     	});
 		
 		$("#talkBtn").on("click", function() {
-			addChat();
+			chatOverlapCheck();
     	});
 		
 		function overlap(){
@@ -317,7 +317,29 @@
 				}
 			});
 		});
-		
+		chatOverlapCheck = function(){
+			$.ajax({
+				url: '/chat/chatOverlapCheck'
+				,type: 'POST'
+				,datatype:'json'
+				,data:{
+					cuMemberSeq : $("#memberSeq").val(), postMemberSeq : $("#postMemberSeq").val()
+				}
+				,success:function(result){
+					if(result.rt=="null"){
+						addChat();
+					}else{
+						alert("이미 문의하고 있는 회원입니다.");
+					
+						location.href="/nextrip/mypageChat"
+					}
+				}
+				,error:function(){
+					alert("overlap ajax error..!");
+				}
+			});
+	
+		}
 		addChat = function(){
 			
 			$.ajax({
@@ -331,32 +353,6 @@
 					if(result.rt=="success"){
 						
 						location.href="/nextrip/mypageChat"
-						/* $("#postMemberSeq").val("");
-						var txt="";
-						txt+='<li class="room" id="';
-						txt+=result.newChat.chatSeq;
-						txt+='" onclick="selectChatRoom(';
-						txt+=result.newChat.chatSeq;
-						txt+=')">';
-						txt+='<div class="d-flex bd-highlight">';
-						txt+='<div class="img_cont">';
-						//아래 path 와 uuidname 도 본인의 dto field에 맞게 수정
-						txt+='<img src="';
-						if(result.newChat.upPath != null)
-						{
-							txt+=result.newChat.upPath + result.newChat.upUuidName;
-						}
-						txt+='" class="rounded-circle user_img">';
-						txt+='</div>';
-						txt+='<div class="chat_product_info">';
-						txt+='<span class="status">';
-						txt+=result.newChat.id;
-						txt+='</span>';
-						txt+='<p>TEST TEXT FIELD</p>';
-						txt+='</div>';
-						txt+='</div>';
-						txt+='</li>';
-						$("#chatList").prepend(txt);	 */	
 					}else{
 						alert("fail..!");
 					}

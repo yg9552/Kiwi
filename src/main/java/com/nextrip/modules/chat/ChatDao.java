@@ -29,5 +29,7 @@ public class ChatDao {
 
 	public void insertChatUser(Chat dto) { sqlSession.insert(namespace+".insertChatUser", dto); }
 
-	public Chat selectOneChat(Chat dto) { return sqlSession.selectOne(namespace+".selectOneChat", dto);}
+	public List<Chat> selectOneChat(Chat dto) { return sqlSession.selectList(namespace+".selectOneChat", dto);}
+	
+	public int chatOverlapCheck(Chat dto) { return sqlSession.selectOne(namespace + ".chatOverlapCheck", dto);}
 }

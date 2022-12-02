@@ -36,7 +36,7 @@ public class ChatServiceImpl implements ChatService{
 	}
 
 	@Override
-	public Chat createChat(int chatUserA, int chatUserB) throws Exception {
+	public List<Chat> createChat(int chatUserA, int chatUserB) throws Exception {
 		// TODO Auto-generated method stub
 		Chat dto = new Chat();
 		dao.insertChat(dto);
@@ -48,5 +48,16 @@ public class ChatServiceImpl implements ChatService{
 		dao.insertChatUser(dto);
 		
 		return dao.selectOneChat(dto);
+	}
+	
+	@Override
+	public int chatOverlapCheck(int chatUserA, int chatUserB) throws Exception {
+		
+		Chat dto = new Chat();
+		
+		dto.setCuMemberSeq(chatUserA);
+		dto.setPostMemberSeq(chatUserB);
+		
+		return dao.chatOverlapCheck(dto);
 	}
 }

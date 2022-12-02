@@ -39,7 +39,7 @@ public class ChatController {
 		
 		Map<String,Object> result = new HashMap<String,Object>();
 		
-		Chat newChat = service.createChat(Integer.parseInt(httpSession.getAttribute("sessSeq").toString()),dto.getCuMemberSeq());
+		List<Chat> newChat = service.createChat(Integer.parseInt(httpSession.getAttribute("sessSeq").toString()),dto.getCuMemberSeq());
 		
 		if(newChat != null) {
 			result.put("rt", "success");
@@ -50,4 +50,21 @@ public class ChatController {
 		
 		return result;
 	}
+	
+	@ResponseBody
+	@RequestMapping(value="/chat/chatOverlapCheck")
+	public Map<String,Object> chatOverlapCheck(HttpSession httpSession,Chat dto, Model model) throws Exception {
+		
+		Map<String,Object> result = new HashMap<String,Object>();
+		
+		int overlapCheck = service.chatOverlapCheck(Integer.parseInt(httpSession.getAttribute("sessSeq").toString()), dto.getPostMemberSeq());
+		
+		if(overlapCheck != 0) {
+			result.put("rt", "check");
+		}
+		else
+			result.put("rt", "null");
+		return result;
+	}
+	
 }

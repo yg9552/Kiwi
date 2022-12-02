@@ -1,4 +1,6 @@
 package com.nextrip.modules.chat;
+
+
 //본인에게 맞는 package로 변경하도록 합니다.
 
 public class Chat {
@@ -7,6 +9,7 @@ public class Chat {
 	private Integer chatDelNy;
 	private Integer cuMemberSeq;
 	private String chatCreateDate;
+	private Integer postMemberSeq;
 	
 	//채팅 맴버 정보 추출을 위한 필드
 	//아래 필드도 본인의 DB테이블에 맞게 변경해주세요
@@ -49,8 +52,12 @@ public class Chat {
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
-	
-	
+	public Integer getPostMemberSeq() {
+		return postMemberSeq;
+	}
+	public void setPostMemberSeq(Integer postMemberSeq) {
+		this.postMemberSeq = postMemberSeq;
+	}
 	
 	
 
