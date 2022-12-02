@@ -60,7 +60,7 @@
         <div class="container">
             <div class="row">
                	<!-- usersideBar s -->
-            		<%@include file="../../common/userSidebar.jsp" %>
+            	<%@include file="../../common/userSidebar.jsp" %>
             	<!-- usersideBar e -->
                 <div class="col-lg-9 mb-5 mb-lg-0">
 	                 <!-- slider Area Start-->
@@ -94,87 +94,100 @@
 						<!-- *Vo.jsp e -->
 	                	<input type="hidden" id="nxPostSeq" name="nxPostSeq" value="${item.nxPostSeq }">
 	                	<input type="hidden" id="memberSeq" name="memberSeq" value="${sessSeq}">
-                		<div>
-	                		<h2 id="title" name="title"><c:out value="${item.title }"/></h2>
-	                		<div style="height: 20px;"></div>
-	                		<div>
-	                			<c:set var="listCodeRegion" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
-							  	<c:set var="listCodePostDiv" value="${CodeServiceImpl.selectListCachedCode('4')}"/>
-	                			<span>구분/지역: </span>
-	                			<span name="postType">
-									<c:forEach items="${listCodePostDiv}" var="listCodePostDiv" varStatus="statusPostDiv">
-										<c:if test="${item.postType eq listCodePostDiv.replaceCode}"><c:out value="${listCodePostDiv.name }"/></c:if>
-									</c:forEach>                			
-	                			</span>
-	                			<span>/</span>
-	                			<span id="region" name="region">
-		                			<c:forEach items="${listCodeRegion}" var="listCodeRegion" varStatus="statusRegion">
-										<c:if test="${item.region eq listCodeRegion.replaceCode}"><c:out value="${listCodeRegion.name }"/></c:if>
-									</c:forEach>
-	                			</span>
-	                			<div style="float:right">
-		                			<span style="margin-right: 10px;"><span>작성일: </span><span id="regDateTime" name="regDateTime"><fmt:formatDate value="${item.regDateTime }" pattern="yyyy-MM-dd"/></span></span>
-		                			<span style="margin-right: 10px;"><span>작성자: </span><span id="memberNickName" name="memberNickName"><c:out value="${item.memberNickName }"/></span></span>
-		                			<span style="margin-right: 10px;"><span>조회수: </span><span id="viewCount" name="viewCount"><c:out value="${item.viewCount }"/></span></span>
-		                		</div>
+	                	<input type="hidden" id="postMemberSeq" name="postMemberSeq" value="${item.memberSeq }"
+                		<h2 id="title" name="title"><c:out value="${item.title }"/></h2>
+                		<div style="height: 20px;"></div>
+               			<c:set var="listCodeRegion" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
+					  	<c:set var="listCodePostDiv" value="${CodeServiceImpl.selectListCachedCode('4')}"/>
+               			<span>구분/지역: </span>
+               			<span name="postType">
+							<c:forEach items="${listCodePostDiv}" var="listCodePostDiv" varStatus="statusPostDiv">
+								<c:if test="${item.postType eq listCodePostDiv.replaceCode}"><c:out value="${listCodePostDiv.name }"/></c:if>
+							</c:forEach>                			
+                			</span>
+               			<span>/</span>
+               			<span id="region" name="region">
+                			<c:forEach items="${listCodeRegion}" var="listCodeRegion" varStatus="statusRegion">
+								<c:if test="${item.region eq listCodeRegion.replaceCode}"><c:out value="${listCodeRegion.name }"/></c:if>
+							</c:forEach>
+               			</span>
+               			<div style="float:right">
+                			<span style="margin-right: 10px;"><span>작성일: </span><span id="regDateTime" name="regDateTime"><fmt:formatDate value="${item.regDateTime }" pattern="yyyy-MM-dd"/></span></span>
+                			<span style="margin-right: 10px;">
+                				<span>작성자: </span>
+                				<span id="memberNickName" name="memberNickName" data-bs-toggle="dropdown" aria-expanded="false">
+                					<c:out value="${item.memberNickName }"/>
+                				</span>
+               				</span>
+                			 <ul class="dropdown-menu">
+							    <li><a class="dropdown-item" href="">1대1 문의하기</a></li>
+							 </ul>
+                			<span style="margin-right: 10px;"><span>조회수: </span><span id="viewCount" name="viewCount"><c:out value="${item.viewCount }"/></span></span>
+                		</div>
+                		<div style="background-color: #f0f0f0; padding: 20px; border-top: 1px solid #e8e8e8; border-bottom: 2px solid #e8e8e8;">
+                			<a style="display:block;">
+                				<c:choose>
+                               		<c:when test="${item.path eq null}">
+                               			<img src="/resources/image/post/binPhoto.jpg" width="200px" height="144px" style="float: left; object-fit:contain;">
+                               		</c:when>
+                               		<c:otherwise>
+                                   		<img src="<c:out value="${item.path }"/><c:out value="${item.uuidName }"/>" width="200px" height="144px" style="float: left; object-fit:contain;">
+                                  		</c:otherwise>
+                               	</c:choose>
+                			</a>
+                			<div style="display:block; height: 144px;">
+                				<span style="margin-left: 15px;">
+                					<span>후기 종류:
+                					</span>
+		               				<span id="postType" name="postType"> 
+		               					<c:set var="listCodePostDiv" value="${CodeServiceImpl.selectListCachedCode('4')}"/>
+		               					<c:forEach items="${listCodePostDiv}" var="listCodePostDiv" varStatus="statusPostDiv">
+											<c:if test="${item.postType eq listCodePostDiv.replaceCode}"><c:out value="${listCodePostDiv.name }"/></c:if>
+										</c:forEach>
+		               				</span>
+                				</span>
+                				<br>
+                				<span style="margin-left: 15px;" id="addressTitle" name="addressTitle"><b><c:out value="${item.addressTitle }"/></b></span>
+                				<button type="button" id="btnFindRoad" name="btnFindRoad" class="btn btn-primary" style="float: right; margin-top: 66px;">지도 펴보기</button>
+                			</div>
+                		</div>
+                		<div class="content" id="content" name="content" style="padding: 20px;border-bottom: 1px solid #f0f0f0;">
+                			${item.content }
+                		</div>
+                		<c:choose>
+                			<c:when test="${sessSeq eq null }">
+		                	</c:when>
+		                	<c:otherwise>
+		                		<c:choose>
+			                		<c:when test="${like.memberSeq eq null}">
+		                				<div id="likeBtnDiv" name="likeBtnDiv" class="row" style="margin-top: 30px;">
+				                			<button type="button" class="genric-btn info col-lg-2 offset-5"  id="likeBtn" name="likeBtn">
+				                				<i class="fa-regular fa-thumbs-up"></i> 좋아요 ${likeCount}
+			                				</button>
+				                		</div>
+									</c:when>
+									<c:otherwise>
+				                		<div class="row" style="margin-top: 30px;">
+			                				<button type="button" class="genric-btn info col-lg-2 offset-5" id="likedBtn" name="likedBtn">
+				                				<i class="fa-solid fa-thumbs-up"></i> 좋아요 ${likeCount}
+			                				</button>
+				                		</div>
+				                	</c:otherwise>
+			                	</c:choose>
+		                	</c:otherwise>
+	                	</c:choose>
+	                </form>
+	                <c:choose>
+	                	<c:when test="${sessSeq eq null }">
+	                		<div style="margin-top: 30px;">
+	                			<button type="button" class="genric-btn info" style="float: left;" id="listBtn" name="listBtn">목록</button>
 	                		</div>
-	                		<div style="background-color: #f0f0f0; padding: 20px; border-top: 1px solid #e8e8e8; border-bottom: 2px solid #e8e8e8;">
-	                			<a style="display:block;">
-	                				<c:choose>
-                                		<c:when test="${item.path eq null}">
-                                			<img src="/resources/image/post/binPhoto.jpg" width="200px" height="144px" style="float: left; object-fit:contain;">
-                                		</c:when>
-                                		<c:otherwise>
-                                    		<img src="<c:out value="${item.path }"/><c:out value="${item.uuidName }"/>" width="200px" height="144px" style="float: left; object-fit:contain;">
-                                   		</c:otherwise>
-                                	</c:choose>
-	                			</a>
-	                			<div style="display:block; height: 144px;">
-	                				<span style="margin-left: 15px;">
-	                					<span>후기 종류:
-	                					</span>
-			               				<span id="postType" name="postType"> 
-			               					<c:set var="listCodePostDiv" value="${CodeServiceImpl.selectListCachedCode('4')}"/>
-			               					<c:forEach items="${listCodePostDiv}" var="listCodePostDiv" varStatus="statusPostDiv">
-												<c:if test="${item.postType eq listCodePostDiv.replaceCode}"><c:out value="${listCodePostDiv.name }"/></c:if>
-											</c:forEach>
-			               				</span>
-	                				</span>
-	                				<br>
-	                				<span style="margin-left: 15px;" id="addressTitle" name="addressTitle"><b><c:out value="${item.addressTitle }"/></b></span>
-	                				<button type="button" id="btnFindRoad" name="btnFindRoad" class="btn btn-primary" style="float: right; margin-top: 66px;">지도 펴보기</button>
-	                			</div>
-	                		</div>
-	                		<div class="content" id="content" name="content" style="padding: 20px;border-bottom: 1px solid #f0f0f0;">
-	                			${item.content }
-	                		</div>
-	                		<c:choose>
-	                			<c:when test="${sessSeq eq null }">
-		                			
-			                	</c:when>
-			                	<c:otherwise>
-			                		<c:choose>
-				                		<c:when test="${like.memberSeq eq null}">
-			                				<div id="likeBtnDiv" name="likeBtnDiv" class="row" style="margin-top: 30px;">
-					                			<button type="button" class="genric-btn info col-lg-2 offset-5"  id="likeBtn" name="likeBtn">
-					                				<i class="fa-regular fa-thumbs-up"></i> 좋아요 ${likeCount}
-				                				</button>
-					                		</div>
-										</c:when>
-										<c:otherwise>
-					                		<div class="row" style="margin-top: 30px;">
-				                				<button type="button" class="genric-btn info col-lg-2 offset-5" id="likedBtn" name="likedBtn">
-					                				<i class="fa-solid fa-thumbs-up"></i> 좋아요 ${likeCount}
-				                				</button>
-					                		</div>
-					                	</c:otherwise>
-				                	</c:choose>
-			                	</c:otherwise>
-		                	</c:choose>
+	                	</c:when>
+	                	<c:otherwise>
 	                		<c:choose>
 								<c:when test="${item.memberSeq eq sessSeq}"> <!-- length(list)가 0이면 이걸 하고 -->
 									<div style="margin-top: 30px;">
-										<button type="button" class="genric-btn info" style="float: left;" id="listBtn" name="listBtn">목록</button>
+										<button type="button" class="genric-btn success" style="float: left;" id="listBtn" name="listBtn">목록</button>
 										<button type="button" class="genric-btn danger" name="delModalBtn" id="delModalBtn" style="float: right;" data-bs-toggle="modal" data-bs-target="#deleteModal">
 											삭제
 										</button>
@@ -183,15 +196,16 @@
 								</c:when>
 								<c:otherwise>
 			                		<div style="margin-top: 30px;">
-			                			<button type="button" class="genric-btn info" style="float: left;" id="listBtn" name="listBtn">목록</button>
+			                			<button type="button" class="genric-btn success" style="float: left;" id="listBtn" name="listBtn">목록</button>
+						                <button type="button" class="genric-btn primary" style="float: right;" id="talkBtn" name="talkBtn"><i class="fa-solid fa-comment"></i> 1 대 1 문의하기</button>
 			                		</div>
 			                	</c:otherwise>
 		                	</c:choose>
-	                	</div>
-                	</form>
-                </div>
-            </div>
-        </div>
+	                	</c:otherwise>
+	                </c:choose>
+            	</div>
+           	</div>
+		</div>
     </section>
     <!--================Blog Area =================-->
      <!-- Modal Area s -->
@@ -263,6 +277,10 @@
     		window.open('https://map.kakao.com/link/to/<c:out value="${item.addressTitle }" />,<c:out value="${item.lat }" />,<c:out value="${item.lng }" />','target="blank"',"width=1920 ,height=1080");
     	});
 		
+		$("#talkBtn").on("click", function() {
+			addChat();
+    	});
+		
 		function overlap(){
 			alert("추천은 1인당 한번씩만 할 수 있습니다.");
 		};
@@ -300,6 +318,55 @@
 			});
 		});
 		
+		addChat = function(){
+			
+			$.ajax({
+				url: '/chat/insChat'
+				,type: 'POST'
+				,datatype:'json'
+				,data:{
+					cuMemberSeq : $("#postMemberSeq").val()
+				}
+				,success:function(result){
+					if(result.rt=="success"){
+						
+						location.href="/nextrip/mypageChat"
+						/* $("#postMemberSeq").val("");
+						var txt="";
+						txt+='<li class="room" id="';
+						txt+=result.newChat.chatSeq;
+						txt+='" onclick="selectChatRoom(';
+						txt+=result.newChat.chatSeq;
+						txt+=')">';
+						txt+='<div class="d-flex bd-highlight">';
+						txt+='<div class="img_cont">';
+						//아래 path 와 uuidname 도 본인의 dto field에 맞게 수정
+						txt+='<img src="';
+						if(result.newChat.upPath != null)
+						{
+							txt+=result.newChat.upPath + result.newChat.upUuidName;
+						}
+						txt+='" class="rounded-circle user_img">';
+						txt+='</div>';
+						txt+='<div class="chat_product_info">';
+						txt+='<span class="status">';
+						txt+=result.newChat.id;
+						txt+='</span>';
+						txt+='<p>TEST TEXT FIELD</p>';
+						txt+='</div>';
+						txt+='</div>';
+						txt+='</li>';
+						$("#chatList").prepend(txt);	 */	
+					}else{
+						alert("fail..!");
+					}
+				}
+				,error:function(){
+					alert("ajax error..!");
+				}
+			});
+	
+		}
 		</script>	
 		<!-- All JS Custom Plugins Link Here here -->
         <script src="/resources/template/gotrip-master/assets/js/vendor/modernizr-3.5.0.min.js"></script>

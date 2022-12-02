@@ -57,10 +57,10 @@
 		                <div class="col-md-4 col-xl-3 chat">
 		                    <div class="card mb-sm-3 mb-md-0 contacts_card">
 		                        <div class="card-header">
-		                            <div class="input-group">
+		                            <!-- <div class="input-group">
 										<input type="text" placeholder="회원 번호를 넣어주세요" id="cuMemberSeq" name="cuMemberSeq" class="form-control search">
 		                                <span class="input-group-text search_btn" onclick="addChat()"><i class="fa-solid fa-plus"></i></span>
-		                            </div>
+		                            </div> -->
 		                        </div>
 		                        <div class="card-body contacts_body">
 		                            <ui class="contacts" id="chatList">
@@ -117,12 +117,13 @@
 	
   //Firebase 프로젝트에서 추출한 정보 입력
 	const firebaseConfig = {
-    apiKey: "AIzaSyALhWHfhJG9lnqFYseiOTOx37PoTM8c1wM",
-    authDomain: "nextrip-47fe2.firebaseapp.com",
-    projectId: "nextrip-47fe2",
-    storageBucket: "nextrip-47fe2.appspot.com",
-    messagingSenderId: "118376443895",
-    appId: "1:118376443895:web:2e5b8114691d62246988f2"
+    apiKey: "AIzaSyBwE7dragfijHqsWjKJnSQdTUJclpv272o",
+    authDomain: "kbchat-347f2.firebaseapp.com",
+    databaseURL: "https://kbchat-347f2-default-rtdb.firebaseio.com",
+    projectId: "kbchat-347f2",
+    storageBucket: "kbchat-347f2.appspot.com",
+    messagingSenderId: "599181043091",
+    appId: "1:599181043091:web:8e8dc3cfd4282ab2c13466"
  	 };
 	// Initialize Firebase
 	const app = initializeApp(firebaseConfig);
