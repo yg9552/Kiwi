@@ -117,6 +117,21 @@ public class AccommodationController {
 		return "redirect:/nextrip/myReservation";
 	}
 	
+	@RequestMapping(value = "kspay")
+	public String kspay() throws Exception {
+		return "user/region/accommodation/kspay";
+	}
+	
+	@RequestMapping(value = "kspay_wh_rcv")
+	public String kspay_wh_rcv() throws Exception {
+		return "user/region/accommodation/kspay_wh_rcv";
+	}
+	
+	@RequestMapping(value = "kspay_wh_result")
+	public String kspay_wh_result() throws Exception {
+		return "user/region/accommodation/kspay_wh_result";
+	}
+	
 	@ResponseBody
 	@RequestMapping(value = "selectRoomPrice")
 	public Map<String, Object> selectRoomPrice(Accommodation dto) throws Exception {
