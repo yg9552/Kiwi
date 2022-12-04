@@ -16,8 +16,8 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Cache-Control" content="no-cache"> 
-<meta http-equiv="Pragma" content="no-cache"> 
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta http-equiv="Pragma" content="no-cache"> 
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
     <!-- <link rel="manifest" href="site.webmanifest"> -->
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
@@ -110,6 +110,7 @@
                                 <div class="form-group">
                                 	<label for="reservationName">예약자 이름</label>
                                     <input type="text" class="form-control" name="reservationName" placeholder="체크인시 필요한 정보입니다." id="reservationName">
+                                    <input type="hidden" class="form-control" name="sndOrdername" id="sndOrdername">
                                     <div class="invalid-feedback" id="reservationNameFeedback"></div>
                                 </div>
                                 <div class="form-group">
@@ -118,6 +119,7 @@
                                 		<p style="font-size: 12px;" class="m-0">개인 정보 보호를 위해 안심번호로 숙소에 전송됩니다.</p>
                                		</label>
                                     <input type="text" class="form-control" name="reservationPhoneNum" id="reservationPhoneNum" placeholder="체크인시 필요한 정보입니다.">
+                                    <input type="hidden" class="form-control" name="sndMobile" id="sndMobile">
                                     <div class="invalid-feedback" id="reservationPhoneNumFeedback"></div>
                                 </div>
 	                        </aside>
@@ -169,6 +171,7 @@
                                     <h6>객실타입/기간</h6>
                                 	<c:forEach items="${listr }" var="listr" varStatus="statuslistR">
                                 		<c:if test="${itemph.nxRoomSeq eq listr.nxRoomSeq }"><p class="p-3"> <c:out value="${listr.roomName }" /> / <c:out value="${itemph.dateGap }"/>박</p></c:if>
+                                		<c:if test="${itemph.nxRoomSeq eq listr.nxRoomSeq }"><input type="hidden" name="sndGoodname" value="<c:out value="${item.hotelName }" /> <c:out value="${listr.roomName }" />">  </c:if>
                                 	</c:forEach>
                                 </li>
                                 <li>
@@ -183,13 +186,14 @@
                                     <h5>총 결제 금액</h5>
                                     <p class="p-3 text-danger"> <c:out value="${itemph.dateGap }" />박 / <fmt:formatNumber value="${total }" pattern="#,###" />원</p>
                                     <input type="hidden" id="pay" value="${total }" class="form-control text-danger" name="pay" style="border: none; background-color: #fbf9ff;" />
+                                    <input type="hidden" id="pay" value="${total }" class="form-control text-danger" name="sndAmount" style="border: none; background-color: #fbf9ff;" />
                                     <%-- <c:forEach items="${listr }" var="listr" varStatus="statuslistR">
                                 		<c:if test="${itemph.nxRoomSeq eq listr.nxRoomSeq }"><p class="p-3 text-danger"> <fmt:formatNumber value="${listr.price }" pattern="#,###" />원</p></c:if>
                                 		<c:if test="${itemph.nxRoomSeq eq listr.nxRoomSeq }"><input type="text" id="pay" value="${listr.price }" class="form-control" name="pay" style="border: none; background-color: #fbf9ff;" /></c:if>
                                 	</c:forEach> --%>
                                 </li>
                             </ul>
-                            <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn" type="button" onClick="javascript:_submit(document.KSPayWeb);">결제하기</button><!--  id="btnSave" -->
+                            <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn" type="button" id="btnSave">결제하기</button><!--  id="btnSave" -->
                         </aside>
 
                     </div>
@@ -263,7 +267,6 @@
         <tr>
           <td width="110"><img src="/resources/common/imgs/ico_right.gif" width="11" height="11" align="absmiddle"> 상품명</td> 
 		      <!--상품명 50Byte(한글 25자) 입니다. ' " ` 는 사용하실수 없습니다. 따옴표,쌍따옴표,백쿼테이션 -->
-          <td width="290"><input type='text' name='sndGoodname' value='<c:out value="${itemp.product_name }"></c:out>' size='30'></td>
         </tr>
         <tr bgcolor="#E3E3E3">
           <td height="1" colspan="2"></td>
@@ -271,14 +274,12 @@
         <tr>
           <td width="110"><img src="/resources/common/imgs/ico_right.gif" width="11" height="11" align="absmiddle"> 금액</td> 
 		  <!--금액은 ,없이 입력 -->
-          <td width="290"><input type='text' name='sndAmount' value='<c:out value="${itemp.totalprice }" />' size='15' maxlength='9'>원</td>
         </tr>
         <tr bgcolor="#E3E3E3">
           <td height="1" colspan="2"></td>
         </tr>
         <tr>
           <td width="110"><img src="/resources/common/imgs/ico_right.gif" width="11" height="11" align="absmiddle"> 주문자명</td> 
-          <td width="290"><input type='text' name='sndOrdername' value='<c:out value="${sessName}"></c:out>' size='30'></td>
         </tr>
         <tr bgcolor="#E3E3E3">
           <td height="1" colspan="2"></td>
@@ -286,7 +287,6 @@
         <tr>
           <td width="110"><img src="/resources/common/common/imgs/ico_right.gif" width="11" height="11" align="absmiddle"> 전자우편</td> 
 		      <!--KSPAY에서 결제정보를 메일로 보내줍니다.(신용카드거래에만 해당)-->
-          <td width="290"><input type='text' name='sndEmail' value='<c:out value="${itemm.email}"></c:out>' size='30'></td>
         </tr>
         <tr bgcolor="#E3E3E3">
           <td height="1" colspan="2"></td>
@@ -294,15 +294,11 @@
         <tr>
           <td width="110"><img src="/resources/common/common/imgs/ico_right.gif" width="11" height="11" align="absmiddle"> 이동전화</td> 
 		      <!--전화번호 value 값에 숫자만 넣게 해주시길 바랍니다. : '-' 가 들어가면 안됩니다.-->
-          <td width="290"><input type='text' name='sndMobile' value='<c:forEach items="${listt }" var="listt" varStatus="status"><c:if test="${listt.memberSeq eq sessSeq && listt.div_tel eq 1 }"><c:out value="${listt.tel }"/></c:if></c:forEach>' size='12' maxlength='12'></td>
         </tr>
         <tr bgcolor="#E3E3E3">
           <td height="1" colspan="2"></td>
         </tr>
       </table></td>
-    </tr>
-    <tr>
-      <td height="40" align="center"><input type="button" value="결 제" onClick="javascript:_submit(document.KSPayWeb);"></td>
     </tr>
 </table>
 
@@ -436,8 +432,9 @@
 		var goUrlkspay = "/nextrip/region/accommodation/kspay";		/* #-> */
 		
 		var form = $("form[name=KSPayWeb]");
-		/*
-		var form = $("form[name=purchaseForm]");
+		
+		// var form = $("form[name=purchaseForm]");
+		/* 
 		$("#btnSave").on("click", function(){
 			if (validationUpdt() == false){
 	   			return false;
@@ -445,12 +442,12 @@
 	   			form.attr("action", goUrlUpdt).submit();
 	   		}
     	});
-		 */
+		 */ 
 		$("#btnSave").on("click", function(){
 			if (validationUpdt() == false){
 	   			return false;
 	   		} else {
-	   			form.attr("action", goUrlkspay).submit();
+	   			_submit(document.KSPayWeb);
 	   		}
     	});
 		
@@ -458,12 +455,14 @@
 			if(!checkOnlyKorean('reservationName',2,0,"이름은 한글로 특수문자, 공백없이 입력해 주세요")) {
 				return false;
 			}
+			document.getElementById("sndOrdername").value = $("#reservationName").val();
 		});
 		
 		$("#reservationPhoneNum").on("focusout", function(){
 			if(!checkOnlyNumber('reservationPhoneNum',2,0,0,0,0," - 없이 휴대전화 번호를 입력해주세요")) {
 				return false;
-			} 
+			}
+			document.getElementById("sndMobile").value = $("#reservationPhoneNum").val();
 		});
 		$("#cbx_chkAll").on("checked", function(){
 			if(!checkSelectNull('reservationPhoneNum',2,"필수동의 사항을 체크해주세요.")) {
@@ -477,6 +476,8 @@
 			if(!checkOnlyKorean('reservationName', 2, 0, "이름은 한글로 특수문자, 공백없이 입력해 주세요")) return false;
 			if(!checkOnlyNumber('reservationPhoneNum',2,0,0,0,0," - 없이 휴대전화 번호를 입력해주세요")) return false;
 		}
+		
+		
 		</script>
 
 </body>
