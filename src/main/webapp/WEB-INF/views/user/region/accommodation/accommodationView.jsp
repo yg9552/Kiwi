@@ -220,9 +220,15 @@
                             <div class="footer-tittle">
                                 <h4>고객센터</h4>
                                 <ul>
-                                    <li><a href="#">CONTACT US</a></li>
-                                    <li><a href="#">카카오톡 문의</a></li>
-                                </ul>
+									<li><a href="javascript:addChannel()"
+										id="add-channel-button"><img alt=""
+											src="/resources/image/friendadd_large_yellow_rect.png">
+									</a></li>
+									<li><a id="kakao-talk-channel-chat-button"
+										data-channel-public-id="_ZeUTxl" data-title="question"
+										data-size="small" data-color="yellow" data-shape="pc"
+										data-support-multiple-densities="true"></a></li>
+								</ul>
                             </div>
                         </div>
                     </div>
@@ -516,7 +522,7 @@
                 title: '<c:out value="${item.hotelName }" />',
                 description: '<c:out value="${item.hotelIntroduce }" />',
                 imageUrl:
-                  '/resources/common/btnG_완성형3.png',
+                  '/resources/image/sunset.jpg',
                 link: {
                   mobileWebUrl: 'http://localhost:8080/nextrip/region/accommodation/accommodationView?nxAccommodationSeq=${item.nxAccommodationSeq }',
                   webUrl: 'http://localhost:8080/nextrip/region/accommodation/accommodationView?nxAccommodationSeq=${item.nxAccommodationSeq }',
@@ -545,6 +551,30 @@
               ],
             })
           }
+        
+    	function addChannel() {
+    		Kakao.Channel.addChannel({
+    			channelPublicId : '_ZeUTxl',
+    		});
+    	}
+
+    	window.kakaoAsyncInit = function() {
+    		Kakao.Channel.createChatButton({
+    			container : '#kakao-talk-channel-chat-button',
+    		});
+    	};
+
+    	(function(d, s, id) {
+    		var js, fjs = d.getElementsByTagName(s)[0];
+    		if (d.getElementById(id))
+    			return;
+    		js = d.createElement(s);
+    		js.id = id;
+    		js.src = 'https://t1.kakaocdn.net/kakao_js_sdk/2.0.1/kakao.channel.min.js';
+    		js.integrity = 'sha384-lQvDhpOKVjBh69FwlXBvIkxCvUFEBIasxyUr2TkiXFIJiNpwF8xB31eCJIOvECVa';
+    		js.crossOrigin = 'anonymous';
+    		fjs.parentNode.insertBefore(js, fjs);
+    	})(document, 'script', 'kakao-js-sdk');
 		</script>
 		
 		<!-- <script>
