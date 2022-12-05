@@ -29,6 +29,18 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public Member checkId(Member dto) throws Exception {return dao.checkId(dto);}
+	
+	@Override
+	public Member selectId(MemberVo vo) throws Exception {return dao.selectId(vo);}
+	
+	@Override
+	public int selectSeqByIdEmail(MemberVo vo) throws Exception {return dao.selectSeqByIdEmail(vo);}
+	
+	@Override
+	public int passwordRefresh(Member dto) throws Exception {
+		dto.setNewPass(UtilSecurity.encryptSha256(dto.getNewPass()));
+		return dao.passwordRefresh(dto);
+	}
 
 	@Override
 	public Member login(MemberVo vo) throws Exception {
@@ -79,8 +91,6 @@ public class MemberServiceImpl implements MemberService {
 	public List<Member> mostPostRegion(MemberVo vo) throws Exception{
 		return dao.mostPostRegion(vo);
 	}
-
 	//휘재 e
-
 
 }

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
 	<style type="text/css">
-		#btnLogout:hover {
+		.logoutPart:hover {
 			cursor: pointer;
 		}
 	</style>
@@ -108,7 +108,7 @@
 		                                <div class="main-menu f-right d-none d-lg-block">
 		                                    <nav>               
 		                                        <ul id="navigation">                                                                                                                                     
-		                                            <li id="btnLogout"><a>로그아웃</a></li>
+		                                            <li class="logoutPart" onclick="logout();"><a>로그아웃</a></li>
 		                                            <li><a href="#">지역</a>
 		                                            <input type="hidden" name="replaceCode">
 		                                            	<ul class="submenu">
@@ -153,7 +153,7 @@
     </c:choose>
     </form>
     <script type="text/javascript">
-    $("#btnLogout").on("click", function(){
+    function logout() {
     	$.ajax({
 			async: true 
 			,cache: false
@@ -170,7 +170,27 @@
 				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
 			}
 		});
-	});
+    	
+    }
+    
+//	$("#btnLogout").on("click", function(){
+//   	$.ajax({
+//			async: true 
+//			,cache: false
+//			,type: "post"
+//			/* ,dataType:"json" */
+//			,url: "/nextrip/logoutProc"
+//			/* ,data : $("#formLogin").serialize() */
+//			,success: function(response) {
+//				if(response.rt == "success") {
+//						$(location).attr("href",goUrlMain);
+//				} else {}
+//			}
+//			,error : function(jqXHR, textStatus, errorThrown){
+//				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+//			}
+//		});
+//	});
     
    	var goUrlMain = "/nextrip/main";
    	var goUrlRegionView = "/nextrip/regionView";			/* #-> */

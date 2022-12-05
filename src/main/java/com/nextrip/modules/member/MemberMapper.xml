@@ -172,6 +172,35 @@
 			SELECT last_insert_id()
 		</selectKey>
 	</insert>
+	
+	<select id="selectId" resultMap="resultMapObj">
+		SELECT
+			id
+		FROM member
+		WHERE 1=1
+			AND email=#{email}
+			AND delNy =0
+	</select>
+	
+	<select id="selectSeqByIdEmail" resultType="Integer">
+		SELECT
+			count(*)
+		FROM member
+		WHERE 1=1
+			AND id=#{id}
+			AND email=#{email}
+			AND delNy=0
+	</select>
+	
+	<update id="passwordRefresh">
+		UPDATE member
+		SET
+			password=#{newPass}
+		WHERE 1=1
+			AND id=#{id}
+			AND email=#{email}
+			AND delNy=0
+	</update>
 	<!-- 로그인 E -->
 	
 	<!-- 회원가입 S -->

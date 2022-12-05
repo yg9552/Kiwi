@@ -83,18 +83,23 @@ public class MemberController {
 		System.out.println("서울");
 		Element seoulW = parsingBody.get(2);
 		model.addAttribute("seoulW", seoulW);
+		
 		System.out.println("강원도");
 		Element gangW = parsingBody.get(3);
 		model.addAttribute("gangW", gangW);
-		System.out.println("대전");
+		
+		System.out.println("대구");
 		Element daeW = parsingBody.get(5);
 		model.addAttribute("daeW", daeW);
+		
 		System.out.println("광주");
 		Element gwangW = parsingBody.get(7);
 		model.addAttribute("gwangW", gwangW);
+		
 		System.out.println("부산");
 		Element buW = parsingBody.get(9);
 		model.addAttribute("buW", buW);
+		
 		System.out.println("제주도");
 		Element jejuW = parsingBody.get(11);
 		model.addAttribute("jejuW", jejuW);
@@ -139,7 +144,6 @@ public class MemberController {
 		} else {
 			returnMap.put("rt", "fail");
 		}
-		
 		return returnMap;
 	}
 	
@@ -235,6 +239,42 @@ public class MemberController {
 		return "user/findAccount" ;
 	}
 	
+	@ResponseBody
+	@RequestMapping(value="/nextrip/findId")
+	public Map<String, Object> findId(MemberVo vo) throws Exception {
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		Member result = service.selectId(vo);
+		
+		if (result == null) {
+			returnMap.put("rt", "fail");
+		} else {
+			returnMap.put("rt", "success");
+			returnMap.put("id", result.getId());
+		}
+		
+		return returnMap;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/nextrip/selectSeqByIdEmail")
+	public Map<String,Object> selectSeqByIdEmail(MemberVo vo, RedirectAttributes redirectAttributes) throws Exception {
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		int result = service.selectSeqByIdEmail(vo);
+		if(result==1) {
+			returnMap.put("rt", "success");
+		} else {
+			returnMap.put("rt", "fail");
+		}
+		return returnMap;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/nextrip/passwordRefresh")
+	public Map<String,Object> passwordRefresh(Member dto, MemberVo vo, RedirectAttributes redirectAttributes) throws Exception {
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		service.passwordRefresh(dto);
+		return returnMap;
+	}
 	
 	@RequestMapping(value="/nextrip/kdminLogin")
 	public String kdminLogin() throws Exception {

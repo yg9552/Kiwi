@@ -24,10 +24,13 @@ public class MemberDao {
 	public int passwordCheck(MemberVo vo) {return sqlSession.selectOne(namespace+".passwordCheck", vo);}
 	public int passwordUpdt(Member dto) {return sqlSession.update(namespace+".passwordUpdt", dto);}
 	public int selectOneCount(MemberVo vo) {return sqlSession.selectOne(namespace + ".selectMemberListCount", vo);}
+	public int selectSeqByIdEmail(MemberVo vo) {return sqlSession.selectOne(namespace+".selectSeqByIdEmail", vo);}
+	public int passwordRefresh(Member dto) {return sqlSession.update(namespace+".passwordRefresh", dto);}
 	
 	public Member checkId(Member dto) {return sqlSession.selectOne(namespace+".checkId", dto);}
 	public Member snsLoginCheck(Member dto) { return sqlSession.selectOne(namespace + ".snsLoginCheck", dto); }
 	public Member login(MemberVo vo) {return sqlSession.selectOne(namespace+".login", vo);}
+	public Member selectId(MemberVo vo) {return sqlSession.selectOne(namespace+".selectId", vo);} 
 	
 	public int idOverlapCheck(Member dto) {return sqlSession.selectOne(namespace+".idOverlapCheck", dto);}
 	public int emailOverlapCheck(Member dto) {return sqlSession.selectOne(namespace+".emailOverlapCheck", dto);}

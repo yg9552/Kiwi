@@ -12,6 +12,7 @@ public class MemberVo extends BaseVo{
 	
 	private String password;
 	private String id;
+	private String email;
 	
 //	paging
 	private int thisPage = 1;									// 현재 페이지
@@ -138,6 +139,13 @@ public class MemberVo extends BaseVo{
 	}
 	public void setStartRnumForMysql(int startRnumForMysql) {
 		this.startRnumForMysql = startRnumForMysql;
+	}
+	
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	//	vo.setUserPaging
 	public void setUserPaging(int totalRows) {

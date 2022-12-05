@@ -11,10 +11,13 @@ public interface MemberService {
 	public int memberVele(Member dto) throws Exception;
 	public int passwordCheck(MemberVo vo) throws Exception;
 	public int passwordUpdt(Member dto) throws Exception;
+	public int selectSeqByIdEmail(MemberVo vo) throws Exception;
+	public int passwordRefresh(Member dto) throws Exception;
 	
 	public Member checkId(Member dto) throws Exception;
 	public Member snsLoginCheck(Member dto) throws Exception;
 	public Member login(MemberVo vo) throws Exception;
+	public Member selectId(MemberVo vo) throws Exception;
 	public int idOverlapCheck(Member dto) throws Exception;
 	public int emailOverlapCheck(Member dto) throws Exception;
 	public int userReg(Member dto) throws Exception;
