@@ -73,6 +73,18 @@
 	   .hAddr {position:absolute;top:599px;border-radius: 2px;background:#fff;background:rgba(255,255,255,0.8);z-index:1;padding:5px;}
 	   #centerAddr {display:block;margin-top:2px;font-weight: normal;}
 	   .bAddr {padding:5px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
+	   
+	   /* .preview{
+		    outline: 2px dashed #92b0b3 ;
+		    outline-offset:-10px;  
+		    text-align: center;
+		    transition: all .15s ease-in-out;
+		    width: 700px;
+		    height: 180px;
+		    background-color: gray;
+		    z-index: -1;
+		} */
+			   
 	</style>
 </head>
 
@@ -403,7 +415,6 @@
 		
 		
 		upload = function(objName, seq, allowedMaxTotalFileNumber, allowedExtdiv, allowedEachFileSize, allowedTotalFileSize, uiType) {
-			
 //			objName 과 seq 는 jsp 내에서 유일 하여야 함.
 //			memberProfileImage: 1
 //			memberImage: 2
@@ -506,7 +517,6 @@
 		
 		
 		delImageDiv = function(objName, type, sort, deleteSeq, pathFile) {
-			
 			$("#imageDiv_"+type+"_"+sort).remove();
 			
 			var objDeleteSeq = $('input[name='+ objName +'DeleteSeq]');
@@ -625,6 +635,43 @@
 		    if(e == "-Infinity") return 0;
 		    else return (bytes/Math.pow(1024, Math.floor(e))).toFixed(2).slice(0, -3);
 		}
+		
+		/* $('.preview')
+		  .on("dragover", dragOver)
+		  .on("dragleave", dragOver);
+		 
+		function dragOver(e){
+		  e.stopPropagation();
+		  e.preventDefault();
+		}
+		 
+		function uploadFiles(e){
+		  e.stopPropagation();
+		  e.preventDefault();
+		}
+		
+		function dragOver(e) {
+		    e.stopPropagation();
+		    e.preventDefault();
+		    if (e.type == "dragover") {
+		        $(e.target).css({
+		            "background-color": "black",
+		            "outline-offset": "-20px"
+		        });
+		    } else {
+		        $(e.target).css({
+		            "background-color": "gray",
+		            "outline-offset": "-10px"
+		        });
+		    }
+		}
+		
+		$('.preview').on("drop", function(){
+			dragOver(e); //1
+			upload('uploadImage', 1, 0, 1, 0, 0, 1);
+		}); */
+
+		
 		
 	</script>
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
