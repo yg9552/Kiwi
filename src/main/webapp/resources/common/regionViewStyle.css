@@ -25,6 +25,8 @@
 	tbody > tr > td:first-child {
 		display: none;
 	}
+	
+	
 	.NB01 > img {
 		background: url('/resources/image/weatherIcon.png') no-repeat -70px -2px;
 		width: 54px;
