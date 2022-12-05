@@ -97,7 +97,7 @@
     <!--================Blog Area =================-->
     <section class="blog_area section-padding">
         <div class="container">
-        	<form name="KSPayWeb" method="post" autocomplete="off" class="needs-validation">
+        	<form name="purchaseForm" method="post" autocomplete="off" class="needs-validation">	<!-- KSPayWeb -->
         	<!-- *Vo.jsp s -->
 			<%@include file="accommodationVo.jsp"%>		<!-- #-> -->
 			<input type="hidden" name="nxRoomSeq" value="${vo.nxRoomSeq }">
@@ -431,10 +431,10 @@
 		var goUrlUpdt = "/nextrip/region/accommodation/purchaseHistoryUpdt";		/* #-> */
 		var goUrlkspay = "/nextrip/region/accommodation/kspay";		/* #-> */
 		
-		var form = $("form[name=KSPayWeb]");
+		//var form = $("form[name=KSPayWeb]");
 		
-		// var form = $("form[name=purchaseForm]");
-		/* 
+		var form = $("form[name=purchaseForm]");
+		 
 		$("#btnSave").on("click", function(){
 			if (validationUpdt() == false){
 	   			return false;
@@ -442,7 +442,8 @@
 	   			form.attr("action", goUrlUpdt).submit();
 	   		}
     	});
-		 */ 
+		 
+		/*  
 		$("#btnSave").on("click", function(){
 			if (validationUpdt() == false){
 	   			return false;
@@ -450,7 +451,7 @@
 	   			_submit(document.KSPayWeb);
 	   		}
     	});
-		
+		 */
 		$("#reservationName").on("focusout", function(){
 			if(!checkOnlyKorean('reservationName',2,0,"이름은 한글로 특수문자, 공백없이 입력해 주세요")) {
 				return false;
