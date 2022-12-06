@@ -86,6 +86,11 @@ public class MemberServiceImpl implements MemberService {
 		// TODO Auto-generated method stub
 		return dao.kakaoInst(dto);
 	}
+	@Override
+	public int naverInst(Member dto) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.naverInst(dto);
+	}
 	//휘재 s
 	@Override
 	public List<Member> mostPostRegion(MemberVo vo) throws Exception{

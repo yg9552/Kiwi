@@ -54,16 +54,16 @@
 				<a type="button" id="btnKakao" style="background: #fee500 url('/resources/common/kakao_login_large_narrow2.png') no-repeat center center; height: 54px; width: 320px; border-radius: 5px;"></a>
 			</div>
 			<div class="row justify-content-center mb-2">
-				<a type="button" id="btnKakao" style="background: #03c75a url('/resources/common/btnG_완성형3.png') no-repeat center center; height: 54px; width: 320px; border-radius: 5px;"></a>
+				<a type="button" id="btnNaverLogin" style="background: #03c75a url('/resources/common/btnG_완성형3.png') no-repeat center center; height: 54px; width: 320px; border-radius: 5px;"></a>
 			</div>
-			<div class="row justify-content-center mb-2">
+			<!-- <div class="row justify-content-center mb-2">
 				<span><a href="/nextrip/kdminLogin"><input type="button" class="btn" value="Facebook으로 로그인" style="background-color:#1877F2; color:white; width:320px;"></a></span>
-			</div>
+			</div> -->
 		</form>
 	</div>
 	
 	<form name="form">
-		<input type="hidden" name="name"/>
+		<input type="hidden" name="snsType"/>
 		<input type="hidden" name="nickname"/>
 		<input type="hidden" name="phoneNum"/>
 		<input type="hidden" name="email"/>
@@ -134,7 +134,7 @@
    		        	  console.log("picture : " + account.birthday);
    		        	  console.log("picture : " + account.birthday.substring(0,2) + "-" + account.birthday.substring(2,account.birthday.length));
   	        	  
-	  	        	  $("input[name=name]").val("카카오로그인");
+	  	        	  $("input[name=snsType]").val("카카오로그인");
 	  	        	  $("input[name=nickname]").val(account.profile.nickname);
 	  	        	  $("input[name=phoneNum]").val(account.profile.phone_number);
 	  	        	  $("input[name=email]").val(account.email);
@@ -148,7 +148,7 @@
 						,cache: false
 						,type:"POST"
 						,url: "/nextrip/kakaoLoginProc"
-						,data: {"name": $("input[name=name]").val(), "nickname": $("input[name=nickname]").val(), "phoneNum": $("input[name=phoneNum]").val(), "email": $("input[name=email]").val(), "token": $("input[name=token]").val()}
+						,data: {"snsType": $("input[name=snsType]").val(), "nickname": $("input[name=nickname]").val(), "phoneNum": $("input[name=phoneNum]").val(), "email": $("input[name=email]").val(), "token": $("input[name=token]").val()}
 						,success : function(response) {
 							if (response.rt == "fail") {
 								alert("아이디와 비밀번호를 다시 확인 후 시도해 주세요.");
@@ -173,6 +173,80 @@
    		    })
 		});
        	
+	</script>
+	<script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
+	<script type="text/javascript">
+	
+		var naverLogin = new naver.LoginWithNaverId(
+			{
+				clientId: "aNKEMOb_iTA5yeMRuqRF",
+				callbackUrl: "http://localhost:8080/nextrip/login",
+	//			clientId: "7ONlz7Bim5hRaiHfpGsf",
+	//			callbackUrl: "http://3.34.138.48/loginPage",
+				isPopup: true,
+				callbackHandle: true
+			}
+		);
+	
+		naverLogin.init();
+	
+		$("#btnNaverLogin").on("click", function() {
+			naverLogin.getLoginStatus(function (status) {
+					if (!status) {
+						naverLogin.authorize();
+					} else {
+						setLoginStatus();
+					}   				
+				});
+		});
+			
+				
+		window.addEventListener('load', function () {
+			if(naverLogin.accessToken != null) {
+				naverLogin.getLoginStatus(function (status) {
+					if (status) {
+						setLoginStatus();
+					}
+				});
+			}
+		});
+			
+			/* var naverLogin = new naver.LoginWithNaverId(
+				{
+					clientId: "7ONlz7Bim5hRaiHfpGsf",
+					callbackUrl: "http://localhost:8080/loginPage",
+					isPopup: false,
+					callbackHandle: true
+				}
+			); */
+				
+				
+				
+				
+	 			
+			function setLoginStatus() {
+				
+				$.ajax({
+					async: true
+					,cache: false
+					,type:"POST"
+					,url: "/naverLoginProc"
+					,data: {"nickname": naverLogin.user.nickname, "snsType": "네이버로그인", "email": naverLogin.user.email, "dob": naverLogin.user.birthyear+"-"+naverLogin.user.birthday, "email": naverLogin.user.email, "phoneNum": naverLogin.user.mobile.substring(0,3)+naverLogin.user.mobile.substring(4,8)+naverLogin.user.mobile.substring(9,13) }
+					,success : function(response) {
+						if (response.rt == "fail") {
+							alert("아이디와 비밀번호를 다시 확인 후 시도해 주세요.");
+							return false;
+						} else {
+							window.location.href = "/nextrip/main";
+						}
+					},
+					error : function(jqXHR, status, error) {
+						alert("알 수 없는 에러 [ " + error + " ]");
+					}
+				});
+			}
+	//	});
+	/* naver login test e */
 	</script>
 </body>
 </html>

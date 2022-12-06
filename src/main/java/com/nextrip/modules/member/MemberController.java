@@ -178,7 +178,7 @@ public class MemberController {
 		dto.setMemberSeq(rtSeq);
 		service.memberVele(dto);
 		httpSession.invalidate();
-		return "redirect:/nextrip/mypage";
+		return "redirect:/nextrip/main";
 	}
 	
 	@RequestMapping(value="/nextrip/mypageReservationView")
@@ -383,6 +383,30 @@ public class MemberController {
 			
 			// session(kakaoLogin.getSeq(), kakaoLogin.getId(), kakaoLogin.getName(), kakaoLogin.getEmail(), kakaoLogin.getUser_div(), kakaoLogin.getSnsImg(), kakaoLogin.getSns_type(), httpSession);
 			session(kakaoLogin, httpSession);
+			returnMap.put("rt", "success");
+		}
+		return returnMap;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "naverLoginProc")
+	public Map<String, Object> naverLoginProc(Member dto, HttpSession httpSession) throws Exception {
+	    Map<String, Object> returnMap = new HashMap<String, Object>();
+	    
+		Member naverLogin = service.snsLoginCheck(dto);
+		
+		if (naverLogin == null) {
+			service.naverInst(dto);
+			
+			httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE);
+			// session(dto.getSeq(), dto.getId(), dto.getName(), dto.getEmail(), dto.getUser_div(), dto.getSnsImg(), dto.getSns_type(), httpSession);
+            session(dto, httpSession); 
+			returnMap.put("rt", "success");
+		} else {
+			httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE);
+			
+			// session(kakaoLogin.getSeq(), kakaoLogin.getId(), kakaoLogin.getName(), kakaoLogin.getEmail(), kakaoLogin.getUser_div(), kakaoLogin.getSnsImg(), kakaoLogin.getSns_type(), httpSession);
+			session(naverLogin, httpSession);
 			returnMap.put("rt", "success");
 		}
 		return returnMap;

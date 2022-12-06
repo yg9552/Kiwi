@@ -149,7 +149,7 @@
 	
 	<insert id="kakaoInst">
 		INSERT INTO member(
-			name
+			snsType
 			,nickname
 			,email
 			,delNy
@@ -159,7 +159,7 @@
 			,phoneNum
 			)
 		VALUES(
-			#{name }
+			#{snsType }
 			,#{nickname }
 			,#{email }
 			,0
@@ -168,6 +168,28 @@
 			,#{dob }
 			,#{phoneNum }
 			)
+		<selectKey resultType="String" keyProperty="memberSeq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
+	
+	<insert id="naverInst">
+		INSERT INTO member(
+			snsType
+			,nickname
+			,email
+			,dob
+			,delNy
+			,phoneNum
+		)
+		VALUES(
+			#{snsType}
+			,#{nickname}
+			,#{email}
+			,#{dob}
+			,0
+			,#{phoneNum}
+		)
 		<selectKey resultType="String" keyProperty="memberSeq" order="AFTER">
 			SELECT last_insert_id()
 		</selectKey>

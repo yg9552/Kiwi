@@ -11,6 +11,7 @@ public class Member {
 	private String newPass;
 	private String nickname;
 	private String name;
+	private String snsType;
 	private Date dob;
 	private String phoneNum;
 	private String email;
@@ -64,6 +65,12 @@ public class Member {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public String getSnsType() {
+		return snsType;
+	}
+	public void setSnsType(String snsType) {
+		this.snsType = snsType;
 	}
 	public Date getDob() {
 		return dob;

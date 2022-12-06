@@ -22,6 +22,7 @@ public interface MemberService {
 	public int emailOverlapCheck(Member dto) throws Exception;
 	public int userReg(Member dto) throws Exception;
 	public int kakaoInst(Member dto) throws Exception;
+	public int naverInst(Member dto) throws Exception;
 	
 	//휘재 s
 	public List<Member> mostPostRegion(MemberVo vo) throws Exception;
