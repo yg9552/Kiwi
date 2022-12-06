@@ -102,8 +102,12 @@
 				    			<c:otherwise>
 				    				<tr>
 										<td><fmt:formatDate value="${item.modDateTime }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
-										<td><c:out value="${item.paymentMethod }"/></td>
-										<td><c:out value="${item.pay }"/></td>
+										<td>
+											<c:if test="${item.paymentMethod eq 1 }">체크/신용카드</c:if>
+											<c:if test="${item.paymentMethod eq 2 }">계좌이체</c:if>
+											<c:if test="${item.paymentMethod eq 3 }">현금</c:if>
+										</td>
+										<td><c:out value="${item.pay }"/>원</td>
 									</tr>
 				    			</c:otherwise>
 				    		</c:choose>
