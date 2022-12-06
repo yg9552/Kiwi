@@ -116,17 +116,19 @@
                          		</c:when>
                          		<c:otherwise>
                          			<c:forEach items="${listReview }" var="listReview" varStatus="statusReview">
-		                           		<p class="comment">
-		                           			<c:out value="${listReview.generalReview }" />
-		                              	</p>
-		                              	<div class="d-flex justify-content-between">
-		                                 <div class="d-flex align-items-center">
-		                                    <h5>
-		                                       <a><c:out value="${listReview.nickname }" /> </a>
-		                                    </h5>
-		                                    <p class="date"><fmt:formatDate value="${listReview.regDateTime }" pattern="yyyy-MM-dd HH:mm:ss"/> </p>
-		                                 </div>
+		                              <div class="d-flex justify-content-between">
+		                              	<div class="d-flex align-items-center">
+		                                	<h5>
+		                                    	<a><c:out value="${listReview.nickname }" /> </a>
+		                                	</h5>
+		                                	<p class="date"><fmt:formatDate value="${listReview.regDateTime }" pattern="yyyy-MM-dd HH:mm:ss"/> </p>
+		                                </div>
 		                              </div>
+		                              <div class="d-flex align-items-center">
+		                              	<p class="comment">
+			                           		<c:out value="${listReview.generalReview }" />
+			                          	</p>
+		                           	  </div>
 		                           </c:forEach>
                          		</c:otherwise>
                            </c:choose>
