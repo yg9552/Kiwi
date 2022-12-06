@@ -246,7 +246,7 @@
 							                	</c:forEach>
 											</a>
 										  	<ul class="blog-info-link">
-						                        <li><a href="/nextrip/region/accommodation/accommodationView?nxAccommodationSeq=${list.nxAccommodationSeq }" class="text-dark"><c:out value="${list.hotelName }" /></a></li>
+						                        <li style="text-overflow: ellipsis; overflow: hidden; width: 150px;"><a href="/nextrip/region/accommodation/accommodationView?nxAccommodationSeq=${list.nxAccommodationSeq }" class="text-dark"><c:out value="${list.hotelName }" /></a></li>
 						                    </ul>
 									  	  </div>
 								  	  	</c:if>
@@ -262,7 +262,7 @@
 							                	</c:forEach>
 											</a>
 										  	<ul class="blog-info-link">
-						                        <li><a href="/nextrip/region/accommodation/accommodationView?nxAccommodationSeq=${list.nxAccommodationSeq }" class="text-dark"><c:out value="${list.hotelName }" /></a></li>
+						                        <li style="text-overflow: ellipsis; overflow: hidden; width: 150px;"><a href="/nextrip/region/accommodation/accommodationView?nxAccommodationSeq=${list.nxAccommodationSeq }" class="text-dark"><c:out value="${list.hotelName }" /></a></li>
 						                    </ul>
 									  	  </div>
 								  	  	</c:if>
