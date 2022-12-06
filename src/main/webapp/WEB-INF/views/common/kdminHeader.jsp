@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<style>
+	.mr30{
+		margin-right: 30px;
+	}
 
+</style>
 <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
       <div class="layout-container">
@@ -7,7 +12,7 @@
 
         <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
           <div class="app-brand demo">
-            <a href="index.html" class="app-brand-link">
+            <a href="/nextrip/region/accommodation/accommodationListK" class="app-brand-link">
               <img alt="" src="/resources/template/gotrip-master/assets/img/logo/NTLogo.png">
             </a>
 
@@ -20,15 +25,50 @@
 
           <ul class="menu-inner py-1">
             <!-- Dashboard -->
-            <li class="menu-item">
+            <!-- <li class="menu-item">
               <a href="/nextrip/dashboard" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard</div>
               </a>
-            </li>
-
+            </li> -->
             <li class="menu-header small text-uppercase">
-              <span class="menu-header-text">Pages</span>
+              <span class="menu-header-text">관리 목록</span>
+            </li>
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-detail"></i>
+                <div data-i18n="Form Elements">여행지 관리</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="/post/postList" class="menu-link">
+                    <div data-i18n="Basic Inputs">여행지후기 목록</div>
+                  </a>
+                </li>
+                <!-- <li class="menu-item">
+                  <a href="forms-input-groups.html" class="menu-link">
+                    <div data-i18n="Input groups">Input groups</div>
+                  </a>
+                </li> -->
+              </ul>
+            </li>
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-cube-alt"></i>
+                <div data-i18n="Misc">숙박상품관리</div>
+              </a>
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="/nextrip/region/accommodation/accommodationListK" class="menu-link">
+                    <div data-i18n="Error">숙박상품</div>
+                  </a>
+                </li>
+                <!-- <li class="menu-item">
+                  <a href="pages-misc-under-maintenance.html" class="menu-link">
+                    <div data-i18n="Under Maintenance">Under Maintenance</div>
+                  </a>
+                </li> -->
+              </ul>
             </li>
             <li class="menu-item">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -46,47 +86,11 @@
                     <div data-i18n="Basic">예약내역 관리</div>
                   </a>
                 </li>
-                <li class="menu-item">
+                <!-- <li class="menu-item">
                   <a href="auth-forgot-password-basic.html" class="menu-link">
                     <div data-i18n="Basic">Forgot Password</div>
                   </a>
-                </li>
-              </ul>
-            </li>
-            <li class="menu-item">
-              <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-detail"></i>
-                <div data-i18n="Form Elements">여행지 관리</div>
-              </a>
-              <ul class="menu-sub">
-                <li class="menu-item">
-                  <a href="/post/postList" class="menu-link">
-                    <div data-i18n="Basic Inputs">여행지후기 목록</div>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a href="forms-input-groups.html" class="menu-link">
-                    <div data-i18n="Input groups">Input groups</div>
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li class="menu-item">
-              <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-cube-alt"></i>
-                <div data-i18n="Misc">숙박상품관리</div>
-              </a>
-              <ul class="menu-sub">
-                <li class="menu-item">
-                  <a href="/nextrip/region/accommodation/accommodationListK" class="menu-link">
-                    <div data-i18n="Error">숙박상품</div>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a href="pages-misc-under-maintenance.html" class="menu-link">
-                    <div data-i18n="Under Maintenance">Under Maintenance</div>
-                  </a>
-                </li>
+                </li> -->
               </ul>
             </li>
             <li class="menu-item">
@@ -127,22 +131,51 @@
 
             <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
               <!-- Search -->
-              <div class="navbar-nav align-items-center">
-                <div class="nav-item d-flex align-items-center">
-                  <i class="bx bx-search fs-4 lh-0"></i>
-                  <input
-                    type="text"
-                    class="form-control border-0 shadow-none"
-                    placeholder="Search/resources/template/sneat."
-                    aria-label="Search/resources/template/sneat."
-                  />
-                </div>
-              </div>
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <!-- <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="javascript:void(0)">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="javascript:void(0)">Link</a>
+                </li> -->
+               <li class="nav-item mr30">
+                  <a class="nav-link active" aria-current="page" href="/post/postList">여행지 관리</a>
+                </li>
+                <li class="nav-item mr30">
+                  <a class="nav-link active" aria-current="page" href="/nextrip/region/accommodation/accommodationListK">숙박 상품 관리</a>
+                </li>
+                <li class="nav-item dropdown mr30">
+                  <a class="nav-link dropdown-toggle" id="memberDropdown" href="" role="button" data-bs-toggle="dropdown" data-bs-target="#member-dropdown-menu" aria-expanded="false">
+                    회원 관리
+                  </a>
+                  <ul class="dropdown-menu" id="member-dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="/nextrip/memberList">회원 관리</a></li>
+                    <li><a class="dropdown-item" href="/nextrip/purchaseHistoryListK">예약 목록 관리</a></li>
+                    <!-- <li>
+                      <hr class="dropdown-divider" />
+                    </li>
+                    <li><a class="dropdown-item" href="javascript:void(0)">Something else here</a></li> -->
+                  </ul>
+                </li>
+                <li class="nav-item dropdown mr30">
+                  <a class="nav-link dropdown-toggle" id="codeDropdown" href="" role="button" data-bs-toggle="dropdown" data-bs-target="#code-dropdown-menu" aria-expanded="false">
+                    코드 관리
+                  </a>
+                  <ul class="dropdown-menu" id="code-dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="/nextrip/codeGroupList">코드 그룹 관리</a></li>
+                    <li><a class="dropdown-item" href="/nextrip/codeList">코드 관리</a></li>
+                  </ul>
+                </li>
+                
+                <!-- <li class="nav-item">
+                  <a class="nav-link disabled" href="javascript:void(0)" tabindex="-1">Disabled</a>
+                </li> -->
+              </ul>
               <!-- /Search -->
 
               <ul class="navbar-nav flex-row align-items-center ms-auto">
                 <!-- Place this tag where you want the button to render. -->
-                <li class="nav-item lh-1 me-3">
+                <!-- <li class="nav-item lh-1 me-3">
                   <a
                     class="github-button"
                     href="https://github.com/themeselection/sneat-html-admin-template-free"
@@ -152,27 +185,27 @@
                     aria-label="Star themeselection/sneat-html-admin-template-free on GitHub"
                     >Star</a
                   >
-                </li>
+                </li> -->
 
                 <!-- User -->
                 <li class="nav-item navbar-dropdown dropdown-user dropdown">
                   <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                     <div class="avatar avatar-online">
-                      <img src="/resources/template/sneat/assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                      <img src="/resources/image/null_profile.png" alt class="w-px-40 h-auto rounded-circle" />
                     </div>
                   </a>
                   <ul class="dropdown-menu dropdown-menu-end">
                     <li>
-                      <a class="dropdown-item" href="#">
+                      <a class="dropdown-item">
                         <div class="d-flex">
                           <div class="flex-shrink-0 me-3">
                             <div class="avatar avatar-online">
-                              <img src="/resources/template/sneat/assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                              <img src="/resources/image/null_profile.png" alt class="w-px-40 h-auto rounded-circle" />
                             </div>
                           </div>
                           <div class="flex-grow-1">
-                            <span class="fw-semibold d-block">John Doe</span>
-                            <small class="text-muted">Admin</small>
+                            <span class="fw-semibold d-block"><c:out value="${sessId }"/></span>
+                            <small class="text-muted"><c:out value="${sessNickname }"/></small>
                           </div>
                         </div>
                       </a>
@@ -180,7 +213,7 @@
                     <li>
                       <div class="dropdown-divider"></div>
                     </li>
-                    <li>
+                    <!-- <li>
                       <a class="dropdown-item" href="#">
                         <i class="bx bx-user me-2"></i>
                         <span class="align-middle">My Profile</span>
@@ -203,11 +236,11 @@
                     </li>
                     <li>
                       <div class="dropdown-divider"></div>
-                    </li>
+                    </li> -->
                     <li>
                       <a class="dropdown-item" href="auth-login-basic.html">
                         <i class="bx bx-power-off me-2"></i>
-                        <span class="align-middle">Log Out</span>
+                        <span class="align-middle" onclick="logout();">로그아웃</span>
                       </a>
                     </li>
                   </ul>
@@ -218,3 +251,26 @@
           </nav>
 
           <!-- / Navbar -->
+		<script type="text/javascript">
+		var goUrlLogin = "/nextrip/kdminLogin"
+		
+	    function logout() {
+	    	$.ajax({
+				async: true 
+				,cache: false
+				,type: "post"
+				/* ,dataType:"json" */
+				,url: "/nextrip/logoutProc"
+				/* ,data : $("#formLogin").serialize() */
+				,success: function(response) {
+					if(response.rt == "success") {
+							$(location).attr("href",goUrlLogin);
+					} else {}
+				}
+				,error : function(jqXHR, textStatus, errorThrown){
+					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+				}
+			});
+	    	
+	    }
+	   	</script>

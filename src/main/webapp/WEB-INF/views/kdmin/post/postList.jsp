@@ -179,7 +179,7 @@
 									<c:set var="listCodeRegion" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
 								  	<c:set var="listCodePostType" value="${CodeServiceImpl.selectListCachedCode('4')}"/>
 				                      <tr onclick="location.href='javascript:goView(<c:out value="${list.nxPostSeq }"/>)'" style="cursor: pointer;">
-				                        <td><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" /></td>
+				                        <td onclick="event.cancelBubble=true"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" /></td>
 				                        <td><c:out value="${list.nxPostSeq }"/></td>
 				                        <td><c:out value="${list.memberSeq }"/></td>
 				                        <td><c:out value="${list.memberName }"/></td>

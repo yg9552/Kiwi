@@ -130,7 +130,7 @@
 	</form>
 	<script type="text/javascript">
         var goUrlMain = "/nextrip/main";
-        var kdminUrl = "/nextrip/dashboard";
+        var kdminUrl = "/nextrip/region/accommodation/accommodationListK";
         function loginAjax() {
         	
         	$.ajax({
