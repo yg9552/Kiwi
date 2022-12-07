@@ -121,7 +121,7 @@
 	                       <select class="form-select" id="shOption" aria-label="Default select example" name="shOption">
 		                       <option value="" <c:if test="${empty vo.shOption}">selected</c:if>>선택</option>
 		                       <option value="1" <c:if test="${vo.shOption eq 1}">selected</c:if>>지역</option>
-		                       <option value="2">Y</option>
+		                       <option value="2" <c:if test="${vo.shOption eq 2}">selected</c:if>>숙소명</option>
 	                       </select>
                        </div>
                        <div class="mb-3 col-lg-2">
