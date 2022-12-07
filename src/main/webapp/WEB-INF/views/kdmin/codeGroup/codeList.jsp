@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -21,7 +20,7 @@
  -->
 <!-- beautify ignore:start -->
 <html
-  lang="ko"
+  lang="en"
   class="light-style layout-menu-fixed"
   dir="ltr"
   data-theme="theme-default"
@@ -35,7 +34,7 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>Tables - Basic Tables | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
+    <title>codeGroupList</title>
 
     <meta name="description" content="" />
 
@@ -73,83 +72,84 @@
   </head>
 
   <body>
-  <!-- userHeader s -->
-	<%@include file="../../common/kdminHeader.jsp"%>
-  <!-- userHeader e -->
-    
+   	 <!-- userHeader s -->
+   		 <%@include file="../../common/kdminHeader.jsp"%>
+     <!-- userHeader e -->
+
           <!-- Content wrapper -->
           <div class="content-wrapper">
             <!-- Content -->
-
-            <div class="container-xxl flex-grow-1 container-p-y">
-              <h4 class="fw-bold py-3 mb-4">코드</h4>
-              
-              <!-- Hoverable Table rows -->
-              <form name="formList" method="post">
-              <input type="hidden" name="mainkey">
-	          <input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage }" default="1" />">
-	          <input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow }" />">
-	          <input type="hidden" name="checkboxSeqArray">
-	          <input type="hidden" name="codeSeq" value="<c:out value="${vo.codeSeq }"/>">
-              <div class="card mb-3">
-              	<h5 class="card-header">코드 검색</h5>
-           		<div class="card-body">
-           			<div class="row">
-           				<div class="mb-3 col-lg-2">
-                     	   	<select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example">
-	                      	   <option selected>삭제여부</option>
-	                           <option value="0">N</option>
-	                           <option value="1">Y</option>
-                         	</select>
-                        </div>
-                       <div class="mb-3 col-lg-2">
-                     	   	<select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example">
-	                      	   <option selected>등록일</option>
-	                           <option value="1">N</option>
-	                           <option value="2">Y</option>
-                         	</select>
-                       </div>
-                       <div class="mb-3 col-lg-2">
-                           <input class="form-control" type="date" value="2021-06-18" id="html5-date-input" />
-                       </div>
-                       <div class="mb-3 col-lg-2">
-                          <input class="form-control" type="date" value="2021-06-18" id="html5-date-input" />
-                       </div>
-                    </div>
-                   	<div class="row">
-                      <div class="mb-3 col-lg-2">
-	                       <select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example">
-		                       <option selected>검색조건</option>
-		                       <option value="1">N</option>
-		                       <option value="2">Y</option>
-	                       </select>
-                      </div>
-                      <div class="mb-3 col-lg-2">
-						<input class="form-control" type="text" value="" id="html5-text-input" />
-                      </div>
-                      <div class="mb-3 col-lg-2">
-                       	<button type="button" class="btn btn-primary" style="margin-right: 15px;"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></button>
-                       	<button type="button" class="btn btn-warning"><i class="fa-solid fa-rotate-left"></i></button>
-                      </div>
-                    </div>	
-           		</div>
-                <h5 class="card-header">코드 리스트</h5>
-                <div class="table-responsive text-nowrap text-center">
-                  <table class="table table-hover">
-                    <thead>
-                      <tr>
-                        <th>#</th>
-                        <th>코드 이름</th>
-                        <th>코드그룹 번호</th>
-                        <th>대체코드</th>
-                        <th>작성시간</th>
-                        <th>수정시간</th>
-                        <th>삭제여부</th>
-                      </tr>
-                    </thead>
-                    <tbody class="table-border-bottom-0">
-                    <c:choose>
-                        	<c:when test="${fn:length(list) eq 0}">
+            <div class="container-fluid flex-grow-1 container-p-y">
+            	<form method="post" id="CLForm" name="CLForm">
+	            	<div class="card">
+	            		<input type="hidden" id="thisPage" name="thisPage" value="<c:out value="${vo.thisPage }" default="1"/>">
+						<input type="hidden" id="rowNumToShow" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
+			        	<input type="hidden" id="codeSeq" name="codeSeq">
+	            		<h5 class="card-header">코드 그룹 검색</h5>
+	            		<div class="card-body">
+	            			<div class="row">
+		            			<div class="mb-3 col-lg-2">
+		                     	   <select class="form-select" id="shDelNy" name="shDelNy" aria-label="Default select example">
+		                      	   <option value="" <c:if test="${empty vo.shDelNy}">selected</c:if>>삭제여부</option>
+		                           <option value="1" <c:if test="${vo.shDelNy eq 1}">selected</c:if>>N</option>
+		                           <option value="2" <c:if test="${vo.shDelNy eq 2}">selected</c:if>>Y</option>
+		                         </select>
+		                       </div>
+		                       <div class="mb-3 col-lg-2">
+		                     	   <select class="form-select" id="shDor" name="shDor" aria-label="Default select example">
+		                      	   <option value="" <c:if test="${empty vo.shDor}">selected</c:if>>날짜 검색 기준</option>
+		                           <option value="1" <c:if test="${vo.shDor eq 1}">selected</c:if>>등록일</option>
+		                           <option value="2" <c:if test="${vo.shDor eq 2}">selected</c:if>>수정일</option>
+		                         </select>
+		                       </div>
+		                       <div class="mb-3 col-lg-2">
+		                           <input class="form-control" type="date" value="" id="html5-date-input" name="">
+		                       </div>
+		                       <div class="mb-3 col-lg-2">
+		                          <input class="form-control" type="date" value="" id="html5-date-input" name="">
+		                      </div>
+		                       
+	                       </div>
+	                       <div class="row">
+		                       <div class="mb-3 col-lg-2">
+			                       <select class="form-select" id="shOption" name="shOption" aria-label="Default select example">
+				                       <option value="" <c:if test="${empty vo.shOption}">selected</c:if>>검색조건</option>
+				                       <option value="1" <c:if test="${vo.shOption eq 1}">selected</c:if>>코드 번호</option>
+				                       <option value="1" <c:if test="${vo.shOption eq 2}">selected</c:if>>코드 이름</option>
+				                       <option value="2" <c:if test="${vo.shOption eq 3}">selected</c:if>>코드 그룹 번호</option>
+			                       </select>
+		                       </div>
+		                       <div class="mb-3 col-lg-2">
+									<input class="form-control" type="text" id="shValue" name="shValue" value="" id="html5-text-input" />
+		                       </div>
+		                       <div class="mb-3 col-lg-2">
+			                       	<button type="button" id="shBtn" name="shBtn" class="btn btn-primary" style="margin-right: 15px;"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></button>
+			                       	<button type="button" id="resetBtn" name="resetBtn" class="btn btn-warning"><i class="fa-solid fa-rotate-left"></i></button>
+		                       </div>
+	                       </div>
+	            		</div>
+	           		</div>
+	             	<div style="height: 30px;"></div>
+		              <!-- Basic Bootstrap Table -->
+		              <div class="card">
+		                <h5 class="card-header">코드 그룹 관리</h5>
+		                <div class="table-responsive text-nowrap">
+		                  <table class="table table-striped text-center">
+		                    <thead>
+		                      <tr>
+		                      	<th><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" /></th>
+		                      	<th>코드 번호</th>
+		                        <th>코드 이름</th>
+		                        <th>코드그룹 번호</th>
+		                        <th>대체코드</th>
+		                        <th>작성시간</th>
+		                        <th>수정시간</th>
+		                        <th>삭제여부</th>
+		                      </tr>
+		                    </thead>
+		                    <tbody class="table-border-bottom-0">
+		                    <c:choose>
+								<c:when test="${fn:length(list) eq 0}">
                         		<tr>
                         			<td colspan="7">
                         				There is no date!
@@ -158,9 +158,10 @@
 							</c:when>
 							<c:otherwise>
 	                        	<c:forEach items="${list}" var="list" varStatus="status">
-		                          <tr>
+		                          <tr onclick="location.href='javascript:goView(<c:out value="${list.codeGroupSeq }"/>)'" style="cursor: pointer;">
+				                    <td onclick="event.cancelBubble=true"><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" /></td>
 		                            <td> <c:out value="${list.codeSeq }"/> </td>
-		                            <td> <a href="javascript:goView(<c:out value="${list.codeSeq }"/>)"> <c:out value="${list.name }"/></a> </td>
+		                            <td> <c:out value="${list.name }"/></td>
 		                            <td> <c:out value="${list.codeGroupSeq }"/> </td>
 		                            <td> <c:out value="${list.replaceCode }"/> </td>
 		                            <td> <fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${list.regDateTime}"/> </td>
@@ -174,23 +175,29 @@
 		                          </tr>
 	                           </c:forEach>
 	                        </c:otherwise>
-                        </c:choose>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-              <!-- kdmin pagination s -->
-              	<%@include file="../../common/kdminPagination.jsp"%>
-			  <!-- kdmin pagination e -->
-              </form>
-              <!--/ Hoverable Table rows -->
-
-            </div>
-            <!-- / Content -->
+		                      </c:choose>
+		                    </tbody>
+		                  </table>
+		                </div>
+	              	</form>
+	              </div>
+	              <!--/ Basic Bootstrap Table -->
+	              <!-- kdmin pagination s -->
+	              	<%@include file="../../common/kdminListButtonDiv.jsp"%>
+				  <!-- kdmin pagination e -->
+	              <div style="height: 40px;"></div>
+	              <!-- kdmin pagination s -->
+	              	<%@include file="../../common/kdminPagination.jsp"%>
+				  <!-- kdmin pagination e -->
+				  <!-- modal start -->
+				  <%@include file="../../common/kdminListModalDiv.jsp"%>
+				  <!-- modal end -->
+	            </div>
+	            <!-- / Content -->
 
             <!-- Footer -->
             <footer class="content-footer footer bg-footer-theme">
-              <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
+              <div class="container-fluid d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
                 <div class="mb-2 mb-md-0">
                   ©
                   <script>
@@ -232,7 +239,50 @@
       <div class="layout-overlay layout-menu-toggle"></div>
     </div>
     <!-- / Layout wrapper -->
-
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+	<script>
+	
+	var goUrlList = "/nextrip/codeList";
+	var goUrlView = "/nextrip/codeView";
+	var goUrlExcel = "/nextrip/code/excelDownload";
+	var form = $("form[name=CLForm]"); 
+	var seq = $("input:hidden[name=codeSeq]");
+	
+	goList = function(thisPage){
+		$("input:hidden[name=thisPage]").val(thisPage);
+			form.attr("action", goUrlList).submit();
+	}
+	
+	goView = function(seqValue){
+		seq.val(seqValue);
+		form.attr("action", goUrlView).submit();
+	}
+	
+	goRegMod = function(seqValue){
+		seq.val(seqValue);
+		form.attr("action", goUrlRegMod).submit();
+	}
+	
+	$("#regBtn").on("click", function(){
+		goView(0);
+	});
+	
+	$("#excelBtn").click(function() {
+		form.attr("action", goUrlExcel).submit();
+	});
+	
+	$("#shBtn").on("click", function(){
+   		form.attr("action", goUrlList).submit();
+	}); 
+	
+	$("#resetBtn").on("click", function(){
+		$(location).attr("href", goUrlList);
+	}); 
+	
+	
+	
+	
+	</script>
 
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
@@ -253,29 +303,5 @@
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
-    <script type="text/javascript">
-    var goUrlForm = "/nextrip/region/accommodation/accommodationForm";		/* #-> */
-	var goUrlList = "/nextrip/codeList";		/* #-> */
-	
-	var seq = $("input:hidden[name=codeSeq]");				/* #-> */
-	var form = $("form[name=formList]");
-	
-	goForm = function(keyValue) {
-    	/* if(key != 0) seq.val(btoa(key)); */
-    	seq.val(keyValue);
-		form.attr("action", goUrlForm).submit();
-	}
-	
-	goList = function(thisPage){
-		$("input:hidden[name=thisPage]").val(thisPage);
-		form.attr("action", goUrlList).submit();
-	}
-	
-    $('#btnForm').on("click", function() {
-		goForm(0);                
-	});
-    
-    
-    </script>
   </body>
 </html>

@@ -30,6 +30,21 @@ public class CodeDao {
 	public int selectOneCount(CodeVo vo) {
 		return sqlSession.selectOne(namespace + ".selectOneCount", vo);
 	}
+	
+
+	public int codeInsert(Code dto) throws Exception{
+		return sqlSession.insert(namespace + ".codeInsert", dto);
+	}
+	public int codeUpdate(Code dto) throws Exception{
+		return sqlSession.update(namespace + ".codeUpdate", dto);
+	}
+	public int codeUelete(Code dto) throws Exception{
+		return sqlSession.update(namespace + ".codeUelete", dto);
+	}
+	public int codeDelete(CodeVo vo) throws Exception{
+		return sqlSession.delete(namespace + "codeDelete", vo);
+	}
+	
 //	for cache
 	public List<Code> selectListCachedCodeArrayList(){ return sqlSession.selectList(namespace + ".selectListCachedCodeArrayList", null); }
 

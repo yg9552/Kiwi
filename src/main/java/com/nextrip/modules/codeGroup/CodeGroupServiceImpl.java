@@ -28,6 +28,21 @@ public class CodeGroupServiceImpl implements CodeGroupService{
 		// TODO Auto-generated method stub
 		return dao.selectOneCount(vo);
 	}
-	
+	@Override
+	public int codeGroupInsert(CodeGroup dto) throws Exception{
+		return dao.codeGroupInsert(dto);
+	}
+	@Override
+	public int codeGroupUpdate(CodeGroup dto) throws Exception{
+		return dao.codeGroupUpdate(dto);
+	}
+	@Override
+	public int codeGroupUelete(CodeGroup dto) throws Exception{
+		return dao.codeGroupUelete(dto);
+	}
+	@Override
+	public int codeGroupDelete(CodeGroupVo vo) throws Exception{
+		return dao.codeGroupDelete(vo);
+	}
 	
 }

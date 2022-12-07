@@ -14,9 +14,8 @@
 			<if test="shDelNy != null and !shDelNy.equals('')">AND DelNy = #{shDelNy}</if>
 			<!-- <if test="shDelNy != 3 ">AND DelNy = #{shDelNy}</if> 전체검색 value값을 3인것을 생성하고 하기-->
 			<choose>
-				<when test="shOption == 1">AND CodeGroupCode LIKE CONCAT('%',#{shValue},'%')</when>
+				<when test="shOption == 1">AND CodeGroupSeq LIKE CONCAT('%',#{shValue},'%')</when>
 				<when test="shOption == 2">AND name LIKE CONCAT('%',#{shValue},'%')</when>
-				<when test="shOption == 3">AND CodeGroupNameEN LIKE CONCAT('%',#{shValue},'%')</when>
 				<otherwise></otherwise>
 			</choose>
 	</sql>
@@ -51,4 +50,45 @@
 		WHERE 1=1
 		AND a.codeGroupSeq = #{codeGroupSeq}
 	</select>
+	
+	<insert id="codeGroupInsert">
+		INSERT INTO codeGroup (
+				codeGroupSeq
+				,name
+				,delNy
+			)
+			VALUES (
+				#{codeGroupSeq}
+				,#{name}
+				,0
+			)
+			<selectKey resultType="String" keyProperty="codeGroupSeq" order="AFTER">
+				SELECT last_insert_id()
+			</selectKey>
+	</insert>
+	
+	<update id="codeGroupUpdate">
+		UPDATE codeGroup
+			SET
+				name = #{name}
+				,delNy = #{delNy}
+		WHERE 1=1
+			AND	codeGroupSeq = #{codeGroupSeq}
+	</update>
+	
+	<update id="codeGroupUelete">
+		UPDATE codeGroup
+		SET
+			delNy = 1
+		WHERE 1=1
+			AND	codeGroupSeq = #{codeGroupSeq}
+	</update>
+	
+	<delete id="codeGroupDelete">
+		DELETE 
+		FROM codeGroup
+		WHERE 1=1 
+			AND	codeGroupSeq = #{codeGroupSeq}
+	
+	</delete>
 </mapper>	

@@ -26,4 +26,16 @@ public class CodeGroupDao {
 		return sqlSession.selectOne(namespace + ".selectOneCount", vo);
 	}
 	
+	public int codeGroupInsert(CodeGroup dto) throws Exception{
+		return sqlSession.insert(namespace + ".codeGroupInsert", dto);
+	}
+	public int codeGroupUpdate(CodeGroup dto) throws Exception{
+		return sqlSession.update(namespace + ".codeGroupUpdate", dto);
+	}
+	public int codeGroupUelete(CodeGroup dto) throws Exception{
+		return sqlSession.update(namespace + ".codeGroupUelete", dto);
+	}
+	public int codeGroupDelete(CodeGroupVo vo) throws Exception{
+		return sqlSession.delete(namespace + ".codeGroupDelete", vo);
+	}
 }

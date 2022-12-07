@@ -34,7 +34,7 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>codeView</title>
+    <title>PostList</title>
 
     <meta name="description" content="" />
 
@@ -85,7 +85,7 @@
 	            		<input type="hidden" id="thisPage" name="thisPage" value="<c:out value="${vo.thisPage }" default="1"/>">
 						<input type="hidden" id="rowNumToShow" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
 			        	<input type="hidden" id="nxPostSeq" name="nxPostSeq">
-	            		<h5 class="card-header">코드 검색</h5>
+	            		<h5 class="card-header">게시글 검색</h5>
 	            		<div class="card-body">
 	            			<div class="row">
 		            			<div class="mb-3 col-lg-2">
@@ -152,7 +152,7 @@
 	             	<div style="height: 30px;"></div>
 		              <!-- Basic Bootstrap Table -->
 		              <div class="card">
-		                <h5 class="card-header">코드 관리</h5>
+		                <h5 class="card-header">게시글 관리</h5>
 		                <div class="table-responsive text-nowrap">
 		                  <table class="table table-striped text-center">
 		                    <thead>

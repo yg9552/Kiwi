@@ -85,4 +85,54 @@
 			AND delNy = 0
 		    <!-- AND UseNy = 1 -->
     </select>
+    <insert id="codeInsert">
+		INSERT INTO code (
+				codeGroup
+				,codeGroupSeq
+				,replaceCode
+				,name
+				,delNy
+				,enName
+			)
+			VALUES (
+				#{codeGroup}
+				,#{codeGroupSeq}
+				,#{replaceCode}
+				,#{name}
+				,0
+				,#{enName}
+			)
+			<selectKey resultType="String" keyProperty="codeSeq" order="AFTER">
+				SELECT last_insert_id()
+			</selectKey>
+	</insert>
+	
+	<update id="codeUpdate">
+		UPDATE code
+			SET
+				codeGroup = #{codeGroup}
+				,codeGroupSeq = #{codeGroupSeq}
+				,replaceCode = #{replaceCode}
+				,name = #{name}
+				,delNy = #{delNy}
+				,enName = #{enName}
+		WHERE 1=1
+			AND	codeSeq = #{codeSeq}
+	</update>
+	
+	<update id="codeUelete">
+		UPDATE code
+		SET
+			delNy = 1
+		WHERE 1=1
+			AND	codeSeq = #{codeSeq}
+	</update>
+	
+	<delete id="codeDelete">
+		DELETE 
+		FROM code
+		WHERE 1=1 
+			AND	codeSeq = #{codeSeq}
+	
+	</delete>
 </mapper>	

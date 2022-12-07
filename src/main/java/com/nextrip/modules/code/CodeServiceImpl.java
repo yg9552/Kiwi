@@ -33,6 +33,22 @@ public class CodeServiceImpl implements CodeService {
 		return dao.selectOneCount(vo);
 	}
 	
+	@Override
+	public int codeInsert(Code dto) throws Exception{
+		return dao.codeInsert(dto);
+	}
+	@Override
+	public int codeUpdate(Code dto) throws Exception{
+		return dao.codeUpdate(dto);
+	}
+	@Override
+	public int codeUelete(Code dto) throws Exception{
+		return dao.codeUelete(dto);
+	}
+	@Override
+	public int codeDelete(CodeVo vo) throws Exception{
+		return dao.codeDelete(vo);
+	}
 	
 	@Override
 	public Code selectOneRegion(CodeVo vo) throws Exception {
