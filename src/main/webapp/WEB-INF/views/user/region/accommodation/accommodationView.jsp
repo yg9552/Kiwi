@@ -18,7 +18,7 @@
 		<link rel="shortcut icon" type="image/x-icon" href="/resources/template/gotrip-master/assets/img/favicon.ico">
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
        	<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
-       	<script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=fff4722d1b0684553d2d53d2ea3f7fe9"></script>
+       	<script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=9324b5405b9481a01004906f5a2c2484"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.ko.min.js" integrity="sha512-L4qpL1ZotXZLLe8Oo0ZyHrj/SweV7CieswUODAAPN/tnqN3PA1P+4qPu5vIryNor6HQ5o22NujIcAZIfyVXwbQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
@@ -526,8 +526,10 @@
                 imageUrl:
                   '/resources/image/sunset.jpg',
                 link: {
-                  mobileWebUrl: 'http://localhost:8080/nextrip/region/accommodation/accommodationView?nxAccommodationSeq=${item.nxAccommodationSeq }',
-                  webUrl: 'http://localhost:8080/nextrip/region/accommodation/accommodationView?nxAccommodationSeq=${item.nxAccommodationSeq }',
+//                  mobileWebUrl: 'http://localhost:8080/nextrip/region/accommodation/accommodationView?nxAccommodationSeq=${item.nxAccommodationSeq }',
+                  mobileWebUrl: 'http://3.34.138.48:8082/nextrip/region/accommodation/accommodationView?nxAccommodationSeq=${item.nxAccommodationSeq }',
+//                  webUrl: 'http://localhost:8080/nextrip/region/accommodation/accommodationView?nxAccommodationSeq=${item.nxAccommodationSeq }',
+                  webUrl: 'http://3.34.138.48:8082/nextrip/region/accommodation/accommodationView?nxAccommodationSeq=${item.nxAccommodationSeq }',
                 },
               },
               social: {
@@ -539,15 +541,19 @@
                 {
                   title: '웹으로 보기',  //첫 번째 버튼 
                   link: {
-                    mobileWebUrl: 'http://localhost:8080/nextrip/region/accommodation/accommodationView?nxAccommodationSeq=${item.nxAccommodationSeq }',  //버튼 클릭 시 이동 링크
-                    webUrl: 'http://localhost:8080/nextrip/region/accommodation/accommodationView?nxAccommodationSeq=${item.nxAccommodationSeq }',
+//                    mobileWebUrl: 'http://localhost:8080/nextrip/region/accommodation/accommodationView?nxAccommodationSeq=${item.nxAccommodationSeq }',  //버튼 클릭 시 이동 링크
+                    mobileWebUrl: 'http://3.34.138.48:8082/nextrip/region/accommodation/accommodationView?nxAccommodationSeq=${item.nxAccommodationSeq }',  //버튼 클릭 시 이동 링크
+//                    webUrl: 'http://localhost:8080/nextrip/region/accommodation/accommodationView?nxAccommodationSeq=${item.nxAccommodationSeq }',
+                    webUrl: 'http://3.34.138.48:8082/nextrip/region/accommodation/accommodationView?nxAccommodationSeq=${item.nxAccommodationSeq }',
                   },
                 },
                 {
                   title: '앱으로 보기',  //두 번째 버튼
                   link: {
-                    mobileWebUrl: 'http://localhost:8080/nextrip/region/accommodation/accommodationView?nxAccommodationSeq=${item.nxAccommodationSeq }',
-                    webUrl: 'http://localhost:8080/nextrip/region/accommodation/accommodationView?nxAccommodationSeq=${item.nxAccommodationSeq }',
+//                    mobileWebUrl: 'http://localhost:8080/nextrip/region/accommodation/accommodationView?nxAccommodationSeq=${item.nxAccommodationSeq }',
+                    mobileWebUrl: 'http://3.34.138.48:8082/nextrip/region/accommodation/accommodationView?nxAccommodationSeq=${item.nxAccommodationSeq }',
+//                    webUrl: 'http://localhost:8080/nextrip/region/accommodation/accommodationView?nxAccommodationSeq=${item.nxAccommodationSeq }',
+                    webUrl: 'http://3.34.138.48:8082/nextrip/region/accommodation/accommodationView?nxAccommodationSeq=${item.nxAccommodationSeq }',
                   },
                 },
               ],
