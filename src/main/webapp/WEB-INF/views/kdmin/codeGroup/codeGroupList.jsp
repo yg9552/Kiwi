@@ -165,8 +165,8 @@
 				                        		</c:otherwise>
 				                        	</c:choose>
 				                        </td>
-				                        <td><fmt:formatDate value="${list.regDateTime }" pattern="yyyy-MM-dd"/></td>
-				                        <td><fmt:formatDate value="${list.modDateTime }" pattern="yyyy-MM-dd"/></td>
+				                        <td><fmt:formatDate value="${list.regDateTime }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+				                        <td><fmt:formatDate value="${list.modDateTime }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 				                      </tr>
 				                      </c:forEach>
 			                      </c:otherwise>
