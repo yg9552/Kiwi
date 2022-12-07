@@ -526,10 +526,11 @@
                 imageUrl:
                   '/resources/image/sunset.jpg',
                 link: {
-//                  mobileWebUrl: 'http://localhost:8080/nextrip/region/accommodation/accommodationView?nxAccommodationSeq=${item.nxAccommodationSeq }',
-                  mobileWebUrl: 'http://3.34.138.48:8082/nextrip/region/accommodation/accommodationView?nxAccommodationSeq=${item.nxAccommodationSeq }',
-//                  webUrl: 'http://localhost:8080/nextrip/region/accommodation/accommodationView?nxAccommodationSeq=${item.nxAccommodationSeq }',
-                  webUrl: 'http://3.34.138.48:8082/nextrip/region/accommodation/accommodationView?nxAccommodationSeq=${item.nxAccommodationSeq }',
+					mobileWebUrl: 'http://localhost:8080/nextrip/region/accommodation/accommodationView?nxAccommodationSeq=${item.nxAccommodationSeq }',
+					webUrl: 'http://localhost:8080/nextrip/region/accommodation/accommodationView?nxAccommodationSeq=${item.nxAccommodationSeq }',
+					//업로드시 경로
+//					mobileWebUrl: 'http://3.34.138.48:8082/nextrip/region/accommodation/accommodationView?nxAccommodationSeq=${item.nxAccommodationSeq }',
+//					webUrl: 'http://3.34.138.48:8082/nextrip/region/accommodation/accommodationView?nxAccommodationSeq=${item.nxAccommodationSeq }',
                 },
               },
               social: {
@@ -541,19 +542,23 @@
                 {
                   title: '웹으로 보기',  //첫 번째 버튼 
                   link: {
-//                    mobileWebUrl: 'http://localhost:8080/nextrip/region/accommodation/accommodationView?nxAccommodationSeq=${item.nxAccommodationSeq }',  //버튼 클릭 시 이동 링크
-                    mobileWebUrl: 'http://3.34.138.48:8082/nextrip/region/accommodation/accommodationView?nxAccommodationSeq=${item.nxAccommodationSeq }',  //버튼 클릭 시 이동 링크
-//                    webUrl: 'http://localhost:8080/nextrip/region/accommodation/accommodationView?nxAccommodationSeq=${item.nxAccommodationSeq }',
-                    webUrl: 'http://3.34.138.48:8082/nextrip/region/accommodation/accommodationView?nxAccommodationSeq=${item.nxAccommodationSeq }',
+					mobileWebUrl: 'http://localhost:8080/nextrip/region/accommodation/accommodationView?nxAccommodationSeq=${item.nxAccommodationSeq }',  //버튼 클릭 시 이동 링크
+					webUrl: 'http://localhost:8080/nextrip/region/accommodation/accommodationView?nxAccommodationSeq=${item.nxAccommodationSeq }',
+					//업로드시 경로
+//					mobileWebUrl: 'http://3.34.138.48:8082/nextrip/region/accommodation/accommodationView?nxAccommodationSeq=${item.nxAccommodationSeq }',  //버튼 클릭 시 이동 링크
+//					webUrl: 'http://3.34.138.48:8082/nextrip/region/accommodation/accommodationView?nxAccommodationSeq=${item.nxAccommodationSeq }',
                   },
                 },
                 {
                   title: '앱으로 보기',  //두 번째 버튼
                   link: {
-//                    mobileWebUrl: 'http://localhost:8080/nextrip/region/accommodation/accommodationView?nxAccommodationSeq=${item.nxAccommodationSeq }',
-                    mobileWebUrl: 'http://3.34.138.48:8082/nextrip/region/accommodation/accommodationView?nxAccommodationSeq=${item.nxAccommodationSeq }',
-//                    webUrl: 'http://localhost:8080/nextrip/region/accommodation/accommodationView?nxAccommodationSeq=${item.nxAccommodationSeq }',
-                    webUrl: 'http://3.34.138.48:8082/nextrip/region/accommodation/accommodationView?nxAccommodationSeq=${item.nxAccommodationSeq }',
+                	mobileWebUrl: 'http://localhost:8080/nextrip/region/accommodation/accommodationView?nxAccommodationSeq=${item.nxAccommodationSeq }',
+                	webUrl: 'http://localhost:8080/nextrip/region/accommodation/accommodationView?nxAccommodationSeq=${item.nxAccommodationSeq }',
+					//업로드시 경로
+//					mobileWebUrl: 'http://3.34.138.48:8082/nextrip/region/accommodation/accommodationView?nxAccommodationSeq=${item.nxAccommodationSeq }',
+//					webUrl: 'http://3.34.138.48:8082/nextrip/region/accommodation/accommodationView?nxAccommodationSeq=${item.nxAccommodationSeq }',
+
+                    
                   },
                 },
               ],

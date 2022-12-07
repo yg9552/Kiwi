@@ -181,8 +181,10 @@
 			{
 				clientId: "aNKEMOb_iTA5yeMRuqRF",
 				callbackUrl: "http://localhost:8080/nextrip/login",
-	//			clientId: "7ONlz7Bim5hRaiHfpGsf",
-	//			callbackUrl: "http://3.34.138.48/loginPage",
+				//업로드시 경로
+	//			clientId: "cmntoGlP6WUzxyK2mWdF",
+	//			callbackUrl: "http://3.34.138.48:8082/nextrip/login",
+				
 				isPopup: true,
 				callbackHandle: true
 			}
