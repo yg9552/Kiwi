@@ -37,11 +37,149 @@
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+	<style type="text/css">
+		.logoutPart:hover {
+			cursor: pointer;
+		}
+	</style>
 </head>
 
 <body>
     <!-- userHeader s -->
-		<%@include file="../../common/userHeader.jsp"%>
+		<form name="formRegion" method="post">
+		    <input type="hidden" name="region">
+		    <c:choose>
+		    	<c:when test="${sessSeq eq null}">
+		    		<header>
+			        	<!-- Header Start -->
+				       <div class="header-area">
+				            <div class="main-header ">
+				               <div class="header-bottom header-sticky">
+				                    <div class="container">
+				                        <div class="row align-items-center">
+				                            <!-- Logo -->
+				                            <div class="col-xl-2 col-lg-2 col-md-1">
+				                                <div class="logo">
+				                                  <a href="/nextrip/main"><img src="/resources/template/gotrip-master/assets/img/logo/NTLogo.png" alt=""></a>
+				                                </div>
+				                            </div>
+				                            <div class="col-xl-10 col-lg-10 col-md-10">
+				                                <!-- Main-menu -->
+				                                <div class="main-menu f-right d-none d-lg-block">
+				                                    <nav>               
+				                                        <ul id="navigation">                                                                                                                                     
+				                                            <li><a href="/nextrip/login">로그인</a></li>
+				                                            <li><a href="/nextrip/memberRegistration">회원가입</a></li>
+				                                            <li><a href="#">지역</a>
+				                                            <input type="hidden" name="replaceCode">
+				                                            	<ul class="submenu">
+				                                            		<c:set var="listregion" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
+				                                            		<c:forEach items="${listregion}" var="listregion" varStatus="statuslistregion">
+				                                            			<li><a href="javascript:goRegionView(<c:out value="${listregion.replaceCode }"/>)"><c:out value="${listregion.name}"/></a></li>
+																	</c:forEach>
+				                                                </ul>
+				                                            </li>
+				                                            <li><a href="/post/postUserList">여행지소개</a></li>
+				                                            <li><a href="/nextrip/region/accommodation/accommodationList">숙박</a>
+				                                        </ul>
+				                                    </nav>
+				                                </div>
+				                            </div>
+				                            <!-- Mobile Menu -->
+				                            <div class="col-12">
+				                                <div class="mobile_menu d-block d-lg-none"></div>
+				                            </div>
+				                        </div>
+				                    </div>
+				               </div>
+				            </div>
+				       </div>
+				        <!-- Header End -->
+				    </header>
+		    	</c:when>
+		    	<c:otherwise>
+		    		<header>
+				       <!-- Header Start -->
+				       <div class="header-area">
+				            <div class="main-header ">
+				                <div class="header-top top-bg d-none d-lg-block">
+				                   <div class="container">
+				                    <div class="row justify-content-between align-items-center">
+				                        <div class="col-lg-8">
+				                            <div class="header-info-left">
+				                                <!-- <ul>                          
+				                                    <li>needhelp@gotrip.com</li>
+				                                    <li>666 569 025077</li>
+				                                    <li>broklyn street new york</li>
+				                                </ul> -->
+				                            </div>
+				                        </div>
+				                        <div class="col-lg-4">
+				                            <div class="header-info-right f-right text-white">
+				                                <c:out value="${sessNickname}" />님 어서오세요!
+				                            </div>
+				                        </div>
+				                       </div>
+				                   </div>
+				               </div>
+				               <div class="header-bottom  header-sticky">
+				                    <div class="container">
+				                        <div class="row align-items-center">
+				                            <!-- Logo -->
+				                            <div class="col-xl-2 col-lg-2 col-md-1">
+				                                <div class="logo">
+				                                  <a href="/nextrip/main"><img src="/resources/template/gotrip-master/assets/img/logo/NTLogo.png" alt=""></a>
+				                                </div>
+				                            </div>
+				                            <div class="col-xl-10 col-lg-10 col-md-10">
+				                                <!-- Main-menu -->
+				                                <div class="main-menu f-right d-none d-lg-block">
+				                                    <nav>               
+				                                        <ul id="navigation">                                                                                                                                     
+				                                            <li class="logoutPart" onclick="logout();"><a>로그아웃</a></li>
+				                                            <li><a href="#">지역</a>
+				                                            <input type="hidden" name="replaceCode">
+				                                            	<ul class="submenu">
+				                                                    <c:set var="listregion" value="${CodeServiceImpl.selectListCachedCode('2')}"/>
+				                                            		<c:forEach items="${listregion}" var="listregion" varStatus="statuslistregion">
+				                                            			<li><a href="javascript:goRegionView(<c:out value="${listregion.replaceCode }"/>)"><c:out value="${listregion.name}"/></a></li>
+																	</c:forEach>
+				                                                </ul>
+				                                            </li>
+				                                            <li><a href="/post/postUserList">여행지소개</a>
+				                                            	<!-- <ul class="submenu">
+				                                                    <li><a href="/post/postUserList">게시판</a></li>
+				                                                    <li><a href="#">글쓰기</a></li>
+				                                                </ul> -->
+				                                            </li>
+				                                            <li><a href="/nextrip/region/accommodation/accommodationList">숙박</a>
+				                                            </li>
+				                                            <li><a href="#">마이페이지</a>
+				                                            	<ul class="submenu">
+				                                            		<li><a href="/nextrip/memberModification">회원정보 수정</a></li>
+				                                                    <li><a href="/nextrip/myReservation">예약 내역</a></li>
+				                                                    <li><a href="/nextrip/mypagePostRecord">내가 쓴 글</a></li>
+				                                                    <li><a href="/nextrip/mypageChat">채팅</a></li>
+				                                                </ul>
+				                                            </li>
+				                                        </ul>
+				                                    </nav>
+				                                </div>
+				                            </div>
+				                            <!-- Mobile Menu -->
+				                            <div class="col-12">
+				                                <div class="mobile_menu d-block d-lg-none"></div>
+				                            </div>
+				                        </div>
+				                    </div>
+				               </div>
+				            </div>
+				       </div>
+				        <!-- Header End -->
+				    </header>
+		    	</c:otherwise>
+		    </c:choose>
+		    </form>
   	<!-- userHeader e -->
      <!-- slider Area Start-->
      <div class="slider-area ">
@@ -149,7 +287,7 @@
                 			<div class="blog_right_sidebar">
 		                        <aside class="single_sidebar_widget post_category_widget">
 		                            <h4 class="widget_title">CCTV</h4>
-		                            <%-- <c:choose>
+		                            <c:choose>
 		                            	<c:when test="${itemC.replaceCode eq 201 }">
 		                            		<embed src="http://www.utic.go.kr/view/map/openDataCctvStream.jsp?key=x0EBH864Y0V2mqOqKKaUwp0QU5dyfMOKQEArrih2XRg1DGJ4li9Rq0LVb2bU&cctvid=L010047&cctvName=%25EC%2584%25B8%25EC%25A2%2585%25EB%25A1%259C&kind=Seoul&cctvip=null&cctvch=51&id=47&cctvpasswd=null&cctvport=null" width="300px" height="300px">
 		                            	</c:when>
@@ -166,8 +304,9 @@
 		                            		<embed src="http://www.utic.go.kr/view/map/openDataCctvStream.jsp?key=x0EBH864Y0V2mqOqKKaUwp0QU5dyfMOKQEArrih2XRg1DGJ4li9Rq0LVb2bU&cctvid=E07010&cctvName=%25EB%2582%25A8%25EC%2584%25A0%25EA%25B3%25B5%25EC%259B%2590%25EB%2584%25A4%25EA%25B1%25B0%25EB%25A6%25AC&kind=E&cctvip=119&cctvch=null&id=CCTV48&cctvpasswd=null&cctvport=null" height="300px">
 		                            	</c:when>
 		                            	<c:when test="${itemC.replaceCode eq 206 }">
+		                            		<iframe width="300" height="170" src="https://www.youtube.com/embed/A_8hXqDddqs?autoplay=1&mute=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 		                            	</c:when>
-		                            </c:choose> --%>
+		                            </c:choose>
 		                            <!-- <iframe src="http://www.utic.go.kr/view/map/openDataCctvStream.jsp?key=x0EBH864Y0V2mqOqKKaUwp0QU5dyfMOKQEArrih2XRg1DGJ4li9Rq0LVb2bU&cctvid=E912353&cctvName=%255B%25EC%259D%25B8%25EC%25B2%259C%25EA%25B5%25AD%25EC%25A0%259C%25EA%25B3%25B5%25ED%2595%25AD%25EC%2584%25A0%255D%25EC%2584%259C%25EC%259A%25B836.0K&kind=Z3&cctvip=null&cctvch=null&id=5719/hydAI4AYj42M1bUcz8tTW+XbjqEZX3ijCkgfSXBsq6NSd8EuzBaRvrAoj5ncrqI0p3ibOX4YDPjl8QWM1/YkR30M5ZeTBjNqCgNeGTSQUek=&cctvpasswd=null&cctvport=null" width=560 height=315 frameborder=0></iframe> -->
 		                            <!-- <iframe src="http://www.utic.go.kr/view/map/openDataCctvStream.jsp?key=x0EBH864Y0V2mqOqKKaUwp0QU5dyfMOKQEArrih2XRg1DGJ4li9Rq0LVb2bU&cctvid=E912791&cctvName=%255B%25EC%25A4%2591%25EB%25B6%2580%25EC%2584%25A0%255D%25EC%259D%25BC%25EC%25A3%25BD%25EC%2589%25BC%25ED%2584%25B0(%25ED%2595%2598%25EB%2582%25A8)&kind=Z3&cctvip=null&cctvch=null&id=2968//9xG+n+MVV5ulM+G4uyVBxnGhJtWtaPgaUuacTtBfMcMuBBMBDpFkRMDz1LONOUmvPSPiO+zxX9Z51MdFN1GMVBqNRadNljblLN0MsjL7NM=&cctvpasswd=null&cctvport=null" width=560 height=315 frameborder=0></iframe> -->
 		                        </aside>
@@ -449,10 +588,59 @@
         .then((response) => response.json())
         .then((data) => console.log(data));
          */
-        
-        
-        
 		</script>
-
+		<script type="text/javascript">
+		    function logout() {
+		    	$.ajax({
+					async: true 
+					,cache: false
+					,type: "post"
+					/* ,dataType:"json" */
+					,url: "/nextrip/logoutProc"
+					/* ,data : $("#formLogin").serialize() */
+					,success: function(response) {
+						if(response.rt == "success") {
+								$(location).attr("href",goUrlMain);
+						} else {}
+					}
+					,error : function(jqXHR, textStatus, errorThrown){
+						alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+					}
+				});
+		    	
+		    }
+		    
+		//	$("#btnLogout").on("click", function(){
+		//   	$.ajax({
+		//			async: true 
+		//			,cache: false
+		//			,type: "post"
+		//			/* ,dataType:"json" */
+		//			,url: "/nextrip/logoutProc"
+		//			/* ,data : $("#formLogin").serialize() */
+		//			,success: function(response) {
+		//				if(response.rt == "success") {
+		//						$(location).attr("href",goUrlMain);
+		//				} else {}
+		//			}
+		//			,error : function(jqXHR, textStatus, errorThrown){
+		//				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+		//			}
+		//		});
+		//	});
+		    
+		   	var goUrlMain = "/nextrip/main";
+		   	var goUrlRegionView = "/nextrip/regionView";			/* #-> */
+		   	var seqRegion = $("input:hidden[name=replaceCode]");
+		   	var regionVal = $("input:hidden[name=region]");
+		   	var formRegion = $("form[name=formRegion]");
+		   
+		   	
+		    goRegionView = function(keyValue) {
+		    	regionVal.val(keyValue);
+				seqRegion.val(keyValue);
+				formRegion.attr("action", goUrlRegionView).submit();
+			}
+	   	</script>
 </body>
 </html>
