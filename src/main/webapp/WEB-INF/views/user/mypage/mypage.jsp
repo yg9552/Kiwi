@@ -127,8 +127,8 @@
 			</table>
 		
 		</div>
-		<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/-JhoMGoAfFc?autoplay=1&mute=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
-		<%-- <%
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/-JhoMGoAfFc?autoplay=1&mute=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		<%
 		
 		        // 파싱할 사이트를 적어준다(해당 사이트에 대한 태그를 다 긁어옴)
 		
@@ -139,7 +139,7 @@
 				//out.println(doc2.body());		
 		        //System.out.println(doc2.body());
 		        System.out.println("jsp Script 시작");
-		   		out.println(doc2.body().select("table").select(".table-zebra"));
+		   		//out.println(doc2.body().select("table").select(".table-zebra"));
 		/* 
 		    	for(int i=1; i<24; i++) {
 		        	if(i<10){
@@ -151,7 +151,21 @@
 		        	
 		        } 
 		*/
+					
 		
+				Elements temp = doc2.body().getElementsByClass("table-col");
+		
+				Elements realTemp = doc2.body().getElementsByClass("midterm-province");
+				
+				//realTemp
+				System.out.println(realTemp);
+				
+				
+				//e.select("td:eq(0)")
+				
+				//System.out.println(temp);
+				
+				System.out.println("----------------------------!@#$!@#$!@#$!@#$!@#$");
 		        // list 속성안에 li 요소 데이터들을 긁어온다
 		
 		        Elements posts = doc2.body().getElementsByClass("table-zebra");
@@ -229,7 +243,7 @@
 		
 		        } */
 		
-		%> --%>
+		%>
 	</div>
     <script defer type="text/javascript" src="/resources/common/js/weatherIcon.js"></script>
         <script type="text/javascript">

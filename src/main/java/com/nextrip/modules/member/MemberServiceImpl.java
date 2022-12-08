@@ -72,9 +72,9 @@ public class MemberServiceImpl implements MemberService {
 	
 
 	@Override
-	public int selectOneCount(MemberVo vo) throws Exception {
+	public int selectMemberListCount(MemberVo vo) throws Exception {
 		// TODO Auto-generated method stub
-		return dao.selectOneCount(vo);
+		return dao.selectMemberListCount(vo);
 	}
 	@Override
 	public Member snsLoginCheck(Member dto) throws Exception {

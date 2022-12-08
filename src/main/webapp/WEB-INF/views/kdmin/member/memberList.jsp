@@ -87,7 +87,7 @@
               <!-- Hoverable Table rows -->
               <form name="formList" method="post">
               <input type="hidden" name="mainkey">
-	          <input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage }" default="1" />">
+	          <input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage }"/>">
 	          <input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow }" />">
 	          <input type="hidden" name="checkboxSeqArray">
 	          <input type="hidden" name="memberSeq" value="<c:out value="${vo.memberSeq }"/>">

@@ -55,9 +55,9 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "/nextrip/memberList")
-	public String memberList(MemberVo vo, Model model) throws Exception {
-		
-		vo.setParamsPaging(service.selectOneCount(vo));
+	public String memberList(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
+		vo.setParamsPaging(service.selectMemberListCount(vo));
+		System.out.println(service.selectMemberListCount(vo));
 		List<Member> list = service.selectMemberList(vo);
 		model.addAttribute("list", list);
 		

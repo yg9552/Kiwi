@@ -23,7 +23,7 @@ public class MemberDao {
 	public int memberVele(Member dto) {return sqlSession.update(namespace+".memberVele", dto);}
 	public int passwordCheck(MemberVo vo) {return sqlSession.selectOne(namespace+".passwordCheck", vo);}
 	public int passwordUpdt(Member dto) {return sqlSession.update(namespace+".passwordUpdt", dto);}
-	public int selectOneCount(MemberVo vo) {return sqlSession.selectOne(namespace + ".selectMemberListCount", vo);}
+	public int selectMemberListCount(MemberVo vo) {return sqlSession.selectOne(namespace + ".selectMemberListCount", vo);}
 	public int selectSeqByIdEmail(MemberVo vo) {return sqlSession.selectOne(namespace+".selectSeqByIdEmail", vo);}
 	public int passwordRefresh(Member dto) {return sqlSession.update(namespace+".passwordRefresh", dto);}
 	
