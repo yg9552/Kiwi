@@ -32,18 +32,25 @@
 	
 	<context:component-scan base-package="com.nextrip" />
 		<!-- session interceptor s 2022.03.13 for logincheck -->
-	<!-- <interceptors>
+	<interceptors>
 		<interceptor>
 			<mapping path="/nextrip/**"/>
 			<exclude-mapping path="/resources/**" />
+			<exclude-mapping path="/nextrip/kdminLogin" />
 			<exclude-mapping path="/nextrip/main" />
-			<exclude-mapping path="/nextrip/region/**" />
 			<exclude-mapping path="/nextrip/login" />
 			<exclude-mapping path="/nextrip/loginproc" />
 			<exclude-mapping path="/nextrip/logoutProc" />
+			<exclude-mapping path="/nextrip/regionView" />
+			<exclude-mapping path="/nextrip/region/accommodation/accommodationList" />
+			<exclude-mapping path="/nextrip/region/accommodation/accommodationView" />
+			<exclude-mapping path="/nextrip/region/accommodation/selectRoomPrice" />
+			<exclude-mapping path="/nextrip/regionView" />
+			<exclude-mapping path="/nextrip/post/postUserList" />
+			<exclude-mapping path="/nextrip/post/postUserView" />
 			<beans:bean id="checkLoginSessionInterception" class="com.nextrip.common.interceptor.CheckLoginSessionInterception"/>
 		</interceptor>
-	</interceptors>	 -->
+	</interceptors>	
 	<!-- session interceptor e 2022.03.13 for logincheck -->
 	
 	

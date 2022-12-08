@@ -490,6 +490,7 @@
         
         $("#btnSave").on("click", function(){
         	if (validationInst() == false){
+        		alert("예약옵션을 모두 선택해주세요");
 	   			return false;
 	   		} else {
 	   			form.attr("action", goUrlInst).submit();

@@ -282,6 +282,7 @@
 		                            <p id="temperature"></p> -->
 		                        </aside>
 		                    </div>
+		                    <p>날씨 더보기</p>
                 		</div>
                 		<div class="col-lg-5">
                 			<div class="blog_right_sidebar">
@@ -364,6 +365,8 @@
 		                            </c:choose>
 		                            <!-- <p id="description"></p>
 		                            <p id="temperature"></p> -->
+		                            <a href="https://www.weather.go.kr/w/weather/forecast/short-term.do" class="mt-3" target='_blank' style="float: right; font-size: 14px; color:black; font-weight: bold;">날씨 더보기</a>
+		                            <div style="clear: both;"></div>
 		                        </aside>
 		                    </div>
                 		</div>
@@ -411,6 +414,23 @@
 		                        <aside class="single_sidebar_widget post_category_widget">
 		                            <h4 class="widget_title">추천 여행지</h4>
 		                            <div class="autoplay">
+		                            	<c:forEach items="${bestPost }" var="bestPost" varStatus="statusbestPost">
+	                            			<div>
+							  					<a href="javascript:goPost(<c:out value="${bestPost.nxPostSeq }"/>)">
+							  						<c:choose>
+							  						<c:when test="${bestPost.path eq null}">
+							  							<img src="/resources/image/post/theBinImage.png" alt="" style="width: 150px; height: 150px; object-fit:contain;">
+							  						</c:when>
+							  						<c:otherwise>
+										  				<img src="<c:out value="${bestPost.path }"/><c:out value="${bestPost.uuidName }"/>" alt="" style="width: 150px; height: 150px; object-fit:contain;">
+													</c:otherwise>
+													</c:choose>
+												</a>
+									  			<ul class="blog-info-link">
+					         						<li><a href="javascript:goPost(<c:out value="${bestPost.nxPostSeq }"/>)" class="text-dark"><c:out value="${bestPost.addressTitle }"/></a></li>
+					                   			</ul>
+								  	 		</div>
+		                            	</c:forEach>
 		                            	<c:forEach items="${bestPost }" var="bestPost" varStatus="statusbestPost">
 	                            			<div>
 							  					<a href="javascript:goPost(<c:out value="${bestPost.nxPostSeq }"/>)">

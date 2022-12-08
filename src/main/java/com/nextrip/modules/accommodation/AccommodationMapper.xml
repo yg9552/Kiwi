@@ -11,6 +11,7 @@
 	<sql id="selectCommon">
 	FROM nxAccommodation a
 	WHERE 1=1
+	AND DelNy = 0
 	<if test="shDelNy != null and !shDelNy.equals('')">AND DelNy = #{shDelNy}</if>
 		<choose>
 			<when test="shOption == 1">AND a.region = #{shValue}</when>
