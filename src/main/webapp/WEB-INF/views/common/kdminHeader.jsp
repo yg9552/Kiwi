@@ -238,7 +238,7 @@
                       <div class="dropdown-divider"></div>
                     </li> -->
                     <li>
-                      <a class="dropdown-item" href="auth-login-basic.html">
+                      <a class="dropdown-item">
                         <i class="bx bx-power-off me-2"></i>
                         <span class="align-middle" onclick="logout();">로그아웃</span>
                       </a>

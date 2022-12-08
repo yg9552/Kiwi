@@ -315,8 +315,20 @@
                 		</div>
                 		<div class="col-12 col-lg" style="width: 200px; height: 300px;">
                 			<div class="slider-wrap feature-img">
-							  <div><img src="/resources/template/html/image/bamboo.jpg" alt="" style="height: 300px;"></div>
-							  <div><img src="/resources/template/gotrip-master/assets/img/hero/scenery-g6805d4812_1920.jpg" alt="" style="height: 300px;"></div>
+							  <!-- <div><img src="/resources/template/html/image/bamboo.jpg" alt="" style="height: 300px;"></div>
+							  <div><img src="/resources/template/gotrip-master/assets/img/hero/scenery-g6805d4812_1920.jpg" alt="" style="height: 300px;"></div> -->
+							  <c:forEach items="${bestPost }" var="bestPost" varStatus="statusbestPost">
+                          		<div>
+			  						<c:choose>
+				  						<c:when test="${bestPost.path eq null}">
+				  							<div><img src="/resources/image/post/theBinImage.png" alt="" style="width: 495px; height: 300px; object-fit:contain;"></div>
+				  						</c:when>
+				  						<c:otherwise>
+							  				<div><img src="<c:out value="${bestPost.path }"/><c:out value="${bestPost.uuidName }"/>" alt="" style="width: 495px; height: 300px; object-fit:contain;"></div>
+										</c:otherwise>
+									</c:choose>
+					  	 		</div>
+                           	</c:forEach>
 							</div>
                 		</div>
                 	</div>

@@ -110,22 +110,12 @@
 										<div class="card-body">
 											<div class="row mb-4">
 												<div class="col-md-6">
-													<label for="codeSeq" class="form-label">코드 번호</label>
-													<input type="text" class="form-control" id="codeSeq" name="codeSeq" value="<c:out value="${item.codeSeq }" />" readonly>
+													<label for="codeGroupSeq" class="form-label">코드 번호</label>
+													<input type="text" class="form-control" id="codeGroupSeq" name="codeGroupSeq" value="<c:out value="${item.codeGroupSeq }" />" readonly>
 												</div>
-												<div class="col-md-6">
-													<label for="codeGroupSeq" class="form-label">코드 그룹 번호</label>
-													<input type="text" class="form-control" id="codeGroupSeq" name="codeGroupSeq" value="<c:out value="${item.codeGroupSeq }" />">
-												</div>
-											</div>
-											<div class="row mb-4">
 												<div class="col-md-6">
 													<label for="name" class="form-label">이름</label>
 													<input type="text" class="form-control" id="name" value="<c:out value="${item.name }"/>">
-												</div>
-												<div class="col-md-6">
-													<label for="enName" class="form-label">영문 이름</label>
-													<input type="text" class="form-control" id="enName" value="<c:out value="${item.enName }"/>">
 												</div>
 											</div>
 											<div class="row mb-4">
