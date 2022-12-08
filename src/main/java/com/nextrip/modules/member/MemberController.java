@@ -60,7 +60,7 @@ public class MemberController {
 		System.out.println(service.selectMemberListCount(vo));
 		List<Member> list = service.selectMemberList(vo);
 		model.addAttribute("list", list);
-		
+		System.out.println("aaaa");
 		return "kdmin/member/memberList";
 	}
 	
