@@ -43,6 +43,7 @@
 			<exclude-mapping path="/nextrip/findId" />
 			<exclude-mapping path="/nextrip/selectSeqByIdEmail" />
 			<exclude-mapping path="/nextrip/passwordRefresh" />
+			<exclude-mapping path="/nextrip/memberRegistration" />
 			<exclude-mapping path="/nextrip/loginproc" />
 			<exclude-mapping path="/nextrip/logoutProc" />
 			<exclude-mapping path="/nextrip/regionView" />
