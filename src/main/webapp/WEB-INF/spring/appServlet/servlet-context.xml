@@ -44,6 +44,9 @@
 			<exclude-mapping path="/nextrip/selectSeqByIdEmail" />
 			<exclude-mapping path="/nextrip/passwordRefresh" />
 			<exclude-mapping path="/nextrip/memberRegistration" />
+			<exclude-mapping path="/nextrip/userReg" />
+			<exclude-mapping path="/nextrip/idOverlapCheck" />
+			<exclude-mapping path="/nextrip/emailOverlapCheck" />
 			<exclude-mapping path="/nextrip/loginproc" />
 			<exclude-mapping path="/nextrip/logoutProc" />
 			<exclude-mapping path="/nextrip/regionView" />
