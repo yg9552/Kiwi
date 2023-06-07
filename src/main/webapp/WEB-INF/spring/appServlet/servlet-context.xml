@@ -39,6 +39,10 @@
 			<exclude-mapping path="/nextrip/kdminLogin" />
 			<exclude-mapping path="/nextrip/main" />
 			<exclude-mapping path="/nextrip/login" />
+			<exclude-mapping path="/nextrip/findAccount" />
+			<exclude-mapping path="/nextrip/findId" />
+			<exclude-mapping path="/nextrip/selectSeqByIdEmail" />
+			<exclude-mapping path="/nextrip/passwordRefresh" />
 			<exclude-mapping path="/nextrip/loginproc" />
 			<exclude-mapping path="/nextrip/logoutProc" />
 			<exclude-mapping path="/nextrip/regionView" />
